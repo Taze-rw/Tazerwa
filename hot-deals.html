@@ -494,6 +494,19 @@
       gap: 10px;
     }
 
+    /* Responsive: 2 boxes per row on small screens */
+    @media (max-width: 768px) {
+      .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      }
+      .product-card {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      }
+    }
+
     .add-to-cart-btn {
       flex: 1;
       background: linear-gradient(45deg, #28a745, #20c997);
@@ -1027,6 +1040,23 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .subcategories-grid,
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
+      .subcategory-card,
+      .product-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
 
     </div>
 

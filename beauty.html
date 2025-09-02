@@ -847,200 +847,186 @@
     </div>
 
     <!-- Quick Actions -->
-    <div class="quick-actions"></div>
-    <button class="quick-btn" onclick="handleFavorites()">
-      <i class="fas fa-heart"></i> My Favorites
-    </button>
-    <button class="quick-btn" onclick="handleReorder()">
-      <i class="fas fa-redo"></i> Reorder Last Purchase
-    </button>
+    <div class="quick-actions" style="justify-content: center;"></div>
+      <button class="quick-btn" onclick="handleFavorites()">
+        <i class="fas fa-heart"></i> My Favorites
+      </button>
+      <button class="quick-btn" onclick="handleReorder()"></button>
+        <i class="fas fa-redo"></i> Reorder Last Purchase
+      </button>
     </div>
 
     <!-- Subcategories Section -->
     <div class="subcategories-section">
-    <h2 class="section-title">Browse Beauty Categories</h2>
-    <div class="subcategories-grid">
-      
+      <h2 class="section-title">Browse Beauty Categories</h2>
+      <div class="subcategories-grid">
       <div class="subcategory-card" onclick="window.location.href='skincare.html'">
-      <img src="img/skincare.jpg" alt="Skincare">
-      <div class="subcategory-info">
+        <img src="img/skincare.jpg" alt="Skincare">
+        <div class="subcategory-info">
         <h3>Skincare</h3>
         <p>Cleansers, moisturizers & treatments</p>
         <span class="product-count">54 items</span>
+        </div>
       </div>
-      </div>
-
       <div class="subcategory-card" onclick="window.location.href='haircare.html'">
-      <img src="img/haircare.jpg" alt="Haircare">
-      <div class="subcategory-info">
+        <img src="img/haircare.jpg" alt="Haircare">
+        <div class="subcategory-info">
         <h3>Haircare</h3>
         <p>Shampoos, conditioners & styling</p>
         <span class="product-count">38 items</span>
+        </div>
       </div>
-      </div>
-
-      <div class="subcategory-card" onclick="window.location.href='makeup.html'">
-      <img src="img/makeup.jpg" alt="Makeup">
-      <div class="subcategory-info">
+      <div class="subcategory-card" onclick="window.location.href='makeup.html'"></div>
+        <img src="img/makeup.jpg" alt="Makeup">
+        <div class="subcategory-info">
         <h3>Makeup</h3>
         <p>Foundations, lipsticks & more</p>
         <span class="product-count">62 items</span>
+        </div>
       </div>
-      </div>
-
-      <div class="subcategory-card" onclick="window.location.href='fragrances.html'"></div>
-      <img src="img/fragrances.jpg" alt="Fragrances">
-      <div class="subcategory-info"></div>
+      <div class="subcategory-card" onclick="window.location.href='fragrances.html'">
+        <img src="img/fragrances.jpg" alt="Fragrances">
+        <div class="subcategory-info">
         <h3>Fragrances</h3>
         <p>Perfumes & body sprays</p>
         <span class="product-count">27 items</span>
+        </div>
       </div>
-      </div>
-
       <div class="subcategory-card" onclick="window.location.href='personal-care.html'">
-      <img src="img/personal-care.jpg" alt="Personal Care">
-      <div class="subcategory-info">
+        <img src="img/personal-care.jpg" alt="Personal Care">
+        <div class="subcategory-info">
         <h3>Personal Care</h3>
         <p>Bath, body & hygiene essentials</p>
         <span class="product-count">41 items</span>
+        </div>
       </div>
-      </div>
-
       <div class="subcategory-card" onclick="window.location.href='men-beauty.html'">
-      <img src="img/men-beauty.jpg" alt="Men's Beauty">
-      <div class="subcategory-info">
+        <img src="img/men-beauty.jpg" alt="Men's Beauty">
+        <div class="subcategory-info">
         <h3>Men's Beauty</h3>
         <p>Grooming & skincare for men</p>
         <span class="product-count">19 items</span>
+        </div>
       </div>
       </div>
-
-    </div>
     </div>
 
     <!-- Featured Products Section -->
     <div class="products-section">
-    <div class="products-header">
+      <div class="products-header">
       <h2 class="section-title">Featured Beauty Products</h2>
       <p class="results-count">Showing top 6 featured products</p>
-    </div>
-
-    <div class="products-grid">
-      
+      </div>
+      <div class="products-grid">
       <div class="product-card">
-      <div class="product-image">
+        <div class="product-image">
         <img src="img/moisturizer.jpg" alt="Hydrating Moisturizer">
         <div class="product-badge">Best Seller</div>
-      </div>
-      <div class="product-info">
+        </div>
+        <div class="product-info">
         <h3 class="product-name">Hydrating Moisturizer (50ml)</h3>
         <div class="product-price">8,000 RWF</div>
         <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Hydrating Moisturizer', 8000)">
+          <button class="add-to-cart-btn" onclick="addToCart('Hydrating Moisturizer', 8000)">
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)"></button>
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
-      </div>
-
       <div class="product-card">
-      <div class="product-image"></div>
+        <div class="product-image"></div>
         <img src="img/shampoo.jpg" alt="Gentle Shampoo">
         <div class="product-badge">New</div>
-      </div>
-      <div class="product-info">
+        </div>
+        <div class="product-info">
         <h3 class="product-name">Gentle Shampoo (250ml)</h3>
         <div class="product-price">5,500 RWF</div>
-        <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Gentle Shampoo', 5500)"></button>
+        <div class="product-actions"></div>
+          <button class="add-to-cart-btn" onclick="addToCart('Gentle Shampoo', 5500)">
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)"></button>
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
-      </div>
-
       <div class="product-card">
-      <div class="product-image"></div>
+        <div class="product-image">
         <img src="img/lipstick.jpg" alt="Matte Lipstick">
         <div class="product-badge">Popular</div>
-      </div>
-      <div class="product-info"></div>
+        </div>
+        <div class="product-info"></div>
         <h3 class="product-name">Matte Lipstick (Red)</h3>
         <div class="product-price">4,200 RWF</div>
         <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Matte Lipstick', 4200)">
+          <button class="add-to-cart-btn" onclick="addToCart('Matte Lipstick', 4200)">
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
-      </div>
-
       <div class="product-card">
-      <div class="product-image">
+        <div class="product-image">
         <img src="img/perfume.jpg" alt="Luxury Perfume">
         <div class="product-badge">Luxury</div>
-      </div>
-      <div class="product-info">
+        </div>
+        <div class="product-info">
         <h3 class="product-name">Luxury Perfume (100ml)</h3>
         <div class="product-price">18,000 RWF</div>
         <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Luxury Perfume', 18000)">
+          <button class="add-to-cart-btn" onclick="addToCart('Luxury Perfume', 18000)">
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
-      </div>
-
       <div class="product-card">
-      <div class="product-image"></div>
+        <div class="product-image">
         <img src="img/body-wash.jpg" alt="Refreshing Body Wash">
         <div class="product-badge">Fresh</div>
-      </div>
-      <div class="product-info">
+        </div>
+        <div class="product-info">
         <h3 class="product-name">Refreshing Body Wash (400ml)</h3>
         <div class="product-price">6,000 RWF</div>
         <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Refreshing Body Wash', 6000)">
+          <button class="add-to-cart-btn" onclick="addToCart('Refreshing Body Wash', 6000)">
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
-      </div>
-
       <div class="product-card">
-      <div class="product-image">
+        <div class="product-image">
         <img src="img/beard-oil.jpg" alt="Beard Oil">
         <div class="product-badge">Men</div>
-      </div>
-      <div class="product-info">
+        </div>
+        <div class="product-info"></div>
         <h3 class="product-name">Nourishing Beard Oil (30ml)</h3>
         <div class="product-price">7,500 RWF</div>
-        <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addToCart('Nourishing Beard Oil', 7500)">
+        <div class="product-actions"></div>
+          <button class="add-to-cart-btn" onclick="addToCart('Nourishing Beard Oil', 7500)"></button>
           <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <button class="wishlist-btn" onclick="toggleFavorite(this)">
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
           <i class="far fa-heart"></i>
-        </button>
+          </button>
+        </div>
         </div>
       </div>
       </div>
-
     </div>
 
     <!-- Pagination -->

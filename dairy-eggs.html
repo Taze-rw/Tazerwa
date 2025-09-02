@@ -443,6 +443,19 @@
       gap: 8px;
     }
 
+    /* Responsive: 2 boxes per row on small screens */
+    @media (max-width: 768px) {
+      .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      }
+      .product-card {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      }
+    }
+
     .add-to-cart-btn {
       flex: 1;
       background: linear-gradient(45deg, #28a745, #20c997);

@@ -132,9 +132,9 @@
     .header-left {
       flex: 1;
       text-align: left;
-      padding-left: 60px;  /* Add this to push content to the right */
+      padding-left: 60px;
       display: flex;
-      align-items: center;  /* Centers vertically */
+      align-items: center;
     }
 
     .header-right {
@@ -142,6 +142,28 @@
       position: relative;
       margin-top: 40px;
       margin-right: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .header-left {
+      padding-left: 0;
+      text-align: center;
+      justify-content: center;
+      align-items: flex-end;
+      }
+      .header-right {
+      margin-top: 0;
+      margin-right: 0;
+      justify-content: center;
+      align-items: flex-start;
+      display: flex;
+      width: 100%;
+      }
+      .header-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      }
     }
 
     /* Promo Slider */

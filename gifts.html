@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food - Taze.rw | Fresh & Fast Delivery</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Mobile Sidebar */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 20px;
+      color: white;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .mobile-sidebar.open {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .sidebar-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .sidebar-categories {
+      list-style: none;
+    }
+
+    .sidebar-categories li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar-categories a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      font-size: 16px;
+    }
+
+    .sidebar-categories a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .sidebar-categories a.active {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .sidebar-categories i {
+      margin-right: 12px;
+      width: 20px;
+    }
+
+    /* Compact Header */
+    .compact-header {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 50px 0 40px;
+      position: relative;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .logo-container img {
+      width: 90px;
+      height: auto;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .login-btn, .signup-btn {
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .login-btn {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .login-btn:hover {
+      background: white;
+      color: #28a745;
+    }
+
+    .signup-btn {
+      background: #ffc107;
+      color: #333;
+      border: 2px solid #ffc107;
+    }
+
+    .signup-btn:hover {
+      background: #e0a800;
+      border-color: #e0a800;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: -3px;
+      right: 8px;
+      background: #ff6b6b;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 9px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Page Title */
+    .page-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .page-title h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #ffffff, #ffc107);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 80px;
+    }
+
+    .page-title p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      padding-top: 20px;
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+      background: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .breadcrumb a {
+      color: #28a745;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #218838;
+    }
+
+    .breadcrumb span {
+      color: #666;
+    }
+
+    /* Search Section */
+    .search-section {
+      background: white;
+      padding: 25px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: #28a745;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: #218838;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      background: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+
+    .quick-btn {
+      background: linear-gradient(45deg, #ffc107, #fd7e14);
+      color: #333;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .quick-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .quick-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Subcategories Section */
+    .subcategories-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #333;
+      text-align: center;
+    }
+
+    .subcategories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .subcategory-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      width: 340px;
+      height: 340px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subcategories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .subcategory-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(40, 167, 69, 0.2);
+    }
+
+    .subcategory-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .subcategory-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .subcategory-info h3 {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .subcategory-info p {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .product-count {
+      background: #28a745;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Products Section */
+    .products-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .products-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .results-count {
+      color: #666;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      animation: fadeIn 0.5s ease-out;
+      width: 280px;
+      height: 340px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-info {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ff6b6b;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .product-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      color: #28a745;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    }
+
+    .wishlist-btn {
+      background: white;
+      border: 2px solid #e0e0e0;
+      color: #666;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 45px;
+    }
+
+    .wishlist-btn:hover {
+      border-color: #ff6b6b;
+      color: #ff6b6b;
+    }
+
+    .wishlist-btn.favorited {
+      background: #ff6b6b;
+      color: white;
+      border-color: #ff6b6b;
+    }
+
+    /* Floating View Cart Button */
+    .view-cart-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .view-cart-btn img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+      position: relative;
+    }
+
+    .view-cart-btn img:hover {
+      transform: scale(1.1);
+    }
+
+    .view-cart-btn span {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Cart Count Badge */
+    .cart-count-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      display: none;
+      border: 2px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 40px 0;
+    }
+
+    .page-btn {
+      padding: 10px 15px;
+      border: 2px solid #e0e0e0;
+      background: white;
+      color: #333;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .page-btn:hover, .page-btn.active {
+      background: #28a745;
+      color: white;
+      border-color: #28a745;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #333, #555);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      color: #ffc107;
+    }
+
+    .footer-section p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: #ffc107;
+    }
+
+    .social-links a {
+      display: inline-block;
+      color: white;
+      font-size: 24px;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffc107;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #218838;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #555;
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .mobile-overlay.open {
+      display: block;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .auth-buttons {
+        display: none;
+      }
+
+      .page-title h1 {
+        font-size: 2.2rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .product-card {
+        max-width: none;
+      }
+
+      .quick-actions {
+        flex-direction: column;
+        margin: 20px 15px;
+      }
+
+      .quick-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Loading States */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+
+    .loading i {
+      font-size: 2rem;
+      color: #28a745;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <h3>Categories</h3>
+      <button class="sidebar-close" onclick="closeSidebar()">×</button>
+    </div>
+    <ul class="sidebar-categories">
+      <li><a href="hot-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
+      <li><a href="food.html" class="active"><i class="fas fa-utensils"></i>Food</a></li>
+      <li><a href="drinks.html"><i class="fas fa-glass-water"></i>Drinks</a></li>
+      <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
+      <li><a href="gifts.html"><i class="fas fa-gift"></i>Gifts</a></li>
+      <li><a href="baby-stuff.html"><i class="fas fa-baby"></i>Baby Stuff</a></li>
+      <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+      <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+    </ul>
+  </div>
+
+  <!-- Compact Header -->
+  <header class="compact-header">
+    <div class="top-nav">
+      <button class="hamburger" onclick="openSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo-container">
+        <img src="img/taze-logo.png" alt="Taze Logo">
+      </div>
+      <div class="auth-buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="signup.html" class="signup-btn">
+          Sign Up
+          <span class="discount-badge">10% OFF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="page-title">
+      <h1>Food Categories</h1>
+      <p>Fresh, quality food delivered to your door</p>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <span><i class="fas fa-chevron-right"></i></span>
+      <span>Food</span>
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search for food items, brands, or specific products...">
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <button class="quick-btn" onclick="handleFavorites()">
+      <i class="fas fa-heart"></i> My Favorites
+    </button>
+    <button class="quick-btn" onclick="handleReorder()">
+      <i class="fas fa-redo"></i> Reorder Last Purchase
+    </button>
+  </div>
+
+  <!-- Subcategories Section -->
+  <div class="subcategories-section">
+    <h2 class="section-title">Browse Food Categories</h2>
+    <div class="subcategories-grid">
+      
+      <div class="subcategory-card" onclick="window.location.href='fruits.html'">
+        <img src="img/fruits.jpg" alt="Fruits">
+        <div class="subcategory-info">
+          <h3>Fruits</h3>
+          <p>Fresh seasonal and imported fruits</p>
+          <span class="product-count">82 items</span>
+        </div>
+      </div>
+
+      <div class="subcategory-card" onclick="window.location.href='vegetables.html'">
+        <img src="img/vegetables.jpg" alt="Vegetables">
+        <div class="subcategory-info">
+          <h3>Vegetables</h3>
+          <p>Leafy greens, roots & fresh veggies</p>
+          <span class="product-count">74 items</span>
+        </div>
+      </div>
+
+      <div class="subcategory-card" onclick="window.location.href='meat-fish.html'">
+        <img src="img/meat-fish.jpg" alt="Meat & Fish">
+        <div class="subcategory-info">
+          <h3>Meat & Fish</h3>
+          <p>Fresh meat, fish & seafood</p>
+          <span class="product-count">89 items</span>
+        </div>
+      </div>
+
+      <div class="subcategory-card" onclick="window.location.href='dairy-eggs.html'">
+        <img src="img/dairy-eggs.jpg" alt="Dairy & Eggs">
+        <div class="subcategory-info">
+          <h3>Dairy & Eggs</h3>
+          <p>Milk, cheese, yogurt & eggs</p>
+          <span class="product-count">45 items</span>
+        </div>
+      </div>
+
+      <div class="subcategory-card" onclick="window.location.href='pantry.html'">
+        <img src="img/pantry.jpg" alt="Pantry Essentials">
+        <div class="subcategory-info">
+          <h3>Pantry Essentials</h3>
+          <p>Rice, oil, spices & canned goods</p>
+          <span class="product-count">234 items</span>
+        </div>
+      </div>
+
+      <div class="subcategory-card" onclick="window.location.href='bakery.html'">
+        <img src="img/bakery.jpg" alt="Bakery">
+        <div class="subcategory-info">
+          <h3>Bakery</h3>
+          <p>Fresh bread, pastries & cakes</p>
+          <span class="product-count">67 items</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Featured Products Section -->
+  <div class="products-section">
+    <div class="products-header">
+      <h2 class="section-title">Featured Food Items</h2>
+      <p class="results-count">Showing top 6 featured products</p>
+    </div>
+
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/bananas.jpg" alt="Fresh Bananas">
+          <div class="product-badge">Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Bananas (1kg)</h3>
+          <div class="product-price">2,500 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Bananas', 2500)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/tomatoes.jpg" alt="Fresh Tomatoes">
+          <div class="product-badge">Organic</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Organic Tomatoes (1kg)</h3>
+          <div class="product-price">3,200 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Organic Tomatoes', 3200)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/chicken.jpg" alt="Fresh Chicken">
+          <div class="product-badge">Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Whole Chicken (1.5kg)</h3>
+          <div class="product-price">8,500 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Whole Chicken', 8500)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/milk.jpg" alt="Fresh Milk">
+          <div class="product-badge">Daily Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Milk (1L)</h3>
+          <div class="product-price">1,800 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Milk', 1800)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/bread.jpg" alt="Fresh Bread">
+          <div class="product-badge">Hot</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh White Bread</h3>
+          <div class="product-price">1,200 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh White Bread', 1200)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/rice.jpg" alt="Premium Rice">
+          <div class="product-badge">Best Seller</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Premium Rice (5kg)</h3>
+          <div class="product-price">12,000 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Premium Rice', 12000)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+      <a href="#" class="page-btn active">1</a>
+      <a href="#" class="page-btn">2</a>
+      <a href="#" class="page-btn">3</a>
+      <a href="#" class="page-btn">...</a>
+      <a href="#" class="page-btn">13</a>
+      <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+    </div>
+
+  </div>
+
+  <!-- Floating View Cart Button -->
+  <div class="view-cart-btn" onclick="viewCart()">
+    <div style="position: relative;">
+      <img src="img/cart.jpg" alt="View Cart">
+      <span class="cart-count-badge" id="cartCount">0</span>
+    </div>
+    <span>View Cart</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      
+      <!-- About Us Section -->
+      <div class="footer-section">
+        <h3>About Taze</h3>
+        <p>Taze brings fresh, affordable, and high-quality products to your home. We are your trusted online delivery service in Rwanda, connecting you with the best local suppliers and international brands.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Shop</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about-us.html">About Us</a>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <a href="hot-deals.html">Hot Deals</a>
+        <a href="food.html">Food</a>
+        <a href="drinks.html">Drinks</a>
+        <a href="beauty.html">Beauty</a>
+        <a href="gifts.html">Gifts</a>
+        <a href="baby-stuff.html">Baby Stuff</a>
+      </div>
+
+      <!-- Follow Us Section -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/taze_rw" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@taze_rw" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/250796890044" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
+        <p><i class="fas fa-phone"></i> +250 796 890 044</p>
+        <p><i class="fas fa-envelope"></i> info@taze.rw</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe for updates and exclusive offers:</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Taze.rw. All Rights Reserved. | Inspired by KigaliFreshCart.com</p>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+    let isLoggedIn = false; // Simulate login status
+    
+    function addToCart(productName, price) {
+      cart.push({ productName, price });
+      updateCartCount();
+      
+      // Visual feedback
+      event.target.innerHTML = '<i class="fas fa-check"></i> Added!';
+      event.target.style.background = '#28a745';
+      
+      setTimeout(() => {
+        event.target.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+        event.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+      }, 1500);
+    }
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cartCount');
+      if (cart.length > 0) {
+        cartCount.textContent = cart.length;
+        cartCount.style.display = 'flex';
+      } else {
+        cartCount.style.display = 'none';
+      }
+    }
+
+    function viewCart() {
+      if (cart.length > 0) {
+        window.location.href = 'cart.html';
+      } else {
+        alert('Your cart is empty. Start adding some delicious items!');
+      }
+    }
+
+    // Mobile Sidebar Functions
+    function openSidebar() {
+      document.getElementById("mobileSidebar").classList.add("open");
+      document.getElementById("mobileOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSidebar() {
+      document.getElementById("mobileSidebar").classList.remove("open");
+      document.getElementById("mobileOverlay").classList.remove("open");
+      document.body.style.overflow = "auto";
+    }
+
+    // Close sidebar when clicking overlay
+    document.getElementById("mobileOverlay").addEventListener("click", closeSidebar);
+
+    // Search functionality
+    function handleSearch() {
+      const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+      if (searchTerm) {
+        alert(`Searching for "${searchTerm}" in Food category...`);
+        // Here you would filter the products based on search term
+      }
+    }
+
+    // Quick Action Functions that require login
+    function handleFavorites() {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to view your favorites!');
+        window.location.href = 'login.html';
+        return;
+      }
+      alert('Showing your favorite food items...');
+    }
+
+    function handleReorder() {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to reorder your last purchase!');
+        window.location.href = 'login.html';
+        return;
+      }
+      alert('Reordering your last food purchase...');
+    }
+
+    // Favorites functionality
+    function toggleFavorite(button) {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to add favorites!');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const icon = button.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        button.classList.add('favorited');
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        button.classList.remove('favorited');
+      }
+    }
+
+    // Search on Enter key
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      
+      document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+      
+      document.querySelector('.search-btn').addEventListener('click', handleSearch);
+      
+      // Newsletter form
+      document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input').value;
+        if (email) {
+          alert('Thank you for subscribing! You\'ll receive our latest food deals and offers.');
+          this.querySelector('input').value = '';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

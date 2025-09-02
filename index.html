@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Taze, Rwanda, groceries, online shopping, fresh produce, delivery, food, drinks, beauty, gifts, baby stuff">
+  <meta name="author" content="Taze.rw">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#28a745">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="Taze.rw | Fresh & Fast Delivery in Rwanda">
+  <meta property="og:description" content="Order fresh food, drinks, beauty products and more in Rwanda. Fast delivery, great prices!">
+  <meta property="og:image" content="https://taze.rw/img/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:title" content="Taze.rw | Fresh & Fast Delivery in Rwanda">
+  <meta name="twitter:description" content="Order fresh food, drinks, beauty products and more in Rwanda. Fast delivery, great prices!">
+  <meta name="twitter:image" content="https://taze.rw/img/logo.png">
+
+  <meta name="description" content="Taze brings fresh, affordable, and high-quality products to your home. Your trusted online delivery service in Rwanda.">
+
+  <link rel="canonical" href="https://www.taze.rw/">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Taze.rw - Fresh & Fast Delivery in Rwanda</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    /* Mobile Sidebar */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 20px;
+      color: white;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+    .mobile-sidebar.open {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .sidebar-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .sidebar-categories {
+      list-style: none;
+    }
+
+    .sidebar-categories li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar-categories a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      font-size: 16px;
+    }
+
+    .sidebar-categories a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .sidebar-categories i {
+      margin-right: 12px;
+      width: 20px;
+    }
+
+    /* Header with Modern Green & White Theme */
+    header {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 100px 0;
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .header-left {
+      flex: 1;
+      text-align: left;
+      padding-left: 60px;  /* Add this to push content to the right */
+      display: flex;
+      align-items: center;  /* Centers vertically */
+    }
+
+    .header-right {
+      flex: 1;
+      position: relative;
+      margin-top: 40px;
+      margin-right: 50px;
+    }
+
+    /* Promo Slider */
+    .promo-slider {
+      width: 100%;
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-top: 40px; /* Added to bring down the slider */
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-content {
+      text-align: center;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 15px;
+      color: white;
+    }
+
+    .slide h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .slide p {
+      font-size: 1rem;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .logo-container img {
+      width: 90px;
+      height: auto;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .login-btn, .signup-btn {
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .login-btn:hover {
+      background: white;
+      color: #28a745;
+    }
+
+    .signup-btn {
+      background: #ffc107;
+      color: #333;
+      border: 2px solid #ffc107;
+    }
+
+    .signup-btn:hover {
+      background: #e0a800;
+      border-color: #e0a800;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-content h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #ffffff, #ffc107);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideIn 1.5s ease-out;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .cta-button {
+      background: linear-gradient(45deg, #ffc107, #fd7e14);
+      color: #333;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      animation: bounceIn 2.5s ease-out;
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 193, 7, 0.6);
+    }
+
+    /* Search Bar */
+    .search-section {
+      background: white;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 15px 20px;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: #28a745;
+    }
+
+    .camera-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .camera-btn:hover {
+      background: #218838;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .cart-btn {
+      background: rgba(255,255,255,0.2);
+      position: relative;
+    }
+
+    .cart-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ff6b6b;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      display: none;
+    }
+
+    /* Categories Section */
+    section {
+      padding: 3rem 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .category {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(40, 167, 69, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .category:hover::before {
+      left: 100%;
+    }
+
+    .category:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(40, 167, 69, 0.2);
+    }
+
+    .category img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .category h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .category p {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .category button {
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    }
+
+    /* Info Banner */
+    .info-banner {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+      padding: 40px 20px;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      flex-wrap: wrap;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 200px;
+      flex: 1;
+    }
+
+    .info-item i {
+      font-size: 2.5rem;
+      color: #28a745;
+      width: 60px;
+    }
+
+    .info-item h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .info-item p {
+      margin: 3px 0 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .divider {
+      width: 1px;
+      height: 40px;
+      background-color: #e0e0e0;
+    }
+
+    /* Floating Chat Button */
+    .chat-btn {
+      position: fixed;
+      bottom: 40px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      font-size: 24px;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    .chat-text {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .chat-text:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #333, #555);
+      color: white;
+      padding: 40px 0 20px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      color: #ffc107;
+    }
+
+    .footer-section p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 24px;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffc107;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 25px 0 0 25px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 0 25px 25px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #218838;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #555;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.05); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .auth-buttons {
+        display: none;
+      }
+
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .header-left, .header-right {
+        flex: none;
+        width: 100%;
+      }
+
+      .promo-slider {
+        height: 200px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .info-banner {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .divider {
+        display: none;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    /* Signup Discount Badge */
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 8px;
+      background: #ff6b6b;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 9px;
+      font-weight: bold;
+      animation: bounce 2s infinite;
+      white-space: nowrap;
+      margin-top: 30px;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* Overlay for mobile menu */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .mobile-overlay.open {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <h3>Categories</h3>
+      <button class="sidebar-close" onclick="closeSidebar()">×</button>
+    </div>
+    <ul class="sidebar-categories">
+      <li><a href="hot-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
+      <li><a href="food.html"><i class="fas fa-utensils"></i>Food</a></li>
+      <li><a href="drinks.html"><i class="fas fa-glass-water"></i>Drinks</a></li>
+      <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
+      <li><a href="gifts.html"><i class="fas fa-gift"></i>Gifts</a></li>
+      <li><a href="baby-stuff.html"><i class="fas fa-baby"></i>Baby Stuff</a></li>
+      <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+      <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+    </ul>
+  </div>
+
+  <!-- Header with Modern Design -->
+  <header>
+    <div class="top-nav">
+      <button class="hamburger" onclick="openSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo-container">
+        <img src="img/taze-logo.png" alt="Taze Logo">
+      </div>
+      <div class="auth-buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="signup.html" class="signup-btn">
+          Sign Up
+          <span class="discount-badge">10% OFF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="header-container">
+      <div class="header-left">
+        <div class="hero-content">
+          <h1>Tazerwa</h1>
+          <p>Fresh & Fast Delivery in Rwanda</p>
+          <a href="#categories" class="cta-button">Shop Now</a>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <div class="promo-slider">
+          <div class="slide active" style="background-image: url('img/promo1.jpg');">
+            <div class="slide-content">
+              <h3>Fresh Fruits Daily</h3>
+              <p>Hand-picked quality fruits delivered fresh to your door</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('img/promo2.jpg');">
+            <div class="slide-content">
+              <h3>Beauty Essentials</h3>
+              <p>Top beauty brands at unbeatable prices</p>
+            </div>
+          </div>
+          <div class="slide" style="background-image: url('img/promo3.jpg');">
+            <div class="slide-content">
+              <h3>Baby Care Products</h3>
+              <p>Safe, trusted products for your little ones</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search for products, brands, or categories...">
+      <button class="camera-btn" title="Scan Barcode/QR Code">
+        <i class="fas fa-camera"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Navigation Bar (Desktop) -->
+  <nav>
+    <a href="cart.html" class="cart-btn">
+      <i class="fas fa-shopping-cart"></i>
+      <span>View Cart</span>
+      <span class="cart-dot" id="cartDot"></span>
+    </a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="contact-us.html">Contact Us</a>
+    <a href="about-us.html">About Us</a>
+  </nav>
+
+  <!-- Categories Section -->
+  <section id="categories">
+    <h2 class="section-title">Shop Smart, Live Better – Dive into What Matters Most!</h2>
+    <div class="categories">
+
+      <!-- Hot Deals - First Priority -->
+      <div class="category" data-name="Hot Deals">
+        <img src="img/hot-deals.jpg" alt="Hot Deals">
+        <h3>🔥 Hot Deals</h3>
+        <p>Amazing discounts on your favorite products. Limited time offers you can't miss!</p>
+        <button onclick="window.location.href='hot-deals.html'">Browse Deals</button>
+      </div>
+
+      <div class="category" data-name="Food">
+        <img src="img/food.jpg" alt="Food">
+        <h3>Food</h3>
+        <p>Fresh fruits, vegetables, meat, dairy, and pantry essentials for every meal.</p>
+        <button onclick="window.location.href='food.html'">Browse Food</button>
+      </div>
+
+      <div class="category" data-name="Drinks">
+        <img src="img/drinks.jpg" alt="Drinks">
+        <h3>Drinks</h3>
+        <p>Refreshing beverages, juices, water, and your favorite alcoholic drinks.</p>
+        <button onclick="window.location.href='drinks.html'">Browse Drinks</button>
+      </div>
+
+      <div class="category" data-name="Beauty">
+        <img src="img/beauty.jpg" alt="Beauty">
+        <h3>Beauty</h3>
+        <p>Skincare, makeup, hair care, and wellness products to keep you looking and feeling great.</p>
+        <button onclick="window.location.href='beauty.html'">Browse Beauty</button>
+      </div>
+
+      <div class="category" data-name="Gifts">
+        <img src="img/gifts.jpg" alt="Gifts">
+        <h3>Gifts</h3>
+        <p>Perfect presents for every occasion. Surprise your loved ones with thoughtful gifts.</p>
+        <button onclick="window.location.href='gifts.html'">Browse Gifts</button>
+      </div>
+
+      <div class="category" data-name="Baby Stuff">
+        <img src="img/baby.jpg" alt="Baby Stuff">
+        <h3>Baby Stuff</h3>
+        <p>Everything you need for your little one - diapers, formula, toys, and baby care essentials.</p>
+        <button onclick="window.location.href='baby-stuff.html'">Browse Baby Items</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Info Banner -->
+  <section class="info-banner">
+    <div class="info-item">
+      <i class="fas fa-truck"></i>
+      <div>
+        <h3>Loyal Cards Rewards</h3>
+        <p>After 5 orders, 6th delivery is FREE!</p>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="info-item">
+      <i class="fas fa-clock"></i>
+      <div>
+        <h3>Fast Delivery</h3>
+        <p>Same day or next day delivery</p>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="info-item">
+      <i class="fas fa-headset"></i>
+      <div>
+        <h3>24/7 Support</h3>
+        <p>Via WhatsApp & Phone</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-item">
+      <i class="fas fa-shield-alt"></i>
+      <div>
+        <h3>100% Satisfaction</h3>
+        <p>Money back guarantee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Chat Button -->
+  <a href="https://wa.me/250796890044?text=Hello%20Taze%20Support!" target="_blank">
+    <div class="chat-btn">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+    <div class="chat-text">Chat with us!</div>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      
+      <!-- About Us Section -->
+      <div class="footer-section">
+        <h3>About Tazerwa</h3>
+        <p>Tazerwa brings fresh, affordable, and high-quality products to your home. We are your trusted online delivery service in Rwanda, connecting you with the best local suppliers and international brands.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="index.html" style="color: white; text-decoration: none;">Shop</a></p>
+        <p><a href="how-it-works.html" style="color: white; text-decoration: none;">How It Works</a></p>
+        <p><a href="contact-us.html" style="color: white; text-decoration: none;">Contact</a></p>
+        <p><a href="faq.html" style="color: white; text-decoration: none;">FAQ</a></p>
+      </div>
+
+      <!-- Follow Us Section -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/taze_rw" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@taze_rw" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/250796890044" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
+        <p><i class="fas fa-phone"></i> +250 796 890 044</p>
+        <p><i class="fas fa-envelope"></i> info@tazerwa.rw</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe for updates and exclusive offers:</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Taze.rw. All Rights Reserved. | By Bruno Pixels</p>
+    </div>
+  </footer>
+
+  <script>
+    let cart = [];
+    
+    function addToCart(productName, price) {
+      cart.push({ productName, price });
+      alert(`${productName} added to cart!`);
+      updateCartIndicator();
+    }
+    
+    function updateCartIndicator() {
+      const cartDot = document.getElementById("cartDot");
+      if (cart.length > 0) {
+        cartDot.style.display = "block";
+      } else {
+        cartDot.style.display = "none";
+      }
+    }
+
+    // Mobile Sidebar Functions
+    function openSidebar() {
+      document.getElementById("mobileSidebar").classList.add("open");
+      document.getElementById("mobileOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSidebar() {
+      document.getElementById("mobileSidebar").classList.remove("open");
+      document.getElementById("mobileOverlay").classList.remove("open");
+      document.body.style.overflow = "auto";
+    }
+
+    // Close sidebar when clicking overlay
+    document.getElementById("mobileOverlay").addEventListener("click", closeSidebar);
+
+    // Search functionality
+    function handleSearch() {
+      const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+      if (searchTerm) {
+        // Redirect to products page with search parameter
+        window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+      }
+    }
+
+    // Camera scan function (placeholder)
+    function openCameraScanner() {
+      alert("Camera scanner feature coming soon! You'll be able to scan barcodes and QR codes to quickly find products.");
+    }
+
+    // Add event listeners
+    document.addEventListener("DOMContentLoaded", function() {
+      updateCartIndicator();
+      
+      // Search on Enter key
+      document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+      
+      // Camera button
+      document.querySelector('.camera-btn').addEventListener('click', openCameraScanner);
+      
+      // Newsletter form
+      document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input').value;
+        if (email) {
+          alert('Thank you for subscribing! You\'ll receive our latest updates and offers.');
+          this.querySelector('input').value = '';
+        }
+      });
+
+      // Smooth scrolling for CTA button
+      document.querySelector('.cta-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('#categories').scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Promo slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+    
+    // Auto-slide every 4 seconds
+    setInterval(nextSlide, 4000);
+
+    // Login/Signup with discount tracking
+    function trackSignup() {
+      // This would integrate with your backend to track signups for discount
+      console.log("Signup tracked for discount eligibility");
+    }
+  </script>
+
+</body>
+</html>

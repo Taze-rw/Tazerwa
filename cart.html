@@ -309,22 +309,24 @@
         return;
       }
   
-      let message = `🛒 *FreshCart Order Summary*%0A%0A👤 *Customer Name:* ${name}%0A📞 *Phone:* ${phone}%0A📍 *Location:* ${location}%0A%0A`;
-      message += `🛍️ *Order Details:*%0A`;
-  
+      let message = `🛒 FreshCart Order Summary\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: ${location}\n\nOrder Details:\n`;
       cart.forEach(item => {
-        message += `🔹 ${item.productName} (${item.unit}) - ${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(item.price * item.quantity)}%0A`;
+        message += `- ${item.productName} (${item.unit}) - ${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(item.price * item.quantity)}\n`;
       });
+      message += `\n🚚 Delivery Fee: ${formatPrice(deliveryFee)}`;
+      message += `\n💰 Grand Total: ${formatPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + deliveryFee)}`;
   
-      message += `%0A🚚 *Delivery Fee:* ${formatPrice(deliveryFee)}`;
-      message += `%0A💰 *Grand Total:* ${formatPrice(cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + deliveryFee)}`;
-  
-      // Company WhatsApp number (hidden send)
-      const whatsappURL = `https://wa.me/250727725180?text=${message}`;
-      window.open(whatsappURL, "_blank", "width=1,height=1,left=-1000,top=-1000"); // hidden small popup
-  
-      // Redirect customer to payment page
-      window.location.href = "payment.html";
+      // Send email via backend
+      fetch("send-email.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject: "New FreshCart Order", message: message })
+      }).then(() => {
+        // Redirect customer to payment page
+        window.location.href = "payment.html";
+      }).catch(() => {
+        alert("There was an error sending your order. Please try again.");
+      });
     }
   
     loadCartItems();

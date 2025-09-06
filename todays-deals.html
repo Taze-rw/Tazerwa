@@ -805,7 +805,7 @@
       <button class="sidebar-close" onclick="closeSidebar()">×</button>
     </div>
     <ul class="sidebar-categories">
-      <li><a href="hot-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
+      <li><a href="todays-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
       <li><a href="food.html" class="active"><i class="fas fa-utensils"></i>Food</a></li>
       <li><a href="drinks.html"><i class="fas fa-glass-water"></i>Drinks</a></li>
       <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
@@ -835,7 +835,7 @@
     </div>
 
     <div class="page-title">
-      <h1>Hot Deals</h1>
+      <h1>Today's Deals</h1>
       <p>Grab the best discounts and limited-time offers!</p>
     </div>
   </header>
@@ -845,7 +845,7 @@
     <div class="breadcrumb-container">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
       <span><i class="fas fa-chevron-right"></i></span>
-      <span>Hot Deals</span>
+      <span>Today's Deals</span>
     </div>
   </div>
 
@@ -870,64 +870,68 @@
   </div>
 
   <!-- Subcategories Section -->
-  <div class="subcategories-section">
-    <h2 class="section-title">Browse Hot Deals Categories</h2>
-    <div class="subcategories-grid">
-      <div class="subcategory-card" onclick="window.location.href='flash-sales.html'">
-        <img src="img/flash-sale.jpg" alt="Flash Sales">
-        <div class="subcategory-info">
-          <h3>Flash Sales</h3>
-          <p>Limited-time offers on top products</p>
-          <span class="product-count">15 deals</span>
-        </div>
-      </div>
-      <div class="subcategory-card" onclick="window.location.href='bundle-deals.html'">
-        <img src="img/bundle.jpg" alt="Bundle Deals">
-        <div class="subcategory-info">
-          <h3>Bundle Deals</h3>
-          <p>Save more with exclusive bundles</p>
-          <span class="product-count">8 bundles</span>
-        </div>
-      </div>
-      <div class="subcategory-card" onclick="window.location.href='clearance.html'">
-        <img src="img/clearance.jpg" alt="Clearance">
-        <div class="subcategory-info">
-          <h3>Clearance</h3>
-          <p>Last chance to buy at lowest prices</p>
-          <span class="product-count">22 items</span>
-        </div>
-      </div>
-      <div class="subcategory-card" onclick="window.location.href='seasonal-deals.html'">
-        <img src="img/seasonal.jpg" alt="Seasonal Deals">
-        <div class="subcategory-info">
-          <h3>Seasonal Deals</h3>
-          <p>Special offers for the season</p>
-          <span class="product-count">10 deals</span>
-        </div>
-      </div>
-      <div class="subcategory-card" onclick="window.location.href='top-picks.html'">
-        <img src="img/top-picks.jpg" alt="Top Picks">
-        <div class="subcategory-info">
-          <h3>Top Picks</h3>
-          <p>Best-selling products at great prices</p>
-          <span class="product-count">12 items</span>
-        </div>
-      </div>
-      <div class="subcategory-card" onclick="window.location.href='limited-stock.html'">
-        <img src="img/limited-stock.jpg" alt="Limited Stock">
-        <div class="subcategory-info">
-          <h3>Limited Stock</h3>
-          <p>Hurry before they're gone!</p>
-          <span class="product-count">6 deals</span>
-        </div>
+  <div class="subcategories-section"> 
+  <h2 class="section-title">Browse Today's Deals Categories</h2>
+  <div class="subcategories-grid">
+
+    <!-- Veggie Boost -->
+    <div class="subcategory-card" onclick="window.location.href='veggie-boost.html'">
+      <img src="img/veggie-boost.jpg" alt="Veggie Boost">
+      <div class="subcategory-info">
+        <h3>Veggie Boost</h3>
+        <p>Fresh vegetables at unbeatable deals</p>
+        <span class="product-count">15 deals</span>
       </div>
     </div>
+
+    <!-- Snacks Time -->
+    <div class="subcategory-card" onclick="window.location.href='snacks-time.html'">
+      <img src="img/snacks-time.jpg" alt="Snacks Time">
+      <div class="subcategory-info">
+        <h3>Snacks Time</h3>
+        <p>Quick bites for every craving</p>
+        <span class="product-count">10 snacks</span>
+      </div>
+    </div>
+
+    <!-- Sip & Bite -->
+    <div class="subcategory-card" onclick="window.location.href='sip-bite.html'">
+      <img src="img/sip-bite.jpg" alt="Sip & Bite">
+      <div class="subcategory-info">
+        <h3>Sip & Bite</h3>
+        <p>Perfect drinks & tasty bites</p>
+        <span class="product-count">12 items</span>
+      </div>
+    </div>
+
+    <!-- Family Choice -->
+    <div class="subcategory-card" onclick="window.location.href='family-choice.html'">
+      <img src="img/family-choice.jpg" alt="Family Choice">
+      <div class="subcategory-info">
+        <h3>Family Choice</h3>
+        <p>Deals made for the whole family</p>
+        <span class="product-count">8 bundles</span>
+      </div>
+    </div>
+
+    <!-- Your 5 Choice Pack -->
+    <div class="subcategory-card" onclick="window.location.href='your-5-choice-pack.html'">
+      <img src="img/5-choice-pack.jpg" alt="Your 5 Choice Pack">
+      <div class="subcategory-info">
+        <h3>Your 5 Choice Pack</h3>
+        <p>Pick any 5 favorites at a discount</p>
+        <span class="product-count">5 packs</span>
+      </div>
+    </div>
+
   </div>
+</div>
+
 
   <!-- Featured Products Section -->
   <div class="products-section">
     <div class="products-header">
-      <h2 class="section-title">Featured Hot Deals</h2>
+      <h2 class="section-title">Featured Today's Deals</h2>
       <p class="results-count">Showing top 6 hot deals</p>
     </div>
     <div class="products-grid">

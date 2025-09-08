@@ -306,6 +306,36 @@
       animation: fadeIn 2s ease-out;
     }
 
+    @media (max-width: 768px) {
+  .top-nav {
+    justify-content: center; /* center everything */
+  }
+
+  .hamburger,
+  .auth-buttons {
+    position: absolute; /* take them out of flow */
+    top: 15px;
+  }
+
+  .hamburger {
+    left: 20px; /* menu button on left */
+  }
+
+  .auth-buttons {
+    right: 20px; /* login/signup on right */
+  }
+
+  .logo-container {
+    flex: 0; /* prevent stretching */
+    text-align: center;
+  }
+
+  .logo-container img {
+    width: 80px; /* slightly smaller for mobile */
+  }
+}
+
+
     .cta-button {
       background: linear-gradient(45deg, #ffc107, #fd7e14);
       color: #333;

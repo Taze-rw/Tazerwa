@@ -128,7 +128,7 @@
       height: auto;
         }
 
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
   .top-nav {
     justify-content: center; /* center everything */
   }
@@ -155,7 +155,7 @@
   .logo-container img {
     width: 80px; /* slightly smaller for mobile */
   }
-}
+}  
 
         .auth-buttons {
       display: flex;
@@ -429,112 +429,134 @@
         }
 
         /* Products Section */
-        .products-section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-        }
+.products-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-        .products-header {
-      margin-bottom: 30px;
-      text-align: center;
-        }
+.products-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
 
-        .results-count {
-      color: #666;
-      font-size: 14px;
-      margin-top: 10px;
-        }
+.results-count {
+  color: #666;
+  font-size: 14px;
+  margin-top: 10px;
+}
 
-        .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-        }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
 
-        .product-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      position: relative;
-      animation: fadeIn 0.5s ease-out;
-      width: 280px;
-      height: 340px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-        }
+.product-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  animation: fadeIn 0.5s ease-out;
+  width: 280px;
+  height: 360px; /* Fixed height */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribute evenly */
+}
 
-        .product-info {
-      flex: 1;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-        }
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
 
-        .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
+/* Image container with fixed height */
+.product-image {
+  flex: 0 0 180px; /* Reserve fixed space for image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 10px;
+  width: 100%;
+  height: 180px;        /* same height for all */
+  object-fit: cover;    /* crop & fit without distortion */
+  border-radius: 8px;
+}
 
-        .product-image img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-        }
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Keep full product visible */
+  transition: transform 0.3s ease;
+}
 
-        .product-card:hover .product-image img {
-      transform: scale(1.05);
-        }
+.product-card:hover .product-image img {
+  transform: scale(1.05);
+}
 
-        .product-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #ff6b6b;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 12px;
-      font-weight: bold;
-        }
+.product-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
 
-        .product-name {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.1rem;
-      color: #333;
-      margin-bottom: 8px;
-      font-weight: 600;
-        }
+.product-info {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-        .product-price {
-      font-size: 1.3rem;
-      color: #6e7969;
-      font-weight: 700;
-      margin-bottom: 15px;
-        }
+.product-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 6px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.2;
+}
 
-        .product-actions {
-      display: flex;
-      gap: 10px;
-        }
+.product-price {
+  font-size: 1.2rem;
+  color: #6e7969;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
 
-        /* Responsive: 2 boxes per row on small screens */
-        @media (max-width: 768px) {
-      .products-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      }
-      .product-card {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      }
-        }
+.product-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: auto; /* Push actions to bottom */
+}
+
+/* Responsive: 2 boxes per row on small screens */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .product-card {
+    width: 100%;
+    height: 320px; /* Slightly smaller on mobile */
+  }
+  .product-image {
+    flex: 0 0 150px;
+  }
+}
+
 
         .add-to-cart-btn {
       flex: 1;
@@ -819,23 +841,49 @@
         @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
-        }
-      </style>
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <h3>Categories</h3>
+      <button class="sidebar-close" onclick="closeSidebar()">×</button>
+    </div>
+    <ul class="sidebar-categories">
+      <li><a href="todays-deals.html"><i class="fas fa-fire"></i>Today's Deals</a></li>
+      <li><a href="food.html" class="active"><i class="fas fa-utensils"></i>Food</a></li>
+      <li><a href="drinks.html"><i class="fas fa-wine-glass"></i>Drinks</a></li>
+      <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
+      <li><a href="gifts.html"><i class="fas fa-gift"></i>Gifts</a></li>
+      <li><a href="baby-stuff.html"><i class="fas fa-baby"></i>Baby Stuff</a></li>
+      <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+      <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+    </ul>
+  </div>
+
+  <!-- Compact Header -->
+  <header class="compact-header">
+    <div class="top-nav">
+      <button class="hamburger" onclick="openSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo-container">
+        <img src="img/taze-logo.png" alt="Taze Logo">
+      </div>
+      <div class="auth-buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="signup.html" class="signup-btn">
+          Sign Up
+          <span class="discount-badge">10% OFF</span>
+        </a>
       </div>
     </div>
-    <style>
-      @media (max-width: 768px) {
-      .subcategories-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
-      }
-      .subcategory-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      }
-    </style>
 
     <div class="page-title"> 
   <h1>Drinks Categories</h1>
@@ -939,6 +987,158 @@
 
   </div>
 </div>
+
+
+  <!-- Featured Products Section -->
+  <div class="products-section">
+    <div class="products-header">
+      <h2 class="section-title">Featured Food Items</h2>
+      <p class="results-count">Showing top 6 featured products</p>
+    </div>
+
+    <div class="products-grid">
+      
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/bananas.png" alt="Fresh Bananas">
+          <div class="product-badge">Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Bananas (1kg)</h3>
+          <div class="product-price">2,500 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Bananas', 2500)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/tomatoes.jpg" alt="Fresh Tomatoes">
+          <div class="product-badge">Organic</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Organic Tomatoes (1kg)</h3>
+          <div class="product-price">3,200 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Organic Tomatoes', 3200)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/chicken.jpg" alt="Fresh Chicken">
+          <div class="product-badge">Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Whole Chicken (1.5kg)</h3>
+          <div class="product-price">8,500 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Whole Chicken', 8500)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/milk.jpg" alt="Fresh Milk">
+          <div class="product-badge">Daily Fresh</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh Milk (1L)</h3>
+          <div class="product-price">1,800 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh Milk', 1800)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/bread.jpg" alt="Fresh Bread">
+          <div class="product-badge">Hot</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Fresh White Bread</h3>
+          <div class="product-price">1,200 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Fresh White Bread', 1200)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="img/rice.jpg" alt="Premium Rice">
+          <div class="product-badge">Best Seller</div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Premium Rice (5kg)</h3>
+          <div class="product-price">12,000 RWF</div>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('Premium Rice', 12000)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleFavorite(this)">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <style>
+      @media (max-width: 768px) {
+        .subcategories-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          gap: 16px !important;
+        }
+        .subcategory-card {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
+      }
+    </style>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+      <a href="#" class="page-btn active">1</a>
+      <a href="#" class="page-btn">2</a>
+      <a href="#" class="page-btn">3</a>
+      <a href="#" class="page-btn">...</a>
+      <a href="#" class="page-btn">13</a>
+      <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+    </div>
+
+  </div>
 
   <!-- Floating View Cart Button -->
   <div class="view-cart-btn" onclick="viewCart()">

@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dairy & Eggs - Taze.rw | Fresh & Fast Delivery</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #fafafa;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Mobile Sidebar */
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 20px;
+      color: white;
+      box-shadow: 2px 0 20px rgba(0,0,0,0.15);
+    }
+
+    .mobile-sidebar.open {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .sidebar-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .sidebar-categories {
+      list-style: none;
+    }
+
+    .sidebar-categories li {
+      margin-bottom: 12px;
+    }
+
+    .sidebar-categories a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      font-size: 15px;
+    }
+
+    .sidebar-categories a:hover,
+    .sidebar-categories a.active {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .sidebar-categories i {
+      margin-right: 12px;
+      width: 20px;
+    }
+
+    /* Compact Header */
+    .compact-header {
+      background: linear-gradient(135deg, #28a745, #20c997);
+      color: white;
+      padding: 120px 0 40px;
+      position: relative;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .logo-container img {
+      width: 85px;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+  .top-nav {
+    justify-content: center; /* center everything */
+  }
+
+  .hamburger,
+  .auth-buttons {
+    position: absolute; /* take them out of flow */
+    top: 15px;
+  }
+
+  .hamburger {
+    left: 20px; /* menu button on left */
+  }
+
+  .auth-buttons {
+    right: 20px; /* login/signup on right */
+  }
+
+  .logo-container {
+    flex: 0; /* prevent stretching */
+    text-align: center;
+  }
+
+  .logo-container img {
+    width: 80px; /* slightly smaller for mobile */
+  }
+}
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .login-btn, .signup-btn {
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      font-size: 14px;
+    }
+
+    .login-btn {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .login-btn:hover {
+      background: white;
+      color: #28a745;
+    }
+
+    .signup-btn {
+      background: #ffc107;
+      color: #333;
+      border: 2px solid #ffc107;
+    }
+
+    .signup-btn:hover {
+      background: #e0a800;
+      border-color: #e0a800;
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: -3px;
+      right: 8px;
+      background: #ff6b6b;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 9px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Page Title */
+    .page-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .page-title h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .page-title p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+      background: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .breadcrumb-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .breadcrumb a {
+      color: #28a745;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: #218838;
+    }
+
+    .breadcrumb span {
+      color: #6c757d;
+    }
+
+    /* Search Section */
+    .search-section {
+      background: white;
+      padding: 25px 20px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 50px 15px 20px;
+      border: 2px solid #e9ecef;
+      border-radius: 50px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      background-color: #f8f9fa;
+    }
+
+    .search-input:focus {
+      border-color: #28a745;
+      background-color: white;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: #218838;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+    }
+
+    .quick-btn {
+      background: linear-gradient(45deg, #ffc107, #fd7e14);
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .quick-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+    }
+
+    .back-btn {
+      background: transparent;
+      color: #28a745;
+      border: 2px solid #28a745;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .back-btn:hover {
+      background: #28a745;
+      color: white;
+    }
+
+    /* Products Section */
+    .products-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .products-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .results-count {
+      color: #6c757d;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #f1f3f4;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      height: 160px;
+      background: #f8f9fa;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #ff6b6b;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .product-info {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 8px;
+      font-weight: 500;
+      line-height: 1.3;
+      height: 2.6em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .product-price {
+      font-size: 16px;
+      color: #28a745;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Responsive: 2 boxes per row on small screens */
+    @media (max-width: 768px) {
+      .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      }
+      .product-card {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      }
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 12px;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    .wishlist-btn {
+      background: white;
+      border: 2px solid #e9ecef;
+      color: #6c757d;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wishlist-btn:hover {
+      border-color: #ff6b6b;
+      color: #ff6b6b;
+    }
+
+    .wishlist-btn.favorited {
+      background: #ff6b6b;
+      color: white;
+      border-color: #ff6b6b;
+    }
+
+    /* Floating View Cart Button */
+    .view-cart-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 1000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .view-cart-btn img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .view-cart-btn:hover img {
+      transform: scale(1.1);
+    }
+
+    .view-cart-btn span {
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .cart-count-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: bold;
+      border: 2px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Load More Button */
+    .load-more {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .load-more-btn {
+      background: linear-gradient(45deg, #28a745, #20c997);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .load-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #333, #555);
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+      color: #ffc107;
+      font-size: 16px;
+    }
+
+    .footer-section p {
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+      font-size: 14px;
+    }
+
+    .footer-section a:hover {
+      color: #ffc107;
+    }
+
+    .social-links a {
+      display: inline-block;
+      color: white;
+      font-size: 20px;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffc107;
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 20px 0 0 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .newsletter-form button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 0 20px 20px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 14px;
+    }
+
+    .newsletter-form button:hover {
+      background: #218838;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #555;
+    }
+
+    /* Mobile Overlay */
+    .mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .mobile-overlay.open {
+      display: block;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .auth-buttons {
+        display: none;
+      }
+
+      .page-title h1 {
+        font-size: 2rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .product-card {
+        height: 290px;
+      }
+
+      .product-image {
+        height: 140px;
+      }
+
+      .quick-actions {
+        flex-direction: column;
+        margin: 15px;
+        gap: 10px;
+      }
+
+      .quick-btn, .back-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .product-card {
+        height: 280px;
+        margin: 0 auto;
+        max-width: 280px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .product-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <h3>Categories</h3>
+      <button class="sidebar-close" onclick="closeSidebar()">×</button>
+    </div>
+    <ul class="sidebar-categories">
+      <li><a href="hot-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
+      <li><a href="food.html" class="active"><i class="fas fa-utensils"></i>Food</a></li>
+      <li><a href="drinks.html"><i class="fas fa-wine-glass"></i>Drinks</a></li>
+      <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
+      <li><a href="gifts.html"><i class="fas fa-gift"></i>Gifts</a></li>
+      <li><a href="baby-stuff.html"><i class="fas fa-baby"></i>Baby Stuff</a></li>
+      <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+      <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+    </ul>
+  </div>
+
+  <!-- Compact Header -->
+  <header class="compact-header">
+    <div class="top-nav">
+      <button class="hamburger" onclick="openSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="logo-container">
+        <img src="img/taze-logo.png" alt="Taze Logo">
+      </div>
+      <div class="auth-buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="signup.html" class="signup-btn">
+          Sign Up
+          <span class="discount-badge">10% OFF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="page-title">
+      <h1>Dairy & Eggs</h1>
+      <p>Fresh milk, cheese, yogurt & farm eggs</p>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <span><i class="fas fa-chevron-right"></i></span>
+      <a href="food.html">Food</a>
+      <span><i class="fas fa-chevron-right"></i></span>
+      <span>Dairy & Eggs</span>
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search dairy products - milk, cheese, yogurt, eggs...">
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions">
+    <a href="food.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Food Categories
+    </a>
+    <button class="quick-btn" onclick="handleFavorites()">
+      <i class="fas fa-heart"></i> My Favorites
+    </button>
+    <button class="quick-btn" onclick="handleReorder()">
+      <i class="fas fa-redo"></i> Reorder Last Purchase
+    </button>
+  </div>
+
+  <!-- Products Section -->
+  <div class="products-section">
+    <div class="products-header">
+      <h2 class="section-title">Dairy & Eggs</h2>
+      <p class="results-count">Showing 12 of 45 dairy products</p>
+    </div>
+
+    <div class="products-grid">
+      
+      <!-- Mangoes -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/mangoes.jpg" alt="Mangoes 1kg">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Mangoes (1kg)</h3>
+    <div class="product-price">5,000 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Mangoes 1kg', 5000)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Bananas -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/banana.jpg" alt="Banana">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Banana (1pc)</h3>
+    <div class="product-price">-</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Banana 1pc', 0)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Pineapple -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/pineapple.jpg" alt="Pineapple">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Pineapple (1pc)</h3>
+    <div class="product-price">1,000 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Pineapple 1pc', 1000)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Passion -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/passion.jpg" alt="Passion">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Passion (1kg)</h3>
+    <div class="product-price">2,200 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Passion 1kg', 2200)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Papaya -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/papaya.jpg" alt="Papaya">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Papaya (1pc)</h3>
+    <div class="product-price">1,000 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Papaya 1pc', 1000)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Orange -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/orange.jpg" alt="Orange">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Orange (1pc)</h3>
+    <div class="product-price">700 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Orange 1pc', 700)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Apple -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/apple.jpg" alt="Apple">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Apple (1pc)</h3>
+    <div class="product-price">700 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Apple 1pc', 700)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Blueberry -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/blueberry.jpg" alt="Blueberry">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Blueberry (500gm)</h3>
+    <div class="product-price">-</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Blueberry 500gm', 0)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Blackberry -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/blackberry.jpg" alt="Blackberry">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Blackberry (500gm)</h3>
+    <div class="product-price">-</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Blackberry 500gm', 0)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Mandarin -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/mandarin.jpg" alt="Mandarin">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Mandarin (1kg)</h3>
+    <div class="product-price">2,000 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Mandarin 1kg', 2000)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Lemon -->
+<div class="product-card">
+  <div class="product-image">
+    <img src="img/lemon.jpg" alt="Lemon">
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">Lemon (1kg)</h3>
+    <div class="product-price">1,500 RWF</div>
+    <div class="product-actions">
+      <button class="add-to-cart-btn" onclick="addToCart('Lemon 1kg', 1500)">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
+      <button class="wishlist-btn" onclick="toggleFavorite(this)">
+        <i class="far fa-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Load More Button -->
+    <div class="load-more">
+      <button class="load-more-btn" onclick="loadMoreProducts()">
+        <i class="fas fa-plus"></i> Load More Products
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Floating View Cart Button -->
+  <div class="view-cart-btn" onclick="viewCart()">
+    <div style="position: relative;">
+      <img src="img/cart.jpg" alt="View Cart">
+      <span class="cart-count-badge" id="cartCount">0</span>
+    </div>
+    <span>View Cart</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      
+      <!-- About Us Section -->
+      <div class="footer-section">
+        <h3>About Taze</h3>
+        <p>Taze brings fresh, affordable, and high-quality products to your home. We are your trusted online delivery service in Rwanda, connecting you with the best local suppliers and international brands.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Shop</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about-us.html">About Us</a>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <a href="hot-deals.html">Hot Deals</a>
+        <a href="food.html">Food</a>
+        <a href="drinks.html">Drinks</a>
+        <a href="beauty.html">Beauty</a>
+        <a href="gifts.html">Gifts</a>
+        <a href="baby-stuff.html">Baby Stuff</a>
+      </div>
+
+      <!-- Follow Us Section -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/taze_rw" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@taze_rw" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/250796890044" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
+        <p><i class="fas fa-phone"></i> +250 796 890 044</p>
+        <p><i class="fas fa-envelope"></i> info@taze.rw</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe for updates and exclusive offers:</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Taze.rw. All Rights Reserved. | Inspired by KigaliFreshCart.com</p>
+    </div>
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let isLoggedIn = false; // Simulate login status
+
+    function addToCart(productName, price) {
+      // Try to get unit from product name (e.g. "(1L)", "(200g)", etc.)
+      let unitMatch = productName.match(/\(([^)]+)\)/);
+      let unit = unitMatch ? unitMatch[1] : "";
+
+      // Check if product already in cart
+      let existing = cart.find(item => item.productName === productName);
+      if (existing) {
+      existing.quantity += 1;
+      } else {
+      cart.push({
+        productName,
+        price,
+        unit,
+        quantity: 1
+      });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+
+      // Visual feedback
+      const btn = event.target.closest("button");
+      btn.innerHTML = '<i class="fas fa-check"></i> Added!';
+      btn.style.background = '#28a745';
+
+      setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+      btn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+      }, 1500);
+    }
+
+    function updateCartCount() {
+      const cartCount = document.getElementById('cartCount');
+      if (cart.length > 0) {
+        cartCount.textContent = cart.length;
+        cartCount.style.display = 'flex';
+      } else {
+        cartCount.style.display = 'none';
+      }
+    }
+
+    function viewCart() {
+      if (cart.length > 0) {
+        window.location.href = 'cart.html';
+      } else {
+        alert('Your cart is empty. Start adding some fresh dairy products!');
+      }
+    }
+
+    // Mobile Sidebar Functions
+    function openSidebar() {
+      document.getElementById("mobileSidebar").classList.add("open");
+      document.getElementById("mobileOverlay").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeSidebar() {
+      document.getElementById("mobileSidebar").classList.remove("open");
+      document.getElementById("mobileOverlay").classList.remove("open");
+      document.body.style.overflow = "auto";
+    }
+
+    // Close sidebar when clicking overlay
+    document.getElementById("mobileOverlay").addEventListener("click", closeSidebar);
+
+    // Search functionality
+    function handleSearch() {
+      const searchTerm = document.querySelector('.search-input').value.toLowerCase();
+      if (searchTerm) {
+        alert(`Searching for "${searchTerm}" in Dairy & Eggs...`);
+        // Here you would filter the products based on search term
+      }
+    }
+
+    // Quick Action Functions that require login
+    function handleFavorites() {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to view your favorites!');
+        window.location.href = 'login.html';
+        return;
+      }
+      alert('Showing your favorite dairy products...');
+    }
+
+    function handleReorder() {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to reorder your last purchase!');
+        window.location.href = 'login.html';
+        return;
+      }
+      alert('Reordering your last dairy purchase...');
+    }
+
+    // Favorites functionality
+    function toggleFavorite(button) {
+      if (!isLoggedIn) {
+        alert('Please login or sign up to add favorites!');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      const icon = button.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        button.classList.add('favorited');
+        alert('Added to favorites!');
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        button.classList.remove('favorited');
+        alert('Removed from favorites!');
+      }
+    }
+
+    // Load More Products
+    function loadMoreProducts() {
+      const productsGrid = document.querySelector('.products-grid');
+      const loadMoreBtn = document.querySelector('.load-more-btn');
+      
+      // Show loading state
+      loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+      loadMoreBtn.disabled = true;
+      
+      // Simulate loading delay
+      setTimeout(() => {
+        // Add more dairy products
+        const newProducts = [
+          { name: 'Cheddar Cheese (200g)', price: 4800, image: 'cheddar.jpg', badge: 'Sharp' },
+          { name: 'Organic Milk (1L)', price: 2100, image: 'organic-milk.jpg', badge: 'Organic' },
+          { name: 'Double Cream (300ml)', price: 4200, image: 'double-cream.jpg', badge: 'Rich' }
+        ];
+        
+        newProducts.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.className = 'product-card';
+          productCard.innerHTML = `
+            <div class="product-image">
+              <img src="img/${product.image}" alt="${product.name}">
+              <div class="product-badge">${product.badge}</div>
+            </div>
+            <div class="product-info">
+              <div class="product-status in-stock">✓ In Stock</div>
+              <h3 class="product-name">${product.name}</h3>
+              <div class="product-price">${product.price.toLocaleString()} RWF</div>
+              <div class="product-actions">
+                <button class="add-to-cart-btn" onclick="addToCart('${product.name}', ${product.price})">
+                  <i class="fas fa-cart-plus"></i> Add to Cart
+                </button>
+                <button class="wishlist-btn" onclick="toggleFavorite(this)">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+          `;
+          productsGrid.appendChild(productCard);
+        });
+        
+        // Update results count
+        const resultsCount = document.querySelector('.results-count');
+        resultsCount.textContent = 'Showing 15 of 45 dairy products';
+        
+        // Reset button
+        loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Products';
+        loadMoreBtn.disabled = false;
+        
+      }, 1000);
+    }
+
+    // Search on Enter key and other event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartCount();
+      
+      document.querySelector('.search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      });
+      
+      document.querySelector('.search-btn').addEventListener('click', handleSearch);
+      
+      // Newsletter form
+      document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input').value;
+        if (email) {
+          alert('Thank you for subscribing! You\'ll receive our latest dairy & egg deals and offers.');
+          this.querySelector('input').value = '';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

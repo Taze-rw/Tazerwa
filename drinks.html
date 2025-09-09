@@ -837,18 +837,108 @@
       }
     </style>
 
-    <!-- Pagination -->
-    <div class="pagination">
-      <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
-      <a href="#" class="page-btn active">1</a>
-      <a href="#" class="page-btn">2</a>
-      <a href="#" class="page-btn">3</a>
-      <a href="#" class="page-btn">...</a>
-      <a href="#" class="page-btn">13</a>
-      <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+    <div class="page-title"> 
+  <h1>Drinks Categories</h1>
+  <p>Refreshing and energizing beverages for every taste</p>
+</div>
+</header>
+
+<!-- Breadcrumb Navigation -->
+<div class="breadcrumb">
+  <div class="breadcrumb-container">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <span><i class="fas fa-chevron-right"></i></span>
+    <span>Drinks</span>
+  </div>
+</div>
+
+<!-- Search Section -->
+<div class="search-section">
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search for drinks, brands, or specific products...">
+    <button class="search-btn">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="quick-actions">
+  <button class="quick-btn" onclick="handleFavorites()">
+    <i class="fas fa-heart"></i> My Favorites
+  </button>
+  <button class="quick-btn" onclick="handleReorder()">
+    <i class="fas fa-redo"></i> Reorder Last Purchase
+  </button>
+</div>
+
+<!-- Subcategories Section -->
+<div class="subcategories-section"> 
+  <h2 class="section-title">Browse Drinks Categories</h2>
+  <div class="subcategories-grid">
+
+    <!-- Water -->
+    <div class="subcategory-card" onclick="window.location.href='water.html'">
+      <img src="img/water.jpg" alt="Water">
+      <div class="subcategory-info">
+        <h3>Water</h3>
+        <p>Pure and refreshing hydration</p>
+        <span class="product-count">12 items</span>
+      </div>
+    </div>
+
+    <!-- Hot Drinks -->
+    <div class="subcategory-card" onclick="window.location.href='hot-drinks.html'">
+      <img src="img/hot-drinks.jpg" alt="Hot Drinks">
+      <div class="subcategory-info">
+        <h3>Hot Drinks</h3>
+        <p>Coffee, tea, and warm delights</p>
+        <span class="product-count">18 items</span>
+      </div>
+    </div>
+
+    <!-- Cold Drinks -->
+    <div class="subcategory-card" onclick="window.location.href='cold-drinks.html'">
+      <img src="img/cold-drinks.jpg" alt="Cold Drinks">
+      <div class="subcategory-info">
+        <h3>Cold Drinks</h3>
+        <p>Chilled and refreshing beverages</p>
+        <span class="product-count">20 items</span>
+      </div>
+    </div>
+
+    <!-- Carbonated Drinks -->
+    <div class="subcategory-card" onclick="window.location.href='carbonated-drinks.html'">
+      <img src="img/carbonated-drinks.jpg" alt="Carbonated Drinks">
+      <div class="subcategory-info">
+        <h3>Carbonated Drinks</h3>
+        <p>Sparkling sodas and fizzy treats</p>
+        <span class="product-count">15 items</span>
+      </div>
+    </div>
+
+    <!-- Dairy-Based Drinks -->
+    <div class="subcategory-card" onclick="window.location.href='dairy-drinks.html'">
+      <img src="img/dairy-drinks.jpg" alt="Dairy-Based Drinks">
+      <div class="subcategory-info">
+        <h3>Dairy-Based Drinks</h3>
+        <p>Wholesome milk and dairy blends</p>
+        <span class="product-count">10 items</span>
+      </div>
+    </div>
+
+    <!-- Non-Alcoholic -->
+    <div class="subcategory-card" onclick="window.location.href='non-alcoholic.html'">
+      <img src="img/non-alcoholic.jpg" alt="Non Alcoholic">
+      <div class="subcategory-info">
+        <h3>Non Alcoholic</h3>
+        <p>Delicious drinks without the alcohol</p>
+        <span class="product-count">22 items</span>
+      </div>
     </div>
 
   </div>
+</div>
 
   <!-- Floating View Cart Button -->
   <div class="view-cart-btn" onclick="viewCart()">

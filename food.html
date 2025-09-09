@@ -128,6 +128,35 @@
       height: auto;
         }
 
+      @media (max-width: 768px) {
+  .top-nav {
+    justify-content: center; /* center everything */
+  }
+
+  .hamburger,
+  .auth-buttons {
+    position: absolute; /* take them out of flow */
+    top: 15px;
+  }
+
+  .hamburger {
+    left: 20px; /* menu button on left */
+  }
+
+  .auth-buttons {
+    right: 20px; /* login/signup on right */
+  }
+
+  .logo-container {
+    flex: 0; /* prevent stretching */
+    text-align: center;
+  }
+
+  .logo-container img {
+    width: 80px; /* slightly smaller for mobile */
+  }
+}  
+
         .auth-buttons {
       display: flex;
       gap: 10px;

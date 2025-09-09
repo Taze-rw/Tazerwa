@@ -1186,6 +1186,16 @@
           handleSearch();
         }
       });
+
+      document.querySelector(".search-btn").addEventListener("click", () => {
+      const query = document.querySelector(".search-input").value.trim();
+        if (query) {
+        console.log("Searching for:", query);
+       // TODO: trigger your search functionality
+        handleSearch();
+        }
+      });
+
       
       // Camera button
       document.querySelector('.camera-btn').addEventListener('click', openCameraScanner);

@@ -988,129 +988,134 @@
   </div>
 </div>
 
+  <!-- Featured Drinks Section --> 
+<div class="products-section">
+  <div class="products-header">
+    <h2 class="section-title">Featured Drinks</h2>
+    <p class="results-count">Showing top 6 featured drinks</p>
+  </div>
 
-  <!-- Featured Products Section -->
-  <div class="products-section">
-    <div class="products-header">
-      <h2 class="section-title">Featured Food Items</h2>
-      <p class="results-count">Showing top 6 featured products</p>
+  <div class="products-grid">
+    
+    <!-- Water -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/water.jpg" alt="Mineral Water">
+        <div class="product-badge">Refreshing</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Mineral Water (1.5L)</h3>
+        <div class="product-price">800 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Mineral Water', 800)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="products-grid">
-      
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/bananas.png" alt="Fresh Bananas">
-          <div class="product-badge">Fresh</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fresh Bananas (1kg)</h3>
-          <div class="product-price">2,500 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Fresh Bananas', 2500)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
+    <!-- Hot Drinks -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/coffee.jpg" alt="Coffee">
+        <div class="product-badge">Hot</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Premium Coffee (250g)</h3>
+        <div class="product-price">5,500 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Premium Coffee', 5500)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/tomatoes.jpg" alt="Fresh Tomatoes">
-          <div class="product-badge">Organic</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Organic Tomatoes (1kg)</h3>
-          <div class="product-price">3,200 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Organic Tomatoes', 3200)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
+    <!-- Cold Drinks -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/juice.jpg" alt="Fruit Juice">
+        <div class="product-badge">Cold</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Fresh Mango Juice (1L)</h3>
+        <div class="product-price">3,000 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Fresh Mango Juice', 3000)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/chicken.jpg" alt="Fresh Chicken">
-          <div class="product-badge">Fresh</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fresh Whole Chicken (1.5kg)</h3>
-          <div class="product-price">8,500 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Fresh Whole Chicken', 8500)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
+    <!-- Carbonated Drinks -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/soda.jpg" alt="Soft Drink">
+        <div class="product-badge">Carbonated</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Cola Soft Drink (500ml)</h3>
+        <div class="product-price">1,200 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Cola Soft Drink', 1200)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/milk.jpg" alt="Fresh Milk">
-          <div class="product-badge">Daily Fresh</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fresh Milk (1L)</h3>
-          <div class="product-price">1,800 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Fresh Milk', 1800)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
+    <!-- Dairy-Based Drinks -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/yoghurt.jpg" alt="Yoghurt Drink">
+        <div class="product-badge">Dairy Fresh</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Strawberry Yoghurt Drink (500ml)</h3>
+        <div class="product-price">2,500 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Strawberry Yoghurt Drink', 2500)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/bread.jpg" alt="Fresh Bread">
-          <div class="product-badge">Hot</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Fresh White Bread</h3>
-          <div class="product-price">1,200 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Fresh White Bread', 1200)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
+    <!-- Non-Alcoholic -->
+    <div class="product-card">
+      <div class="product-image">
+        <img src="img/malt.jpg" alt="Non-Alcoholic Malt Drink">
+        <div class="product-badge">Non-Alcoholic</div>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Malt Drink (330ml)</h3>
+        <div class="product-price">1,500 RWF</div>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('Malt Drink', 1500)">
+            <i class="fas fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="wishlist-btn" onclick="toggleFavorite(this)">
+            <i class="far fa-heart"></i>
+          </button>
         </div>
       </div>
-
-      <div class="product-card">
-        <div class="product-image">
-          <img src="img/rice.jpg" alt="Premium Rice">
-          <div class="product-badge">Best Seller</div>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">Premium Rice (5kg)</h3>
-          <div class="product-price">12,000 RWF</div>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('Premium Rice', 12000)">
-              <i class="fas fa-cart-plus"></i> Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    </div>
 
     </div>
     <style>

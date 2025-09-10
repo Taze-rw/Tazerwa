@@ -4,13 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tazerwa | Secure Payment</title>
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe SDK -->
   <style>
     /* Reset some basics */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,7 +20,7 @@
 
     /* ===== HEADER ===== */
     header {
-      background-color: #1b5e20; /* deep green */
+      background-color: #1b5e20;
       color: #fff;
       padding: 15px 20px;
       display: flex;
@@ -42,50 +39,11 @@
       cursor: pointer;
       transition: 0.3s;
     }
+    header .back-btn:hover { background: #fff; color: #1b5e20; }
 
-    header .back-btn:hover {
-      background: #fff;
-      color: #1b5e20;
-    }
+    header h1 { font-size: 20px; letter-spacing: 1px; }
 
-    header h1 {
-      font-size: 20px;
-      letter-spacing: 1px;
-    }
-
-    .logo-container img {
-      width: 90px;
-      height: auto;
-        }
-
-        @media (max-width: 768px) {
-  .top-nav {
-    justify-content: center; /* center everything */
-  }
-
-  .hamburger,
-  .auth-buttons {
-    position: absolute; /* take them out of flow */
-    top: 15px;
-  }
-
-  .hamburger {
-    left: 20px; /* menu button on left */
-  }
-
-  .auth-buttons {
-    right: 20px; /* login/signup on right */
-  }
-
-  .logo-container {
-    flex: 0; /* prevent stretching */
-    text-align: center;
-  }
-
-  .logo-container img {
-    width: 80px; /* slightly smaller for mobile */
-  }
-}
+    .logo-container img { width: 90px; height: auto; }
 
     /* ===== MAIN CONTENT ===== */
     main {
@@ -118,9 +76,7 @@
       font-size: 22px;
     }
 
-    .highlight {
-      color: #fdd835; /* yellow accent */
-    }
+    .highlight { color: #fdd835; }
 
     .payment-option {
       border: 2px solid #e0e0e0;
@@ -133,16 +89,8 @@
       transition: all 0.3s ease;
       font-size: 15px;
     }
-
-    .payment-option:hover {
-      border-color: #1b5e20;
-      background-color: #f1fff4;
-    }
-
-    .payment-option input {
-      margin-right: 12px;
-      transform: scale(1.2);
-    }
+    .payment-option:hover { border-color: #1b5e20; background-color: #f1fff4; }
+    .payment-option input { margin-right: 12px; transform: scale(1.2); }
 
     .btn-pay {
       width: 100%;
@@ -156,10 +104,7 @@
       margin-top: 25px;
       transition: 0.3s;
     }
-
-    .btn-pay:hover {
-      background-color: #2e7d32;
-    }
+    .btn-pay:hover { background-color: #2e7d32; }
 
     /* ===== FOOTER ===== */
     footer {
@@ -170,17 +115,8 @@
       font-size: 14px;
       margin-top: auto;
     }
-
-    footer a {
-      color: #fdd835;
-      text-decoration: none;
-      margin: 0 8px;
-      transition: 0.3s;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer a { color: #fdd835; text-decoration: none; margin: 0 8px; transition: 0.3s; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -189,9 +125,7 @@
   <header>
     <button class="back-btn" onclick="window.history.back()">← Back</button>
     <h1>Tazerwa</h1>
-    <div class="logo-container">
-        <img src="img/taze-logo.png" alt="Taze Logo">
-    </div>
+    <div class="logo-container"><img src="img/taze-logo.png" alt="Taze Logo"></div>
   </header>
 
   <!-- Main Content -->
@@ -212,6 +146,10 @@
           Pay with MTN Mobile Money
         </label>
 
+        <input type="number" id="amount" name="amount" placeholder="Enter amount (RWF)" required style="width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:10px;">
+
+        <input type="tel" id="phone" name="phone" placeholder="MTN Phone (2507...)" style="width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-top:10px;display:none;">
+
         <button type="submit" class="btn-pay">Proceed to Pay</button>
       </form>
     </div>
@@ -226,23 +164,51 @@
   </footer>
 
   <script>
-    // Dynamically set year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const form = document.getElementById("payment-form");
+    const phoneInput = document.getElementById("phone");
 
-    form.addEventListener("submit", function(e) {
+    // Show phone field only if MTN is selected
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(el => {
+      el.addEventListener("change", function() {
+        if (this.value === "mtn") {
+          phoneInput.style.display = "block";
+        } else {
+          phoneInput.style.display = "none";
+        }
+      });
+    });
+
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
-      const selected = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const amount = document.getElementById("amount").value;
 
-      if (selected === "stripe") {
-        // Redirect or call backend to create Stripe checkout session
-        alert("Redirecting to Stripe Checkout...");
-        window.location.href = "/create-checkout-session"; 
-      } else if (selected === "mtn") {
-        // Redirect to MTN MoMo payment flow
-        alert("Redirecting to MTN Mobile Money...");
-        window.location.href = "/mtn-payment"; 
+      if (method === "stripe") {
+        // Call backend to create Stripe PaymentIntent
+        const res = await fetch("/api/pay/stripe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: amount * 100, currency: "usd" })
+        });
+        const data = await res.json();
+        const stripe = Stripe("YOUR_STRIPE_PUBLISHABLE_KEY");
+        const { error } = await stripe.confirmCardPayment(data.clientSecret, {
+          payment_method: { card: { token: "tok_visa" } } // Replace with real card input integration
+        });
+        if (error) { alert(error.message); } else { alert("Stripe Payment Success!"); }
+
+      } else if (method === "mtn") {
+        const phone = document.getElementById("phone").value;
+        const res = await fetch("/api/pay/mtn", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount, phone })
+        });
+        const data = await res.json();
+        if (data.error) alert(data.error);
+        else alert("MTN MoMo Payment initiated. Confirm on your phone.");
       }
     });
   </script>

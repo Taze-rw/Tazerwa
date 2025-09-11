@@ -841,7 +841,7 @@
   <!-- Search Section -->
   <div class="search-section">
     <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search canned foods - mayonnaise, butter, sweet corns...">
+      <input type="text" id="productSearch" class="search-input" placeholder="Search canned foods - mayonnaise, butter, sweet corns...">
       <button class="search-btn">
         <i class="fas fa-search"></i>
       </button>
@@ -865,10 +865,10 @@
   <div class="products-section">
     <div class="products-header">
       <h2 class="section-title">Canned Foods</h2>
-      <p class="results-count">Showing 12 of 45 canned foods</p>
+      <p id="resultsCount" class="results-count">Showing all products</p>
     </div>
 
-    <div class="products-grid">
+    <div class="products-grid" id="productsGrid">
       
       <!-- Sweet Corn -->
 <div class="product-card">
@@ -1278,13 +1278,33 @@
     document.getElementById("mobileOverlay").addEventListener("click", closeSidebar);
 
     // Search functionality
-    function handleSearch() {
-      const searchTerm = document.querySelector('.search-input').value.toLowerCase();
-      if (searchTerm) {
-        alert(`Searching for "${searchTerm}" in Dairy & Eggs...`);
-        // Here you would filter the products based on search term
+    const searchInput = document.getElementById('productSearch');
+    const productsGrid = document.getElementById('productsGrid');
+    const resultsCount = document.getElementById('resultsCount');
+
+    searchInput.addEventListener('keyup', function () {
+      const filter = searchInput.value.toLowerCase();
+      const productCards = productsGrid.getElementsByClassName('product-card');
+      let visibleCount = 0;
+
+      for (let i = 0; i < productCards.length; i++) {
+        const nameEl = productCards[i].querySelector('.product-name');
+        const name = nameEl.textContent.toLowerCase();
+
+        if (name.includes(filter)) {
+          productCards[i].style.display = '';
+          visibleCount++;
+        } else {
+          productCards[i].style.display = 'none';
+        }
       }
-    }
+
+      if (filter === '') {
+        resultsCount.textContent = "Showing all products";
+      } else {
+        resultsCount.textContent = `Showing ${visibleCount} result(s) for "${searchInput.value}"`;
+      }
+    });
 
     // Quick Action Functions that require login
     function handleFavorites() {

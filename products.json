@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Fresh Milk 1L",
+    "category": "Dairy",
+    "price": 1500,
+    "description": "Organic fresh milk rich in calcium",
+    "image": "img/dairy/milk.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Brown Bread",
+    "category": "Bakery",
+    "price": 1200,
+    "description": "Healthy brown bread baked daily",
+    "image": "img/bakery/bread.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Apples",
+    "category": "Fruits",
+    "price": 2500,
+    "description": "Fresh red apples",
+    "image": "img/fruits/apples.jpg"
+  }
+]

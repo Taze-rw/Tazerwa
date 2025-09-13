@@ -27,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->SMTPAuth = true;
 
         // 👉 Use your Gmail for testing
-        $mail->Username = 'yourgmail@gmail.com';  
-        $mail->Password = 'your-app-password'; // NOT your Gmail password, but a Google App Password
+        $mail->Username = 'tbru99@gmail.com';  
+        $mail->Password = 'rzhh hyih fypv lyor'; // NOT your Gmail password, but a Google App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Sender & recipient
-        $mail->setFrom('yourgmail@gmail.com', 'FreshCart Orders');
+        $mail->setFrom('tbru99@gmail.com', 'FreshCart Orders');
         $mail->addAddress($to);
 
         // Email content
@@ -47,5 +47,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => false, 'error' => $mail->ErrorInfo]);
     }
 }
-
-?>

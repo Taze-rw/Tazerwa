@@ -502,42 +502,35 @@
     }
 
     async function sendOrderEmail(orderData) {
-      // Using EmailJS service for client-side email sending
-      // You can also use a backend service
-      
-      const emailData = {
-        to_email: 'tbru99@gmail.com',
-        subject: `New Taze Order - ${orderData.orderId}`,
-        message: orderData.emailMessage
-      };
+  const emailData = {
+    subject: `New Taze Order - ${orderData.orderId}`,
+    message: orderData.emailMessage
+  };
 
-      try {
-        // Simulating email send - replace with actual email service
-        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            email: 'tbru99@gmail.com',
-            subject: emailData.subject,
-            message: emailData.message
-          })
-        });
+  try {
+    // ✅ Point this to your PHP backend
+    const response = await fetch("http://localhost/tazerwa/send-email.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(emailData)
+    });
 
-        if (response.ok) {
-          return { success: true };
-        } else {
-          throw new Error('Email service error');
-        }
-      } catch (error) {
-        // Fallback: Use mailto (will open user's email client)
-        const mailtoLink = `mailto:tbru99@gmail.com?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(emailData.message)}`;
-        window.open(mailtoLink);
-        return { success: true, fallback: true };
-      }
+    const result = await response.json();
+
+    if (result.success) {
+      alert("✅ Order summary has been sent to Tazerwa!");
+      return { success: true };
+    } else {
+      throw new Error(result.error || "Failed to send email");
     }
+  } catch (error) {
+    console.error("Email send error:", error);
+    alert("⚠️ Failed to send order email. Please try again.");
+    return { success: false };
+  }
+}
   
     async function proceedToPayment() {
       if (!validateForm()) return;

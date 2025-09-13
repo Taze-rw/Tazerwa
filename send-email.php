@@ -1,9 +1,4 @@
 <?php
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -11,39 +6,45 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
+// Allow CORS (for fetch requests from frontend)
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
+
+// Handle POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
 
-    $to = 'tbru99@gmail.com'; // company email
-    $subject = $input['subject'];
-    $message = $input['message'];
+    $subject = $input['subject'] ?? 'New Order';
+    $message = $input['message'] ?? 'No message content';
 
+    // Setup PHPMailer
     $mail = new PHPMailer(true);
 
     try {
-        // SMTP settings
+        // Server settings
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-
-        // 👉 Use your Gmail for testing
-        $mail->Username = 'tbru99@gmail.com';  
-        $mail->Password = 'rzhh hyih fypv lyor'; // NOT your Gmail password, but a Google App Password
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'tbru99@gmail.com'; // replace with your Gmail
+        $mail->Password   = 'rzhhhyihfypvlyor';   // Gmail App Password, not normal password
         $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Port       = 587;
 
-        // Sender & recipient
-        $mail->setFrom('tbru99@gmail.com', 'FreshCart Orders');
-        $mail->addAddress($to);
+        // Recipients
+        $mail->setFrom('tbru99@gmail.com', 'Tazerwa Orders');
+        $mail->addAddress('tbru99@gmail.com'); // where orders should go
 
-        // Email content
-        $mail->isHTML(false); 
+        // Content
+        $mail->isHTML(false);
         $mail->Subject = $subject;
         $mail->Body    = $message;
 
         $mail->send();
-        echo json_encode(['success' => true]);
+        echo json_encode(['success' => true, 'message' => 'Order email sent']);
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'error' => $mail->ErrorInfo]);
     }
 }
+?>

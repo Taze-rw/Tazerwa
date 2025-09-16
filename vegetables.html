@@ -913,9 +913,14 @@
   <script>
     async function loadProducts() {
       try {
-        const response = await fetch('./products.json');
-        const products = await response.json();
-        const grid = document.getElementById('productsGrid');
+        const response = await fetch("products.json")
+  .then(res => res.json())
+  .then(data => {
+    const products = data.products || data; // handles both wrapped and direct arrays
+    const vegProducts = products.filter(p => p.category === "vegetables");
+    displayProducts(vegProducts);
+  })
+  .catch(err => console.error("Error loading products:", err));
 
         // Filter only Vegetables under Food
         const vegetables = products.filter(p => 

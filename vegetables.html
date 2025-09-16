@@ -868,7 +868,7 @@
       <p class="results-count" id="resultsCount">Loading products...</p>
     </div>
 
-    <div class="products-grid" id="productsGrid">
+    <div id="products-container" class="products-grid"></div>
       <!-- Products will be dynamically loaded from products.json -->
     </div>
   </div>
@@ -927,16 +927,22 @@ async function loadProducts(filterOptions = {}) {
       products = products.filter(p => p.subcategory.toLowerCase() === filterOptions.subcategory.toLowerCase());
     }
 
-    // Display products
     displayProducts(products);
-
-  } catch (err) {
-    console.error("Error loading products:", err);
+    document.getElementById("resultsCount").textContent = `${products.length} products found`;
+  } catch (error) {
+    document.getElementById("resultsCount").textContent = "Failed to load products.";
+    console.error(error);
   }
 }
 
+// Display products in the grid
 function displayProducts(products) {
   const container = document.getElementById("products-container");
+  if (!container) {
+    console.error("No #products-container found in the page");
+    return;
+  }
+
   container.innerHTML = "";
 
   if (!products.length) {
@@ -949,60 +955,98 @@ function displayProducts(products) {
     card.className = "product-card";
 
     card.innerHTML = `
-      <img src="${product.image}" alt="${product.name}" class="product-img">
-      <h3>${product.name}</h3>
-      <p>Price: ${product.price} RWF</p>
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}">
+        <span class="product-badge">New</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-price">${product.price.toLocaleString()} RWF</p>
+        <div class="product-actions">
+          <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
+          <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')"><i class="fas fa-heart"></i></button>
+        </div>
+      </div>
     `;
 
     container.appendChild(card);
   });
 }
 
-    function addToCart(productId) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ id: productId, quantity: 1 });
+// Add to cart
+function addToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const existing = cart.find(item => item.id === productId);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+}
+
+// Update cart count badge
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const badge = document.getElementById('cartCount');
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+}
+
+// Wishlist (placeholder)
+function toggleWishlist(productId) {
+  alert("Wishlist feature coming soon!");
+}
+
+// Favorites (placeholder)
+function handleFavorites() {
+  alert("Favorites feature coming soon!");
+}
+
+// Reorder (placeholder)
+function handleReorder() {
+  alert("Reorder feature coming soon!");
+}
+
+// Sidebar functions
+function openSidebar() {
+  document.getElementById('mobileSidebar').classList.add('open');
+  document.getElementById('mobileOverlay').classList.add('open');
+}
+function closeSidebar() {
+  document.getElementById('mobileSidebar').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('open');
+}
+
+// Search/filter products
+function filterProducts() {
+  const input = document.getElementById('searchInput');
+  const searchTerm = input.value.trim().toLowerCase();
+  fetch("products.json")
+    .then(res => res.json())
+    .then(data => {
+      let products = data.products;
+      if (searchTerm) {
+        products = products.filter(p =>
+          p.name.toLowerCase().includes(searchTerm) ||
+          (p.description && p.description.toLowerCase().includes(searchTerm))
+        );
       }
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCartCount();
-    }
+      displayProducts(products);
+      document.getElementById("resultsCount").textContent = `${products.length} products found`;
+    })
+    .catch(() => {
+      document.getElementById("resultsCount").textContent = "Failed to load products.";
+    });
+}
 
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const badge = document.getElementById('cartCount');
-      badge.textContent = count;
-      badge.style.display = count > 0 ? 'flex' : 'none';
-    }
-
-    function toggleWishlist(productId) {
-      alert("Wishlist feature coming soon!");
-    }
-
-    function handleFavorites() {
-      alert("Favorites feature coming soon!");
-    }
-
-    function handleReorder() {
-      alert("Reorder feature coming soon!");
-    }
-
-    // Sidebar functions
-    function openSidebar() {
-      document.getElementById('mobileSidebar').classList.add('open');
-      document.getElementById('mobileOverlay').classList.add('open');
-    }
-    function closeSidebar() {
-      document.getElementById('mobileSidebar').classList.remove('open');
-      document.getElementById('mobileOverlay').classList.remove('open');
-    }
-
-    // Load on start
-    loadProducts();
-    updateCartCount();
+// Load on start
+document.addEventListener("DOMContentLoaded", function() {
+  loadProducts();
+  updateCartCount();
+});
   </script>
   </body>
 </html>

@@ -911,56 +911,52 @@
 
   <!-- Scripts -->
   <script>
-    async function loadProducts() {
-      try {
-        const response = await fetch("products.json")
-  .then(res => res.json())
-  .then(data => {
-    const products = data.products || data; // handles both wrapped and direct arrays
-    const vegProducts = products.filter(p => p.category === "vegetables");
-    displayProducts(vegProducts);
-  })
-  .catch(err => console.error("Error loading products:", err));
+async function loadProducts(filterOptions = {}) {
+  try {
+    const response = await fetch("products.json");
+    const data = await response.json();
 
-        // Filter only Vegetables under Food
-        const vegetables = products.filter(p => 
-          p.category === "Food" && p.subcategory === "Vegetables"
-        );
+    // ✅ Your array is inside "products"
+    let products = data.products;
 
-        grid.innerHTML = '';
-        vegetables.forEach(product => {
-          const card = document.createElement('div');
-          card.className = 'product-card';
-          card.innerHTML = `
-            <div class="product-image">
-              <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-              <h3 class="product-name">${product.name}</h3>
-              <div class="product-price">${product.price} RWF</div>
-              <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
-                <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')"><i class="fas fa-heart"></i></button>
-              </div>
-            </div>
-          `;
-          grid.appendChild(card);
-        });
-
-        document.getElementById('resultsCount').textContent = `Showing ${vegetables.length} vegetable products`;
-      } catch (error) {
-        console.error("Error loading products:", error);
-      }
+    // Apply filters if provided
+    if (filterOptions.category) {
+      products = products.filter(p => p.category.toLowerCase() === filterOptions.category.toLowerCase());
+    }
+    if (filterOptions.subcategory) {
+      products = products.filter(p => p.subcategory.toLowerCase() === filterOptions.subcategory.toLowerCase());
     }
 
-    function filterProducts() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const productCards = document.querySelectorAll('.product-card');
-      productCards.forEach(card => {
-        const name = card.querySelector('.product-name').textContent.toLowerCase();
-        card.style.display = name.includes(query) ? 'block' : 'none';
-      });
-    }
+    // Display products
+    displayProducts(products);
+
+  } catch (err) {
+    console.error("Error loading products:", err);
+  }
+}
+
+function displayProducts(products) {
+  const container = document.getElementById("products-container");
+  container.innerHTML = "";
+
+  if (!products.length) {
+    container.innerHTML = "<p>No products found.</p>";
+    return;
+  }
+
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" class="product-img">
+      <h3>${product.name}</h3>
+      <p>Price: ${product.price} RWF</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
 
     function addToCart(productId) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];

@@ -1,190 +1,252 @@
 {
-  "vegetables": [
+  "products": [
     {
       "id": 1,
       "name": "Caroti (1kg)",
       "price": 1000,
-      "image": "img/caroti.jpg"
+      "image": "img/caroti.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 2,
       "name": "Tomatoes Salad (1kg)",
       "price": 1500,
-      "image": "img/tomatoes-salad.jpg"
+      "image": "img/tomatoes-salad.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 3,
       "name": "Tomatoes Souce",
       "price": 1300,
-      "image": "img/tomatoes-souce.jpg"
+      "image": "img/tomatoes-souce.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 4,
       "name": "Red Onions (1kg)",
       "price": 1000,
-      "image": "img/red-onions.jpg"
+      "image": "img/red-onions.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 5,
       "name": "White Onion (1kg)",
       "price": 1500,
-      "image": "img/white-onion.jpg"
+      "image": "img/white-onion.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 6,
       "name": "Green Pepper (1kg)",
       "price": 1300,
-      "image": "img/green-pepper.jpg"
+      "image": "img/green-pepper.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 7,
       "name": "Cucumber (1kg)",
       "price": 1000,
-      "image": "img/cucumber.jpg"
+      "image": "img/cucumber.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 8,
       "name": "Long Dark Red Dry Beans (1kg)",
       "price": 1500,
-      "image": "img/dark-red-dry-beans.jpg"
+      "image": "img/dark-red-dry-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 9,
       "name": "Fresh Beans - Ibitonore (1kg)",
       "price": 1700,
-      "image": "img/fresh-beans.jpg"
+      "image": "img/fresh-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 10,
       "name": "Eggplant - Intoryi (1kg)",
       "price": 700,
-      "image": "img/eggplant-intoryi.jpg"
+      "image": "img/eggplant-intoryi.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 11,
       "name": "Fresh Mushrooms (1kg)",
       "price": 3500,
-      "image": "img/mushrooms.jpg"
+      "image": "img/mushrooms.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 12,
       "name": "Garlic - Peeled (250g)",
       "price": 1000,
-      "image": "img/garlic-peeled.jpg"
+      "image": "img/garlic-peeled.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 13,
       "name": "Garlic - Unpeeled (250g)",
       "price": 1200,
-      "image": "img/garlic-unpeeled.jpg"
+      "image": "img/garlic-unpeeled.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 14,
       "name": "Red Pepper (500g)",
       "price": 2000,
-      "image": "img/red-pepper.jpg"
+      "image": "img/red-pepper.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 15,
       "name": "Yellow Pepper (500g)",
       "price": 2000,
-      "image": "img/yellow-pepper.jpg"
+      "image": "img/yellow-pepper.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 16,
       "name": "Mutiki Dry Beans (1kg)",
       "price": 1500,
-      "image": "img/mutiki-dry-beans.jpg"
+      "image": "img/mutiki-dry-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 17,
       "name": "White Dry Beans (1kg)",
       "price": 1800,
-      "image": "img/white-dry-beans.jpg"
+      "image": "img/white-dry-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 18,
       "name": "Fresh Large Green Chillies (500g)",
       "price": 1800,
-      "image": "img/green-chillies.jpg"
+      "image": "img/green-chillies.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 19,
       "name": "Pill Pill (500g)",
       "price": 1800,
-      "image": "img/pill-pill.jpg"
+      "image": "img/pill-pill.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 20,
       "name": "Groundnuts Unpeeled - Ubunyobwa (1kg)",
       "price": 3000,
-      "image": "img/groundnuts-unpeeled.jpg"
+      "image": "img/groundnuts-unpeeled.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 21,
       "name": "Groundnuts Peeled - Ubunyobwa (1kg)",
       "price": 2500,
-      "image": "img/groundnuts-peeled.jpg"
+      "image": "img/groundnuts-peeled.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 22,
       "name": "Yellow Dry Beans (1kg)",
       "price": 2000,
-      "image": "img/yellow-dry-beans.jpg"
+      "image": "img/yellow-dry-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 23,
       "name": "Soya Beans (1kg)",
       "price": 2500,
-      "image": "img/soya-beans.jpg"
+      "image": "img/soya-beans.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 24,
       "name": "White Dry Maize - Imbugure (1kg)",
       "price": 2500,
-      "image": "img/white-dry-maize.jpg"
+      "image": "img/white-dry-maize.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 25,
       "name": "Chili Tomatoes (1kg)",
       "price": 4000,
-      "image": "img/chili-tomatoes.jpg"
+      "image": "img/chili-tomatoes.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 27,
       "name": "Gombe - Ocar",
       "price": 1200,
-      "image": "img/gombe.jpg"
+      "image": "img/gombe.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 28,
       "name": "Broccoli (1pc)",
       "price": 1000,
-      "image": "img/broccoli.jpg"
+      "image": "img/broccoli.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 29,
       "name": "Spinach (1pc)",
       "price": 1000,
-      "image": "img/spinach.jpg"
+      "image": "img/spinach.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 30,
       "name": "Cauliflower (1pc)",
       "price": 1000,
-      "image": "img/cauliflower.jpg"
+      "image": "img/cauliflower.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 31,
       "name": "Amaranth Green - Ibwija (1pc)",
       "price": 400,
-      "image": "img/amaranth-green.jpg"
+      "image": "img/amaranth-green.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     },
     {
       "id": 32,
       "name": "Bottle Ground (1pc)",
       "price": 600,
-      "image": "img/bottle-ground.jpg"
+      "image": "img/bottle-ground.jpg",
+      "category": "Food",
+      "subcategory": "Vegetables"
     }
   ]
 }

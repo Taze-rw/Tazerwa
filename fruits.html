@@ -910,19 +910,16 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
+<script>
 async function loadProducts(filterOptions = {}) {
   try {
     const response = await fetch("products.json");
     const data = await response.json();
 
-    // ✅ Your array is inside "products"
-    let products = data.products;
+    // ✅ Always filter to fruits only
+    let products = data.products.filter(p => p.category.toLowerCase() === "fruits");
 
-    // Apply filters if provided
-    if (filterOptions.category) {
-      products = products.filter(p => p.category.toLowerCase() === filterOptions.category.toLowerCase());
-    }
+    // Apply extra filters if provided (like subcategory)
     if (filterOptions.subcategory) {
       products = products.filter(p => p.subcategory.toLowerCase() === filterOptions.subcategory.toLowerCase());
     }
@@ -1020,14 +1017,14 @@ function closeSidebar() {
   document.getElementById('mobileOverlay').classList.remove('open');
 }
 
-// Search/filter products
+// ✅ Search/filter only fruits
 function filterProducts() {
   const input = document.getElementById('searchInput');
   const searchTerm = input.value.trim().toLowerCase();
   fetch("products.json")
     .then(res => res.json())
     .then(data => {
-      let products = data.products;
+      let products = data.products.filter(p => p.category.toLowerCase() === "fruits"); // filter to fruits only
       if (searchTerm) {
         products = products.filter(p =>
           p.name.toLowerCase().includes(searchTerm) ||
@@ -1044,9 +1041,9 @@ function filterProducts() {
 
 // Load on start
 document.addEventListener("DOMContentLoaded", function() {
-  loadProducts();
+  loadProducts(); // fruits only
   updateCartCount();
 });
-  </script>
-  </body>
+</script>
+</body>
 </html>

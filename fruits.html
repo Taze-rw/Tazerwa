@@ -1025,7 +1025,7 @@ function filterProducts() {
   const input = document.getElementById('searchInput');
   const searchTerm = input.value.trim().toLowerCase();
   fetch("products.json")
-    .then(res => res.json())
+    .then(res => res.json({ subcategory: "Fruits" }))
     .then(data => {
       let products = data.products;
       if (searchTerm) {

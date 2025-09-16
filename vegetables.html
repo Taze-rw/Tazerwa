@@ -913,7 +913,7 @@
   <script>
     async function loadProducts() {
       try {
-        const response = await fetch('products.json');
+        const response = await fetch('./products.json');
         const products = await response.json();
         const grid = document.getElementById('productsGrid');
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dairy & Eggs - Taze.rw | Fresh & Fast Delivery</title>
+  <title>Vegetables - Taze.rw | Fresh & Fast Delivery</title>
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -823,7 +823,7 @@
 
     <div class="page-title">
       <h1>Vegetables</h1>
-      <p>Fresh and Healthy farm produce</p>
+      <p>Fresh, locally sourced vegetables</p>
     </div>
   </header>
 
@@ -834,15 +834,15 @@
       <span><i class="fas fa-chevron-right"></i></span>
       <a href="food.html">Food</a>
       <span><i class="fas fa-chevron-right"></i></span>
-      <span>Vegetables/span>
+      <span>Vegetables</span>
     </div>
   </div>
 
   <!-- Search Section -->
   <div class="search-section">
     <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search veggies - carrots, tomatoes, onions...">
-      <button class="search-btn">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search vegetables - carrots, onions, spinach...">
+      <button class="search-btn" onclick="filterProducts()">
         <i class="fas fa-search"></i>
       </button>
     </div>
@@ -865,920 +865,19 @@
   <div class="products-section">
     <div class="products-header">
       <h2 class="section-title">Vegetables</h2>
-      <p class="results-count">Showing 49 veggies</p>
+      <p class="results-count" id="resultsCount">Loading products...</p>
     </div>
 
-    <div class="products-grid">
-      
-      <!-- Vegetables Products -->
-
-<!-- Product 1 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/caroti.jpg" alt="Caroti 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Caroti (1kg)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Caroti 1kg', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
+    <div class="products-grid" id="productsGrid">
+      <!-- Products will be dynamically loaded from products.json -->
     </div>
-  </div>
-</div>
-
-<!-- Product 2 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/tomatoes-salad.jpg" alt="Tomatoes Salad 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Tomatoes Salad (1kg)</h3>
-    <div class="product-price">1,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Tomatoes Salad 1kg', 1500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 3 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/tomatoes-souce.jpg" alt="Tomatoes Souce">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Tomatoes Souce</h3>
-    <div class="product-price">1,300 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Tomatoes Souce', 1300)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 4 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/red-onions.jpg" alt="Red Onions 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Red Onions (1kg)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Red Onions 1kg', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 5 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/white-onion.jpg" alt="White Onion 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">White Onion (1kg)</h3>
-    <div class="product-price">1,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('White Onion 1kg', 1500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 6 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/green-pepper.jpg" alt="Green Pepper 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Green Pepper (1kg)</h3>
-    <div class="product-price">1,300 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Green Pepper 1kg', 1300)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 7 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/cucumber.jpg" alt="Cucumber 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Cucumber (1kg)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Cucumber 1kg', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 8 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/dark-red-dry-beans.jpg" alt="Dark Red Dry Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Long Dark Red Dry Beans (1kg)</h3>
-    <div class="product-price">1,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Dark Red Dry Beans 1kg', 1500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 9 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/fresh-beans.jpg" alt="Fresh Beans Ibitonore 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Fresh Beans - Ibitonore (1kg)</h3>
-    <div class="product-price">1,700 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Fresh Beans Ibitonore 1kg', 1700)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 10 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/eggplant-intoryi.jpg" alt="Eggplant Intoryi 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Eggplant - Intoryi (1kg)</h3>
-    <div class="product-price">700 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Eggplant Intoryi 1kg', 700)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 11 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/mushrooms.jpg" alt="Fresh Mushrooms 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Fresh Mushrooms (1kg)</h3>
-    <div class="product-price">3,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Fresh Mushrooms 1kg', 3500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 12 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/garlic-peeled.jpg" alt="Garlic Peeled 250g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Garlic - Peeled (250g)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Garlic Peeled 250g', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 13 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/garlic-unpeeled.jpg" alt="Garlic Unpeeled 250g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Garlic - Unpeeled (250g)</h3>
-    <div class="product-price">1,200 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Garlic Unpeeled 250g', 1200)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 14 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/red-pepper.jpg" alt="Red Pepper 500g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Red Pepper (500g)</h3>
-    <div class="product-price">2,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Red Pepper 500g', 2000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 15 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/yellow-pepper.jpg" alt="Yellow Pepper 500g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Yellow Pepper (500g)</h3>
-    <div class="product-price">2,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Yellow Pepper 500g', 2000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 16 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/mutiki-dry-beans.jpg" alt="Mutiki Dry Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Mutiki Dry Beans (1kg)</h3>
-    <div class="product-price">1,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Mutiki Dry Beans 1kg', 1500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 17 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/white-dry-beans.jpg" alt="White Dry Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">White Dry Beans (1kg)</h3>
-    <div class="product-price">1,800 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('White Dry Beans 1kg', 1800)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 18 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/green-chillies.jpg" alt="Fresh Large Green Chillies 500g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Fresh Large Green Chillies (500g)</h3>
-    <div class="product-price">1,800 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Fresh Large Green Chillies 500g', 1800)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 19 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/pill-pill.jpg" alt="Pill Pill 500g">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Pill Pill (500g)</h3>
-    <div class="product-price">1,800 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Pill Pill 500g', 1800)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 20 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/groundnuts-unpeeled.jpg" alt="Groundnuts Unpeeled 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Groundnuts Unpeeled - Ubunyobwa (1kg)</h3>
-    <div class="product-price">3,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Groundnuts Unpeeled 1kg', 3000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 21 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/groundnuts-peeled.jpg" alt="Groundnuts Peeled 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Groundnuts Peeled - Ubunyobwa (1kg)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Groundnuts Peeled 1kg', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 22 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/yellow-dry-beans.jpg" alt="Yellow Dry Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Yellow Dry Beans (1kg)</h3>
-    <div class="product-price">2,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Yellow Dry Beans 1kg', 2000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 23 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/soya-beans.jpg" alt="Soya Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Soya Beans (1kg)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Soya Beans 1kg', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 24 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/white-dry-maize.jpg" alt="White Dry Maize 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">White Dry Maize - Imbugure (1kg)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('White Dry Maize 1kg', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 25 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/chili-tomatoes.jpg" alt="Chili Tomatoes 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Chili Tomatoes (1kg)</h3>
-    <div class="product-price">4,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Chili Tomatoes 1kg', 4000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 27 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/gombe.jpg" alt="Gombe Ocar">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Gombe - Ocar</h3>
-    <div class="product-price">1,200 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Gombe Ocar', 1200)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 28 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/broccoli.jpg" alt="Broccoli">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Broccoli (1pc)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Broccoli 1pc', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 29 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/spinach.jpg" alt="Spinach">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Spinach (1pc)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Spinach 1pc', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 30 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/cauliflower.jpg" alt="Cauliflower">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Cauliflower (1pc)</h3>
-    <div class="product-price">1,000 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Cauliflower 1pc', 1000)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 31 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/amaranth-green.jpg" alt="Amaranth Green">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Amaranth Green - Ibwija (1pc)</h3>
-    <div class="product-price">400 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Amaranth Green Ibwija 1pc', 400)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 32 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/bottle-ground.jpg" alt="Bottle Ground">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Bottle Ground (1pc)</h3>
-    <div class="product-price">600 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Bottle Ground 1pc', 600)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 33 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/cabbage.jpg" alt="Cabbage">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Cabbage - Ishu (1pc)</h3>
-    <div class="product-price">700 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Cabbage Ishu 1pc', 700)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 34 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/cassava-leaves.jpg" alt="Cassava Leaves 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Cassava Leaves - Isombe (1kg)</h3>
-    <div class="product-price">1,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Cassava Leaves Isombe 1kg', 1500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 35 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/celery.jpg" alt="Celery">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Celery (1pc)</h3>
-    <div class="product-price">500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Celery 1pc', 500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 36 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/chinese-cabbage.jpg" alt="Chinese Cabbage">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Chinese Cabbage (1pc)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Chinese Cabbage 1pc', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 37 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/dodo.jpg" alt="Dodo">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Dodo / Bunch (1pc)</h3>
-    <div class="product-price">300 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Dodo 1pc', 300)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 38 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/peliser.jpg" alt="Peliser">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Peliser (1pc)</h3>
-    <div class="product-price">500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Peliser 1pc', 500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 39 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/eggplant.jpg" alt="Eggplant">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Eggplant (1pc)</h3>
-    <div class="product-price">300 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Eggplant 1pc', 300)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 40 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/green-beans.jpg" alt="Green Beans 1kg">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Green Beans (1kg)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Green Beans 1kg', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 41 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/lettuce.jpg" alt="Lettuce">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Lettuce (1pc)</h3>
-    <div class="product-price">200 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Lettuce 1pc', 200)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 42 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/onion-leek.jpg" alt="Onion Leek">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Onion Leek / Bunch (1pc)</h3>
-    <div class="product-price">700 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Onion Leek 1pc', 700)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 43 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/radi.jpg" alt="Radi Bunch">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Radi / Bunch (1pc)</h3>
-    <div class="product-price">800 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Radi 1pc', 800)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 44 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/red-cabbage.jpg" alt="Red Cabbage">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Red Cabbage (1pc)</h3>
-    <div class="product-price">2,500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Red Cabbage 1pc', 2500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 45 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/mati.jpg" alt="Mati">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Mati (1pc)</h3>
-    <div class="product-price">400 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Mati 1pc', 400)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 46 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/small-zucchini.jpg" alt="Small Zucchini">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Small Zucchini - Petit Courgette (1pc)</h3>
-    <div class="product-price">900 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Small Zucchini 1pc', 900)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 47 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/epinard.jpg" alt="Epinard">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Epinard (1pc)</h3>
-    <div class="product-price">700 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Epinard 1pc', 700)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Product 48 -->
-<div class="product-card">
-  <div class="product-image">
-    <img src="img/thym.jpg" alt="Thym">
-  </div>
-  <div class="product-info">
-    <h3 class="product-name">Thym / Bunch (1pc)</h3>
-    <div class="product-price">500 RWF</div>
-    <div class="product-actions">
-      <button class="add-to-cart-btn" onclick="addToCart('Thym 1pc', 500)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <button class="wishlist-btn" onclick="toggleFavorite(this)">
-        <i class="far fa-heart"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-    <!-- Load More Button -->
-    <div class="load-more">
-      <button class="load-more-btn" onclick="loadMoreProducts()">
-        <i class="fas fa-plus"></i> Load More Products
-      </button>
-    </div>
-
   </div>
 
   <!-- Floating View Cart Button -->
-  <div class="view-cart-btn" onclick="viewCart()">
-    <div style="position: relative;">
-      <img src="img/cart.jpg" alt="View Cart">
-      <span class="cart-count-badge" id="cartCount">0</span>
+  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
+    <div style="position:relative;">
+      <img src="img/cart-icon.png" alt="Cart">
+      <div class="cart-count-badge" id="cartCount">0</div>
     </div>
     <span>View Cart</span>
   </div>
@@ -1786,272 +885,123 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      
-      <!-- About Us Section -->
-      <div class="footer-section">
-        <h3>About Taze</h3>
-        <p>Taze brings fresh, affordable, and high-quality products to your home. We are your trusted online delivery service in Rwanda, connecting you with the best local suppliers and international brands.</p>
+        <div class="footer-section">
+        <h3>About Taze.rw</h3>
+        <p>Your one-stop shop for fresh food and fast delivery in Kigali.</p>
       </div>
-
-      <!-- Quick Links -->
-      <div class="footer-section">
+        <div class="footer-section">
         <h3>Quick Links</h3>
-        <a href="index.html">Shop</a>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="contact-us.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-        <a href="about-us.html">About Us</a>
-      </div>
-
-      <!-- Categories -->
-      <div class="footer-section">
-        <h3>Categories</h3>
-        <a href="hot-deals.html">Hot Deals</a>
+        <a href="index.html">Home</a>
         <a href="food.html">Food</a>
         <a href="drinks.html">Drinks</a>
-        <a href="beauty.html">Beauty</a>
-        <a href="gifts.html">Gifts</a>
-        <a href="baby-stuff.html">Baby Stuff</a>
+        <a href="login.html">Login</a>
       </div>
-
-      <!-- Follow Us Section -->
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <p>Stay connected with us on social media:</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/taze_rw" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.tiktok.com/@taze_rw" target="_blank">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://wa.me/250796890044" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda</p>
-        <p><i class="fas fa-phone"></i> +250 796 890 044</p>
-        <p><i class="fas fa-envelope"></i> info@taze.rw</p>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="footer-section">
+        <div class="footer-section">
         <h3>Newsletter</h3>
-        <p>Subscribe for updates and exclusive offers:</p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="Enter your email" required>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email">
           <button type="submit">Subscribe</button>
-        </div>
+        </form>
       </div>
-
     </div>
-    
     <div class="footer-bottom">
-      <p>&copy; 2024 Taze.rw. All Rights Reserved. | Inspired by KigaliFreshCart.com</p>
+      <p>© 2025 Taze.rw. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let isLoggedIn = false; // Simulate login status
+    async function loadProducts() {
+      try {
+        const response = await fetch('products.json');
+        const products = await response.json();
+        const grid = document.getElementById('productsGrid');
 
-    function addToCart(productName, price) {
-      // Try to get unit from product name (e.g. "(1L)", "(200g)", etc.)
-      let unitMatch = productName.match(/\(([^)]+)\)/);
-      let unit = unitMatch ? unitMatch[1] : "";
+        // Filter only Vegetables under Food
+        const vegetables = products.filter(p => 
+          p.category === "Food" && p.subcategory === "Vegetables"
+        );
 
-      // Check if product already in cart
-      let existing = cart.find(item => item.productName === productName);
-      if (existing) {
-      existing.quantity += 1;
-      } else {
-      cart.push({
-        productName,
-        price,
-        unit,
-        quantity: 1
-      });
-      }
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartCount();
-
-      // Visual feedback
-      const btn = event.target.closest("button");
-      btn.innerHTML = '<i class="fas fa-check"></i> Added!';
-      btn.style.background = '#28a745';
-
-      setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
-      btn.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
-      }, 1500);
-    }
-
-    function updateCartCount() {
-      const cartCount = document.getElementById('cartCount');
-      if (cart.length > 0) {
-        cartCount.textContent = cart.length;
-        cartCount.style.display = 'flex';
-      } else {
-        cartCount.style.display = 'none';
-      }
-    }
-
-    function viewCart() {
-      if (cart.length > 0) {
-        window.location.href = 'cart.html';
-      } else {
-        alert('Your cart is empty. Start adding some fresh dairy products!');
-      }
-    }
-
-    // Mobile Sidebar Functions
-    function openSidebar() {
-      document.getElementById("mobileSidebar").classList.add("open");
-      document.getElementById("mobileOverlay").classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeSidebar() {
-      document.getElementById("mobileSidebar").classList.remove("open");
-      document.getElementById("mobileOverlay").classList.remove("open");
-      document.body.style.overflow = "auto";
-    }
-
-    // Close sidebar when clicking overlay
-    document.getElementById("mobileOverlay").addEventListener("click", closeSidebar);
-
-    // Search functionality
-    function handleSearch() {
-      const searchTerm = document.querySelector('.search-input').value.toLowerCase();
-      if (searchTerm) {
-        alert(`Searching for "${searchTerm}" in Dairy & Eggs...`);
-        // Here you would filter the products based on search term
-      }
-    }
-
-    // Quick Action Functions that require login
-    function handleFavorites() {
-      if (!isLoggedIn) {
-        alert('Please login or sign up to view your favorites!');
-        window.location.href = 'login.html';
-        return;
-      }
-      alert('Showing your favorite dairy products...');
-    }
-
-    function handleReorder() {
-      if (!isLoggedIn) {
-        alert('Please login or sign up to reorder your last purchase!');
-        window.location.href = 'login.html';
-        return;
-      }
-      alert('Reordering your last dairy purchase...');
-    }
-
-    // Favorites functionality
-    function toggleFavorite(button) {
-      if (!isLoggedIn) {
-        alert('Please login or sign up to add favorites!');
-        window.location.href = 'login.html';
-        return;
-      }
-
-      const icon = button.querySelector('i');
-      if (icon.classList.contains('far')) {
-        icon.classList.remove('far');
-        icon.classList.add('fas');
-        button.classList.add('favorited');
-        alert('Added to favorites!');
-      } else {
-        icon.classList.remove('fas');
-        icon.classList.add('far');
-        button.classList.remove('favorited');
-        alert('Removed from favorites!');
-      }
-    }
-
-    // Load More Products
-    function loadMoreProducts() {
-      const productsGrid = document.querySelector('.products-grid');
-      const loadMoreBtn = document.querySelector('.load-more-btn');
-      
-      // Show loading state
-      loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-      loadMoreBtn.disabled = true;
-      
-      // Simulate loading delay
-      setTimeout(() => {
-        // Add more dairy products
-        const newProducts = [
-          { name: 'Cheddar Cheese (200g)', price: 4800, image: 'cheddar.jpg', badge: 'Sharp' },
-          { name: 'Organic Milk (1L)', price: 2100, image: 'organic-milk.jpg', badge: 'Organic' },
-          { name: 'Double Cream (300ml)', price: 4200, image: 'double-cream.jpg', badge: 'Rich' }
-        ];
-        
-        newProducts.forEach(product => {
-          const productCard = document.createElement('div');
-          productCard.className = 'product-card';
-          productCard.innerHTML = `
+        grid.innerHTML = '';
+        vegetables.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
             <div class="product-image">
-              <img src="img/${product.image}" alt="${product.name}">
-              <div class="product-badge">${product.badge}</div>
+              <img src="${product.image}" alt="${product.name}">
             </div>
             <div class="product-info">
-              <div class="product-status in-stock">✓ In Stock</div>
               <h3 class="product-name">${product.name}</h3>
-              <div class="product-price">${product.price.toLocaleString()} RWF</div>
+              <div class="product-price">${product.price} RWF</div>
               <div class="product-actions">
-                <button class="add-to-cart-btn" onclick="addToCart('${product.name}', ${product.price})">
-                  <i class="fas fa-cart-plus"></i> Add to Cart
-                </button>
-                <button class="wishlist-btn" onclick="toggleFavorite(this)">
-                  <i class="far fa-heart"></i>
-                </button>
+                <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">Add to Cart</button>
+                <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')"><i class="fas fa-heart"></i></button>
               </div>
             </div>
           `;
-          productsGrid.appendChild(productCard);
+          grid.appendChild(card);
         });
-        
-        // Update results count
-        const resultsCount = document.querySelector('.results-count');
-        resultsCount.textContent = 'Showing 15 of 45 dairy products';
-        
-        // Reset button
-        loadMoreBtn.innerHTML = '<i class="fas fa-plus"></i> Load More Products';
-        loadMoreBtn.disabled = false;
-        
-      }, 1000);
+
+        document.getElementById('resultsCount').textContent = `Showing ${vegetables.length} vegetable products`;
+      } catch (error) {
+        console.error("Error loading products:", error);
+      }
     }
 
-    // Search on Enter key and other event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-      updateCartCount();
-      
-      document.querySelector('.search-input').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          handleSearch();
-        }
+    function filterProducts() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        const name = card.querySelector('.product-name').textContent.toLowerCase();
+        card.style.display = name.includes(query) ? 'block' : 'none';
       });
-      
-      document.querySelector('.search-btn').addEventListener('click', handleSearch);
-      
-      // Newsletter form
-      document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.querySelector('input').value;
-        if (email) {
-          alert('Thank you for subscribing! You\'ll receive our latest dairy & egg deals and offers.');
-          this.querySelector('input').value = '';
-        }
-      });
-    });
-  </script>
+    }
 
-</body>
+    function addToCart(productId) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id: productId, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const badge = document.getElementById('cartCount');
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    function toggleWishlist(productId) {
+      alert("Wishlist feature coming soon!");
+    }
+
+    function handleFavorites() {
+      alert("Favorites feature coming soon!");
+    }
+
+    function handleReorder() {
+      alert("Reorder feature coming soon!");
+    }
+
+    // Sidebar functions
+    function openSidebar() {
+      document.getElementById('mobileSidebar').classList.add('open');
+      document.getElementById('mobileOverlay').classList.add('open');
+    }
+    function closeSidebar() {
+      document.getElementById('mobileSidebar').classList.remove('open');
+      document.getElementById('mobileOverlay').classList.remove('open');
+    }
+
+    // Load on start
+    loadProducts();
+    updateCartCount();
+  </script>
+  </body>
 </html>

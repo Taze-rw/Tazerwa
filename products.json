@@ -1,26 +1,190 @@
-[
-  {
-    "id": 1,
-    "name": "Fresh Milk 1L",
-    "category": "Dairy",
-    "price": 1500,
-    "description": "Organic fresh milk rich in calcium",
-    "image": "img/dairy/milk.jpg"
-  },
-  {
-    "id": 2,
-    "name": "Brown Bread",
-    "category": "Bakery",
-    "price": 1200,
-    "description": "Healthy brown bread baked daily",
-    "image": "img/bakery/bread.jpg"
-  },
-  {
-    "id": 3,
-    "name": "Apples",
-    "category": "Fruits",
-    "price": 2500,
-    "description": "Fresh red apples",
-    "image": "img/fruits/apples.jpg"
-  }
-]
+{
+  "vegetables": [
+    {
+      "id": 1,
+      "name": "Caroti (1kg)",
+      "price": 1000,
+      "image": "img/caroti.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Tomatoes Salad (1kg)",
+      "price": 1500,
+      "image": "img/tomatoes-salad.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Tomatoes Souce",
+      "price": 1300,
+      "image": "img/tomatoes-souce.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Red Onions (1kg)",
+      "price": 1000,
+      "image": "img/red-onions.jpg"
+    },
+    {
+      "id": 5,
+      "name": "White Onion (1kg)",
+      "price": 1500,
+      "image": "img/white-onion.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Green Pepper (1kg)",
+      "price": 1300,
+      "image": "img/green-pepper.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Cucumber (1kg)",
+      "price": 1000,
+      "image": "img/cucumber.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Long Dark Red Dry Beans (1kg)",
+      "price": 1500,
+      "image": "img/dark-red-dry-beans.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Fresh Beans - Ibitonore (1kg)",
+      "price": 1700,
+      "image": "img/fresh-beans.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Eggplant - Intoryi (1kg)",
+      "price": 700,
+      "image": "img/eggplant-intoryi.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Fresh Mushrooms (1kg)",
+      "price": 3500,
+      "image": "img/mushrooms.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Garlic - Peeled (250g)",
+      "price": 1000,
+      "image": "img/garlic-peeled.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Garlic - Unpeeled (250g)",
+      "price": 1200,
+      "image": "img/garlic-unpeeled.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Red Pepper (500g)",
+      "price": 2000,
+      "image": "img/red-pepper.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Yellow Pepper (500g)",
+      "price": 2000,
+      "image": "img/yellow-pepper.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Mutiki Dry Beans (1kg)",
+      "price": 1500,
+      "image": "img/mutiki-dry-beans.jpg"
+    },
+    {
+      "id": 17,
+      "name": "White Dry Beans (1kg)",
+      "price": 1800,
+      "image": "img/white-dry-beans.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Fresh Large Green Chillies (500g)",
+      "price": 1800,
+      "image": "img/green-chillies.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Pill Pill (500g)",
+      "price": 1800,
+      "image": "img/pill-pill.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Groundnuts Unpeeled - Ubunyobwa (1kg)",
+      "price": 3000,
+      "image": "img/groundnuts-unpeeled.jpg"
+    },
+    {
+      "id": 21,
+      "name": "Groundnuts Peeled - Ubunyobwa (1kg)",
+      "price": 2500,
+      "image": "img/groundnuts-peeled.jpg"
+    },
+    {
+      "id": 22,
+      "name": "Yellow Dry Beans (1kg)",
+      "price": 2000,
+      "image": "img/yellow-dry-beans.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Soya Beans (1kg)",
+      "price": 2500,
+      "image": "img/soya-beans.jpg"
+    },
+    {
+      "id": 24,
+      "name": "White Dry Maize - Imbugure (1kg)",
+      "price": 2500,
+      "image": "img/white-dry-maize.jpg"
+    },
+    {
+      "id": 25,
+      "name": "Chili Tomatoes (1kg)",
+      "price": 4000,
+      "image": "img/chili-tomatoes.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Gombe - Ocar",
+      "price": 1200,
+      "image": "img/gombe.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Broccoli (1pc)",
+      "price": 1000,
+      "image": "img/broccoli.jpg"
+    },
+    {
+      "id": 29,
+      "name": "Spinach (1pc)",
+      "price": 1000,
+      "image": "img/spinach.jpg"
+    },
+    {
+      "id": 30,
+      "name": "Cauliflower (1pc)",
+      "price": 1000,
+      "image": "img/cauliflower.jpg"
+    },
+    {
+      "id": 31,
+      "name": "Amaranth Green - Ibwija (1pc)",
+      "price": 400,
+      "image": "img/amaranth-green.jpg"
+    },
+    {
+      "id": 32,
+      "name": "Bottle Ground (1pc)",
+      "price": 600,
+      "image": "img/bottle-ground.jpg"
+    }
+  ]
+}

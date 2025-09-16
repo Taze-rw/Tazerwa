@@ -1024,16 +1024,21 @@ function closeSidebar() {
 function filterProducts() {
   const input = document.getElementById('searchInput');
   const searchTerm = input.value.trim().toLowerCase();
+
   fetch("products.json")
     .then(res => res.json())
     .then(data => {
-      let products = data.products;
+      // ✅ Always limit to Fruits subcategory
+      let products = data.products.filter(p => p.subcategory.toLowerCase() === "vegetables");
+
+      // ✅ If search term exists, filter further
       if (searchTerm) {
         products = products.filter(p =>
           p.name.toLowerCase().includes(searchTerm) ||
           (p.description && p.description.toLowerCase().includes(searchTerm))
         );
       }
+
       displayProducts(products);
       document.getElementById("resultsCount").textContent = `${products.length} products found`;
     })
@@ -1042,10 +1047,25 @@ function filterProducts() {
     });
 }
 
+// ✅ Trigger search on Enter key
+document.getElementById('searchInput').addEventListener('keydown', function (event) {
+  if (event.key === "Enter") {
+    filterProducts();
+  }
+});
+
+// ✅ Also reset to all veggies when search bar is cleared
+document.getElementById('searchInput').addEventListener('input', function () {
+  if (this.value.trim() === "") {
+    filterProducts(); // reload all veggies
+  }
+});
+
+
 // Load on start
 document.addEventListener("DOMContentLoaded", function() {
-  loadProducts();
-  updateCartCount();
+  loadProducts({ subcategory: "Vegetables" });
+  updateCartCount({ subcategory: "Vegetables" });
 });
   </script>
   </body>

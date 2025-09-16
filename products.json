@@ -247,6 +247,231 @@
       "image": "img/bottle-ground.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
-    }
-  ]
+    },
+  {
+    "id":33,
+    "name": "Mangoes (1kg)",
+    "price": 5000,
+    "image": "img/mangoes.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 34,
+    "name": "Banana (1pc)",
+    "price": 0,
+    "image": "img/banana.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 35,
+    "name": "Pineapple (1pc)",
+    "price": 1000,
+    "image": "img/pineapple.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 36,
+    "name": "Passion (1kg)",
+    "price": 2200,
+    "image": "img/passion.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 37,
+    "name": "Papaya (1pc)",
+    "price": 1000,
+    "image": "img/papaya.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 38,
+    "name": "Orange (1pc)",
+    "price": 700,
+    "image": "img/orange.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 39,
+    "name": "Apple (1pc)",
+    "price": 700,
+    "image": "img/apple.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 40,
+    "name": "Blueberry (500gm)",
+    "price": 0,
+    "image": "img/blueberry.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 41,
+    "name": "Blackberry (500gm)",
+    "price": 0,
+    "image": "img/blackberry.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 42,
+    "name": "Mandarin (1kg)",
+    "price": 2000,
+    "image": "img/mandarin.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 43,
+    "name": "Lemon (1kg)",
+    "price": 1500,
+    "image": "img/lemon.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 44,
+    "name": "Kiwi (1pc)",
+    "price": 2500,
+    "image": "img/kiwi.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 45,
+    "name": "Strawberry (1kg)",
+    "price": 3500,
+    "image": "img/strawberry.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 46,
+    "name": "Grape",
+    "price": 0,
+    "image": "img/grape.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 47,
+    "name": "Coconut (1pc)",
+    "price": 2000,
+    "image": "img/coconut.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 48,
+    "name": "Dates (500gm)",
+    "price": 2500,
+    "image": "img/dates.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 49,
+    "name": "Avocado (1pc)",
+    "price": 800,
+    "image": "img/avocado.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 50,
+    "name": "Pumpkin",
+    "price": 0,
+    "image": "img/pumpkin.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 51,
+    "name": "Sugar Cane (1kg)",
+    "price": 1500,
+    "image": "img/sugarcane.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 52,
+    "name": "Orange Fruit",
+    "price": 1200,
+    "image": "img/orange-fruit.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 53,
+    "name": "Watermelon (1pc)",
+    "price": 3500,
+    "image": "img/watermelon.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 54,
+    "name": "Tree Tomato (1kg)",
+    "price": 1700,
+    "image": "img/treetomato.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 55,
+    "name": "Small Sweet Banana (15 pcs)",
+    "price": 2000,
+    "image": "img/small-sweet-banana.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 56,
+    "name": "Garmichel Sweet Banana (10pcs)",
+    "price": 1500,
+    "image": "img/garmichel-sweet-banana.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 57,
+    "name": "Red Grapes",
+    "price": 7500,
+    "image": "img/red-grapes.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 58,
+    "name": "Lacol Orange (1kg)",
+    "price": 1500,
+    "image": "img/lacol-orange.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 59,
+    "name": "Golden Berry (1kg)",
+    "price": 1500,
+    "image": "img/golden-berry.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  },
+  {
+    "id": 60,
+    "name": "Granadila Yellow (1kg)",
+    "price": 1500,
+    "image": "img/granadila-yellow.jpg",
+    "category": "Food",
+    "subcategory": "Fruits"
+  }
+]
+
 }

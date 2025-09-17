@@ -1,1996 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taze Admin Dashboard - Order & Product Management</title>
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tazerwa — Admin: Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .dashboard-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-
-    /* Header */
-    .dashboard-header {
-      background: linear-gradient(135deg, #28a745, #20c997);
-      color: white;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      position: relative;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .logo {
-      width: 50px;
-      height: 50px;
-      background: white;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      color: #28a745;
-      font-weight: bold;
-    }
-
-    .header-info h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .header-info p {
-      opacity: 0.9;
-      font-size: 14px;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .notification-bell {
-      position: relative;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      width: 45px;
-      height: 45px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
-    .notification-bell:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .notification-count {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background: #ff4757;
-      color: white;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: #ffc107;
-      color: #333;
-    }
-
-    .btn-primary:hover {
-      background: #e0a800;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Navigation Tabs */
-    .nav-tabs {
-      background: white;
-      padding: 0 30px;
-      border-bottom: 2px solid #f1f3f4;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
-    }
-
-    .nav-tab {
-      padding: 15px 25px;
-      background: none;
-      border: none;
-      color: #6c757d;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-tab.active {
-      color: #28a745;
-      border-bottom-color: #28a745;
-    }
-
-    .nav-tab:hover {
-      color: #28a745;
-    }
-
-    /* Content Area */
-    .content-area {
-      padding: 30px;
-      min-height: 500px;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-
-    /* Statistics Cards */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .stat-card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid #28a745;
-      transition: transform 0.3s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .stat-value {
-      font-size: 28px;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 5px;
-    }
-
-    .stat-label {
-      color: #6c757d;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .stat-change {
-      font-size: 12px;
-      margin-top: 5px;
-    }
-
-    .stat-change.positive {
-      color: #28a745;
-    }
-
-    .stat-change.negative {
-      color: #dc3545;
-    }
-
-    /* Product Form */
-    .form-container {
-      background: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 30px;
-    }
-
-    .form-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #f1f3f4;
-    }
-
-    .form-header h3 {
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      font-size: 18px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 25px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group label {
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .form-control {
-      padding: 12px 15px;
-      border: 2px solid #e9ecef;
-      border-radius: 10px;
-      font-size: 14px;
-      transition: border-color 0.3s ease;
-      background: #f8f9fa;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: #28a745;
-      background: white;
-    }
-
-    .textarea {
-      min-height: 80px;
-      resize: vertical;
-    }
-
-    /* Image Upload */
-    .image-upload {
-      grid-column: 1 / -1;
-    }
-
-    .image-upload-area {
-      border: 2px dashed #dee2e6;
-      border-radius: 10px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      background: #f8f9fa;
-    }
-
-    .image-upload-area:hover {
-      border-color: #28a745;
-      background: #f0f8f0;
-    }
-
-    .image-upload-area.dragover {
-      border-color: #28a745;
-      background: #e8f5e8;
-    }
-
-    .upload-icon {
-      font-size: 48px;
-      color: #28a745;
-      margin-bottom: 15px;
-    }
-
-    .upload-text {
-      color: #6c757d;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    .upload-hint {
-      color: #9ca3af;
-      font-size: 12px;
-    }
-
-    .image-preview {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .preview-item {
-      position: relative;
-      aspect-ratio: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .preview-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .preview-remove {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: #ff4757;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    /* Products List */
-    .products-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .search-filter {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .search-box {
-      position: relative;
-    }
-
-    .search-input {
-      padding: 10px 15px 10px 40px;
-      border: 2px solid #e9ecef;
-      border-radius: 25px;
-      font-size: 14px;
-      background: #f8f9fa;
-      transition: all 0.3s ease;
-      min-width: 250px;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: #28a745;
-      background: white;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #6c757d;
-    }
-
-    .filter-select {
-      padding: 10px 15px;
-      border: 2px solid #e9ecef;
-      border-radius: 10px;
-      background: #f8f9fa;
-      font-size: 14px;
-    }
-
-    /* Products Grid */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      border: 1px solid #f1f3f4;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 150px;
-      background: #f8f9fa;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      background: #28a745;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    .product-info h4 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .product-price {
-      font-size: 18px;
-      font-weight: 700;
-      color: #28a745;
-      margin-bottom: 15px;
-    }
-
-    .product-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-    }
-
-    .btn-edit {
-      background: #17a2b8;
-      color: white;
-      flex: 1;
-    }
-
-    .btn-edit:hover {
-      background: #138496;
-    }
-
-    .btn-delete {
-      background: #dc3545;
-      color: white;
-      padding: 8px 12px;
-    }
-
-    .btn-delete:hover {
-      background: #c82333;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-    }
-
-    .modal.show {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .modal-content {
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #f1f3f4;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: #6c757d;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-    }
-
-    .modal-close:hover {
-      background: #f8f9fa;
-      color: #333;
-    }
-
-    /* Orders Table */
-    .table-container {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .table th,
-    .table td {
-      padding: 15px;
-      text-align: left;
-      border-bottom: 1px solid #f1f3f4;
-    }
-
-    .table th {
-      background: #f8f9fa;
-      font-weight: 600;
-      color: #333;
-      font-size: 14px;
-    }
-
-    .table td {
-      font-size: 14px;
-    }
-
-    .table tbody tr:hover {
-      background: #f8f9fa;
-    }
-
-    .status-badge {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .status-pending {
-      background: #fff3cd;
-      color: #856404;
-    }
-
-    .status-completed {
-      background: #d4edda;
-      color: #155724;
-    }
-
-    .status-processing {
-      background: #cce7ff;
-      color: #0056b3;
-    }
-
-    .status-cancelled {
-      background: #f8d7da;
-      color: #721c24;
-    }
-
-    /* Charts and Analytics */
-    .chart-container {
-      background: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 20px;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6c757d;
-    }
-
-    .analytics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    /* Notification */
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #28a745;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      z-index: 1001;
-      transform: translateX(400px);
-      transition: transform 0.3s ease;
-      max-width: 300px;
-    }
-
-    .notification.show {
-      transform: translateX(0);
-    }
-
-    .notification.error {
-      background: #dc3545;
-    }
-
-    .notification.info {
-      background: #17a2b8;
-    }
-
-    /* Order Notification Popup */
-    .order-notification {
-      position: fixed;
-      top: 80px;
-      right: 20px;
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      border-left: 4px solid #ffc107;
-      z-index: 1002;
-      transform: translateX(400px);
-      transition: transform 0.3s ease;
-      max-width: 350px;
-    }
-
-    .order-notification.show {
-      transform: translateX(0);
-    }
-
-    .order-notification h4 {
-      color: #333;
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-
-    .order-notification p {
-      color: #6c757d;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .order-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .btn-sm {
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      .dashboard-header {
-        padding: 15px 20px;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .content-area {
-        padding: 20px 15px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .search-filter {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-input {
-        min-width: auto;
-        width: 100%;
-      }
-
-      .nav-tabs {
-        padding: 0 15px;
-      }
-
-      .nav-tab {
-        padding: 12px 15px;
-        font-size: 14px;
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-      }
-
-      .modal-content {
-        padding: 20px;
-        margin: 10px;
-      }
-
-      .table-container {
-        overflow-x: auto;
-      }
-
-      .table {
-        min-width: 600px;
-      }
-
-      .analytics-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .header-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .btn {
-        justify-content: center;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(100%); }
-      to { transform: translateX(0); }
-    }
-
-    .new-order-alert {
-      animation: slideIn 0.5s ease;
-    }
+    /* keep your previous CSS unchanged */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Roboto',sans-serif;background:#fafafa;overflow-x:hidden;line-height:1.6;color:#222}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(135deg,#6e7969,#20c997);color:white}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:84px}
+    .top-nav a.home-btn{background:transparent;color:white;border:2px solid rgba(255,255,255,0.12);padding:8px 14px;border-radius:20px;text-decoration:none}
+    .container{max-width:1200px;margin:28px auto;padding:0 20px}
+    h1{font-family:'Poppins',sans-serif;margin-bottom:6px}
+    p.lead{color:#556; margin-bottom:18px}
+    .filter-row{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    select.form-control,input.form-control{padding:12px;border-radius:10px;border:1px solid #e9ecef;min-width:180px}
+    .add-toggle{display:flex;justify-content:center;margin:18px 0}
+    .plus-btn{width:44px;height:44px;border-radius:50%;background:white;border:none;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+    .add-form{background:white;padding:16px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,0.06);margin-bottom:22px;display:none}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .form-row{display:flex;flex-direction:column;gap:6px}
+    label{font-size:13px;color:#444}
+    .btn{padding:10px 16px;border-radius:10px;border:none;cursor:pointer}
+    .btn-primary{background:linear-gradient(45deg,#6e7969,#20c997);color:white}
+    .btn-danger{background:#ff6b6b;color:white}
+    .btn-outline{background:transparent;border:1px solid #e9ecef}
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .product-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all .3s;height:320px;display:flex;flex-direction:column;border:1px solid #f1f3f4}
+    .product-image{height:160px;background:#f8f9fa;overflow:hidden}
+    .product-image img{width:100%;height:100%;object-fit:cover}
+    .product-info{padding:14px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .product-name{font-family:'Poppins',sans-serif;font-size:14px;color:#333;margin-bottom:6px;font-weight:600}
+    .product-price{font-size:15px;color:#6e7969;font-weight:700}
+    .product-actions{display:flex;gap:8px;margin-top:12px}
+    .small-btn{padding:8px 10px;border-radius:10px;border:none;cursor:pointer}
+    .small-btn.edit{background:#28a745;color:white} /* green edit button */
+    .small-btn.delete{background:#ff6b6b;color:white}
+    footer{background:linear-gradient(135deg,#333,#555);color:white;padding:28px 0;margin-top:30px}
+    .footer-content{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+    @media(max-width:900px){.products-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.products-grid{grid-template-columns:1fr}}
+    .center{text-align:center}
+    .muted{color:#6c757d;font-size:13px}
+    .controls{display:flex;gap:8px;align-items:center}
   </style>
 </head>
 <body>
-
-  <div class="dashboard-container">
-    <!-- Header -->
-    <header class="dashboard-header">
-      <div class="header-left">
-        <div class="logo">T</div>
-        <div class="header-info">
-          <h1>Taze Admin Dashboard</h1>
-          <p>Manage orders, products, and analytics</p>
-        </div>
-      </div>
-      <div class="header-actions">
-        <button class="notification-bell" onclick="toggleNotifications()">
-          <i class="fas fa-bell"></i>
-          <span class="notification-count" id="notificationCount">3</span>
-        </button>
-        <a href="dairy-eggs.html" class="btn btn-secondary" target="_blank">
-          <i class="fas fa-eye"></i> View Store
-        </a>
-        <button class="btn btn-primary" onclick="showAddProductModal()">
-          <i class="fas fa-plus"></i> Add Product
-        </button>
-      </div>
-    </header>
-
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs">
-      <button class="nav-tab active" onclick="showTab('dashboard')">
-        <i class="fas fa-tachometer-alt"></i> Dashboard
-      </button>
-      <button class="nav-tab" onclick="showTab('products')">
-        <i class="fas fa-box"></i> Products
-      </button>
-      <button class="nav-tab" onclick="showTab('orders')">
-        <i class="fas fa-shopping-cart"></i> Orders
-      </button>
-      <button class="nav-tab" onclick="showTab('analytics')">
-        <i class="fas fa-chart-bar"></i> Analytics
-      </button>
-      <button class="nav-tab" onclick="showTab('settings')">
-        <i class="fas fa-cog"></i> Settings
-      </button>
-    </nav>
-
-    <!-- Content Area -->
-    <div class="content-area">
-      
-      <!-- Dashboard Tab -->
-      <div id="dashboard" class="tab-content active">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <div class="stat-value" id="totalProducts">24</div>
-            <div class="stat-label">Total Products</div>
-            <div class="stat-change positive">+3 this week</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="totalOrders">156</div>
-            <div class="stat-label">Total Orders</div>
-            <div class="stat-change positive">+12 today</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="totalRevenue">₨485,000</div>
-            <div class="stat-label">Total Revenue</div>
-            <div class="stat-change positive">+8.2% this month</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value" id="pendingOrders">8</div>
-            <div class="stat-label">Pending Orders</div>
-            <div class="stat-change">Needs attention</div>
-          </div>
-        </div>
-
-        <div class="form-container">
-          <div class="form-header">
-            <h3>Quick Product Add</h3>
-          </div>
-          <form id="quickAddForm">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="quickName">Product Name</label>
-                <input type="text" id="quickName" class="form-control" placeholder="Enter product name" required>
-              </div>
-              <div class="form-group">
-                <label for="quickPrice">Price (RWF)</label>
-                <input type="number" id="quickPrice" class="form-control" placeholder="0" required>
-              </div>
-              <div class="form-group">
-                <label for="quickCategory">Category</label>
-                <select id="quickCategory" class="form-control" required>
-                  <option value="">Select Category</option>
-                  <option value="dairy">Dairy & Eggs</option>
-                  <option value="fruits">Fruits & Vegetables</option>
-                  <option value="meat">Meat & Poultry</option>
-                  <option value="drinks">Drinks</option>
-                  <option value="snacks">Snacks</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="quickDescription">Product Description</label>
-              <textarea id="quickDescription" class="form-control textarea" placeholder="Brief description of the product..." required></textarea>
-            </div>
-
-            <div class="form-group image-upload">
-              <label>Product Image</label>
-              <div class="image-upload-area" onclick="document.getElementById('quickImageInput').click()">
-                <div class="upload-icon">
-                  <i class="fas fa-camera"></i>
-                </div>
-                <div class="upload-text">Click to upload product image</div>
-                <div class="upload-hint">PNG, JPG up to 5MB</div>
-              </div>
-              <input type="file" id="quickImageInput" accept="image/*" style="display: none;" onchange="handleQuickImageUpload(event)">
-              <div id="quickImagePreview" class="image-preview"></div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-plus"></i> Add Product
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Products Tab -->
-      <div id="products" class="tab-content">
-        <div class="products-header">
-          <h3>Product Management</h3>
-          <div class="search-filter">
-            <div class="search-box">
-              <i class="fas fa-search search-icon"></i>
-              <input type="text" class="search-input" id="productSearch" placeholder="Search all website products..." onkeyup="filterProducts()">
-            </div>
-            <select class="filter-select" id="categoryFilter" onchange="filterByCategory()">
-              <option value="all">All Categories</option>
-              <option value="dairy">Dairy & Eggs</option>
-              <option value="fruits">Fruits & Vegetables</option>
-              <option value="meat">Meat & Poultry</option>
-              <option value="drinks">Drinks</option>
-              <option value="snacks">Snacks</option>
-            </select>
-            <button class="btn btn-primary" onclick="showAddProductModal()">
-              <i class="fas fa-plus"></i> Add Product
-            </button>
-          </div>
-        </div>
-
-        <div class="products-grid" id="productsGrid">
-          <!-- Products will be loaded here -->
-        </div>
-      </div>
-
-      <!-- Orders Tab -->
-      <div id="orders" class="tab-content">
-        <div class="form-container">
-          <div class="form-header">
-            <h3>Order Management</h3>
-            <div class="search-filter">
-              <select class="filter-select" id="orderStatusFilter" onchange="filterOrders()">
-                <option value="all">All Orders</option>
-                <option value="pending">Pending</option>
-                <option value="processing">Processing</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
-              </select>
-              <button class="btn btn-secondary" onclick="refreshOrders()">
-                <i class="fas fa-refresh"></i> Refresh
-              </button>
-            </div>
-          </div>
-          
-          <div class="table-container">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Customer</th>
-                  <th>Phone</th>
-                  <th>Items</th>
-                  <th>Total</th>
-                  <th>Payment</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="ordersTableBody">
-                <!-- Orders will be loaded here -->
-              </tbody>
-            </table>
-          </div>
-          
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-value" id="todayOrders">12</div>
-              <div class="stat-label">Today's Orders</div>
-              <div class="stat-change positive">+3 from yesterday</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value" id="weeklyRevenue">₨125,400</div>
-              <div class="stat-label">This Week's Revenue</div>
-              <div class="stat-change positive">+15.2% from last week</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value" id="avgOrderValue">₨3,200</div>
-              <div class="stat-label">Average Order Value</div>
-              <div class="stat-change positive">+₨200 improvement</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Analytics Tab -->
-      <div id="analytics" class="tab-content">
-        <div class="analytics-grid">
-          <div class="chart-container">
-            <div>
-              <h4 style="color: #333; margin-bottom: 10px;">Sales Trend (Last 30 Days)</h4>
-              <canvas id="salesChart" style="color: #6c757d;">
-                📈 Daily sales showing upward trend with peak days on weekends. 
-                Average daily sales: ₨16,200
-              </canvas>
-            </div>
-          </div>
-          
-          <div class="chart-container">
-            <div>
-              <h4 style="color: #333; margin-bottom: 10px;">Top Categories</h4>
-              <div style="text-align: left; color: #6c757d;">
-                <p>🥛 Dairy & Eggs: 35% (₨169,750)</p>
-                <p>🍎 Fruits & Vegetables: 28% (₨135,800)</p>
-                <p>🥤 Drinks: 18% (₨87,300)</p>
-                <p>🍖 Meat & Poultry: 12% (₨58,200)</p>
-                <p>🍿 Snacks: 7% (₨33,950)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-container">
-          <div class="form-header">
-            <h3>Performance Metrics</h3>
-          </div>
-          
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-value">94.5%</div>
-              <div class="stat-label">Customer Satisfaction</div>
-              <div class="stat-change positive">+2.1% this month</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">18 min</div>
-              <div class="stat-label">Avg. Delivery Time</div>
-              <div class="stat-change positive">-3 min improvement</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">76%</div>
-              <div class="stat-label">Repeat Customers</div>
-              <div class="stat-change positive">+5% growth</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">2.3%</div>
-              <div class="stat-label">Return Rate</div>
-              <div class="stat-change positive">-0.5% decrease</div>
-            </div>
-          </div>
-          
-          <div style="margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
-            <h4 style="color: #333; margin-bottom: 15px;">📊 Weekly Summary</h4>
-            <ul style="color: #6c757d; line-height: 1.8;">
-              <li><strong>Best Selling Product:</strong> Fresh Whole Milk (89 units sold)</li>
-              <li><strong>Peak Order Time:</strong> 6:00 PM - 8:00 PM</li>
-              <li><strong>Most Popular Day:</strong> Saturday (28% of weekly orders)</li>
-              <li><strong>New Customers:</strong> 23 new registrations this week</li>
-              <li><strong>Payment Method:</strong> 65% Mobile Money, 35% Cash on Delivery</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Settings Tab -->
-      <div id="settings" class="tab-content">
-        <div class="form-container">
-          <div class="form-header">
-            <h3>Store Settings</h3>
-          </div>
-          <form id="storeSettingsForm">
-            <div class="form-grid">
-              <div class="form-group">
-                <label>Store Name</label>
-                <input type="text" class="form-control" id="storeName" value="Taze Fresh Market">
-              </div>
-              <div class="form-group">
-                <label>Contact Phone</label>
-                <input type="tel" class="form-control" id="storePhone" value="+250 796 890 044">
-              </div>
-              <div class="form-group">
-                <label>Admin Email</label>
-                <input type="email" class="form-control" id="adminEmail" value="admin@taze.rw">
-              </div>
-              <div class="form-group">
-                <label>Notification Email</label>
-                <input type="email" class="form-control" id="notificationEmail" value="orders@taze.rw">
-              </div>
-              <div class="form-group">
-                <label>Currency</label>
-                <select class="form-control" id="currency">
-                  <option value="RWF" selected>Rwandan Franc (RWF)</option>
-                  <option value="USD">US Dollar (USD)</option>
-                  <option value="EUR">Euro (EUR)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>Delivery Fee</label>
-                <input type="number" class="form-control" id="deliveryFee" value="2000" placeholder="Default delivery fee">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label>Store Description</label>
-              <textarea class="form-control textarea" id="storeDescription">Fresh groceries delivered fast to your doorstep in Kigali. Quality products at affordable prices with reliable service.</textarea>
-            </div>
-            
-            <div class="form-group">
-              <label>Auto-Email Notifications</label>
-              <div style="margin-top: 10px;">
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; margin-bottom: 8px;">
-                  <input type="checkbox" id="emailNewOrders" checked style="margin: 0;">
-                  Send email for new orders
-                </label>
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; margin-bottom: 8px;">
-                  <input type="checkbox" id="emailPaymentConfirm" checked style="margin: 0;">
-                  Send email for payment confirmations
-                </label>
-                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal;">
-                  <input type="checkbox" id="emailDailySummary" checked style="margin: 0;">
-                  Send daily order summary
-                </label>
-              </div>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-save"></i> Save Settings
-            </button>
-          </form>
-        </div>
-        
-        <div class="form-container">
-          <div class="form-header">
-            <h3>System Status</h3>
-          </div>
-          
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-value" style="color: #28a745;">Online</div>
-              <div class="stat-label">Store Status</div>
-              <div class="stat-change">All systems operational</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">99.8%</div>
-              <div class="stat-label">Uptime This Month</div>
-              <div class="stat-change positive">Above target</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">1.2s</div>
-              <div class="stat-label">Avg. Page Load</div>
-              <div class="stat-change positive">Excellent performance</div>
-            </div>
-          </div>
-          
-          <div style="margin-top: 20px; padding: 20px; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #28a745;">
-            <h4 style="color: #155724; margin-bottom: 15px;">🚀 System Information</h4>
-            <ul style="color: #155724; line-height: 1.8;">
-              <li><strong>Last Backup:</strong> Today at 3:00 AM</li>
-              <li><strong>Database Status:</strong> Healthy (2.1GB used)</li>
-              <li><strong>Email Service:</strong> Connected and functioning</li>
-              <li><strong>Payment Gateway:</strong> Active (MTN Mobile Money, Airtel Money)</li>
-              <li><strong>SSL Certificate:</strong> Valid until Dec 2024</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+  <header class="top-nav">
+    <div class="logo" style="margin:auto">
+      <img src="img/taze-logo.png" alt="Tazerwa logo">
     </div>
-  </div>
+    <a class="home-btn" href="https://tazerwa.com" target="_blank" style="position:absolute;left:24px">Home</a>
+  </header>
 
-  <!-- Add/Edit Product Modal -->
-  <div id="productModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modalTitle">Add New Product</h3>
-        <button class="modal-close" onclick="closeProductModal()">×</button>
-      </div>
-      
+  <main class="container">
+    <h1 class="center">Manage Products</h1>
+
+    <!-- Filters -->
+    <div class="filter-row">
+      <select id="categorySelect" class="form-control">
+        <option value="">Select category</option>
+      </select>
+      <select id="subcategorySelect" class="form-control" disabled>
+        <option value="">Select subcategory</option>
+      </select>
+    </div>
+
+    <!-- Add toggle -->
+    <div class="add-toggle">
+      <button id="toggleAdd" class="plus-btn" title="Add product">+</button>
+    </div>
+    <p class="center muted">Add a New Product</p>
+
+    <!-- Add / Edit Form -->
+    <div id="addForm" class="add-form">
       <form id="productForm">
-        <input type="hidden" id="editProductId">
-        
-        <div class="form-group">
-          <label for="productName">Product Name</label>
-          <input type="text" id="productName" class="form-control" placeholder="Enter product name" required>
-        </div>
-
         <div class="form-grid">
-          <div class="form-group">
-            <label for="productPrice">Price (RWF)</label>
-            <input type="number" id="productPrice" class="form-control" placeholder="0" required>
+          <div class="form-row">
+            <label for="pName">Product name</label>
+            <input id="pName" class="form-control" required>
           </div>
-          <div class="form-group">
-            <label for="productCategory">Category</label>
-            <select id="productCategory" class="form-control" required>
-              <option value="">Select Category</option>
-              <option value="dairy">Dairy & Eggs</option>
-              <option value="fruits">Fruits & Vegetables</option>
-              <option value="meat">Meat & Poultry</option>
-              <option value="drinks">Drinks</option>
-              <option value="snacks">Snacks</option>
-            </select>
+          <div class="form-row">
+            <label for="pPrice">Price (RWF)</label>
+            <input id="pPrice" type="number" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <label for="pUnit">Unit</label>
+            <input id="pUnit" class="form-control" placeholder="e.g., 1kg">
+          </div>
+          <div class="form-row">
+            <label for="pImage">Image Upload</label>
+            <input type="file" id="pImageFile" accept="image/*" class="form-control">
+            <input id="pImage" class="form-control" placeholder="or paste URL">
+          </div>
+          <div class="form-row">
+            <label for="pCategory">Category</label>
+            <input id="pCategory" class="form-control" disabled>
+          </div>
+          <div class="form-row">
+            <label for="pSubcategory">Subcategory</label>
+            <input id="pSubcategory" class="form-control" disabled>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="productBadge">Product Badge (Optional)</label>
-          <input type="text" id="productBadge" class="form-control" placeholder="e.g., Fresh, Sale, New, Premium">
-        </div>
-
-        <div class="form-group">
-          <label for="productDescription">Product Description</label>
-          <textarea id="productDescription" class="form-control textarea" placeholder="Detailed product description..." required></textarea>
-        </div>
-
-        <div class="form-group image-upload">
-          <label>Product Image</label>
-          <div class="image-upload-area" onclick="document.getElementById('imageInput').click()">
-            <div class="upload-icon">
-              <i class="fas fa-cloud-upload-alt"></i>
-            </div>
-            <div class="upload-text">Click to upload or drag and drop</div>
-            <div class="upload-hint">PNG, JPG up to 5MB</div>
-          </div>
-          <input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-          <div id="imagePreview" class="image-preview"></div>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <button type="submit" class="btn btn-primary" style="flex: 1;">
-            <i class="fas fa-save"></i> Save Product
-          </button>
-          <button type="button" class="btn btn-secondary" onclick="closeProductModal()">
-            Cancel
-          </button>
+        <div style="margin-top:12px;text-align:center">
+          <button id="saveProductBtn" class="btn btn-primary">Add product</button>
+          <button id="cancelEdit" type="button" class="btn btn-outline" style="margin-left:8px">Cancel</button>
         </div>
       </form>
     </div>
-  </div>
 
-  <!-- Order Details Modal -->
-  <div id="orderModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="orderModalTitle">Order Details</h3>
-        <button class="modal-close" onclick="closeOrderModal()">×</button>
+    <!-- Results -->
+    <section class="products-section">
+      <div class="products-header">
+        <h2 class="section-title">Results</h2>
+        <p id="resultsCount" class="results-count muted">Select a category & subcategory to load products</p>
       </div>
-      
-      <div id="orderDetails">
-        <!-- Order details will be loaded here -->
-      </div>
-      
-      <div style="display: flex; gap: 10px; margin-top: 20px;">
-        <button class="btn btn-primary" onclick="updateOrderStatus('processing')">
-          <i class="fas fa-cog"></i> Mark Processing
-        </button>
-        <button class="btn" style="background: #28a745; color: white;" onclick="updateOrderStatus('completed')">
-          <i class="fas fa-check"></i> Mark Complete
-        </button>
-        <button class="btn btn-secondary" onclick="closeOrderModal()">
-          Close
-        </button>
-      </div>
+      <div id="productsContainer" class="products-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>Tazerwa &copy; <span id="year"></span></div>
+      <div class="muted">Admin interface — products auto-sync via backend</div>
     </div>
-  </div>
-
-  <!-- Notifications -->
-  <div id="notification" class="notification"></div>
-  <div id="orderNotification" class="order-notification"></div>
+  </footer>
 
   <script>
-    // Global variables
-    let products = [];
-    let orders = [];
-    let currentEditingProduct = null;
-    let currentOrderDetails = null;
-    let notificationCount = 3;
+    let PRODUCTS = [];
+    let filtered = [];
+    let editingId = null;
 
-    // Sample products data (simulating website products)
-    const sampleProducts = [
-      { id: 1, name: "Fresh Whole Milk (1L)", price: 1800, category: "dairy", image: "img/fresh-milk.jpg", badge: "Daily Fresh", description: "Pure fresh milk from local farms, delivered daily to ensure maximum freshness and quality." },
-      { id: 2, name: "Farm Fresh Eggs (12 pieces)", price: 2400, category: "dairy", image: "img/farm-eggs.jpg", badge: "Farm Fresh", description: "Free-range eggs from happy chickens, rich in nutrients and perfect for all your cooking needs." },
-      { id: 3, name: "Greek Yogurt (500ml)", price: 3200, category: "dairy", image: "img/greek-yogurt.jpg", badge: "Healthy", description: "Thick, creamy Greek yogurt packed with protein and probiotics for a healthy lifestyle." },
-      { id: 4, name: "Mozzarella Cheese (200g)", price: 4500, category: "dairy", image: "img/mozzarella.jpg", badge: "Premium", description: "Authentic mozzarella cheese, perfect for pizza, pasta, and gourmet cooking." },
-      { id: 5, name: "Fresh Butter (250g)", price: 3800, category: "dairy", image: "img/butter.jpg", badge: "Creamy", description: "Rich, creamy butter made from the finest cream, ideal for baking and cooking." }
-    ];
+    const categorySelect = document.getElementById('categorySelect');
+    const subcategorySelect = document.getElementById('subcategorySelect');
+    const productsContainer = document.getElementById('productsContainer');
+    const resultsCount = document.getElementById('resultsCount');
+    const toggleAdd = document.getElementById('toggleAdd');
+    const addForm = document.getElementById('addForm');
+    const productForm = document.getElementById('productForm');
+    const saveProductBtn = document.getElementById('saveProductBtn');
+    const cancelEdit = document.getElementById('cancelEdit');
 
-    // Sample orders data
-    const sampleOrders = [
-      { id: "ORD001", customer: "John Mugabe", phone: "+250 788 123 456", items: "Fresh Milk, Eggs", total: "4,200 RWF", payment: "Paid", status: "completed", date: "2024-01-15", email: "john@email.com" },
-      { id: "ORD002", customer: "Grace Uwimana", phone: "+250 789 654 321", items: "Greek Yogurt, Cheese", total: "7,700 RWF", payment: "Paid", status: "processing", date: "2024-01-15", email: "grace@email.com" },
-      { id: "ORD003", customer: "David Nkurunziza", phone: "+250 788 987 654", items: "Butter, Milk", total: "5,600 RWF", payment: "Pending", status: "pending", date: "2024-01-15", email: "david@email.com" }
-    ];
+    const pName = document.getElementById('pName');
+    const pPrice = document.getElementById('pPrice');
+    const pUnit = document.getElementById('pUnit');
+    const pImage = document.getElementById('pImage');
+    const pImageFile = document.getElementById('pImageFile');
+    const pCategory = document.getElementById('pCategory');
+    const pSubcategory = document.getElementById('pSubcategory');
 
-    // Initialize dashboard
-    function initDashboard() {
-      products = [...sampleProducts];
-      orders = [...sampleOrders];
-      
-      loadProducts();
-      loadOrders();
-      updateStats();
-      
-      // Simulate real-time order notifications
-      setTimeout(() => {
-        simulateNewOrder();
-      }, 5000);
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Categories + Subcategories
+    const CATEGORY_MAP = {
+      "Food": ["Vegetable","Fruit","Canned food","Cooking foods","Prepared fresh produce","Edible oil","Flour","Powder","Grains","Spices & ingredients","Pasta","Sugar & salt","Meat fish chicken & poultry","Breakfast & dairy","Chocolate snacks & biscuits"],
+      "Drinks": ["Water","Hot drinks","Cold drinks","Carbonated drinks","Dairy-Based Drinks","Non Alcoholic categories"],
+      "Beauty": ["Skincare","Makeup","Haircare","Personal care"],
+      "Gifts": ["Flowers","Gift ideas","Sweet gift"],
+      "Baby Stuff": ["Mother care","Bell & toys","Baby Hygiene","Baby essentials","Baby food & drinks","Wipes & Diapers"],
+      "Hot deals": ["Veggie boost","Snacks time","Sip & Bite","Family choice","Your 5 choice pack"]
+    };
+
+    // Load categories initially
+    function populateCategories(){
+      categorySelect.innerHTML = '<option value="">Select category</option>' +
+        Object.keys(CATEGORY_MAP).map(c=>`<option value="${c}">${c}</option>`).join('');
     }
 
-    // Tab management
-    function showTab(tabName) {
-      // Hide all tab contents
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      
-      // Remove active class from all tabs
-      document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      
-      // Show selected tab content
-      document.getElementById(tabName).classList.add('active');
-      
-      // Add active class to clicked tab
-      event.target.classList.add('active');
-    }
+    categorySelect.addEventListener('change', ()=>{
+      const cat = categorySelect.value;
+      if(!cat){subcategorySelect.innerHTML='<option value="">Select subcategory</option>';subcategorySelect.disabled=true;return}
+      const subs = CATEGORY_MAP[cat] || [];
+      subcategorySelect.innerHTML = '<option value="">Select subcategory</option>' + subs.map(s=>`<option value="${s}">${s}</option>`).join('');
+      subcategorySelect.disabled = false;
+    });
 
-    // Product management
-    function loadProducts() {
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = '';
-      
-      products.forEach(product => {
-        const productCard = createProductCard(product);
-        grid.appendChild(productCard);
-      });
-    }
-
-    function createProductCard(product) {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}">
-          ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
-        </div>
-        <div class="product-info">
-          <h4>${product.name}</h4>
-          <div class="product-price">${product.price.toLocaleString()} RWF</div>
-          <p style="color: #6c757d; font-size: 12px; margin-bottom: 10px;">${product.description ? product.description.substring(0, 80) + '...' : ''}</p>
-          <div class="product-actions">
-            <button class="btn btn-edit" onclick="editProduct(${product.id})">
-              <i class="fas fa-edit"></i> Edit
-            </button>
-            <button class="btn btn-delete" onclick="deleteProduct(${product.id})">
-              <i class="fas fa-trash"></i>
-            </button>
+    // Rest of logic for filtering + rendering remains same
+    function renderProducts(list){
+      productsContainer.innerHTML='';
+      if(!list.length){productsContainer.innerHTML='<p class="muted center">No products in this subcategory</p>';return}
+      list.forEach(prod=>{
+        const el=document.createElement('div');el.className='product-card';
+        el.innerHTML=`
+          <div class="product-image"><img src="${prod.image||'img/placeholder.png'}" alt="${prod.name}"></div>
+          <div class="product-info">
+            <div>
+              <div class="product-name">${prod.name}</div>
+              <div class="product-price">${prod.price} RWF <span class="muted">${prod.unit||''}</span></div>
+            </div>
+            <div class="product-actions">
+              <button class="small-btn edit" data-id="${prod.id}">Edit</button>
+              <button class="small-btn delete" data-id="${prod.id}">Remove</button>
+            </div>
           </div>
-        </div>
-      `;
-      return card;
+        `;
+        productsContainer.appendChild(el);
+      });
     }
 
-    function showAddProductModal() {
-      document.getElementById('modalTitle').textContent = 'Add New Product';
-      document.getElementById('productForm').reset();
-      document.getElementById('editProductId').value = '';
-      document.getElementById('imagePreview').innerHTML = '';
-      document.getElementById('productModal').classList.add('show');
-      currentEditingProduct = null;
-    }
-
-    function editProduct(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-      
-      currentEditingProduct = product;
-      document.getElementById('modalTitle').textContent = 'Edit Product';
-      document.getElementById('editProductId').value = product.id;
-      document.getElementById('productName').value = product.name;
-      document.getElementById('productPrice').value = product.price;
-      document.getElementById('productCategory').value = product.category;
-      document.getElementById('productBadge').value = product.badge || '';
-      document.getElementById('productDescription').value = product.description || '';
-      
-      // Show existing image
-      const preview = document.getElementById('imagePreview');
-      preview.innerHTML = `
-        <div class="preview-item">
-          <img src="${product.image}" alt="${product.name}">
-        </div>
-      `;
-      
-      document.getElementById('productModal').classList.add('show');
-    }
-
-    function deleteProduct(productId) {
-      if (confirm('Are you sure you want to delete this product?')) {
-        products = products.filter(p => p.id !== productId);
-        loadProducts();
-        updateStats();
-        showNotification('Product deleted successfully!', 'error');
-      }
-    }
-
-    function closeProductModal() {
-      document.getElementById('productModal').classList.remove('show');
-      currentEditingProduct = null;
-    }
-
-    // Handle product form submission
-    document.getElementById('productForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const formData = {
-        name: document.getElementById('productName').value,
-        price: parseInt(document.getElementById('productPrice').value),
-        category: document.getElementById('productCategory').value,
-        badge: document.getElementById('productBadge').value,
-        description: document.getElementById('productDescription').value,
-        image: document.querySelector('#imagePreview img')?.src || 'img/placeholder.jpg'
-      };
-      
-      if (currentEditingProduct) {
-        // Update existing product
-        const index = products.findIndex(p => p.id === currentEditingProduct.id);
-        products[index] = { ...currentEditingProduct, ...formData };
-        showNotification('Product updated successfully!');
-      } else {
-        // Add new product
-        const newProduct = {
-          id: Date.now(),
-          ...formData
-        };
-        products.push(newProduct);
-        showNotification('Product added successfully!');
-      }
-      
-      loadProducts();
-      updateStats();
-      closeProductModal();
+    subcategorySelect.addEventListener('change', ()=>{
+      const cat=categorySelect.value; const sub=subcategorySelect.value;
+      if(!cat||!sub)return;
+      filtered = PRODUCTS.filter(p=>p.category===cat && p.subcategory===sub);
+      renderProducts(filtered);
+      resultsCount.textContent=`Showing ${filtered.length} products in "${sub}"`;
+      pCategory.value=cat; pSubcategory.value=sub;
     });
 
-    // Handle quick add form
-    document.getElementById('quickAddForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const formData = {
-        id: Date.now(),
-        name: document.getElementById('quickName').value,
-        price: parseInt(document.getElementById('quickPrice').value),
-        category: document.getElementById('quickCategory').value,
-        description: document.getElementById('quickDescription').value,
-        image: document.querySelector('#quickImagePreview img')?.src || 'img/placeholder.jpg'
-      };
-      
-      products.push(formData);
-      loadProducts();
-      updateStats();
-      
-      // Reset form
-      this.reset();
-      document.getElementById('quickImagePreview').innerHTML = '';
-      
-      showNotification('Product added successfully!');
+    toggleAdd.addEventListener('click', ()=>{
+      addForm.style.display=addForm.style.display==='block'?'none':'block';
+      productForm.reset(); editingId=null; saveProductBtn.textContent='Add product';
+      pCategory.value=categorySelect.value; pSubcategory.value=subcategorySelect.value;
     });
+    cancelEdit.addEventListener('click', ()=>{addForm.style.display='none'; productForm.reset(); editingId=null});
 
-    // Image upload handlers
-    function handleImageUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const preview = document.getElementById('imagePreview');
-          preview.innerHTML = `
-            <div class="preview-item">
-              <img src="${e.target.result}" alt="Product preview">
-              <button class="preview-remove" onclick="removeImage('imagePreview')" type="button">×</button>
-            </div>
-          `;
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function handleQuickImageUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const preview = document.getElementById('quickImagePreview');
-          preview.innerHTML = `
-            <div class="preview-item">
-              <img src="${e.target.result}" alt="Product preview">
-              <button class="preview-remove" onclick="removeImage('quickImagePreview')" type="button">×</button>
-            </div>
-          `;
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-
-    function removeImage(previewId) {
-      document.getElementById(previewId).innerHTML = '';
-    }
-
-    // Order management
-    function loadOrders() {
-      const tbody = document.getElementById('ordersTableBody');
-      tbody.innerHTML = '';
-      
-      orders.forEach(order => {
-        const row = createOrderRow(order);
-        tbody.appendChild(row);
-      });
-    }
-
-    function createOrderRow(order) {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td><strong>${order.id}</strong></td>
-        <td>${order.customer}</td>
-        <td>${order.phone}</td>
-        <td>${order.items}</td>
-        <td><strong>${order.total}</strong></td>
-        <td><span class="status-badge ${order.payment === 'Paid' ? 'status-completed' : 'status-pending'}">${order.payment}</span></td>
-        <td><span class="status-badge status-${order.status}">${order.status}</span></td>
-        <td>${order.date}</td>
-        <td>
-          <button class="btn btn-sm" style="background: #17a2b8; color: white;" onclick="viewOrderDetails('${order.id}')">
-            <i class="fas fa-eye"></i> View
-          </button>
-        </td>
-      `;
-      return row;
-    }
-
-    function viewOrderDetails(orderId) {
-      const order = orders.find(o => o.id === orderId);
-      if (!order) return;
-      
-      currentOrderDetails = order;
-      document.getElementById('orderModalTitle').textContent = `Order ${order.id} Details`;
-      document.getElementById('orderDetails').innerHTML = `
-        <div style="line-height: 1.8;">
-          <p><strong>Customer:</strong> ${order.customer}</p>
-          <p><strong>Phone:</strong> ${order.phone}</p>
-          <p><strong>Email:</strong> ${order.email}</p>
-          <p><strong>Items:</strong> ${order.items}</p>
-          <p><strong>Total:</strong> ${order.total}</p>
-          <p><strong>Payment Status:</strong> <span class="status-badge ${order.payment === 'Paid' ? 'status-completed' : 'status-pending'}">${order.payment}</span></p>
-          <p><strong>Order Status:</strong> <span class="status-badge status-${order.status}">${order.status}</span></p>
-          <p><strong>Order Date:</strong> ${order.date}</p>
-        </div>
-      `;
-      
-      document.getElementById('orderModal').classList.add('show');
-    }
-
-    function closeOrderModal() {
-      document.getElementById('orderModal').classList.remove('show');
-      currentOrderDetails = null;
-    }
-
-    function updateOrderStatus(newStatus) {
-      if (!currentOrderDetails) return;
-      
-      const orderIndex = orders.findIndex(o => o.id === currentOrderDetails.id);
-      orders[orderIndex].status = newStatus;
-      
-      loadOrders();
-      updateStats();
-      closeOrderModal();
-      
-      showNotification(`Order ${currentOrderDetails.id} updated to ${newStatus}!`);
-      
-      // Send email notification (simulated)
-      sendEmailNotification(currentOrderDetails, newStatus);
-    }
-
-    // Search and filter functions
-    function filterProducts() {
-      const searchTerm = document.getElementById('productSearch').value.toLowerCase();
-      const categoryFilter = document.getElementById('categoryFilter').value;
-      
-      let filteredProducts = products.filter(product => {
-        const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
-                             (product.description && product.description.toLowerCase().includes(searchTerm));
-        const matchesCategory = categoryFilter === 'all' || product.category === categoryFilter;
-        return matchesSearch && matchesCategory;
-      });
-      
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = '';
-      
-      filteredProducts.forEach(product => {
-        const productCard = createProductCard(product);
-        grid.appendChild(productCard);
-      });
-    }
-
-    function filterByCategory() {
-      filterProducts();
-    }
-
-    function filterOrders() {
-      const statusFilter = document.getElementById('orderStatusFilter').value;
-      
-      let filteredOrders = orders;
-      if (statusFilter !== 'all') {
-        filteredOrders = orders.filter(order => order.status === statusFilter);
-      }
-      
-      const tbody = document.getElementById('ordersTableBody');
-      tbody.innerHTML = '';
-      
-      filteredOrders.forEach(order => {
-        const row = createOrderRow(order);
-        tbody.appendChild(row);
-      });
-    }
-
-    function refreshOrders() {
-      loadOrders();
-      showNotification('Orders refreshed!', 'info');
-    }
-
-    // Statistics update
-    function updateStats() {
-      document.getElementById('totalProducts').textContent = products.length;
-      document.getElementById('totalOrders').textContent = orders.length;
-      
-      // Calculate total revenue from paid orders only
-      const paidOrders = orders.filter(order => order.payment === 'Paid');
-      const totalRevenue = paidOrders.reduce((sum, order) => {
-        const amount = parseInt(order.total.replace(/[^0-9]/g, ''));
-        return sum + amount;
-      }, 0);
-      document.getElementById('totalRevenue').textContent = `₨${totalRevenue.toLocaleString()}`;
-      
-      const pendingOrders = orders.filter(order => order.status === 'pending').length;
-      document.getElementById('pendingOrders').textContent = pendingOrders;
-      
-      // Update other stats
-      const todayOrders = orders.filter(order => order.date === '2024-01-15').length;
-      document.getElementById('todayOrders').textContent = todayOrders;
-      
-      const weeklyRevenue = Math.floor(totalRevenue * 0.3);
-      document.getElementById('weeklyRevenue').textContent = `₨${weeklyRevenue.toLocaleString()}`;
-      
-      const avgOrderValue = totalRevenue / (paidOrders.length || 1);
-      document.getElementById('avgOrderValue').textContent = `₨${Math.floor(avgOrderValue).toLocaleString()}`;
-    }
-
-    // Notification system
-    function showNotification(message, type = 'success') {
-      const notification = document.getElementById('notification');
-      notification.textContent = message;
-      notification.className = `notification ${type} show`;
-      
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 3000);
-    }
-
-    function toggleNotifications() {
-      showNotification('Notification center coming soon!', 'info');
-    }
-
-    // Simulate new order notification
-    function simulateNewOrder() {
-      const newOrder = {
-        id: "ORD" + String(orders.length + 1).padStart(3, '0'),
-        customer: "Alice Mukamana",
-        phone: "+250 788 456 789",
-        items: "Fresh Milk, Greek Yogurt",
-        total: "5,000 RWF",
-        payment: "Paid",
-        status: "pending",
-        date: "2024-01-15",
-        email: "alice@email.com"
-      };
-      
-      orders.unshift(newOrder);
-      loadOrders();
-      updateStats();
-      
-      // Update notification count
-      notificationCount++;
-      document.getElementById('notificationCount').textContent = notificationCount;
-      
-      // Show order notification popup
-      showNewOrderNotification(newOrder);
-      
-      // Send email notification (simulated)
-      sendEmailNotification(newOrder, 'new_order');
-      
-      // Simulate another order in 30 seconds
-      setTimeout(() => {
-        simulateNewOrder();
-      }, 30000);
-    }
-
-    function showNewOrderNotification(order) {
-      const notification = document.getElementById('orderNotification');
-      notification.innerHTML = `
-        <h4>🆕 New Order Received!</h4>
-        <p><strong>Order ID:</strong> ${order.id}</p>
-        <p><strong>Customer:</strong> ${order.customer}</p>
-        <p><strong>Total:</strong> ${order.total}</p>
-        <p><strong>Payment:</strong> ${order.payment}</p>
-        <div class="order-actions">
-          <button class="btn btn-sm btn-primary" onclick="viewOrderDetails('${order.id}'); closeOrderNotification();">
-            <i class="fas fa-eye"></i> View Details
-          </button>
-          <button class="btn btn-sm btn-secondary" onclick="closeOrderNotification()">
-            <i class="fas fa-times"></i> Dismiss
-          </button>
-        </div>
-      `;
-      
-      notification.classList.add('show');
-      
-      // Auto-hide after 10 seconds
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 10000);
-    }
-
-    function closeOrderNotification() {
-      document.getElementById('orderNotification').classList.remove('show');
-    }
-
-    // Email notification system (simulated)
-    function sendEmailNotification(order, type) {
-      const emailSettings = {
-        newOrders: document.getElementById('emailNewOrders')?.checked ?? true,
-        paymentConfirm: document.getElementById('emailPaymentConfirm')?.checked ?? true,
-        dailySummary: document.getElementById('emailDailySummary')?.checked ?? true
-      };
-      
-      const notificationEmail = document.getElementById('notificationEmail')?.value || 'orders@taze.rw';
-      
-      let emailSubject, emailBody;
-      
-      switch (type) {
-        case 'new_order':
-          if (!emailSettings.newOrders) return;
-          emailSubject = `New Order Received - ${order.id}`;
-          emailBody = `
-            New order details:
-            - Order ID: ${order.id}
-            - Customer: ${order.customer}
-            - Phone: ${order.phone}
-            - Email: ${order.email}
-            - Items: ${order.items}
-            - Total: ${order.total}
-            - Payment Status: ${order.payment}
-            - Date: ${order.date}
-            
-            Please process this order promptly.
-          `;
-          break;
-          
-        case 'processing':
-          emailSubject = `Order Processing - ${order.id}`;
-          emailBody = `Order ${order.id} for ${order.customer} is now being processed.`;
-          break;
-          
-        case 'completed':
-          if (!emailSettings.paymentConfirm) return;
-          emailSubject = `Order Completed - ${order.id}`;
-          emailBody = `Order ${order.id} for ${order.customer} has been completed and delivered.`;
-          break;
-      }
-      
-      // Simulate email sending
-      console.log(`📧 Email sent to ${notificationEmail}:`);
-      console.log(`Subject: ${emailSubject}`);
-      console.log(`Body: ${emailBody}`);
-      
-      showNotification(`Email notification sent to ${notificationEmail}`, 'info');
-    }
-
-    // Settings form handler
-    document.getElementById('storeSettingsForm')?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const settings = {
-        storeName: document.getElementById('storeName').value,
-        storePhone: document.getElementById('storePhone').value,
-        adminEmail: document.getElementById('adminEmail').value,
-        notificationEmail: document.getElementById('notificationEmail').value,
-        currency: document.getElementById('currency').value,
-        deliveryFee: document.getElementById('deliveryFee').value,
-        storeDescription: document.getElementById('storeDescription').value,
-        emailNewOrders: document.getElementById('emailNewOrders').checked,
-        emailPaymentConfirm: document.getElementById('emailPaymentConfirm').checked,
-        emailDailySummary: document.getElementById('emailDailySummary').checked
-      };
-      
-      // Save settings (in real app, this would go to backend)
-      localStorage.setItem('tazeSettings', JSON.stringify(settings));
-      
-      showNotification('Settings saved successfully!');
-    });
-
-    // Load saved settings
-    function loadSettings() {
-      const savedSettings = localStorage.getItem('tazeSettings');
-      if (savedSettings) {
-        const settings = JSON.parse(savedSettings);
-        
-        Object.keys(settings).forEach(key => {
-          const element = document.getElementById(key);
-          if (element) {
-            if (element.type === 'checkbox') {
-              element.checked = settings[key];
-            } else {
-              element.value = settings[key];
-            }
-          }
-        });
-      }
-    }
-
-    // Drag and drop for image upload
-    function setupDragAndDrop() {
-      const uploadAreas = document.querySelectorAll('.image-upload-area');
-      
-      uploadAreas.forEach(area => {
-        area.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          area.classList.add('dragover');
-        });
-        
-        area.addEventListener('dragleave', () => {
-          area.classList.remove('dragover');
-        });
-        
-        area.addEventListener('drop', (e) => {
-          e.preventDefault();
-          area.classList.remove('dragover');
-          
-          const files = e.dataTransfer.files;
-          if (files.length > 0) {
-            const file = files[0];
-            if (file.type.startsWith('image/')) {
-              // Determine which upload area this is
-              const isQuick = area.onclick.toString().includes('quickImageInput');
-              const inputId = isQuick ? 'quickImageInput' : 'imageInput';
-              const input = document.getElementById(inputId);
-              
-              // Create a new FileList-like object
-              const dataTransfer = new DataTransfer();
-              dataTransfer.items.add(file);
-              input.files = dataTransfer.files;
-              
-              // Trigger the change event
-              const event = new Event('change', { bubbles: true });
-              input.dispatchEvent(event);
-            }
-          }
-        });
-      });
-    }
-
-    // Real-time revenue calculation
-    function calculateRealTimeRevenue() {
-      const completedOrders = orders.filter(order => 
-        order.status === 'completed' && order.payment === 'Paid'
-      );
-      
-      let totalRevenue = 0;
-      completedOrders.forEach(order => {
-        const amount = parseInt(order.total.replace(/[^0-9]/g, ''));
-        totalRevenue += amount;
-      });
-      
-      return totalRevenue;
-    }
-
-    // Export orders to CSV (bonus feature)
-    function exportOrders() {
-      const csvContent = "data:text/csv;charset=utf-8," + 
-        "Order ID,Customer,Phone,Email,Items,Total,Payment,Status,Date\n" +
-        orders.map(order => 
-          `${order.id},"${order.customer}",${order.phone},"${order.email}","${order.items}","${order.total}",${order.payment},${order.status},${order.date}`
-        ).join("\n");
-      
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "taze_orders.csv");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      showNotification('Orders exported successfully!');
-    }
-
-    // Initialize dashboard when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      initDashboard();
-      loadSettings();
-      setupDragAndDrop();
-      
-      // Add export button to orders tab
-      const ordersHeader = document.querySelector('#orders .form-header .search-filter');
-      if (ordersHeader) {
-        const exportBtn = document.createElement('button');
-        exportBtn.className = 'btn btn-secondary';
-        exportBtn.innerHTML = '<i class="fas fa-download"></i> Export';
-        exportBtn.onclick = exportOrders;
-        ordersHeader.appendChild(exportBtn);
-      }
-      
-      console.log('🚀 Taze Admin Dashboard initialized successfully!');
-      console.log('📧 Email notifications are set up and ready');
-      console.log('💰 Real-time revenue tracking is active');
-    });
-
+    // init
+    populateCategories();
   </script>
-
 </body>
 </html>

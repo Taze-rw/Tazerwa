@@ -659,6 +659,105 @@
       "category": "Food",
       "subcategory": "Edible Oils",
       "description": "Natural splendid extra virgin coconut oil, perfect for cooking and skincare."
+    },
+    {
+      "id": 81,
+      "name": "Beef Burger",
+      "price": 6000,
+      "image": "img/beef-burger.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Juicy beef burger served hot and fresh."
+    },
+    {
+      "id": 82,
+      "name": "Chicken Burger",
+      "price": 6000,
+      "image": "img/chicken-burger.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Crispy chicken burger served with fresh toppings."
+    },
+    {
+      "id": 83,
+      "name": "Pizza Beef",
+      "price": 9000,
+      "image": "img/pizza-beef.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Delicious beef pizza with cheese and toppings."
+    },
+    {
+      "id": 84,
+      "name": "Pizza Chicken",
+      "price": 9000,
+      "image": "img/pizza-chicken.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Savory chicken pizza baked to perfection."
+    },
+    {
+      "id": 85,
+      "name": "Shawarma",
+      "price": 5000,
+      "image": "img/shawarma.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Flavorful shawarma wrap with tender meat and spices."
+    },
+    {
+      "id": 86,
+      "name": "Wrap Chicken",
+      "price": 5000,
+      "image": "img/wrap-chicken.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Freshly made chicken wrap with veggies."
+    },
+    {
+      "id": 87,
+      "name": "Wrap Beef",
+      "price": 5000,
+      "image": "img/wrap-beef.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Delicious beef wrap with seasoned meat and sauce."
+    },
+    {
+      "id": 88,
+      "name": "Veg Wrap",
+      "price": 4000,
+      "image": "img/veg-wrap.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Vegetarian wrap with fresh vegetables and spices."
+    },
+    {
+      "id": 89,
+      "name": "Chicken Wings",
+      "price": 6000,
+      "image": "img/chicken-wings.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Crispy fried chicken wings served hot."
+    },
+    {
+      "id": 90,
+      "name": "Chicken Rice",
+      "price": 12000,
+      "image": "img/chicken-rice.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Delicious rice meal with chicken and spices."
+    },
+    {
+      "id": 91,
+      "name": "Beef Rice",
+      "price": 11000,
+      "image": "img/beef-rice.jpg",
+      "category": "Food",
+      "subcategory": "Cooking Food",
+      "description": "Tasty beef served with seasoned rice."
     }
   ]
 }

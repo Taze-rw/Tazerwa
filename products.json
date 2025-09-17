@@ -588,6 +588,69 @@
       "category": "Food",
       "subcategory": "Canned Foods",
       "description": "Smooth and tasty Boni peanut butter for bread and snacks."
+    },
+    {
+      "id": 74,
+      "name": "Boni Extra Virgin Olive Oil 1L",
+      "price": 56000,
+      "image": "img/boni-extra-virgin-olive-oil.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Premium Boni extra virgin olive oil, cold-pressed and ideal for cooking or salads."
+    },
+    {
+      "id": 75,
+      "name": "Bertini Refined Oils Spanish Extra Virgin Olive Oil 1L",
+      "price": 15500,
+      "image": "img/bertini-refined-oil.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "High quality Spanish extra virgin olive oil, refined for cooking and dressing."
+    },
+    {
+      "id": 76,
+      "name": "Crystal Cooking Oil 3L",
+      "price": 15800,
+      "image": "img/crystal-cooking-oil-3l.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Pure Crystal cooking oil, 3 liters, perfect for everyday kitchen use."
+    },
+    {
+      "id": 77,
+      "name": "Crystal Cooking Oil 5L",
+      "price": 30000,
+      "image": "img/crystal-cooking-oil-5l.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Crystal cooking oil in a 5-liter bottle, great value for family cooking needs."
+    },
+    {
+      "id": 78,
+      "name": "Crystal Cooking Oil 1L",
+      "price": 5500,
+      "image": "img/crystal-cooking-oil-1l.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Crystal cooking oil, 1 liter size, suitable for daily use."
+    },
+    {
+      "id": 79,
+      "name": "Katanga or Zahabu Oil 5L",
+      "price": 17000,
+      "image": "img/katanga-zahabu-oil.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Katanga/Zahabu cooking oil, 5 liters, affordable and reliable for home cooking."
+    },
+    {
+      "id": 80,
+      "name": "Splendid Extra Virgin Coconut Oil",
+      "price": 14000,
+      "image": "img/splendid-coconut-oil.jpg",
+      "category": "Food",
+      "subcategory": "Edible Oils",
+      "description": "Natural splendid extra virgin coconut oil, perfect for cooking and skincare."
     }
   ]
 }

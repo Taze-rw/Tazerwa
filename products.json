@@ -758,6 +758,96 @@
       "category": "Food",
       "subcategory": "Cooking Food",
       "description": "Tasty beef served with seasoned rice."
+    },
+    {
+      "id": 92,
+      "name": "Cassava (Inyumbati)",
+      "price": 800,
+      "unit": "kg",
+      "image": "img/cassava.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Fresh cassava root, ideal for boiling, frying, or making flour."
+    },
+    {
+      "id": 93,
+      "name": "Green Pumpkin (Ibihaza)",
+      "price": 2000,
+      "unit": "kg",
+      "image": "img/green-pumpkin.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Locally grown green pumpkin, rich in vitamins and perfect for soups."
+    },
+    {
+      "id": 94,
+      "name": "Imizuzu",
+      "price": 3000,
+      "unit": "kg",
+      "image": "img/imizuzu.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Traditional Rwandan root crop, nutritious and filling."
+    },
+    {
+      "id": 95,
+      "name": "Unripe Plantain (Imizuzu Idahiye)",
+      "price": 3000,
+      "unit": "kg",
+      "image": "img/unripe-plantain.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Unripe plantain commonly used in traditional dishes."
+    },
+    {
+      "id": 96,
+      "name": "Yam",
+      "price": 1100,
+      "unit": "kg",
+      "image": "img/yam.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Nutritious yam tuber, a great source of fiber and energy."
+    },
+    {
+      "id": 97,
+      "name": "Green Bananas",
+      "price": 600,
+      "unit": "kg",
+      "image": "img/green-bananas.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Fresh green bananas, perfect for traditional Rwandan meals."
+    },
+    {
+      "id": 98,
+      "name": "Whole Green Bananas (25kg)",
+      "price": 25000,
+      "unit": "25kg",
+      "image": "img/whole-green-bananas.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Bulk sack of fresh green bananas, ideal for families or events."
+    },
+    {
+      "id": 99,
+      "name": "Kiningi Potatoes",
+      "price": 700,
+      "unit": "kg",
+      "image": "img/kiningi-potatoes.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Premium Kiningi Irish potatoes, perfect for fries or boiling."
+    },
+    {
+      "id": 100,
+      "name": "Sweet Potatoes",
+      "price": 700,
+      "unit": "kg",
+      "image": "img/sweet-potatoes.jpg",
+      "category": "Food",
+      "subcategory": "Local Fresh Produce",
+      "description": "Naturally sweet, healthy potatoes great for baking or boiling."
     }
   ]
 }

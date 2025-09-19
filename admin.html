@@ -130,95 +130,179 @@
   </footer>
 
   <script>
-    let PRODUCTS = [];
-    let filtered = [];
-    let editingId = null;
+    // ===============================
+// Admin Panel JS
+// ===============================
 
-    const categorySelect = document.getElementById('categorySelect');
-    const subcategorySelect = document.getElementById('subcategorySelect');
-    const productsContainer = document.getElementById('productsContainer');
-    const resultsCount = document.getElementById('resultsCount');
-    const toggleAdd = document.getElementById('toggleAdd');
-    const addForm = document.getElementById('addForm');
-    const productForm = document.getElementById('productForm');
-    const saveProductBtn = document.getElementById('saveProductBtn');
-    const cancelEdit = document.getElementById('cancelEdit');
+// Backend API endpoint
+const API_URL = "http://localhost/Tazerwa/api.php";
 
-    const pName = document.getElementById('pName');
-    const pPrice = document.getElementById('pPrice');
-    const pUnit = document.getElementById('pUnit');
-    const pImage = document.getElementById('pImage');
-    const pImageFile = document.getElementById('pImageFile');
-    const pCategory = document.getElementById('pCategory');
-    const pSubcategory = document.getElementById('pSubcategory');
+// Global products array
+let allProducts = [];
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+// Load all products from backend
+async function loadProducts() {
+  try {
+    const res = await fetch(API_URL);
+    allProducts = await res.json();
+    displayProducts(allProducts);
+  } catch (err) {
+    console.error("Error loading products:", err);
+  }
+}
 
-    // Categories + Subcategories
-    const CATEGORY_MAP = {
-      "Food": ["Vegetable","Fruit","Canned food","Cooking foods","Prepared fresh produce","Edible oil","Flour","Powder","Grains","Spices & ingredients","Pasta","Sugar & salt","Meat fish chicken & poultry","Breakfast & dairy","Chocolate snacks & biscuits"],
-      "Drinks": ["Water","Hot drinks","Cold drinks","Carbonated drinks","Dairy-Based Drinks","Non Alcoholic categories"],
-      "Beauty": ["Skincare","Makeup","Haircare","Personal care"],
-      "Gifts": ["Flowers","Gift ideas","Sweet gift"],
-      "Baby Stuff": ["Mother care","Bell & toys","Baby Hygiene","Baby essentials","Baby food & drinks","Wipes & Diapers"],
-      "Hot deals": ["Veggie boost","Snacks time","Sip & Bite","Family choice","Your 5 choice pack"]
-    };
+// Display products in grid
+function displayProducts(products) {
+  const container = document.getElementById("productsContainer");
+  if (!container) return;
 
-    // Load categories initially
-    function populateCategories(){
-      categorySelect.innerHTML = '<option value="">Select category</option>' +
-        Object.keys(CATEGORY_MAP).map(c=>`<option value="${c}">${c}</option>`).join('');
-    }
+  container.innerHTML = "";
 
-    categorySelect.addEventListener('change', ()=>{
-      const cat = categorySelect.value;
-      if(!cat){subcategorySelect.innerHTML='<option value="">Select subcategory</option>';subcategorySelect.disabled=true;return}
-      const subs = CATEGORY_MAP[cat] || [];
-      subcategorySelect.innerHTML = '<option value="">Select subcategory</option>' + subs.map(s=>`<option value="${s}">${s}</option>`).join('');
-      subcategorySelect.disabled = false;
+  if (products.length === 0) {
+    container.innerHTML = "<p>No products found.</p>";
+    return;
+  }
+
+  products.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    card.innerHTML = `
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.name}">
+      </div>
+      <div class="product-info">
+        <h4 class="product-name">${p.name}</h4>
+        <p class="product-price"><strong>${p.price} RWF</strong></p>
+        <div class="product-actions">
+          <button class="edit-btn" onclick="openEditModal(${p.id})">Edit</button>
+          <button class="delete-btn" onclick="deleteProduct(${p.id})">Delete</button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// ===============================
+// Filtering & Searching
+// ===============================
+function filterProducts() {
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const category = document.getElementById("categorySelect").value;
+
+  let filtered = allProducts.filter(p =>
+    p.name.toLowerCase().includes(search) &&
+    (category === "" || p.category === category)
+  );
+
+  displayProducts(filtered);
+}
+
+// ===============================
+// Product Actions
+// ===============================
+function openEditModal(id) {
+  const product = allProducts.find(p => p.id === id);
+  if (!product) return;
+
+  document.getElementById("editId").value = product.id;
+  document.getElementById("editName").value = product.name;
+  document.getElementById("editPrice").value = product.price;
+  document.getElementById("editCategory").value = product.category;
+  document.getElementById("editSubcategory").value = product.subcategory;
+
+  document.getElementById("editModal").style.display = "block";
+}
+
+function closeEditModal() {
+  document.getElementById("editModal").style.display = "none";
+}
+
+async function saveProduct() {
+  const id = document.getElementById("editId").value;
+  const name = document.getElementById("editName").value;
+  const price = document.getElementById("editPrice").value;
+  const category = document.getElementById("editCategory").value;
+  const subcategory = document.getElementById("editSubcategory").value;
+
+  const updatedProduct = { id, name, price, category, subcategory };
+
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "update", product: updatedProduct })
     });
 
-    // Rest of logic for filtering + rendering remains same
-    function renderProducts(list){
-      productsContainer.innerHTML='';
-      if(!list.length){productsContainer.innerHTML='<p class="muted center">No products in this subcategory</p>';return}
-      list.forEach(prod=>{
-        const el=document.createElement('div');el.className='product-card';
-        el.innerHTML=`
-          <div class="product-image"><img src="${prod.image||'img/placeholder.png'}" alt="${prod.name}"></div>
-          <div class="product-info">
-            <div>
-              <div class="product-name">${prod.name}</div>
-              <div class="product-price">${prod.price} RWF <span class="muted">${prod.unit||''}</span></div>
-            </div>
-            <div class="product-actions">
-              <button class="small-btn edit" data-id="${prod.id}">Edit</button>
-              <button class="small-btn delete" data-id="${prod.id}">Remove</button>
-            </div>
-          </div>
-        `;
-        productsContainer.appendChild(el);
-      });
-    }
+    closeEditModal();
+    loadProducts();
+  } catch (err) {
+    console.error("Error saving product:", err);
+  }
+}
 
-    subcategorySelect.addEventListener('change', ()=>{
-      const cat=categorySelect.value; const sub=subcategorySelect.value;
-      if(!cat||!sub)return;
-      filtered = PRODUCTS.filter(p=>p.category===cat && p.subcategory===sub);
-      renderProducts(filtered);
-      resultsCount.textContent=`Showing ${filtered.length} products in "${sub}"`;
-      pCategory.value=cat; pSubcategory.value=sub;
+async function deleteProduct(id) {
+  if (!confirm("Are you sure you want to delete this product?")) return;
+
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "delete", id })
     });
 
-    toggleAdd.addEventListener('click', ()=>{
-      addForm.style.display=addForm.style.display==='block'?'none':'block';
-      productForm.reset(); editingId=null; saveProductBtn.textContent='Add product';
-      pCategory.value=categorySelect.value; pSubcategory.value=subcategorySelect.value;
-    });
-    cancelEdit.addEventListener('click', ()=>{addForm.style.display='none'; productForm.reset(); editingId=null});
+    loadProducts();
+  } catch (err) {
+    console.error("Error deleting product:", err);
+  }
+}
 
-    // init
-    populateCategories();
+// ===============================
+// Add New Product
+// ===============================
+async function addNewProduct() {
+  const name = document.getElementById("newName").value;
+  const price = document.getElementById("newPrice").value;
+  const category = document.getElementById("newCategory").value;
+  const subcategory = document.getElementById("newSubcategory").value;
+  const image = document.getElementById("newImage").files[0];
+
+  if (!name || !price || !category) {
+    alert("Please fill all required fields!");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("action", "add");
+  formData.append("name", name);
+  formData.append("price", price);
+  formData.append("category", category);
+  formData.append("subcategory", subcategory);
+  if (image) formData.append("image", image);
+
+  try {
+    await fetch(API_URL, {
+      method: "POST",
+      body: formData
+    });
+
+    loadProducts();
+    document.getElementById("newProductForm").reset();
+  } catch (err) {
+    console.error("Error adding product:", err);
+  }
+}
+
+// ===============================
+// Event Listeners
+// ===============================
+document.getElementById("searchInput").addEventListener("input", filterProducts);
+document.getElementById("categorySelect").addEventListener("change", filterProducts);
+
+window.onload = loadProducts;
+
   </script>
 </body>
 </html>

@@ -1,63 +1,49 @@
 <?php
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
-// Path to products.json
-$file = __DIR__ . "/products.json";
+$file = "products.json";
+$data = json_decode(file_get_contents($file), true);
 
-// Ensure products.json exists
-if (!file_exists($file)) {
-    file_put_contents($file, json_encode([]));
+// GET all products
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    echo json_encode($data);
+    exit;
 }
 
-// Read products.json
-$products = json_decode(file_get_contents($file), true);
+// ADD product
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = json_decode(file_get_contents("php://input"), true);
+    $data['products'][] = $input;
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
+    echo json_encode(["success" => true]);
+    exit;
+}
 
-// Handle request method
-$method = $_SERVER['REQUEST_METHOD'];
-
-switch ($method) {
-    case 'GET':
-        echo json_encode($products);
-        break;
-
-    case 'POST': // Add product
-        $data = json_decode(file_get_contents("php://input"), true);
-        if (!$data) { http_response_code(400); exit; }
-
-        // Generate new ID
-        $lastId = !empty($products) ? max(array_column($products, 'id')) : 0;
-        $data['id'] = $lastId + 1;
-
-        $products[] = $data;
-        file_put_contents($file, json_encode($products, JSON_PRETTY_PRINT));
-        echo json_encode(["message" => "Product added", "product" => $data]);
-        break;
-
-    case 'PUT': // Edit product
-        $data = json_decode(file_get_contents("php://input"), true);
-        if (!$data || !isset($data['id'])) { http_response_code(400); exit; }
-
-        foreach ($products as &$product) {
-            if ($product['id'] == $data['id']) {
-                $product = array_merge($product, $data);
-                break;
-            }
+// UPDATE product
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $input = json_decode(file_get_contents("php://input"), true);
+    foreach ($data['products'] as &$product) {
+        if ($product['id'] == $input['id']) {
+            $product = $input; // overwrite with new values
+            break;
         }
-        file_put_contents($file, json_encode($products, JSON_PRETTY_PRINT));
-        echo json_encode(["message" => "Product updated"]);
-        break;
-
-    case 'DELETE': // Delete product
-        $data = json_decode(file_get_contents("php://input"), true);
-        if (!$data || !isset($data['id'])) { http_response_code(400); exit; }
-
-        $products = array_filter($products, fn($p) => $p['id'] != $data['id']);
-        file_put_contents($file, json_encode(array_values($products), JSON_PRETTY_PRINT));
-        echo json_encode(["message" => "Product deleted"]);
-        break;
-
-    default:
-        http_response_code(405);
-        echo json_encode(["message" => "Method not allowed"]);
+    }
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
+    echo json_encode(["success" => true]);
+    exit;
 }
-?>
+
+// DELETE product
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $input = json_decode(file_get_contents("php://input"), true);
+    $data['products'] = array_values(array_filter(
+        $data['products'],
+        fn($p) => $p['id'] != $input['id']
+    ));
+    file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
+    echo json_encode(["success" => true]);
+    exit;
+}

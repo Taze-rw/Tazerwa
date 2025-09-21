@@ -61,11 +61,7 @@ async function loadProducts() {
   try {
     const res = await fetch(API_URL);
     const data = await res.json();
-
-    // ✅ Get the array inside the "products" property
-    allProducts = data.products || [];
-
-    // show empty initially
+    allProducts = data.products;   // <-- ensure we get the array
     displayProducts([]);
   } catch (err) {
     console.error("Error loading products:", err);

@@ -60,7 +60,8 @@ document.getElementById("toggleAdd").addEventListener("click", () => {
 async function loadProducts() {
   try {
     const res = await fetch(API_URL);
-    allProducts = await res.json();
+    const data = await res.json();
+    allProducts = data.products;   // <-- ensure we get the array
     displayProducts([]);
   } catch (err) {
     console.error("Error loading products:", err);
@@ -128,3 +129,11 @@ async function deleteProduct(id) {
 // ================== INIT ==================
 window.onload = loadProducts;
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Cancel button inside Add/Edit form
+const cancelBtn = document.getElementById("cancelBtn");
+if (cancelBtn) {
+  cancelBtn.addEventListener("click", () => {
+    document.getElementById("addForm").style.display = "none";
+  });
+}

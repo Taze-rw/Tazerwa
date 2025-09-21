@@ -1,230 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tazerwa Admin Panel</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tazerwa — Admin: Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Gradient Header */
-    header {
-      background: linear-gradient(90deg, #ff6b6b, #f06595, #845ef7);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    header img {
-      height: 60px;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      margin: 0;
-      font-weight: 600;
-    }
-    header .home-btn {
-      position: absolute;
-      left: 20px;
-      top: 20px;
-      background: white;
-      color: #333;
-      padding: 6px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    header .home-btn:hover {
-      background: #f1f1f1;
-    }
-
-    /* Filters */
-    .filters {
-      max-width: 1200px;
-      margin: 20px auto;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .filters input, .filters select {
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      font-size: 14px;
-    }
-
-    .add-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background: #28a745;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .add-btn:hover {
-      background: #218838;
-    }
-
-    /* Products Grid (your CSS already handles most) */
-    .product-actions button {
-      flex: 1;
-      padding: 6px 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .edit-btn {
-      background: #28a745;
-      color: white;
-    }
-    .edit-btn:hover {
-      background: #218838;
-    }
-    .delete-btn {
-      background: #dc3545;
-      color: white;
-    }
-    .delete-btn:hover {
-      background: #b02a37;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      background: #f8f9fa;
-      border-top: 1px solid #e9ecef;
-      font-size: 14px;
-      color: #6c757d;
-    }
-
-    /* Modal (Edit Form) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 400px;
-      max-width: 90%;
-    }
-    .modal-content input, .modal-content select {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 8px 10px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-    .modal-content .save-btn {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .modal-content .close-btn {
-      margin-top: 10px;
-      background: #6c757d;
-      color: white;
-      border: none;
-      padding: 8px;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+    /* keep your previous CSS unchanged */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Roboto',sans-serif;background:#fafafa;overflow-x:hidden;line-height:1.6;color:#222}
+    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(135deg,#6e7969,#20c997);color:white}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:84px}
+    .top-nav a.home-btn{background:transparent;color:white;border:2px solid rgba(255,255,255,0.12);padding:8px 14px;border-radius:20px;text-decoration:none}
+    .container{max-width:1200px;margin:28px auto;padding:0 20px}
+    h1{font-family:'Poppins',sans-serif;margin-bottom:6px}
+    p.lead{color:#556; margin-bottom:18px}
+    .filter-row{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+    select.form-control,input.form-control{padding:12px;border-radius:10px;border:1px solid #e9ecef;min-width:180px}
+    .add-toggle{display:flex;justify-content:center;margin:18px 0}
+    .plus-btn{width:44px;height:44px;border-radius:50%;background:white;border:none;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
+    .add-form{background:white;padding:16px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,0.06);margin-bottom:22px;display:none}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .form-row{display:flex;flex-direction:column;gap:6px}
+    label{font-size:13px;color:#444}
+    .btn{padding:10px 16px;border-radius:10px;border:none;cursor:pointer}
+    .btn-primary{background:linear-gradient(45deg,#6e7969,#20c997);color:white}
+    .btn-danger{background:#ff6b6b;color:white}
+    .btn-outline{background:transparent;border:1px solid #e9ecef}
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .product-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all .3s;height:320px;display:flex;flex-direction:column;border:1px solid #f1f3f4}
+    .product-image{height:160px;background:#f8f9fa;overflow:hidden}
+    .product-image img{width:100%;height:100%;object-fit:cover}
+    .product-info{padding:14px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+    .product-name{font-family:'Poppins',sans-serif;font-size:14px;color:#333;margin-bottom:6px;font-weight:600}
+    .product-price{font-size:15px;color:#6e7969;font-weight:700}
+    .product-actions{display:flex;gap:8px;margin-top:12px}
+    .small-btn{padding:8px 10px;border-radius:10px;border:none;cursor:pointer}
+    .small-btn.edit{background:#28a745;color:white} /* green edit button */
+    .small-btn.delete{background:#ff6b6b;color:white}
+    footer{background:linear-gradient(135deg,#333,#555);color:white;padding:28px 0;margin-top:30px}
+    .footer-content{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
+    @media(max-width:900px){.products-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.products-grid{grid-template-columns:1fr}}
+    .center{text-align:center}
+    .muted{color:#6c757d;font-size:13px}
+    .controls{display:flex;gap:8px;align-items:center}
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <a href="index.html" class="home-btn">Home</a>
-    <img src="img/logo.png" alt="Tazerwa Logo">
-    <h1>Admin Panel</h1>
+  <header class="top-nav">
+    <div class="logo" style="margin:auto">
+      <img src="img/taze-logo.png" alt="Tazerwa logo">
+    </div>
+    <a class="home-btn" href="https://tazerwa.com" target="_blank" style="position:absolute;left:24px">Home</a>
   </header>
 
-  <!-- Filters -->
-  <div class="filters">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <select id="categorySelect">
-      <option value="">All Categories</option>
-      <option value="Food">Food</option>
-      <option value="Drinks">Drinks</option>
-      <option value="Beauty">Beauty</option>
-      <option value="Gifts">Gifts</option>
-      <option value="Baby Stuff">Baby Stuff</option>
-      <option value="Hot deals">Hot deals</option>
-    </select>
-    <select id="subcategorySelect">
-      <option value="">All Subcategories</option>
-    </select>
-  </div>
+  <main class="container">
+    <h1 class="center">Manage Products</h1>
 
-  <!-- Add Product -->
-  <button class="add-btn" onclick="document.getElementById('newProductModal').style.display='flex'">
-    + Add New Product
-  </button>
-
-  <!-- Products Section -->
-  <section class="products-section">
-    <div id="productsContainer" class="products-grid"></div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 Tazerwa. All rights reserved.
-  </footer>
-
-  <!-- Edit Modal -->
-  <div class="modal" id="editModal">
-    <div class="modal-content">
-      <h3>Edit Product</h3>
-      <input type="hidden" id="editId">
-      <input type="text" id="editName" placeholder="Product Name">
-      <input type="number" id="editPrice" placeholder="Price">
-      <select id="editCategory"></select>
-      <select id="editSubcategory"></select>
-      <button class="save-btn" onclick="saveProduct()">Save</button>
-      <button class="close-btn" onclick="closeEditModal()">Cancel</button>
+    <!-- Filters -->
+    <div class="filter-row">
+      <select id="categorySelect" class="form-control">
+        <option value="">Select category</option>
+      </select>
+      <select id="subcategorySelect" class="form-control" disabled>
+        <option value="">Select subcategory</option>
+      </select>
     </div>
-  </div>
 
-  <!-- Add New Product Modal -->
-  <div class="modal" id="newProductModal">
-    <div class="modal-content">
-      <h3>Add New Product</h3>
-      <form id="newProductForm" onsubmit="event.preventDefault(); addNewProduct();">
-        <input type="text" id="newName" placeholder="Product Name" required>
-        <input type="number" id="newPrice" placeholder="Price" required>
-        <select id="newCategory" required></select>
-        <select id="newSubcategory"></select>
-        <input type="file" id="newImage" accept="image/*">
-        <button class="save-btn" type="submit">Add Product</button>
+    <!-- Add toggle -->
+    <div class="add-toggle">
+      <button id="toggleAdd" class="plus-btn" title="Add product">+</button>
+    </div>
+    <p class="center muted">Add a New Product</p>
+
+    <!-- Add / Edit Form -->
+    <div id="addForm" class="add-form">
+      <form id="productForm">
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="pName">Product name</label>
+            <input id="pName" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <label for="pPrice">Price (RWF)</label>
+            <input id="pPrice" type="number" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <label for="pUnit">Unit</label>
+            <input id="pUnit" class="form-control" placeholder="e.g., 1kg">
+          </div>
+          <div class="form-row">
+            <label for="pImage">Image Upload</label>
+            <input type="file" id="pImageFile" accept="image/*" class="form-control">
+            <input id="pImage" class="form-control" placeholder="or paste URL">
+          </div>
+          <div class="form-row">
+            <label for="pCategory">Category</label>
+            <input id="pCategory" class="form-control" disabled>
+          </div>
+          <div class="form-row">
+            <label for="pSubcategory">Subcategory</label>
+            <input id="pSubcategory" class="form-control" disabled>
+          </div>
+        </div>
+        <div style="margin-top:12px;text-align:center">
+          <button id="saveProductBtn" class="btn btn-primary">Add product</button>
+          <button id="cancelEdit" type="button" class="btn btn-outline" style="margin-left:8px">Cancel</button>
+        </div>
       </form>
-      <button class="close-btn" onclick="document.getElementById('newProductModal').style.display='none'">Cancel</button>
     </div>
-  </div>
+
+    <!-- Results -->
+    <section class="products-section">
+      <div class="products-header">
+        <h2 class="section-title">Results</h2>
+        <p id="resultsCount" class="results-count muted">Select a category & subcategory to load products</p>
+      </div>
+      <div id="productsContainer" class="products-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>Tazerwa &copy; <span id="year"></span></div>
+      <div class="muted">Admin interface — products auto-sync via backend</div>
+    </div>
+  </footer>
 
   <script>
     // ===============================

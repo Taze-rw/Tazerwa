@@ -1,5 +1,5 @@
 // API Endpoint
-const API_URL = "http://localhost/Tazerwa/api.php";
+const API_URL = "https://taze.fwh.is/api.php?action=getProducts";
 let allProducts = [];
 
 // ================== CATEGORY MAP ==================
@@ -59,7 +59,7 @@ document.getElementById("toggleAdd").addEventListener("click", () => {
 // ================== LOAD PRODUCTS ==================
 async function loadProducts() {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch("https://taze.fwh.is/api.php?action=getProducts");
     const data = await res.json();
     allProducts = data.products;   // <-- ensure we get the array
     displayProducts([]);
@@ -118,7 +118,7 @@ function editProduct(id) {
 // ================== DELETE PRODUCT ==================
 async function deleteProduct(id) {
   if (!confirm("Delete this product?")) return;
-  await fetch(API_URL, {
+  await fetch("https://taze.fwh.is/api.php?action=getProducts", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({action:"delete",id})

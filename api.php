@@ -4,7 +4,14 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-$file = "products.json";
+// Use absolute path to products.json inside htdocs
+$file = __DIR__ . "/products.json";
+
+if (!file_exists($file)) {
+    echo json_encode(["error" => "products.json not found"]);
+    exit;
+}
+
 $data = json_decode(file_get_contents($file), true);
 
 // GET all products
@@ -47,3 +54,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     echo json_encode(["success" => true]);
     exit;
 }
+?>

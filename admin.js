@@ -108,7 +108,6 @@ function editProduct(id) {
   if (!product) return;
   document.getElementById("pName").value = product.name;
   document.getElementById("pPrice").value = product.price;
-  document.getElementById("pUnit").value = product.unit || "";
   document.getElementById("pImage").value = product.image || "";
   document.getElementById("pCategory").value = product.category;
   document.getElementById("pSubcategory").value = product.subcategory;

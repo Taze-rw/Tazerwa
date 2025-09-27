@@ -102,27 +102,61 @@ document.getElementById("subcategorySelect").addEventListener("change", () => {
   displayProducts(filtered);
 });
 
-// ================== EDIT PRODUCT ==================
-function editProduct(id) {
-  const product = allProducts.find(p => p.id === id);
-  if (!product) return;
-  document.getElementById("pName").value = product.name;
-  document.getElementById("pPrice").value = product.price;
-  document.getElementById("pImage").value = product.image || "";
-  document.getElementById("pCategory").value = product.category;
-  document.getElementById("pSubcategory").value = product.subcategory;
-  document.getElementById("addForm").style.display = "block";
+// ================== LOAD PRODUCTS ==================
+async function loadProducts() {
+  try {
+    const res = await fetch("https://taze.fwh.is/api.php", {
+      method: "GET"
+    });
+    const data = await res.json();
+    allProducts = data.products;
+    displayProducts([]);
+  } catch (err) {
+    console.error("Error loading products:", err);
+  }
+}
+
+// ================== ADD PRODUCT ==================
+async function addProduct(product) {
+  try {
+    await fetch("https://taze.fwh.is/api.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product)
+    });
+    loadProducts();
+  } catch (err) {
+    console.error("Error adding product:", err);
+  }
+}
+
+// ================== UPDATE PRODUCT ==================
+async function updateProduct(product) {
+  try {
+    await fetch("https://taze.fwh.is/api.php", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product)
+    });
+    loadProducts();
+  } catch (err) {
+    console.error("Error updating product:", err);
+  }
 }
 
 // ================== DELETE PRODUCT ==================
 async function deleteProduct(id) {
   if (!confirm("Delete this product?")) return;
-  await fetch(API_URL, {
-    method: "DELETE",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ id })
-  });
-  loadProducts();
+  try {
+    await fetch("https://taze.fwh.is/api.php", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id })
+    });
+    loadProducts();
+  } catch (err) {
+    console.error("Error deleting product:", err);
+  }
 }
 
 // ================== INIT ==================

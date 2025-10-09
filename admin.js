@@ -25,9 +25,10 @@ const categoryMap = {
   "Hot Deals": ["Veggie Boost","Snacks Time","Sip & Bite","Family Choice","Your 5 Choice Pack"]
 };
 
-// ================== POPULATE CATEGORIES ==================
+// ================== POPULATE FILTER CATEGORIES ==================
 const categorySelect = document.getElementById("categorySelect");
 if (categorySelect) {
+  // Populate filter category dropdown
   for (let cat in categoryMap) {
     const opt = document.createElement("option");
     opt.value = cat;
@@ -35,6 +36,7 @@ if (categorySelect) {
     categorySelect.appendChild(opt);
   }
 
+  // When filter category changes, populate filter subcategory
   categorySelect.addEventListener("change", () => {
     const subSelect = document.getElementById("subcategorySelect");
     subSelect.innerHTML = "<option value=''>Select subcategory</option>";
@@ -52,9 +54,28 @@ if (categorySelect) {
   });
 }
 
+// ================== POPULATE FORM CATEGORIES ==================
+function populateFormCategories() {
+  const pCategory = document.getElementById("pCategory");
+  if (!pCategory) return;
+  
+  // Clear existing options
+  pCategory.innerHTML = "<option value=''>Select category</option>";
+  
+  // Add all categories
+  for (let cat in categoryMap) {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    pCategory.appendChild(opt);
+  }
+}
+
 // ================== POPULATE FORM SUBCATEGORIES ==================
 function populateFormSubcategories(category) {
   const subSelect = document.getElementById("pSubcategory");
+  if (!subSelect) return;
+  
   subSelect.innerHTML = "<option value=''>Select subcategory</option>";
   
   if (category && categoryMap[category]) {
@@ -68,34 +89,46 @@ function populateFormSubcategories(category) {
 }
 
 // Category change in form
-document.getElementById("pCategory").addEventListener("change", (e) => {
-  populateFormSubcategories(e.target.value);
-});
+const pCategory = document.getElementById("pCategory");
+if (pCategory) {
+  pCategory.addEventListener("change", (e) => {
+    populateFormSubcategories(e.target.value);
+  });
+}
 
 // ================== TOGGLE ADD FORM ==================
-document.getElementById("toggleAdd").addEventListener("click", () => {
-  const form = document.getElementById("addForm");
-  const formTitle = document.querySelector("#addForm h3");
-  
-  // Reset form and mode
-  document.getElementById("productForm").reset();
-  isEditMode = false;
-  editingProductId = null;
-  formTitle.textContent = "Add New Product";
-  
-  // Show/hide form
-  if (form.style.display === "none" || !form.style.display) {
-    form.style.display = "block";
-    // Populate subcategories if category is selected
-    populateFormSubcategories(document.getElementById("pCategory").value);
-  } else {
-    form.style.display = "none";
-  }
-});
+const toggleAddBtn = document.getElementById("toggleAdd");
+if (toggleAddBtn) {
+  toggleAddBtn.addEventListener("click", () => {
+    const form = document.getElementById("addForm");
+    const formTitle = document.querySelector("#addForm h3");
+    
+    // Reset form and mode
+    const productForm = document.getElementById("productForm");
+    if (productForm) productForm.reset();
+    
+    isEditMode = false;
+    editingProductId = null;
+    if (formTitle) formTitle.textContent = "Add New Product";
+    
+    // Populate form categories
+    populateFormCategories();
+    
+    // Show/hide form
+    if (form.style.display === "none" || !form.style.display) {
+      form.style.display = "block";
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      form.style.display = "none";
+    }
+  });
+}
 
 // ================== LOAD PRODUCTS ==================
 async function loadProducts() {
   try {
+    console.log("Loading products from:", API_URL);
+    
     const res = await fetch(API_URL, { 
       method: "GET",
       headers: {
@@ -108,8 +141,16 @@ async function loadProducts() {
     }
     
     const data = await res.json();
+    console.log("API Response:", data);
+    
     allProducts = data.products || [];
     displayProducts(allProducts);
+    
+    // Update results count
+    const resultsCount = document.getElementById("resultsCount");
+    if (resultsCount) {
+      resultsCount.textContent = `${allProducts.length} products loaded`;
+    }
     
     console.log(`Loaded ${allProducts.length} products successfully`);
   } catch (err) {
@@ -121,10 +162,12 @@ async function loadProducts() {
 // ================== DISPLAY PRODUCTS ==================
 function displayProducts(products) {
   const container = document.getElementById("productsContainer");
+  if (!container) return;
+  
   container.innerHTML = "";
   
   if (!products || products.length === 0) {
-    container.innerHTML = "<p style='text-align: center; padding: 40px; color: #666;'>No products found.</p>";
+    container.innerHTML = "<p style='text-align: center; padding: 40px; color: #666;'>No products found. Select a category above or add a new product.</p>";
     return;
   }
 
@@ -138,13 +181,13 @@ function displayProducts(products) {
       <div class="product-info">
         <h4 class="product-name">${p.name}</h4>
         <p class="product-price"><strong>${parseFloat(p.price).toLocaleString()} RWF</strong></p>
-        <p class="product-category"><small>${p.category} > ${p.subcategory}</small></p>
+        <p class="product-category" style="color:#6c757d;font-size:12px;margin:4px 0"><small>${p.category} > ${p.subcategory}</small></p>
         <div class="product-actions">
           <button class="small-btn edit" onclick="editProduct(${p.id})">
-            <i class="fas fa-edit"></i> Edit
+            Edit
           </button>
           <button class="small-btn delete" onclick="deleteProduct(${p.id})">
-            <i class="fas fa-trash"></i> Delete
+            Delete
           </button>
         </div>
       </div>`;
@@ -153,27 +196,38 @@ function displayProducts(products) {
 }
 
 // ================== FILTER PRODUCTS ==================
-document.getElementById("subcategorySelect").addEventListener("change", () => {
-  const cat = categorySelect.value;
-  const sub = document.getElementById("subcategorySelect").value;
-  
-  if (!cat || !sub) {
-    displayProducts(allProducts);
-    document.getElementById("resultsCount").textContent = `${allProducts.length} products found`;
-    return;
-  }
-  
-  const filtered = allProducts.filter(p => 
-    p.category === cat && p.subcategory === sub
-  );
-  
-  document.getElementById("resultsCount").textContent = `${filtered.length} products found`;
-  displayProducts(filtered);
-});
+const subcategorySelect = document.getElementById("subcategorySelect");
+if (subcategorySelect) {
+  subcategorySelect.addEventListener("change", () => {
+    const cat = categorySelect ? categorySelect.value : '';
+    const sub = subcategorySelect.value;
+    
+    if (!cat || !sub) {
+      displayProducts(allProducts);
+      const resultsCount = document.getElementById("resultsCount");
+      if (resultsCount) {
+        resultsCount.textContent = `${allProducts.length} products found`;
+      }
+      return;
+    }
+    
+    const filtered = allProducts.filter(p => 
+      p.category === cat && p.subcategory === sub
+    );
+    
+    const resultsCount = document.getElementById("resultsCount");
+    if (resultsCount) {
+      resultsCount.textContent = `${filtered.length} products found`;
+    }
+    displayProducts(filtered);
+  });
+}
 
 // ================== ADD PRODUCT ==================
 async function addProduct(product) {
   try {
+    console.log("Adding product:", product);
+    
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { 
@@ -183,18 +237,19 @@ async function addProduct(product) {
     });
     
     const data = await res.json();
+    console.log("Add response:", data);
     
     if (data.success) {
-      alert("Product added successfully!");
+      alert("✅ Product added successfully!");
       await loadProducts();
       return true;
     } else {
-      alert("Error adding product: " + (data.error || "Unknown error"));
+      alert("❌ Error adding product: " + (data.error || "Unknown error"));
       return false;
     }
   } catch (err) {
     console.error("Error adding product:", err);
-    alert("Failed to add product. Check console for details.");
+    alert("❌ Failed to add product: " + err.message);
     return false;
   }
 }
@@ -202,6 +257,8 @@ async function addProduct(product) {
 // ================== UPDATE PRODUCT ==================
 async function updateProduct(product) {
   try {
+    console.log("Updating product:", product);
+    
     const res = await fetch(API_URL, {
       method: "PUT",
       headers: { 
@@ -211,18 +268,19 @@ async function updateProduct(product) {
     });
     
     const data = await res.json();
+    console.log("Update response:", data);
     
     if (data.success) {
-      alert("Product updated successfully!");
+      alert("✅ Product updated successfully!");
       await loadProducts();
       return true;
     } else {
-      alert("Error updating product: " + (data.error || "Unknown error"));
+      alert("❌ Error updating product: " + (data.error || "Unknown error"));
       return false;
     }
   } catch (err) {
     console.error("Error updating product:", err);
-    alert("Failed to update product. Check console for details.");
+    alert("❌ Failed to update product: " + err.message);
     return false;
   }
 }
@@ -235,30 +293,33 @@ async function deleteProduct(id) {
     return;
   }
   
-  if (!confirm(`Are you sure you want to delete "${product.name}"?`)) {
+  if (!confirm(`⚠️ Are you sure you want to delete "${product.name}"?\n\nThis action cannot be undone.`)) {
     return;
   }
   
   try {
+    console.log("Deleting product:", id);
+    
     const res = await fetch(API_URL, {
       method: "DELETE",
       headers: { 
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ id: id })
+      body: JSON.stringify({ id: parseInt(id) })
     });
     
     const data = await res.json();
+    console.log("Delete response:", data);
     
     if (data.success) {
-      alert("Product deleted successfully!");
+      alert("✅ Product deleted successfully!");
       await loadProducts();
     } else {
-      alert("Error deleting product: " + (data.error || "Unknown error"));
+      alert("❌ Error deleting product: " + (data.error || "Unknown error"));
     }
   } catch (err) {
     console.error("Error deleting product:", err);
-    alert("Failed to delete product. Check console for details.");
+    alert("❌ Failed to delete product: " + err.message);
   }
 }
 
@@ -270,6 +331,8 @@ function editProduct(id) {
     return;
   }
 
+  console.log("Editing product:", product);
+
   // Set edit mode
   isEditMode = true;
   editingProductId = id;
@@ -277,72 +340,103 @@ function editProduct(id) {
   // Show form
   const form = document.getElementById("addForm");
   const formTitle = document.querySelector("#addForm h3");
-  form.style.display = "block";
-  formTitle.textContent = "Edit Product";
 
-  // Populate form fields
+  if (!form) {
+    console.error("Form element not found");
+    return;
+  }
+
+  form.style.display = "block";
+  if (formTitle) formTitle.textContent = "Edit Product";
+
+  // Always populate categories
+  populateFormCategories();
+
+  // Set all field values
   document.getElementById("pName").value = product.name;
   document.getElementById("pPrice").value = product.price;
-  document.getElementById("pImage").value = product.image || '';
-  document.getElementById("pCategory").value = product.category;
-  
-  // Populate subcategories then set value
-  populateFormSubcategories(product.category);
-  document.getElementById("pSubcategory").value = product.subcategory;
+  document.getElementById("pImage").value = product.image || "";
 
-  // Scroll to form
-  form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Set category first
+  const pCategoryEl = document.getElementById("pCategory");
+  if (pCategoryEl) {
+    pCategoryEl.value = product.category;
+  }
+
+  // Now populate subcategories of that category
+  populateFormSubcategories(product.category);
+
+  // Wait briefly before setting subcategory (to ensure options exist)
+  setTimeout(() => {
+    const pSubcategoryEl = document.getElementById("pSubcategory");
+    if (pSubcategoryEl) {
+      pSubcategoryEl.value = product.subcategory;
+    }
+  }, 100);
+
+  // Scroll smoothly to form
+  form.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // ================== FORM SUBMISSION ==================
-document.getElementById("productForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  
-  const productData = {
-    name: document.getElementById("pName").value.trim(),
-    price: parseFloat(document.getElementById("pPrice").value),
-    image: document.getElementById("pImage").value.trim(),
-    category: document.getElementById("pCategory").value,
-    subcategory: document.getElementById("pSubcategory").value
-  };
-  
-  // Validation
-  if (!productData.name || !productData.price || !productData.category || !productData.subcategory) {
-    alert("Please fill in all required fields!");
-    return;
-  }
-  
-  if (productData.price <= 0) {
-    alert("Price must be greater than 0!");
-    return;
-  }
-  
-  let success = false;
-  
-  if (isEditMode && editingProductId) {
-    // Update existing product
-    productData.id = editingProductId;
-    success = await updateProduct(productData);
-  } else {
-    // Add new product
-    success = await addProduct(productData);
-  }
-  
-  if (success) {
-    // Reset form and hide
-    document.getElementById("productForm").reset();
-    document.getElementById("addForm").style.display = "none";
-    isEditMode = false;
-    editingProductId = null;
-  }
-});
+const productForm = document.getElementById("productForm");
+if (productForm) {
+  productForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const productData = {
+      name: document.getElementById("pName").value.trim(),
+      price: parseInt(document.getElementById("pPrice").value),
+      image: document.getElementById("pImage").value.trim(),
+      category: document.getElementById("pCategory").value,
+      subcategory: document.getElementById("pSubcategory").value
+    };
+    
+    console.log("Form data:", productData);
+    
+    // Validation
+    if (!productData.name || !productData.price || !productData.category || !productData.subcategory) {
+      alert("⚠️ Please fill in all required fields (Name, Price, Category, Subcategory)!");
+      return;
+    }
+    
+    if (productData.price <= 0 || isNaN(productData.price)) {
+      alert("⚠️ Price must be a valid number greater than 0!");
+      return;
+    }
+    
+    let success = false;
+    
+    if (isEditMode && editingProductId) {
+      // Update existing product
+      productData.id = editingProductId;
+      success = await updateProduct(productData);
+    } else {
+      // Add new product
+      success = await addProduct(productData);
+    }
+    
+    if (success) {
+      // Reset form and hide
+      productForm.reset();
+      const addForm = document.getElementById("addForm");
+      if (addForm) addForm.style.display = "none";
+      isEditMode = false;
+      editingProductId = null;
+    }
+  });
+}
 
 // ================== CANCEL BUTTON ==================
 const cancelBtn = document.getElementById("cancelBtn");
 if (cancelBtn) {
   cancelBtn.addEventListener("click", () => {
-    document.getElementById("productForm").reset();
-    document.getElementById("addForm").style.display = "none";
+    const productForm = document.getElementById("productForm");
+    const addForm = document.getElementById("addForm");
+    
+    if (productForm) productForm.reset();
+    if (addForm) addForm.style.display = "none";
+    
     isEditMode = false;
     editingProductId = null;
   });
@@ -350,13 +444,20 @@ if (cancelBtn) {
 
 // ================== INIT ==================
 window.onload = () => {
+  console.log("Initializing admin dashboard...");
+  console.log("API URL:", API_URL);
+
+  // Always populate the form categories on page load
+  populateFormCategories();
+
+  // Load all products
   loadProducts();
-  
+
   // Set footer year
   const yearElement = document.getElementById("year");
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
-  
-  console.log("Admin dashboard initialized");
+
+  console.log("Admin dashboard initialized successfully");
 };

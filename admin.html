@@ -55,28 +55,40 @@
     </div>
 
     <!-- Add/Edit Product Form -->
-    <div id="addForm">
-      <form id="productForm">
-        <div class="form-grid">
-          <div>
-            <label for="pName">Product Name</label>
-            <input id="pName" class="form-control" required>
-          </div>
-          <div>
-            <label for="pPrice">Price (RWF)</label>
-            <input id="pPrice" type="number" class="form-control" required>
-          </div>
-          <div>
-            <label for="pImage">Image URL</label>
-            <input id="pImage" class="form-control" placeholder="e.g. img/item.jpg">
-          </div>
-        </div>
-        <div style="margin-top:12px;text-align:center">
-          <button type="submit" class="btn btn-primary">Save</button>
-          <button type="button" id="cancelBtn" class="btn btn-outline">Cancel</button>
-        </div>
-      </form>
+<div id="addForm">
+  <form id="productForm">
+    <div class="form-grid">
+      <div>
+        <label for="pName">Product Name</label>
+        <input id="pName" class="form-control" required>
+      </div>
+      <div>
+        <label for="pPrice">Price (RWF)</label>
+        <input id="pPrice" type="number" class="form-control" required>
+      </div>
+      <div>
+        <label for="pImage">Image URL</label>
+        <input id="pImage" class="form-control" placeholder="e.g. img/item.jpg">
+      </div>
+      <div>
+        <label for="pCategory">Category</label>
+        <select id="pCategory" class="form-control" required>
+          <option value="">Select category</option>
+        </select>
+      </div>
+      <div>
+        <label for="pSubcategory">Subcategory</label>
+        <select id="pSubcategory" class="form-control" required>
+          <option value="">Select subcategory</option>
+        </select>
+      </div>
     </div>
+    <div style="margin-top:12px;text-align:center">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" id="cancelBtn" class="btn btn-outline">Cancel</button>
+    </div>
+  </form>
+</div>
 
     <!-- Products Grid -->
     <div id="productList"></div>

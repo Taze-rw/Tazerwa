@@ -3,133 +3,92 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tazerwa — Admin: Products</title>
+  <title>Tazerwa — Admin Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Roboto',sans-serif;background:#fafafa;overflow-x:hidden;line-height:1.6;color:#222}
-    .top-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(135deg,#6e7969,#20c997);color:white}
-    .logo img{width:84px}
-    .top-nav a.home-btn{background:transparent;color:white;border:2px solid rgba(255,255,255,0.12);padding:8px 14px;border-radius:20px;text-decoration:none}
-    .container{max-width:1200px;margin:28px auto;padding:0 20px}
-    h1{font-family:'Poppins',sans-serif;margin-bottom:6px;text-align:center}
-    p.lead{color:#556;margin-bottom:18px;text-align:center}
-    .filter-row{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap;justify-content:center}
-    select.form-control,input.form-control{padding:12px;border-radius:10px;border:1px solid #e9ecef;min-width:180px}
-    input.search-bar{flex:1;min-width:280px}
-    .add-toggle{display:flex;justify-content:center;margin:18px 0}
-    .plus-btn{width:44px;height:44px;border-radius:50%;background:white;border:none;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:inline-flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer}
-    .add-form{background:white;padding:16px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,0.06);margin-bottom:22px;display:none}
-    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .form-row{display:flex;flex-direction:column;gap:6px}
-    label{font-size:13px;color:#444}
-    .btn{padding:10px 16px;border-radius:10px;border:none;cursor:pointer}
-    .btn-primary{background:linear-gradient(45deg,#6e7969,#20c997);color:white}
-    .btn-danger{background:#ff6b6b;color:white}
-    .btn-outline{background:transparent;border:1px solid #e9ecef}
-    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .product-card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all .3s;height:320px;display:flex;flex-direction:column;border:1px solid #f1f3f4}
-    .product-image{height:160px;background:#f8f9fa;overflow:hidden}
+    body{font-family:'Roboto',sans-serif;background:#fafafa;color:#222;line-height:1.6}
+    header{background:linear-gradient(135deg,#6e7969,#20c997);color:white;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+    header .logo img{width:100px}
+    header a{color:white;text-decoration:none;border:1px solid rgba(255,255,255,0.3);padding:6px 12px;border-radius:6px}
+    main{max-width:1200px;margin:20px auto;padding:0 20px}
+    h1{font-family:'Poppins',sans-serif;margin-bottom:12px;text-align:center}
+    .controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .controls input, select, button{padding:10px 12px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+    #productList{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+    .product-item{background:white;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);padding:12px;display:flex;flex-direction:column;transition:.3s}
+    .product-item:hover{transform:translateY(-4px)}
+    .product-image{height:140px;overflow:hidden;border-radius:8px;background:#f5f5f5;margin-bottom:10px}
     .product-image img{width:100%;height:100%;object-fit:cover}
-    .product-info{padding:14px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
-    .product-name{font-family:'Poppins',sans-serif;font-size:14px;color:#333;margin-bottom:6px;font-weight:600}
-    .product-price{font-size:15px;color:#6e7969;font-weight:700}
-    .product-actions{display:flex;gap:8px;margin-top:12px}
-    .small-btn{padding:8px 10px;border-radius:10px;border:none;cursor:pointer}
-    .small-btn.edit{background:#28a745;color:white}
-    .small-btn.delete{background:#ff6b6b;color:white}
-    footer{background:linear-gradient(135deg,#333,#555);color:white;padding:28px 0;margin-top:30px}
-    .footer-content{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}
-    @media(max-width:900px){.products-grid{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}}
-    @media(max-width:480px){.products-grid{grid-template-columns:1fr}}
-    .center{text-align:center}
-    .muted{color:#6c757d;font-size:13px}
+    .product-details h4{margin-bottom:4px;font-family:'Poppins';font-size:15px}
+    .product-details p{font-size:13px;color:#555;margin-bottom:2px}
+    .product-actions{margin-top:auto;display:flex;gap:8px;justify-content:flex-end}
+    .btn{cursor:pointer;border:none;border-radius:6px;padding:8px 10px;font-size:13px}
+    .btn-primary{background:#20c997;color:white}
+    .btn-danger{background:#ff6b6b;color:white}
+    .btn-outline{background:transparent;border:1px solid #ccc}
+    footer{margin-top:40px;text-align:center;color:#666;padding:20px 0;font-size:13px}
+    #addForm{display:none;margin-top:20px;background:white;padding:16px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+    .form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    label{font-size:13px;color:#333;margin-bottom:4px;display:block}
   </style>
 </head>
 <body>
-  <header class="top-nav">
-    <div class="logo" style="margin:auto">
-      <img src="img/taze-logo.png" alt="Tazerwa logo">
-    </div>
-    <a class="home-btn" href="https://tazerwa.com" target="_blank" style="position:absolute;left:24px">Home</a>
+  <header>
+    <a href="https://tazerwa.com" target="_blank">← Home</a>
+    <div class="logo"><img src="img/taze-logo.png" alt="Tazerwa"></div>
   </header>
 
-  <main class="container">
-    <h1>Manage Products</h1>
-    <p class="lead">Easily add, edit, search, and export your products.</p>
+  <main>
+    <h1>Admin: Manage Products</h1>
 
-    <!-- Filters -->
-    <div class="filter-row">
-      <select id="categorySelect" class="form-control">
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search products...">
+      <select id="pCategory">
         <option value="">Select category</option>
       </select>
-      <select id="subcategorySelect" class="form-control" disabled>
+      <select id="pSubcategory">
         <option value="">Select subcategory</option>
       </select>
-      <input id="searchInput" type="text" class="form-control search-bar" placeholder="Search products across all categories...">
-      <button id="exportBtn" class="btn btn-primary">Export JSON</button>
+      <button id="showAddFormBtn" class="btn btn-primary">+ Add Product</button>
+      <button id="exportBtn" class="btn btn-outline">Export JSON</button>
     </div>
 
-    <!-- Add toggle -->
-    <div class="add-toggle">
-      <button id="toggleAdd" class="plus-btn" title="Add product">+</button>
-    </div>
-
-    <!-- Add / Edit Form -->
-    <div id="addForm" class="add-form">
-      <h3 style="margin-bottom:12px">Add New Product</h3>
+    <!-- Add/Edit Product Form -->
+    <div id="addForm">
       <form id="productForm">
-        <input type="hidden" id="productId">
         <div class="form-grid">
-          <div class="form-row">
-            <label for="pName">Product name *</label>
+          <div>
+            <label for="pName">Product Name</label>
             <input id="pName" class="form-control" required>
           </div>
-          <div class="form-row">
-            <label for="pPrice">Price (RWF) *</label>
+          <div>
+            <label for="pPrice">Price (RWF)</label>
             <input id="pPrice" type="number" class="form-control" required>
           </div>
-          <div class="form-row">
+          <div>
             <label for="pImage">Image URL</label>
-            <input id="pImage" class="form-control" placeholder="https://example.com/image.jpg">
-          </div>
-          <div class="form-row">
-            <label for="pCategory">Category *</label>
-            <select id="pCategory" class="form-control" required>
-              <option value="">Select category</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="pSubcategory">Subcategory *</label>
-            <select id="pSubcategory" class="form-control" required>
-              <option value="">Select subcategory</option>
-            </select>
+            <input id="pImage" class="form-control" placeholder="e.g. img/item.jpg">
           </div>
         </div>
         <div style="margin-top:12px;text-align:center">
-          <button type="submit" id="saveProductBtn" class="btn btn-primary">Save product</button>
-          <button id="cancelBtn" type="button" class="btn btn-outline" style="margin-left:8px">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" id="cancelBtn" class="btn btn-outline">Cancel</button>
         </div>
       </form>
     </div>
 
-    <!-- Results -->
-    <section class="products-section">
-      <div class="products-header center">
-        <h2>Results</h2>
-        <p id="resultsCount" class="results-count muted">Select a category, or search products to view results</p>
-      </div>
-      <div id="productsContainer" class="products-grid"></div>
-    </section>
+    <!-- Products Grid -->
+    <div id="productList"></div>
   </main>
 
   <footer>
-    <div class="footer-content">
-      <div>Tazerwa &copy; <span id="year"></span></div>
-      <div class="muted">Admin interface — Local mode enabled</div>
-    </div>
+    &copy; <span id="year"></span> Tazerwa — Admin Interface
   </footer>
 
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
   <script src="admin.js"></script>
 </body>
 </html>

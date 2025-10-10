@@ -1,162 +1,197 @@
 let products = [];
-let filteredProducts = [];
 let editingProductId = null;
 
-// ✅ Load products from products.json
+// Example category map (update as needed)
+const categoryMap = {
+  "Food": [
+    "Vegetables","Fruits","Canned Foods","Cooking Foods","Local Fresh Produce",
+    "Edible Oil","Flour","Powder","Grains","Spices & Ingredients","Pasta",
+    "Sugar & Salt","Meat Fish Chicken & Poultry","Breakfast & Dairy",
+    "Chocolate Snacks & Biscuits"
+  ],
+  "Drinks": [
+    "Water","Hot Drinks","Cold Drinks","Carbonated Drinks",
+    "Dairy-Based Drinks","Non Alcoholic Categories"
+  ],
+  "Beauty": ["Skincare","Makeup","Haircare","Personal Care"],
+  "Gifts": ["Flowers","Gift Ideas","Sweet Gift"],
+  "Baby Stuff": [
+    "Mother Care","Bell & Toys","Baby Hygiene","Baby Essentials",
+    "Baby Food & Drinks","Wipes & Diapers"
+  ],
+  "Hot Deals": ["Veggie Boost","Snacks Time","Sip & Bite","Family Choice","Your 5 Choice Pack"]
+};
+
+// Load JSON data
 async function loadProducts() {
   try {
-    const response = await fetch('products.json');
-    const data = await response.json();
+    const res = await fetch("products.json");
+    const data = await res.json();
     products = data.products || [];
-    filteredProducts = [...products];
-    displayProducts(filteredProducts);
-    loadCategories();
-  } catch (error) {
-    console.error("Error loading products.json:", error);
+    populateCategories();
+    displayProducts(products);
+  } catch (err) {
+    console.error("Error loading products.json:", err);
   }
 }
 
-// ✅ Display all products in table or grid
+// Display all products
 function displayProducts(list) {
-  const container = document.getElementById('productList');
-  container.innerHTML = '';
+  const container = document.getElementById("productList");
+  if (!container) return;
+  container.innerHTML = "";
 
-  if (list.length === 0) {
-    container.innerHTML = '<p style="text-align:center">No products found.</p>';
+  list.forEach(p => {
+    const item = document.createElement("div");
+    item.className = "product-item";
+    item.innerHTML = `
+      <div class="product-image"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="product-details">
+        <h4>${p.name}</h4>
+        <p>${p.category} — ${p.subcategory}</p>
+        <p><strong>${p.price.toLocaleString()} RWF</strong></p>
+      </div>
+      <div class="product-actions">
+        <button class="btn btn-primary" onclick="editProduct(${p.id})">Edit</button>
+        <button class="btn btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    `;
+    container.appendChild(item);
+  });
+}
+
+// Populate category select fields
+function populateCategories() {
+  const catSelect = document.getElementById("pCategory");
+  if (!catSelect) return;
+  catSelect.innerHTML = "<option value=''>Select category</option>";
+  for (let cat in categoryMap) {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    catSelect.appendChild(opt);
+  }
+}
+
+// Populate subcategories dynamically
+function populateSubcategories(category) {
+  const subSelect = document.getElementById("pSubcategory");
+  subSelect.innerHTML = "<option value=''>Select subcategory</option>";
+  if (category && categoryMap[category]) {
+    categoryMap[category].forEach(sc => {
+      const opt = document.createElement("option");
+      opt.value = sc;
+      opt.textContent = sc;
+      subSelect.appendChild(opt);
+    });
+  }
+}
+
+// Category change listener
+document.addEventListener("change", e => {
+  if (e.target.id === "pCategory") {
+    populateSubcategories(e.target.value);
+  }
+});
+
+// Handle Add/Edit Form
+document.getElementById("productForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const name = document.getElementById("pName").value.trim();
+  const price = parseFloat(document.getElementById("pPrice").value);
+  const image = document.getElementById("pImage").value.trim();
+  const category = document.getElementById("pCategory").value;
+  const subcategory = document.getElementById("pSubcategory").value;
+
+  if (!name || !price || !category || !subcategory) {
+    alert("Please fill in all required fields.");
     return;
   }
 
-  list.forEach((p) => {
-    const row = document.createElement('div');
-    row.className = 'product-item';
-    row.innerHTML = `
-      <img src="${p.image || 'img/placeholder.jpg'}" alt="${p.name}" class="product-image">
-      <div class="product-details">
-        <h4>${p.name}</h4>
-        <p><strong>Category:</strong> ${p.category}</p>
-        <p><strong>Subcategory:</strong> ${p.subcategory}</p>
-        <p><strong>Price:</strong> ${p.price} RWF</p>
-      </div>
-      <div class="product-actions">
-        <button class="btn btn-sm btn-primary" onclick="editProduct(${p.id})">Edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
-      </div>
-    `;
-    container.appendChild(row);
-  });
-}
-
-// ✅ Load unique categories & subcategories into select
-function loadCategories() {
-  const categorySelect = document.getElementById('pCategory');
-  const subcategorySelect = document.getElementById('pSubcategory');
-
-  const categories = [...new Set(products.map(p => p.category))];
-  categorySelect.innerHTML = '<option value="">Select category</option>';
-  categories.forEach(cat => {
-    const opt = document.createElement('option');
-    opt.value = cat;
-    opt.textContent = cat;
-    categorySelect.appendChild(opt);
-  });
-
-  categorySelect.addEventListener('change', () => {
-    const selected = categorySelect.value;
-    const subs = [...new Set(products.filter(p => p.category === selected).map(p => p.subcategory))];
-    subcategorySelect.innerHTML = '<option value="">Select subcategory</option>';
-    subs.forEach(sub => {
-      const opt = document.createElement('option');
-      opt.value = sub;
-      opt.textContent = sub;
-      subcategorySelect.appendChild(opt);
-    });
-  });
-}
-
-// ✅ Handle Add/Edit Form
-const form = document.getElementById('productForm');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const id = editingProductId || Date.now();
-  const newProduct = {
-    id,
-    name: document.getElementById('pName').value.trim(),
-    price: parseFloat(document.getElementById('pPrice').value),
-    image: document.getElementById('pImage').value.trim(),
-    category: document.getElementById('pCategory').value,
-    subcategory: document.getElementById('pSubcategory').value
-  };
-
   if (editingProductId) {
-    const index = products.findIndex(p => p.id === editingProductId);
-    products[index] = newProduct;
+    const prod = products.find(p => p.id === editingProductId);
+    if (prod) {
+      prod.name = name;
+      prod.price = price;
+      prod.image = image;
+      prod.category = category;
+      prod.subcategory = subcategory;
+    }
     editingProductId = null;
   } else {
+    const newProduct = {
+      id: products.length ? Math.max(...products.map(p => p.id)) + 1 : 1,
+      name, price, image, category, subcategory
+    };
     products.push(newProduct);
   }
 
-  filteredProducts = [...products];
-  displayProducts(filteredProducts);
-  form.reset();
-  document.getElementById('addForm').style.display = 'none';
+  displayProducts(products);
+  toggleForm(false);
+  e.target.reset();
 });
 
-// ✅ Edit product
+// Edit product
 function editProduct(id) {
-  const p = products.find(p => p.id === id);
-  if (!p) return;
-
+  const prod = products.find(p => p.id === id);
+  if (!prod) return;
   editingProductId = id;
-  document.getElementById('pName').value = p.name;
-  document.getElementById('pPrice').value = p.price;
-  document.getElementById('pImage').value = p.image;
-  document.getElementById('pCategory').value = p.category;
-  document.getElementById('pSubcategory').value = p.subcategory;
-  document.getElementById('addForm').style.display = 'block';
+
+  document.getElementById("pName").value = prod.name;
+  document.getElementById("pPrice").value = prod.price;
+  document.getElementById("pImage").value = prod.image;
+  document.getElementById("pCategory").value = prod.category;
+  populateSubcategories(prod.category);
+  document.getElementById("pSubcategory").value = prod.subcategory;
+
+  toggleForm(true);
 }
 
-// ✅ Delete product
+// Delete product
 function deleteProduct(id) {
-  if (!confirm("Are you sure you want to delete this product?")) return;
-  products = products.filter(p => p.id !== id);
-  filteredProducts = [...products];
-  displayProducts(filteredProducts);
+  if (confirm("Delete this product?")) {
+    products = products.filter(p => p.id !== id);
+    displayProducts(products);
+  }
 }
 
-// ✅ Search functionality
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-  filteredProducts = products.filter(p =>
-    p.name.toLowerCase().includes(searchTerm) ||
-    p.category.toLowerCase().includes(searchTerm) ||
-    p.subcategory.toLowerCase().includes(searchTerm)
-  );
-  displayProducts(filteredProducts);
+// Show/hide form
+function toggleForm(show) {
+  document.getElementById("addForm").style.display = show ? "block" : "none";
+}
+
+// Show form button
+document.getElementById("showAddFormBtn").addEventListener("click", () => {
+  editingProductId = null;
+  document.getElementById("productForm").reset();
+  toggleForm(true);
 });
 
-// ✅ Export JSON (downloads updated products)
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const dataStr = JSON.stringify({ products }, null, 2);
-  const blob = new Blob([dataStr], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
+// Cancel form button
+document.getElementById("cancelBtn").addEventListener("click", () => {
+  toggleForm(false);
+});
+
+// Search functionality
+document.getElementById("searchInput").addEventListener("input", e => {
+  const q = e.target.value.toLowerCase();
+  const filtered = products.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    p.category.toLowerCase().includes(q) ||
+    p.subcategory.toLowerCase().includes(q)
+  );
+  displayProducts(filtered);
+});
+
+// Export JSON
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify({ products }, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
   a.download = "products.json";
   a.click();
-  URL.revokeObjectURL(url);
 });
 
-// ✅ Cancel button
-document.getElementById('cancelBtn').addEventListener('click', () => {
-  form.reset();
-  editingProductId = null;
-  document.getElementById('addForm').style.display = 'none';
-});
-
-// ✅ Show form
-document.getElementById('showAddFormBtn')?.addEventListener('click', () => {
-  document.getElementById('addForm').style.display = 'block';
-});
-
-// ✅ Initialize
+// Initialize
 loadProducts();

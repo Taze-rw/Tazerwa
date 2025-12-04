@@ -841,7 +841,7 @@
   <!-- Products Section -->
   <div class="products-section">
     <div class="products-header">
-      <h2 class="section-title">Edible Oils</h2>
+      <h2 class="section-title">Water</h2>
       <p class="results-count" id="resultsCount">Loading products...</p>
     </div>
 
@@ -1006,7 +1006,7 @@ function filterProducts() {
     .then(res => res.json())
     .then(data => {
       // ✅ Always limit to Fruits subcategory
-      let products = data.products.filter(p => p.subcategory.toLowerCase() === "Edible Oils");
+      let products = data.products.filter(p => p.subcategory.toLowerCase() === "Water");
 
       // ✅ If search term exists, filter further
       if (searchTerm) {

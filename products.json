@@ -284,7 +284,7 @@
     "id": 36,
     "name": "Passion (1kg)",
     "price": 2200,
-    "image": "img/passion.jpg",
+    "image": "img/passionfruits.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -292,7 +292,7 @@
     "id": 37,
     "name": "Papaya (1pc)",
     "price": 1000,
-    "image": "img/papaya.jpg",
+    "image": "img/papayas.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -300,7 +300,7 @@
     "id": 38,
     "name": "Orange (1pc)",
     "price": 700,
-    "image": "img/orange.jpg",
+    "image": "img/oranges.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -332,7 +332,7 @@
     "id": 42,
     "name": "Mandarin (1kg)",
     "price": 2000,
-    "image": "img/mandarin.jpg",
+    "image": "img/mandarins.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -340,7 +340,7 @@
     "id": 43,
     "name": "Lemon (1kg)",
     "price": 1500,
-    "image": "img/lemon.jpg",
+    "image": "img/lemons.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -356,7 +356,7 @@
     "id": 45,
     "name": "Strawberry (1kg)",
     "price": 3500,
-    "image": "img/strawberry.jpg",
+    "image": "img/strawberries.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -364,7 +364,7 @@
     "id": 46,
     "name": "Grape",
     "price": 0,
-    "image": "img/grape.jpg",
+    "image": "img/grape-fruit.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -388,7 +388,7 @@
     "id": 49,
     "name": "Avocado (1pc)",
     "price": 800,
-    "image": "img/avocado.jpg",
+    "image": "img/avocadoes.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -412,7 +412,7 @@
     "id": 52,
     "name": "Orange Fruit",
     "price": 1200,
-    "image": "img/orange-fruit.jpg",
+    "image": "img/oranges.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -420,7 +420,7 @@
     "id": 53,
     "name": "Watermelon (1pc)",
     "price": 3500,
-    "image": "img/watermelon.jpg",
+    "image": "img/watermelons.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -428,7 +428,7 @@
     "id": 54,
     "name": "Tree Tomato (1kg)",
     "price": 1700,
-    "image": "img/treetomato.jpg",
+    "image": "img/treetomatoes.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -436,7 +436,7 @@
     "id": 55,
     "name": "Small Sweet Banana (15 pcs)",
     "price": 2000,
-    "image": "img/small-sweet-banana.jpg",
+    "image": "img/small-bananas.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -444,7 +444,7 @@
     "id": 56,
     "name": "Garmichel Sweet Banana (10pcs)",
     "price": 1500,
-    "image": "img/garmichel-sweet-banana.jpg",
+    "image": "img/bananas.png",
     "category": "Food",
     "subcategory": "Fruits"
   },

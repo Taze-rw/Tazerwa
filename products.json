@@ -362,8 +362,8 @@
   },
   {
     "id": 46,
-    "name": "Grape",
-    "price": 0,
+    "name": "Grape Fruit (500gm)",
+    "price": 6000,
     "image": "img/grape-fruit.png",
     "category": "Food",
     "subcategory": "Fruits"

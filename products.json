@@ -10,9 +10,9 @@
     },
     {
       "id": 2,
-      "name": "Tomatoes Salad (1kg)",
+      "name": "Tomatoes (1kg)",
       "price": 1500,
-      "image": "img/tomatoes-salad.jpg",
+      "image": "img/chili-tomatoes.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },

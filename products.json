@@ -28,7 +28,7 @@
       "id": 4,
       "name": "Red Onions (1kg)",
       "price": 1000,
-      "image": "img/red-onions.jpg",
+      "image": "img/onions.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -36,7 +36,7 @@
       "id": 5,
       "name": "White Onion (1kg)",
       "price": 1500,
-      "image": "img/white-onion.jpg",
+      "image": "img/white-onions.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -60,7 +60,7 @@
       "id": 8,
       "name": "Long Dark Red Dry Beans (1kg)",
       "price": 1500,
-      "image": "img/dark-red-dry-beans.jpg",
+      "image": "img/red-dry-beans.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -68,7 +68,7 @@
       "id": 9,
       "name": "Fresh Beans - Ibitonore (1kg)",
       "price": 1700,
-      "image": "img/fresh-beans.jpg",
+      "image": "img/green-beans.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -76,7 +76,7 @@
       "id": 10,
       "name": "Eggplant - Intoryi (1kg)",
       "price": 700,
-      "image": "img/eggplant-intoryi.jpg",
+      "image": "img/eggplants.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -100,7 +100,7 @@
       "id": 13,
       "name": "Garlic - Unpeeled (250g)",
       "price": 1200,
-      "image": "img/garlic-unpeeled.jpg",
+      "image": "img/garlic.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },

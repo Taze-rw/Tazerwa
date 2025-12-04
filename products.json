@@ -848,6 +848,126 @@
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Naturally sweet, healthy potatoes great for baking or boiling."
-    }
+    },
+  {
+    "id": 101,
+    "name": "Nil Water 3L",
+    "price": 3200,
+    "image": "img/nil-water-3l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 102,
+    "name": "Inyange Water 500ml (12pcs)",
+    "price": 5500,
+    "image": "img/inyange-500ml-12pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 103,
+    "name": "Inyange Mineral Water 500ml (24pcs)",
+    "price": 8000,
+    "image": "img/inyange-mineral-500ml-24pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 104,
+    "name": "Nil Water Box 500ml (24pcs)",
+    "price": 12400,
+    "image": "img/nil-water-box-500ml-24pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 105,
+    "name": "Nil Water 5L (4pcs)",
+    "price": 12400,
+    "image": "img/nil-water-5l-4pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 106,
+    "name": "Inyange Mineral Water 1L",
+    "price": 1100,
+    "image": "img/inyange-mineral-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 107,
+    "name": "Nil Water 1.5L",
+    "price": 1300,
+    "image": "img/nil-water-1.5l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 108,
+    "name": "Inyange Water 500ml",
+    "price": 600,
+    "image": "img/inyange-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 109,
+    "name": "Nil Water 5L",
+    "price": 4000,
+    "image": "img/nil-water-5l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 110,
+    "name": "Nil Water 500ml",
+    "price": 700,
+    "image": "img/nil-water-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 111,
+    "name": "Inyange Mineral Water 18.9L + Bottle",
+    "price": 28000,
+    "image": "img/inyange-mineral-18.9l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 112,
+    "name": "Jibu Water 18.9L + Bottle",
+    "price": 21500,
+    "image": "img/jibu-water-18.9l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 113,
+    "name": "Jibu Top Water 20L + Bottle",
+    "price": 25000,
+    "image": "img/jibu-top-20l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 114,
+    "name": "Uhai Puru Drinking Water 1.6L",
+    "price": 1800,
+    "image": "img/uhai-1.6l.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  },
+  {
+    "id": 115,
+    "name": "Uhai Puru Drinking Water 500ml",
+    "price": 600,
+    "image": "img/uhai-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Water"
+  }
   ]
 }

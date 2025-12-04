@@ -124,7 +124,7 @@
       "id": 16,
       "name": "Mutiki Dry Beans (1kg)",
       "price": 1500,
-      "image": "img/mutiki-dry-beans.jpg",
+      "image": "img/yellow-dry-beans.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -140,7 +140,7 @@
       "id": 18,
       "name": "Fresh Large Green Chillies (500g)",
       "price": 1800,
-      "image": "img/green-chillies.jpg",
+      "image": "img/chilli-pepper.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -204,7 +204,7 @@
       "id": 26,
       "name": "Cabbage (1pc)",
       "price": 1000,
-      "image": "img/cabbage.jpg",
+      "image": "img/cabbages.jpeg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -260,7 +260,7 @@
     "id":33,
     "name": "Mangoes (1kg)",
     "price": 5000,
-    "image": "img/mangoes.jpg",
+    "image": "img/mangoes.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -268,7 +268,7 @@
     "id": 34,
     "name": "Banana (1pc)",
     "price": 0,
-    "image": "img/banana.jpg",
+    "image": "img/bananas.png",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -276,7 +276,7 @@
     "id": 35,
     "name": "Pineapple (1pc)",
     "price": 1000,
-    "image": "img/pineapple.jpg",
+    "image": "img/pineapples.png",
     "category": "Food",
     "subcategory": "Fruits"
   },

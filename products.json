@@ -1336,6 +1336,238 @@
     "image": "img/american-g-lemon-juice.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 201,
+    "name": "Gorilla Coffee 250gm",
+    "price": 7900,
+    "image": "img/gorilla-coffee-250gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 202,
+    "name": "Gorilla Coffee 500gm",
+    "price": 13400,
+    "image": "img/gorilla-coffee-500gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 203,
+    "name": "Gorilla Coffee 1kg",
+    "price": 24000,
+    "image": "img/gorilla-coffee-1kg.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 204,
+    "name": "KCL Coffee 250gm",
+    "price": 7000,
+    "image": "img/kcl-coffee-250gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 205,
+    "name": "KCL Coffee 500gm",
+    "price": 14000,
+    "image": "img/kcl-coffee-500gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 206,
+    "name": "KCL Coffee 1kg",
+    "price": 24000,
+    "image": "img/kcl-coffee-1kg.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 207,
+    "name": "Coffee Filter Every Day",
+    "price": 2800,
+    "image": "img/coffee-filter-everyday.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 208,
+    "name": "Nescafe 100gm",
+    "price": 9500,
+    "image": "img/nescafe-100gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 209,
+    "name": "Nescafe 190gm",
+    "price": 58500,
+    "image": "img/nescafe-190gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 210,
+    "name": "Coffee Paper Filter Cup 50pc",
+    "price": 30000,
+    "image": "img/coffee-paper-filter-cup-50pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 211,
+    "name": "Coffee Filter Bag 50pc",
+    "price": 3500,
+    "image": "img/coffee-filter-bag-50pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 212,
+    "name": "Gorilla Instant Coffee 50 Sachets",
+    "price": 12000,
+    "image": "img/gorilla-instant-coffee-50sachets.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 213,
+    "name": "Coffee Cup 1pc",
+    "price": 15000,
+    "image": "img/coffee-cup-1pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 214,
+    "name": "Coffee Cup Short 6pc",
+    "price": 5500,
+    "image": "img/coffee-cup-short-6pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Coffee"
+  },
+  {
+    "id": 215,
+    "name": "Gold Blend Tea Bag",
+    "price": 3000,
+    "image": "img/gold-blend-tea-bag.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 216,
+    "name": "Ginger Powder Tangwiz Tea 125g",
+    "price": 2300,
+    "image": "img/ginger-powder-tangwiz-tea-125g.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 217,
+    "name": "Slimming Herbs",
+    "price": 10700,
+    "image": "img/slimming-herbs.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 218,
+    "name": "Rwand Green Tea Bag",
+    "price": 2500,
+    "image": "img/rwand-green-tea-bag.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 219,
+    "name": "Strang Black Tea Bag",
+    "price": 2000,
+    "image": "img/strang-black-tea-bag.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 220,
+    "name": "Tea Masala 50g",
+    "price": 2500,
+    "image": "img/tea-masala-50g.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 221,
+    "name": "Rwand Light Black Tea 250g",
+    "price": 1800,
+    "image": "img/rwand-light-black-tea-250g.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 222,
+    "name": "Sorwate Thé Vert 125gm",
+    "price": 3000,
+    "image": "img/sorwate-the-vert-125gm.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 223,
+    "name": "Lemon and Ginger Tea Bags 50pc",
+    "price": 3000,
+    "image": "img/lemon-ginger-tea-bags-50pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 224,
+    "name": "Vanilla Tea Bags 50pc",
+    "price": 3000,
+    "image": "img/vanilla-tea-bags-50pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 225,
+    "name": "Kericha Gold Pure Caramel",
+    "price": 6000,
+    "image": "img/kericha-gold-pure-caramel.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 226,
+    "name": "Kericha Gold Spice Tea",
+    "price": 6200,
+    "image": "img/kericha-gold-spice-tea.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 227,
+    "name": "Hibiscus Tea Coffee Flavored 150g",
+    "price": 3300,
+    "image": "img/hibiscus-tea-coffee-flavored-150g.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 228,
+    "name": "Kericha Gold Pure Cardamom Tea",
+    "price": 6000,
+    "image": "img/kericha-gold-pure-cardamom-tea.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
+  },
+  {
+    "id": 229,
+    "name": "Kericha Gold Pure Orange Spice Tea",
+    "price": 6700,
+    "image": "img/kericha-gold-pure-orange-spice-tea.jpg",
+    "category": "Drinks",
+    "subcategory": "Tea"
   }
   ]
 }

@@ -968,6 +968,230 @@
     "image": "img/uhai-500ml.jpg",
     "category": "Drinks",
     "subcategory": "Water"
+  },
+  {
+    "id": 116,
+    "name": "Bralirwa Fanta Case (24pcs + Bottle)",
+    "price": 20000,
+    "image": "img/bralirwa-fanta-case-24pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 117,
+    "name": "Coca Cola 500ml",
+    "price": 1100,
+    "image": "img/coca-cola-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 118,
+    "name": "Fanta Orange 500ml",
+    "price": 1100,
+    "image": "img/fanta-orange-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 119,
+    "name": "Fanta Sprite 500ml",
+    "price": 1100,
+    "image": "img/fanta-sprite-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 120,
+    "name": "Fanta Pineapple 500ml",
+    "price": 1100,
+    "image": "img/fanta-pineapple-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 121,
+    "name": "Vitalo 500ml",
+    "price": 1100,
+    "image": "img/vitalo-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 122,
+    "name": "Fanta Box 500ml (12pcs)",
+    "price": 11500,
+    "image": "img/fanta-box-12pc-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 123,
+    "name": "Coca Cola 330g",
+    "price": 3000,
+    "image": "img/coca-cola-330g.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 124,
+    "name": "Bavaria Orange 500ml",
+    "price": 2200,
+    "image": "img/bavaria-orange-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Carbonated Drinks"
+  },
+  {
+    "id": 125,
+    "name": "Inyange Milk 1L",
+    "price": 2200,
+    "image": "img/inyange-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 126,
+    "name": "Inyange Low Fat Milk 1L",
+    "price": 2100,
+    "image": "img/inyange-low-fat-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 127,
+    "name": "Inyange Milk 500ml (12pcs)",
+    "price": 10000,
+    "image": "img/inyange-milk-500ml-12pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 128,
+    "name": "Inyange Milk 500ml",
+    "price": 1000,
+    "image": "img/inyange-milk-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 129,
+    "name": "Inyange Strawberry Yogurt 400g",
+    "price": 1300,
+    "image": "img/inyange-strawberry-yogurt-400g.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 130,
+    "name": "Inyange Milk Carton 1L (12pcs)",
+    "price": 18500,
+    "image": "img/inyange-milk-carton-12pc-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 131,
+    "name": "Inyange Vanilla Yogurt 400g",
+    "price": 1300,
+    "image": "img/inyange-vanilla-yogurt-400g.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 132,
+    "name": "Masaka Vanilla Yogurt 250g",
+    "price": 1000,
+    "image": "img/masaka-vanilla-yogurt-250g.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 133,
+    "name": "Ikivuguto Milk 5L",
+    "price": 7000,
+    "image": "img/ikivuguto-5l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 134,
+    "name": "Ikivuguto Milk 3L",
+    "price": 5000,
+    "image": "img/ikivuguto-3l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 135,
+    "name": "Ikivuguto Nyanza Milk 1L",
+    "price": 1200,
+    "image": "img/ikivuguto-nyanza-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 136,
+    "name": "Inyange Whole Milk Powder 25kg",
+    "price": 195000,
+    "image": "img/inyange-milk-powder-25kg.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 137,
+    "name": "Everyday Soya Whole Milk 1L",
+    "price": 6700,
+    "image": "img/everyday-soya-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 138,
+    "name": "Inyange Chocolate Milk 1L",
+    "price": 3000,
+    "image": "img/inyange-chocolate-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 139,
+    "name": "Elle & Vire Yogurt Strawberries 125g",
+    "price": 3000,
+    "image": "img/elle-vire-strawberry-yogurt-125g.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 140,
+    "name": "Elle & Vire Yogurt Mango/Cherry 125g",
+    "price": 3000,
+    "image": "img/elle-vire-mango-cherry-yogurt-125g.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 141,
+    "name": "Kara Coconut Milk Beverage Unsweetened 1L",
+    "price": 17500,
+    "image": "img/kara-coconut-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 142,
+    "name": "Mukamira Whole Milk 250ml (24pcs)",
+    "price": 10500,
+    "image": "img/mukamira-milk-250ml-24pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 143,
+    "name": "Bjorg Organic Almond Milk 1L",
+    "price": 16500,
+    "image": "img/bjorg-almond-milk-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Dairy-based Drinks"
   }
   ]
 }

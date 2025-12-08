@@ -12,5 +12,5 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   // Simulated login (replace with your API)
   console.log("Logging in:", { email, password });
 
-  alert("Login successful (demo)");
+  alert("Invalid email or password");
 });

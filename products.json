@@ -1192,6 +1192,150 @@
     "image": "img/bjorg-almond-milk-1l.jpg",
     "category": "Drinks",
     "subcategory": "Dairy-based Drinks"
+  },
+  {
+    "id": 144,
+    "name": "Inyange Premium Greavo Fruit Nectar 1L",
+    "price": 3000,
+    "image": "img/inyange-greavo-nectar-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 145,
+    "name": "Bonu Munt Syrup 75cl",
+    "price": 16000,
+    "image": "img/bonu-munt-syrup-75cl.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 146,
+    "name": "Fruit Ville Tropical Orange Drink 500ml",
+    "price": 13500,
+    "image": "img/fruit-ville-tropical-orange-500ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 147,
+    "name": "Mirunda Fruit 600ml",
+    "price": 1800,
+    "image": "img/mirunda-fruit-600ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 148,
+    "name": "Apple Cider Juice 1L",
+    "price": 5000,
+    "image": "img/apple-cider-juice-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 149,
+    "name": "Agasha Strawberry/Pineapple/Passion Juice 1L",
+    "price": 8000,
+    "image": "img/agasha-juice-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 150,
+    "name": "Fruit Ville Mango Juice 1L",
+    "price": 5000,
+    "image": "img/fruit-ville-mango-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 151,
+    "name": "Fast Fruit Drink Vitamin C 1L",
+    "price": 2800,
+    "image": "img/fast-fruit-vitamin-c-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 152,
+    "name": "Inyange Juice 500ml Carton (12pcs)",
+    "price": 10700,
+    "image": "img/inyange-juice-500ml-12pc.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 153,
+    "name": "Azam Embe Juice 300ml",
+    "price": 600,
+    "image": "img/azam-embe-juice-300ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 154,
+    "name": "Inyange Juice 250ml",
+    "price": 600,
+    "image": "img/inyange-juice-250ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 155,
+    "name": "Grenadine Syrup Juice",
+    "price": 10500,
+    "image": "img/grenadine-syrup.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 156,
+    "name": "Mirinda Fruit Soft Drink 2L",
+    "price": 3800,
+    "image": "img/mirinda-fruit-2l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 157,
+    "name": "Inyange Mango/Orange/Apple Juice 1L",
+    "price": 2600,
+    "image": "img/inyange-mixed-juice-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 158,
+    "name": "Inyange Mango/Orange Juice",
+    "price": 1000,
+    "image": "img/inyange-mango-orange.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 159,
+    "name": "Inyange Juice Box 250ml (24pcs)",
+    "price": 10700,
+    "image": "img/inyange-juice-box-24pc-250ml.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 160,
+    "name": "Inyange Juice Carton 1L (12pcs)",
+    "price": 27500,
+    "image": "img/inyange-juice-carton-12pc-1l.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
+  },
+  {
+    "id": 161,
+    "name": "American G Lemon Juice",
+    "price": 9000,
+    "image": "img/american-g-lemon-juice.jpg",
+    "category": "Drinks",
+    "subcategory": "Non-Alcoholic Drinks"
   }
   ]
 }

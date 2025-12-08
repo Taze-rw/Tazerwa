@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Drinks - Taze.rw | Fresh & Fast Delivery</title>
+  <title>Non-Alcoholic Drinks - Taze.rw | Fresh & Fast Delivery</title>
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -799,7 +799,7 @@
     </div>
 
     <div class="page-title">
-      <h1>Daily Drinks</h1>
+      <h1>Non-Alcoholic Drinks</h1>
       <p>Find your favorite Daily Based Drinks</p>
     </div>
   </header>
@@ -811,14 +811,14 @@
       <span><i class="fas fa-chevron-right"></i></span>
       <a href="drinks.html">Food</a>
       <span><i class="fas fa-chevron-right"></i></span>
-      <span>Daily Drinks</span>
+      <span>Non-Alcoholic Drinks</span>
     </div>
   </div>
 
   <!-- Search Section -->
   <div class="search-section">
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Search daily drinks - milk,...">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search Non-Alcoholic drinks - sodas, juices...">
       <button class="search-btn" onclick="filterProducts()">
         <i class="fas fa-search"></i>
       </button>
@@ -1006,7 +1006,7 @@ function filterProducts() {
     .then(res => res.json())
     .then(data => {
       // ✅ Always limit to Fruits subcategory
-      let products = data.products.filter(p => p.subcategory.toLowerCase() === "Dairy-based Drinks");
+      let products = data.products.filter(p => p.subcategory.toLowerCase() === "Non-Alcoholic Drinks");
 
       // ✅ If search term exists, filter further
       if (searchTerm) {
@@ -1041,7 +1041,7 @@ document.getElementById('searchInput').addEventListener('input', function () {
 
 // Load on start
 document.addEventListener("DOMContentLoaded", function() {
-  loadProducts({ subcategory: "Dairy-based Drinks" });
+  loadProducts({ subcategory: "Non-Alcoholic Drinks" });
   updateCartCount();
 });
   </script>

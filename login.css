@@ -14,6 +14,31 @@ body {
   padding: 20px;
 }
 
+.home-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #20c997;
+  background: white;
+  border: 2px solid #20c997;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.home-btn:hover {
+  background: #20c997;
+  color: white;
+  border-color: #20c997;
+  transform: translateY(-2px);
+}
+
+
 .login-container {
   animation: fadeIn 0.7s ease-out;
 }

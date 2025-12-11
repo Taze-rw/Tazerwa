@@ -1243,9 +1243,9 @@
   },
   {
     "id": 150,
-    "name": "Fruit Ville Orange Juice 1L",
+    "name": "Fruit Ville Orange Juice 500ml",
     "price": 5000,
-    "image": "img/fruit-ville-orange-1l.jpg",
+    "image": "img/fruit-ville-orange-500ml.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },

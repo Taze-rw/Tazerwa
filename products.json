@@ -1005,7 +1005,7 @@
     "id": 120,
     "name": "Fanta Pineapple 500ml",
     "price": 1100,
-    "image": "img/fanta-pineapple-500ml.jpg",
+    "image": "img/fanta-pineapple-500ml.jpeg",
     "category": "Drinks",
     "subcategory": "Carbonated Drinks"
   },
@@ -1029,7 +1029,7 @@
     "id": 123,
     "name": "Coca Cola 330g",
     "price": 3000,
-    "image": "img/coca-cola-330g.jpg",
+    "image": "img/coca-cola-330g.jpeg",
     "category": "Drinks",
     "subcategory": "Carbonated Drinks"
   },
@@ -1037,7 +1037,7 @@
     "id": 124,
     "name": "Bavaria Orange 500ml",
     "price": 2200,
-    "image": "img/bavaria-orange-500ml.jpg",
+    "image": "img/bavaria-orange-500ml.jpeg",
     "category": "Drinks",
     "subcategory": "Carbonated Drinks"
   },

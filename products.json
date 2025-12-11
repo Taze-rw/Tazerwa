@@ -1211,9 +1211,9 @@
   },
   {
     "id": 146,
-    "name": "Fruit Ville Tropical Orange Drink 500ml",
+    "name": "Fruit Ville Tropical Mango Drink 1l",
     "price": 13500,
-    "image": "img/fruit-ville-tropical-orange-500ml.jpg",
+    "image": "img/fruit-ville-tropical-mango-500ml.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1243,9 +1243,9 @@
   },
   {
     "id": 150,
-    "name": "Fruit Ville Mango Juice 1L",
+    "name": "Fruit Ville Orange Juice 1L",
     "price": 5000,
-    "image": "img/fruit-ville-mango-1l.jpg",
+    "image": "img/fruit-ville-orange-1l.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },

@@ -124,7 +124,7 @@
       "id": 16,
       "name": "Mutiki Dry Beans (1kg)",
       "price": 1500,
-      "image": "img/yellow-dry-beans.jpg",
+      "image": "img/mutiki-dry-beans.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -172,7 +172,7 @@
       "id": 22,
       "name": "Yellow Dry Beans (1kg)",
       "price": 2000,
-      "image": "img/yellow-dry-beans.jpg",
+      "image": "img/yellow-dry-beans.png",
       "category": "Food",
       "subcategory": "Vegetables"
     },

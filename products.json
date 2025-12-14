@@ -364,7 +364,7 @@
     "id": 46,
     "name": "Grape Fruit (500gm)",
     "price": 6000,
-    "image": "img/grape-fruit.png",
+    "image": "img/green-grapes.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },
@@ -458,9 +458,9 @@
   },
   {
     "id": 58,
-    "name": "Lacol Orange (1kg)",
+    "name": "Local Orange (1kg)",
     "price": 1500,
-    "image": "img/lacol-orange.jpg",
+    "image": "img/local-orange.jpg",
     "category": "Food",
     "subcategory": "Fruits"
   },

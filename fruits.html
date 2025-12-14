@@ -951,18 +951,38 @@ function displayProducts(products) {
   });
 }
 
-// Add to cart
-function addToCart(productId) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+async function addToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Load products to get full info
+  const response = await fetch("products.json");
+  const data = await response.json();
+  const product = data.products.find(p => p.id === productId);
+
+  if (!product) {
+    alert("Product not found");
+    return;
+  }
+
   const existing = cart.find(item => item.id === productId);
+
   if (existing) {
     existing.quantity += 1;
   } else {
-    cart.push({ id: productId, quantity: 1 });
+    cart.push({
+      id: product.id,
+      productName: product.name,
+      price: product.price,
+      unit: product.unit || "",
+      image: product.image,
+      quantity: 1
+    });
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
+
+  localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
+
 
 // Update cart count badge
 function updateCartCount() {

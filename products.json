@@ -1195,9 +1195,9 @@
   },
   {
     "id": 144,
-    "name": "Inyange Premium Greavo Fruit Nectar 1L",
+    "name": "Inyange Premium Guava Fruit Nectar 1L",
     "price": 3000,
-    "image": "img/inyange-greavo-nectar-1l.jpg",
+    "image": "img/inyange-guava-nectar-1l.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1235,9 +1235,9 @@
   },
   {
     "id": 149,
-    "name": "Agasha Strawberry/Pineapple/Passion Juice 1L",
+    "name": "Agashya Strawberry/Pineapple/Passion Juice 1L",
     "price": 8000,
-    "image": "img/agasha-juice-1l.jpg",
+    "image": "img/agashya-juice-1l.jpg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },

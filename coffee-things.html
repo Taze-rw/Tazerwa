@@ -953,16 +953,19 @@ function displayProducts(products) {
 
 // Add to cart
 function addToCart(productId) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const existing = cart.find(item => item.id === productId);
-  if (existing) {
-    existing.quantity += 1;
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item = cart.find(p => p.id === productId);
+
+  if (item) {
+    item.qty += 1;
   } else {
-    cart.push({ id: productId, quantity: 1 });
+    cart.push({ id: productId, qty: 1 });
   }
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
+
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
+
 
 // Update cart count badge
 function updateCartCount() {

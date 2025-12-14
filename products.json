@@ -1574,112 +1574,112 @@
     "name": "Hyaluronic 3D Super Serum",
     "price": 33000,
     "image": "img/hyaluronic-3d-serum.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 231,
     "name": "Pure Vitamin C Super Serum (Bio Balance)",
     "price": 30000,
     "image": "img/vitamin-c-bio-balance.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 232,
     "name": "Super Plump Cream Moisturizer 50ml (Bio Balance)",
     "price": 33000,
     "image": "img/super-plump-moisturizer.jpg",
-    "category": "Skin Care",
-    "subcategory": "Moisturizers"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 233,
     "name": "Super Hydrator Cream Moisturizer 50ml (Bio Balance)",
     "price": 33000,
     "image": "img/super-hydrator-moisturizer.jpg",
-    "category": "Skin Care",
-    "subcategory": "Moisturizers"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 234,
     "name": "Super Ampoule Perfect Glow 2ml × 10 (Bio Balance)",
     "price": 40000,
     "image": "img/ampoule-perfect-glow.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 235,
     "name": "Hello Clean Deep Hydrating Cleansing Balm (Bio Balance)",
     "price": 35000,
     "image": "img/hello-clean-balm.jpg",
-    "category": "Skin Care",
-    "subcategory": "Cleansers"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 236,
     "name": "Clarins Double Serum",
     "price": 55000,
     "image": "img/clarins-double-serum.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 237,
     "name": "Anua Niacinamide 10% + TXA 4 Serum",
     "price": 30000,
     "image": "img/anua-niacinamide-serum.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 238,
     "name": "Silky Cool Extra Milk Face & Body Scrub",
     "price": 9000,
     "image": "img/silky-cool-scrub.jpg",
-    "category": "Skin Care",
-    "subcategory": "Scrubs"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 239,
     "name": "The Ordinary Niacinamide 10% + Zinc 1% - 30ml",
     "price": 22000,
     "image": "img/ordinary-niacinamide.jpg",
-    "category": "Skin Care",
-    "subcategory": "Serums"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id":  240,
     "name": "Topicrem (Blue)",
     "price": 30000,
     "image": "img/topicrem-blue.jpg",
-    "category": "Skin Care",
-    "subcategory": "Moisturizers"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 241,
     "name": "Dr Rashel Kit",
     "price": 35000,
     "image": "img/dr-rashel-kit.jpg",
-    "category": "Skin Care",
-    "subcategory": "Kits"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 242,
     "name": "Gold Scrub",
     "price": 11000,
     "image": "img/gold-scrub.jpg",
-    "category": "Skin Care",
-    "subcategory": "Scrubs"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   },
   {
     "id": 243,
     "name": "Black Mask",
     "price": 12000,
     "image": "img/black-mask.jpg",
-    "category": "Skin Care",
-    "subcategory": "Masks"
+    "category": "Beauty",
+    "subcategory": "Skin Care"
   }
   ]
 }

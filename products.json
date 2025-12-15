@@ -2032,6 +2032,438 @@
     "image": "img/black-mask.jpg",
     "category": "Beauty",
     "subcategory": "Skin Care"
-  }
+  },
+  {
+      "id": 244,
+      "name": "American Hachée (1kg)",
+      "price": 6500,
+      "image": "img/american-hachee.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 245,
+      "name": "Beef Fillet (1kg)",
+      "price": 11000,
+      "image": "img/beef-fillet.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 246,
+      "name": "Beef Imvange (1kg)",
+      "price": 6500,
+      "image": "img/beef-imvange.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 247,
+      "name": "Beef Iloti (1kg)",
+      "price": 8500,
+      "image": "img/beef-iloti.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 248,
+      "name": "Beef Liva (1kg)",
+      "price": 6500,
+      "image": "img/beef-liva.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 249,
+      "name": "Beef T-Bone Steak",
+      "price": 10000,
+      "image": "img/beef-tbone.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 250,
+      "name": "Captain Fish Fillet (1kg)",
+      "price": 13500,
+      "image": "img/fish-captain.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 251,
+      "name": "Tilapia Fish Fillet (1kg)",
+      "price": 12500,
+      "image": "img/fish-tilapia.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 252,
+      "name": "Ingagara Fish (1kg)",
+      "price": 4000,
+      "image": "img/fish-ingagara.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 253,
+      "name": "Insambaza Fish (1kg)",
+      "price": 8000,
+      "image": "img/fish-insambaza.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 254,
+      "name": "Chicken Legs (1kg)",
+      "price": 6500,
+      "image": "img/chicken-legs.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 255,
+      "name": "Chicken Wings (1kg)",
+      "price": 6000,
+      "image": "img/chicken-wings.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 256,
+      "name": "Chicken Breast (1kg)",
+      "price": 7000,
+      "image": "img/chicken-breast.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 257,
+      "name": "Whole Chicken (1.5kg)",
+      "price": 7000,
+      "image": "img/chicken-whole.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 258,
+      "name": "Whole Chicken Rwanda (1.5kg)",
+      "price": 8500,
+      "image": "img/chicken-rwanda.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 259,
+      "name": "Eggs Rwanda (30 pcs)",
+      "price": 6600,
+      "image": "img/eggs-rwanda.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 260,
+      "name": "Eggs (30 pcs)",
+      "price": 5500,
+      "image": "img/eggs.jpg",
+      "category": "Food",
+      "subcategory": "Meat"
+    },
+    {
+      "id": 262,
+      "name": "Azam Home Baking Powder (2kg)",
+      "price": 3000,
+      "image": "img/azam-baking-2kg.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 263,
+      "name": "Azam Home Baking Powder (20kg)",
+      "price": 28000,
+      "image": "img/azam-baking-20kg.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 264,
+      "name": "Akanoze Millet Flour (1kg)",
+      "price": 2900,
+      "image": "img/akanoze-millet.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 265,
+      "name": "Corn Flour (400g)",
+      "price": 2200,
+      "image": "img/corn-flour.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 266,
+      "name": "Cassava Flour / Ifu y’Ubugali (1kg)",
+      "price": 1300,
+      "image": "img/cassava-flour.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 267,
+      "name": "Soya Flour (1kg)",
+      "price": 1900,
+      "image": "img/soya-flour.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 268,
+      "name": "Kawunga Songa (5kg)",
+      "price": 6500,
+      "image": "img/kawunga-songa-5kg.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 269,
+      "name": "Kawunga Gashumba (1kg)",
+      "price": 1500,
+      "image": "img/kawunga-gashumba-1kg.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 261,
+      "name": "Kawunga Gashumba (25kg)",
+      "price": 32000,
+      "image": "img/kawunga-gashumba-25kg.jpg",
+      "category": "Food",
+      "subcategory": "Flour"
+    },
+    {
+      "id": 270,
+      "name": "Cube Maggie (Pack)",
+      "price": 2400,
+      "image": "img/cube-maggie.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 271,
+      "name": "Sorwatom",
+      "price": 500,
+      "image": "img/sorwatom.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 272,
+      "name": "Led Gold",
+      "price": 350,
+      "image": "img/led-gold.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 273,
+      "name": "Salsa",
+      "price": 800,
+      "image": "img/salsa.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 274,
+      "name": "Salt",
+      "price": 400,
+      "image": "img/salt.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 275,
+      "name": "Apple Vinegar",
+      "price": 15000,
+      "image": "img/apple-vinegar.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 276,
+      "name": "Mozzarella Cheese",
+      "price": 12000,
+      "image": "img/mozzarella-cheese.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 277,
+      "name": "Cheese",
+      "price": 7000,
+      "image": "img/cheese.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 278,
+      "name": "Beef Masala",
+      "price": 2500,
+      "image": "img/beef-masala.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 279,
+      "name": "Chicken Masala",
+      "price": 2500,
+      "image": "img/chicken-masala.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 280,
+      "name": "Fish Masala",
+      "price": 2500,
+      "image": "img/fish-masala.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 281,
+      "name": "Pilau Masala",
+      "price": 2000,
+      "image": "img/pilau-masala.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 282,
+      "name": "Royco",
+      "price": 2000,
+      "image": "img/royco.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 283,
+      "name": "Turmeric",
+      "price": 2500,
+      "image": "img/turmeric.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 284,
+      "name": "Cinnamon",
+      "price": 2000,
+      "image": "img/cinnamon.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 285,
+      "name": "Black Pepper",
+      "price": 2700,
+      "image": "img/black-pepper.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 286,
+      "name": "White Pepper",
+      "price": 2700,
+      "image": "img/white-pepper.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 287,
+      "name": "Garlic Powder",
+      "price": 2500,
+      "image": "img/garlic-powder.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 288,
+      "name": "Curry Powder",
+      "price": 3000,
+      "image": "img/curry-powder.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 289,
+      "name": "Ketchup",
+      "price": 4000,
+      "image": "img/ketchup.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 290,
+      "name": "Moutarde Everyday",
+      "price": 8500,
+      "image": "img/mustard-everyday.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 291,
+      "name": "Baking Powder",
+      "price": 500,
+      "image": "img/baking-powder.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 292,
+      "name": "Soya Sauce Dark",
+      "price": 3000,
+      "image": "img/soya-sauce-dark.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 293,
+      "name": "Soya Sauce White",
+      "price": 3000,
+      "image": "img/soya-sauce-white.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 294,
+      "name": "Vanilla Sugar (10 pcs)",
+      "price": 2000,
+      "image": "img/vanilla-sugar.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 295,
+      "name": "Pakmaya Yeast 500g",
+      "price": 2000,
+      "image": "img/pakmaya.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 296,
+      "name": "Paprika 500g",
+      "price": 2500,
+      "image": "img/paprika.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    },
+    {
+      "id": 297,
+      "name": "Vinegar 700ml",
+      "price": 1500,
+      "image": "img/vinegar.jpg",
+      "category": "Food",
+      "subcategory": "Spices"
+    }
   ]
 }

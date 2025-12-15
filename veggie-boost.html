@@ -357,96 +357,123 @@
       color: white;
     }
 
-    /* Products Section */
-    .products-section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* ================= PRODUCT LIST ================= */
+.product-details ul {
+  padding-left: 18px;
+  font-size: 14px;
+  color: #444;
+}
 
-    .products-header {
-      margin-bottom: 30px;
-      text-align: center;
-    }
+.product-details ul li {
+  margin-bottom: 4px;
+}
 
-    .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-      color: #333;
-      font-weight: 600;
-    }
+/* ================= MOBILE FIXES ================= */
+@media (max-width: 768px) {
 
-    .results-count {
-      color: #6c757d;
-      font-size: 15px;
-      font-weight: 400;
-    }
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
 
-    /* Grid */
-        .products-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
-        }
+  .product-card {
+    height: auto; /* 🔑 FIX */
+  }
 
-        /* Product card */
-        .product-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
-            overflow: hidden;
-            transition: transform .2s;
-        }
+  .product-card img {
+    height: 140px;
+  }
 
-        .product-card:hover {
-            transform: scale(1.03);
-        }
+  .product-details {
+    padding: 12px;
+  }
 
-        .product-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
+  .product-details h3 {
+    font-size: 15px;
+  }
 
-        .product-details {
-            padding: 15px;
-        }
+  .price {
+    font-size: 14px;
+  }
 
-        .product-details h3 {
-            margin: 0;
-            color: #2b8a3e;
-            font-size: 18px;
-        }
+  .product-details ul {
+    font-size: 13px;
+  }
+}
 
-        .price {
-            color: #444;
-            font-weight: bold;
-            margin: 10px 0;
-        }
+/* ================= EXTRA SMALL SCREENS ================= */
+@media (max-width: 480px) {
 
-        ul {
-            margin: 0;
-            padding-left: 18px;
-            color: #333;
-            font-size: 14px;
-        }
+  .products-container {
+    grid-template-columns: 1fr;
+  }
 
-    /* Responsive: 2 boxes per row on small screens */
-    @media (max-width: 768px) {
-      .products-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      }
-      .product-card {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      }
-    }
+  .product-card {
+    max-width: 100%;
+  }
+
+  .product-card img {
+    height: 160px;
+  }
+}
+
+/* ================= CART FLOAT BUTTON ================= */
+.view-cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  text-align: center;
+  cursor: pointer;
+}
+
+.view-cart-btn img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.view-cart-btn span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #333;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff6b6b;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid #fff;
+}
+
+/* ================= SIMPLE FADE ANIMATION ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-card {
+  animation: fadeIn 0.4s ease-out;
+}
 
     .add-to-cart-btn {
       flex: 1;
@@ -735,9 +762,6 @@
       <li><a href="hot-deals.html"><i class="fas fa-fire"></i>Hot Deals</a></li>
       <li><a href="food.html" class="active"><i class="fas fa-utensils"></i>Food</a></li>
       <li><a href="drinks.html"><i class="fas fa-wine-glass"></i>Drinks</a></li>
-      <li><a href="beauty.html"><i class="fas fa-spa"></i>Beauty</a></li>
-      <li><a href="gifts.html"><i class="fas fa-gift"></i>Gifts</a></li>
-      <li><a href="baby-stuff.html"><i class="fas fa-baby"></i>Baby Stuff</a></li>
       <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
       <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
     </ul>

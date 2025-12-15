@@ -1008,7 +1008,7 @@ function filterProducts() {
     .then(res => res.json())
     .then(data => {
       // ✅ Always limit to Fruits subcategory
-      let products = data.products.filter(p => p.subcategory.toLowerCase() === "fruits");
+      let products = data.products.filter(p => p.subcategory.toLowerCase() === "Breakfast & Dairy");
 
       // ✅ If search term exists, filter further
       if (searchTerm) {
@@ -1043,7 +1043,7 @@ document.getElementById('searchInput').addEventListener('input', function () {
 
 // Load on start
 document.addEventListener("DOMContentLoaded", function() {
-  loadProducts({ subcategory: "Fruits" });
+  loadProducts({ subcategory: "Breakfast & Dairy" });
   updateCartCount();
 });
   </script>

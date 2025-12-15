@@ -1338,6 +1338,358 @@
     "subcategory": "Non-Alcoholic Drinks"
   },
   {
+  "id": 162,
+  "name": "White Sugar (1kg)",
+  "price": 2800,
+  "image": "img/white-sugar-1kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 163,
+  "name": "White Sugar (5kg)",
+  "price": 13000,
+  "image": "img/white-sugar-5kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 164,
+  "name": "Brown Sugar (1kg)",
+  "price": 2200,
+  "image": "img/brown-sugar-1kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 165,
+  "name": "Brown Sugar (5kg)",
+  "price": 11000,
+  "image": "img/brown-sugar-5kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 166,
+  "name": "Ice Sugar (500g)",
+  "price": 2200,
+  "image": "img/ice-sugar-500g.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 167,
+  "name": "Neza Salt (600g)",
+  "price": 6500,
+  "image": "img/neza-salt-600g.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 168,
+  "name": "Joza Kitchen Salt (1kg)",
+  "price": 4000,
+  "image": "img/joza-salt-1kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+  "id": 169,
+  "name": "Rock Salt (1kg)",
+  "price": 5000,
+  "image": "img/rock-salt-1kg.jpg",
+  "category": "Food",
+  "subcategory": "Sugar & Salt"
+},
+{
+      "id": 162,
+      "name": "Plain Omelette",
+      "price": 3500,
+      "image": "img/plain-omelette.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 163,
+      "name": "Chapati Omelette",
+      "price": 3500,
+      "image": "img/chapati-omelette.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 164,
+      "name": "Taze Breakfast",
+      "price": 7000,
+      "image": "img/taze-breakfast.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 165,
+      "name": "Pancake",
+      "price": 700,
+      "image": "img/pancake.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 166,
+      "name": "Crepe (Single)",
+      "price": 700,
+      "image": "img/crepe.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 167,
+      "name": "Special Omelette",
+      "price": 5000,
+      "image": "img/special-omelette.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 168,
+      "name": "Spanish Omelette",
+      "price": 4000,
+      "image": "img/spanish-omelette.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 169,
+      "name": "Honey ABCD (500g)",
+      "price": 5000,
+      "image": "img/honey.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 170,
+      "name": "Peanut Butter (500g)",
+      "price": 8000,
+      "image": "img/peanut-butter.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 171,
+      "name": "Chia Seeds",
+      "price": 8000,
+      "image": "img/chia-seeds.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 172,
+      "name": "Cashew Nuts (300g)",
+      "price": 9000,
+      "image": "img/cashew-nuts.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 173,
+      "name": "Cup Cakes (12 pcs)",
+      "price": 12000,
+      "image": "img/cupcakes.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 174,
+      "name": "Chocolate Cake (12 pcs)",
+      "price": 12000,
+      "image": "img/chocolate-cake.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 175,
+      "name": "Vanilla Cake Slice",
+      "price": 2500,
+      "image": "img/vanilla-cake.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 176,
+      "name": "Lemon Cake Slice",
+      "price": 2500,
+      "image": "img/lemon-cake.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 177,
+      "name": "Banana Cake Slice",
+      "price": 2500,
+      "image": "img/banana-cake.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 178,
+      "name": "Big Cake (Medium)",
+      "price": 15000,
+      "image": "img/big-cake-medium.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 179,
+      "name": "Big Cake (Large)",
+      "price": 30000,
+      "image": "img/big-cake-large.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 180,
+      "name": "Samosa (3 pcs)",
+      "price": 2400,
+      "image": "img/samosa.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 181,
+      "name": "Donuts (3 pcs)",
+      "price": 2000,
+      "image": "img/donuts.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 182,
+      "name": "Taze Special Donuts (30 pcs)",
+      "price": 5000,
+      "image": "img/special-donuts.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 183,
+      "name": "Crepes (3 pcs)",
+      "price": 2000,
+      "image": "img/crepes-3pcs.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 184,
+      "name": "Croissant",
+      "price": 1500,
+      "image": "img/croissant.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 185,
+      "name": "Meatballs (3 pcs)",
+      "price": 2400,
+      "image": "img/meatballs.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 186,
+      "name": "Sandwich Pack",
+      "price": 1800,
+      "image": "img/sandwich.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 187,
+      "name": "Pain Coupé (Sugar)",
+      "price": 1800,
+      "image": "img/pain-coupe-sugar.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 188,
+      "name": "Pain Coupé (Salt)",
+      "price": 1800,
+      "image": "img/pain-coupe-salt.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 189,
+      "name": "Pain Français",
+      "price": 1500,
+      "image": "img/pain-francais.jpg",
+      "category": "Food",
+      "subcategory": "Breakfast & Dairy"
+    },
+    {
+      "id": 190,
+      "name": "Snickers Chocolate",
+      "price": 1800,
+      "image": "img/snickers.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 191,
+      "name": "Everyday White Chocolate",
+      "price": 9000,
+      "image": "img/everyday-white-chocolate.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 192,
+      "name": "Everyday Dark Chocolate",
+      "price": 9000,
+      "image": "img/everyday-dark-chocolate.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 193,
+      "name": "Ferrero Rocher Chocolate",
+      "price": 12000,
+      "image": "img/ferrero-rocher.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 194,
+      "name": "Everyday Sweet Fruit Flavor Chocolate",
+      "price": 12000,
+      "image": "img/everyday-fruit-chocolate.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 195,
+      "name": "Everyday Biscuits (500g)",
+      "price": 6000,
+      "image": "img/everyday-biscuits.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 196,
+      "name": "Oreo Biscuits",
+      "price": 1500,
+      "image": "img/oreo.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+    {
+      "id": 197,
+      "name": "Milk Chocolate Biscuits",
+      "price": 5500,
+      "image": "img/milk-chocolate-biscuits.jpg",
+      "category": "Food",
+      "subcategory": "Chocolate & Biscuits"
+    },
+  {
     "id": 201,
     "name": "Gorilla Coffee 250gm",
     "price": 7900,

@@ -2568,6 +2568,126 @@
       "image": "img/pasta/barilla-penne.jpg",
       "category": "Food",
       "subcategory": "Pasta"
+    },
+    {
+      "id": 310,
+      "name": "Babanoor Rice (10kg)",
+      "price": 40000,
+      "image": "img/rice-babanoor.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 311,
+      "name": "TZ Rice Original No.1 (1kg)",
+      "price": 1200,
+      "image": "img/rice-tz-original.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 312,
+      "name": "Indian Rice (1kg)",
+      "price": 1100,
+      "image": "img/rice-indian.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 313,
+      "name": "Thailand Rice (1kg)",
+      "price": 1100,
+      "image": "img/rice-thailand-1kg.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 314,
+      "name": "Jambo Basmati Rice (5kg)",
+      "price": 20000,
+      "image": "img/rice-jambo-basmati.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 315,
+      "name": "Jambo Rice (10kg)",
+      "price": 35000,
+      "image": "img/rice-jambo-10kg.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 316,
+      "name": "Kinyoni Tanzania Rice (25kg)",
+      "price": 53000,
+      "image": "img/rice-kinyoni.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 317,
+      "name": "Lal Qilla Brown Basmati Rice (5kg)",
+      "price": 31500,
+      "image": "img/rice-lalqilla-brown.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 318,
+      "name": "Lal Qilla Tribal Basmati Rice (11kg)",
+      "price": 50000,
+      "image": "img/rice-lalqilla-tribal.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 319,
+      "name": "Lal Qilla Supreme Sella Basmati Rice (5kg)",
+      "price": 29500,
+      "image": "img/rice-lalqilla-sella.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 320,
+      "name": "Salima Tanzania Rice (25kg)",
+      "price": 58000,
+      "image": "img/rice-salima.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 321,
+      "name": "Tanzania Big Rice (25kg)",
+      "price": 57500,
+      "image": "img/rice-tanzania-big.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 322,
+      "name": "Tanzania Byabuze Rice (25kg)",
+      "price": 57000,
+      "image": "img/rice-byabuze.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 323,
+      "name": "Tanzania Rice (1kg)",
+      "price": 2500,
+      "image": "img/rice-tanzania-1kg.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
+    },
+    {
+      "id": 324,
+      "name": "Thailand Rice (25kg)",
+      "price": 58000,
+      "image": "img/rice-thailand-25kg.jpg",
+      "category": "Food",
+      "subcategory": "Grains"
     }
   ]
 }

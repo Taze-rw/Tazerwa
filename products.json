@@ -2464,6 +2464,110 @@
       "image": "img/vinegar.jpg",
       "category": "Food",
       "subcategory": "Spices"
+    },
+    {
+      "id": 297,
+      "name": "Spaghetti 450g",
+      "price": 1000,
+      "image": "img/pasta/spaghetti-450g.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 298,
+      "name": "Noodles Chicken Flavour (1 pc)",
+      "price": 500,
+      "image": "img/pasta/noodles-chicken.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 299,
+      "name": "Selva Fusilli Pasta",
+      "price": 1700,
+      "image": "img/pasta/selva-fusilli.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 300,
+      "name": "Divella Linguine Pasta 500g",
+      "price": 1700,
+      "image": "img/pasta/divella-linguine.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 301,
+      "name": "King Pasta",
+      "price": 2500,
+      "image": "img/pasta/king-pasta.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 302,
+      "name": "Selva Penne Rigate Pasta",
+      "price": 800,
+      "image": "img/pasta/selva-penne.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 303,
+      "name": "Everyday Macaroni Coupe",
+      "price": 2200,
+      "image": "img/pasta/everyday-macaroni.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 304,
+      "name": "Divella Fusilli Pasta 500g",
+      "price": 1700,
+      "image": "img/pasta/divella-fusilli.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 305,
+      "name": "Boni Bio Spaghetti Au Blé Complet 500g",
+      "price": 3500,
+      "image": "img/pasta/boni-bio-spaghetti.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 306,
+      "name": "Selva Pipe Rigate Pasta",
+      "price": 800,
+      "image": "img/pasta/selva-pipe.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 307,
+      "name": "Barilla Spaghetti N°5 500g",
+      "price": 6700,
+      "image": "img/pasta/barilla-spaghetti-n5.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 308,
+      "name": "Barilla Lasagne All’Uovo Pasta 500g",
+      "price": 11000,
+      "image": "img/pasta/barilla-lasagne.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
+    },
+    {
+      "id": 309,
+      "name": "Barilla Penne Rigate Pasta 500g",
+      "price": 9000,
+      "image": "img/pasta/barilla-penne.jpg",
+      "category": "Food",
+      "subcategory": "Pasta"
     }
   ]
 }

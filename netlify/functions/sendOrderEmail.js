@@ -1,24 +1,18 @@
 import nodemailer from "nodemailer";
 
-export const handler = async (event) => {
+export async function handler(event) {
   try {
-    if (event.httpMethod !== "POST") {
-      return { statusCode: 405, body: "Method Not Allowed" };
-    }
-
     const { subject, message } = JSON.parse(event.body);
 
     if (!subject || !message) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ success: false, error: "Missing data" })
+        body: JSON.stringify({ error: "Missing subject or message" })
       };
     }
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
+      service: "gmail",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
@@ -36,11 +30,13 @@ export const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ success: true })
     };
+
   } catch (error) {
     console.error("EMAIL ERROR:", error);
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, error: error.message })
+      body: JSON.stringify({ error: "Email failed" })
     };
   }
-};
+}

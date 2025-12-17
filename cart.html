@@ -441,7 +441,8 @@
       const product = productsMap[cartItem.id];
       if (!product) return;
 
-      const itemTotal = product.price * cartItem.quantity;
+      const quantity = Number(cartItem.quantity || 1);
+      const itemTotal = product.price * quantity;
       subtotal += itemTotal;
 
       cartItemsContainer.innerHTML += `
@@ -476,10 +477,11 @@
      CART ACTIONS
   =============================== */
   function updateQuantity(index, change) {
-    cart[index].quantity = Math.max(1, cart[index].quantity + change);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    loadCartItems();
-  }
+  cart[index].quantity = Math.max(1, Number(cart[index].quantity) + change);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCartItems();
+}
+
 
   function removeItem(index) {
     if (confirm("Remove this item from cart?")) {

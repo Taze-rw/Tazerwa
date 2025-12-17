@@ -1,99 +1,76 @@
-import nodemailer from "nodemailer";
+// TEST VERSION - Use this temporarily to verify your order flow works
+// This bypasses email sending and just logs the order
 
 export async function handler(event) {
-  // Only allow POST requests
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+  if (event.httpMethod === "OPTIONS") {
+    return { statusCode: 200, headers, body: "" };
+  }
+
   if (event.httpMethod !== "POST") {
     return { 
-      statusCode: 405, 
+      statusCode: 405,
+      headers,
       body: JSON.stringify({ error: "Method Not Allowed" })
     };
   }
 
   try {
-    // Parse the incoming request body
     const { orderId, cartItems, totalAmount, customerInfo, deliveryInfo } = JSON.parse(event.body);
 
-    // Validate required fields
     if (!orderId || !cartItems || !totalAmount) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Missing required order data: orderId, cartItems, or totalAmount" })
+        headers,
+        body: JSON.stringify({ 
+          error: "Missing required order data",
+          received: { orderId: !!orderId, cartItems: !!cartItems, totalAmount: !!totalAmount }
+        })
       };
     }
 
-    // Build email content
-    let emailMessage = `🛒 NEW TAZERWA ORDER\n\n`;
-    emailMessage += `Order ID: ${orderId}\n`;
-    emailMessage += `Date: ${new Date().toLocaleString()}\n\n`;
-    emailMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    emailMessage += `ORDER ITEMS:\n`;
-    emailMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    // Build order summary for logging
+    const orderSummary = {
+      orderId,
+      timestamp: new Date().toISOString(),
+      items: cartItems,
+      totals: totalAmount,
+      customer: customerInfo,
+      delivery: deliveryInfo
+    };
 
-    cartItems.forEach(item => {
-      emailMessage += `• ${item.name} × ${item.quantity} = RWF ${item.total.toLocaleString()}\n`;
-    });
+    // Log to Netlify console (you can view this in Netlify Functions logs)
+    console.log("=".repeat(50));
+    console.log("NEW ORDER RECEIVED");
+    console.log("=".repeat(50));
+    console.log(JSON.stringify(orderSummary, null, 2));
+    console.log("=".repeat(50));
 
-    emailMessage += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    emailMessage += `Subtotal: RWF ${totalAmount.subtotal.toLocaleString()}\n`;
-    emailMessage += `Delivery: RWF ${totalAmount.deliveryFee.toLocaleString()}\n`;
-    emailMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-    emailMessage += `GRAND TOTAL: RWF ${totalAmount.grandTotal.toLocaleString()}\n`;
-    emailMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-
-    // Add customer info if provided
-    if (customerInfo) {
-      emailMessage += `📋 CUSTOMER INFORMATION:\n`;
-      emailMessage += `Name: ${customerInfo.name}\n`;
-      emailMessage += `Phone: ${customerInfo.phone}\n`;
-      if (customerInfo.email) {
-        emailMessage += `Email: ${customerInfo.email}\n`;
-      }
-      emailMessage += `\n`;
-    }
-
-    // Add delivery info if provided
-    if (deliveryInfo) {
-      emailMessage += `🚚 DELIVERY INFORMATION:\n`;
-      emailMessage += `Method: ${deliveryInfo.method}\n`;
-      emailMessage += `Address: ${deliveryInfo.address}\n`;
-      if (deliveryInfo.notes) {
-        emailMessage += `Notes: ${deliveryInfo.notes}\n`;
-      }
-    }
-
-    // Create transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
-    });
-
-    // Send email
-    await transporter.sendMail({
-      from: `"Tazerwa Orders" <${process.env.SMTP_USER}>`,
-      to: process.env.ORDER_RECEIVER,
-      subject: `🛒 New Order ${orderId} - RWF ${totalAmount.grandTotal.toLocaleString()}`,
-      text: emailMessage
-    });
-
+    // Simulate successful email send
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({ 
         success: true,
-        message: "Order email sent successfully" 
+        message: "Order received successfully (TEST MODE - no email sent)",
+        orderId: orderId,
+        testMode: true
       })
     };
 
   } catch (error) {
-    console.error("EMAIL ERROR:", error);
-
+    console.error("ERROR:", error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({ 
-        error: "Failed to send email",
-        details: error.message 
+        error: "Failed to process order",
+        details: error.message
       })
     };
   }

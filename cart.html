@@ -534,25 +534,16 @@
      SEND ORDER EMAIL
   =============================== */
   async function sendOrderEmail(orderData) {
-    try {
-      const response = await fetch("http://localhost/tazerwa/send-email.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          subject: `New Tazerwa Order - ${orderData.orderId}`,
-          message: orderData.emailMessage
-        })
-      });
+  const response = await fetch("/.netlify/functions/sendOrderEmail", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(orderData),
+  });
 
-      const result = await response.json();
-      if (!result.success) throw new Error("Email failed");
-      return true;
-    } catch (err) {
-      console.error(err);
-      alert("Failed to send order email.");
-      return false;
-    }
+  if (!response.ok) {
+    throw new Error("Email failed");
   }
+}
 
   /* ===============================
      PROCEED TO PAYMENT

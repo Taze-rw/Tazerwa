@@ -6,3 +6,4 @@ bruno/.env
 .vs/Tazerwa.slnx/FileContentIndex/9686f6cd-f912-4677-a2a2-12e9e7946f15.vsidx
 *.vsidx
 *.sqlite
+.env

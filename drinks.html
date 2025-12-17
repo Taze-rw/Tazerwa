@@ -1133,15 +1133,17 @@
       }, 1500);
     }
 
-    function updateCartCount() {
-      const cartCount = document.getElementById('cartCount');
-      if (cart.length > 0) {
-        cartCount.textContent = cart.length;
-        cartCount.style.display = 'flex';
-      } else {
-        cartCount.style.display = 'none';
-      }
-    }
+    // Update cart count badge
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const badge = document.getElementById('cartCount');
+  if (!badge) return;
+
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+}
 
     function viewCart() {
       if (cart.length > 0) {

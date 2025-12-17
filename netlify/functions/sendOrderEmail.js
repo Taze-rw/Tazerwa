@@ -1,6 +1,27 @@
 import nodemailer from "nodemailer";
 
 export async function handler(event) {
+
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
+
+  const { orderId, cartItems, totalAmount } = JSON.parse(event.body);
+
+  if (!orderId || !cartItems || !totalAmount) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Missing order data" })
+    };
+  }
+
+  // send email here
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ success: true })
+  };
+
   try {
     const { subject, message } = JSON.parse(event.body);
 

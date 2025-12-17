@@ -533,16 +533,19 @@
   /* ===============================
      SEND ORDER EMAIL
   =============================== */
-  async function sendOrderEmail(orderData) {
-  const response = await fetch("/.netlify/functions/sendOrderEmail", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    subject: `New Tazerwa Order - ${orderId}`,
-    message: emailMessage
-  })
-});
+  async function sendOrderEmail(orderId) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  const response = await fetch("/.netlify/functions/sendOrderEmail", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      orderId: orderId,     // ✅ NOW DEFINED
+      items: cart
+    })
+  });
 
   if (!response.ok) {
     throw new Error("Email failed");
@@ -553,6 +556,8 @@
      PROCEED TO PAYMENT
   =============================== */
   async function proceedToPayment() {
+
+    
     if (!validateForm()) return;
 
     const name = document.getElementById("customer-name").value.trim();

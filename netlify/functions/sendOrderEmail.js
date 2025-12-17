@@ -13,7 +13,7 @@ export async function handler(event) {
     });
 
     const mailOptions = {
-      from: "Tazerwa Orders <yourgmail@gmail.com>",
+      from: "Tazerwa Orders <tazerwa@gmail.com>",
       to: data.email,
       subject: "Your Tazerwa Order Summary",
       html: `

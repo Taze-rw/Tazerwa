@@ -1,35 +1,46 @@
 import nodemailer from "nodemailer";
 
-export async function handler(event) {
+export const handler = async (event) => {
   try {
-    const data = JSON.parse(event.body);
+    if (event.httpMethod !== "POST") {
+      return { statusCode: 405, body: "Method Not Allowed" };
+    }
+
+    const { subject, message } = JSON.parse(event.body);
+
+    if (!subject || !message) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ success: false, error: "Missing data" })
+      };
+    }
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
       }
     });
 
     await transporter.sendMail({
-      from: `"Tazerwa Orders" <${process.env.EMAIL_USER}>`,
-      to: "tazerwa@gmail.com",
-      subject: "New Order Received",
-      html: `
-        <h2>New Order</h2>
-        <pre>${JSON.stringify(data, null, 2)}</pre>
-      `
+      from: `"Tazerwa Orders" <${process.env.SMTP_USER}>`,
+      to: process.env.ORDER_RECEIVER,
+      subject,
+      text: message
     });
 
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true })
     };
-  } catch (err) {
+  } catch (error) {
+    console.error("EMAIL ERROR:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message })
+      body: JSON.stringify({ success: false, error: error.message })
     };
   }
-}
+};

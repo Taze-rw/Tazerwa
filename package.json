@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Taze-rw/Tazerwa/issues"
   },
-  "homepage": "https://github.com/Taze-rw/Tazerwa#readme"
+  "homepage": "https://github.com/Taze-rw/Tazerwa#readme",
+  "dependencies": {
+    "nodemailer": "^7.0.11"
+  }
 }

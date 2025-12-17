@@ -531,66 +531,121 @@
   }
 
   /* ===============================
-     SEND ORDER EMAIL
-  =============================== */
-  async function sendOrderEmail(orderId) {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+   SEND ORDER EMAIL (FIXED)
+=============================== */
+async function sendOrderEmail(orderData) {
+  try {
+    const response = await fetch("/.netlify/functions/sendOrderEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        orderId: orderData.orderId,
+        cartItems: orderData.cartItems,
+        totalAmount: {
+          subtotal: orderData.subtotal,
+          deliveryFee: orderData.deliveryFee,
+          grandTotal: orderData.grandTotal
+        },
+        customerInfo: {
+          name: orderData.name,
+          phone: orderData.phone,
+          email: orderData.email
+        },
+        deliveryInfo: {
+          method: orderData.deliveryMethod,
+          address: orderData.location,
+          notes: orderData.notes
+        }
+      })
+    });
 
-  const response = await fetch("/.netlify/functions/sendOrderEmail", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      orderId: orderId,     // ✅ NOW DEFINED
-      items: cart
-    })
-  });
+    const result = await response.json();
 
-  if (!response.ok) {
-    throw new Error("Email failed");
+    if (!response.ok) {
+      throw new Error(result.error || "Email failed");
+    }
+
+    return result;
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
   }
 }
 
-  /* ===============================
-     PROCEED TO PAYMENT
-  =============================== */
-  async function proceedToPayment() {
+/* ===============================
+   PROCEED TO PAYMENT (FIXED)
+=============================== */
+async function proceedToPayment() {
+  if (!validateForm()) return;
 
+  const name = document.getElementById("customer-name").value.trim();
+  const phone = document.getElementById("customer-phone").value.trim();
+  const email = document.getElementById("customer-email").value.trim();
+  const location = document.getElementById("customer-location").value.trim();
+  const notes = document.getElementById("order-notes").value.trim();
+
+  const deliveryOption = document.getElementById("delivery-option");
+  const deliveryFee = parseInt(deliveryOption.value);
+  const deliveryMethod = deliveryOption.options[deliveryOption.selectedIndex].text;
+
+  // Check if delivery method is selected
+  if (deliveryFee === 0) {
+    alert("Please select a delivery method.");
+    deliveryOption.focus();
+    return;
+  }
+
+  // Calculate totals
+  let subtotal = 0;
+  const cartItems = cart.map(item => {
+    const p = productsMap[item.id];
+    if (!p) return null;
     
-    if (!validateForm()) return;
+    const itemTotal = p.price * item.quantity;
+    subtotal += itemTotal;
+    
+    return {
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      quantity: item.quantity,
+      total: itemTotal
+    };
+  }).filter(item => item !== null);
 
-    const name = document.getElementById("customer-name").value.trim();
-    const phone = document.getElementById("customer-phone").value.trim();
-    const email = document.getElementById("customer-email").value.trim();
-    const location = document.getElementById("customer-location").value.trim();
-    const notes = document.getElementById("order-notes").value.trim();
+  const grandTotal = subtotal + deliveryFee;
+  const orderId = "TZ" + Date.now().toString().slice(-8);
 
-    const deliveryOption = document.getElementById("delivery-option");
-    const deliveryFee = parseInt(deliveryOption.value);
-    const deliveryMethod = deliveryOption.options[deliveryOption.selectedIndex].text;
+  // Show loading
+  const loadingEl = document.getElementById("loading");
+  const checkoutBtn = document.getElementById("checkout-btn");
+  loadingEl.style.display = "block";
+  checkoutBtn.disabled = true;
 
-    let subtotal = 0;
-    let emailMessage = `🛒 NEW TAZERWA ORDER\n\n`;
-
-    cart.forEach(item => {
-      const p = productsMap[item.id];
-      if (!p) return;
-      const total = p.price * item.quantity;
-      subtotal += total;
-      emailMessage += `• ${p.name} × ${item.quantity} = ${formatPrice(total)}\n`;
+  try {
+    // Send order email
+    await sendOrderEmail({
+      orderId,
+      cartItems,
+      subtotal,
+      deliveryFee,
+      grandTotal,
+      name,
+      phone,
+      email,
+      location,
+      notes,
+      deliveryMethod
     });
 
-    const grandTotal = subtotal + deliveryFee;
-    const orderId = "TZ" + Date.now().toString().slice(-8);
+    // Show success message
+    loadingEl.style.display = "none";
+    const successMsg = document.getElementById("success-message");
+    successMsg.style.display = "block";
 
-    emailMessage += `\nSubtotal: ${formatPrice(subtotal)}\n`;
-    emailMessage += `Delivery: ${formatPrice(deliveryFee)}\n`;
-    emailMessage += `TOTAL: ${formatPrice(grandTotal)}\n\n`;
-    emailMessage += `Customer: ${name}\nPhone: ${phone}\nAddress: ${location}\n`;
-
-    await sendOrderEmail({ orderId, emailMessage });
-
+    // Save order to localStorage
     localStorage.setItem("currentOrder", JSON.stringify({
       orderId,
       name,
@@ -598,15 +653,29 @@
       email,
       location,
       notes,
-      cart,
+      cart: cartItems,
       subtotal,
       deliveryFee,
-      grandTotal
+      grandTotal,
+      deliveryMethod
     }));
 
+    // Clear cart and redirect to payment
     localStorage.setItem("cart", JSON.stringify([]));
-    window.location.href = "payment.html";
+    
+    setTimeout(() => {
+      window.location.href = "payment.html";
+    }, 2000);
+
+  } catch (error) {
+    // Hide loading
+    loadingEl.style.display = "none";
+    checkoutBtn.disabled = false;
+    
+    alert("Failed to process order. Please try again or contact support.");
+    console.error("Order processing error:", error);
   }
+}
 
   /* ===============================
      INIT

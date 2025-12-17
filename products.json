@@ -146,9 +146,9 @@
     },
     {
       "id": 19,
-      "name": "Pill Pill (500g)",
+      "name": "Pilli Pilli (500g)",
       "price": 1800,
-      "image": "img/pill-pill.jpg",
+      "image": "img/pill-pill.jpeg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -236,7 +236,7 @@
       "id": 30,
       "name": "Cauliflower (1pc)",
       "price": 1000,
-      "image": "img/cauliflower.jpg",
+      "image": "img/cauliflower.jpeg",
       "category": "Food",
       "subcategory": "Vegetables"
     },
@@ -784,7 +784,7 @@
       "name": "Imizuzu",
       "price": 3000,
       "unit": "kg",
-      "image": "img/imizuzu.jpg",
+      "image": "img/imizuzu.jpeg",
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Traditional Rwandan root crop, nutritious and filling."
@@ -794,7 +794,7 @@
       "name": "Unripe Plantain (Imizuzu Idahiye)",
       "price": 3000,
       "unit": "kg",
-      "image": "img/unripe-plantain.jpg",
+      "image": "img/unripe-plantain.jpeg",
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Unripe plantain commonly used in traditional dishes."
@@ -804,7 +804,7 @@
       "name": "Yam",
       "price": 1100,
       "unit": "kg",
-      "image": "img/yam.jpg",
+      "image": "img/yams.jpg",
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Nutritious yam tuber, a great source of fiber and energy."
@@ -824,7 +824,7 @@
       "name": "Whole Green Bananas (25kg)",
       "price": 25000,
       "unit": "25kg",
-      "image": "img/whole-green-bananas.jpg",
+      "image": "img/whole-green-bananas.jpeg",
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Bulk sack of fresh green bananas, ideal for families or events."
@@ -834,7 +834,7 @@
       "name": "Kiningi Potatoes",
       "price": 700,
       "unit": "kg",
-      "image": "img/kiningi-potatoes.jpg",
+      "image": "img/kiningi-potatoes.jpeg",
       "category": "Food",
       "subcategory": "Local Fresh Produce",
       "description": "Premium Kiningi Irish potatoes, perfect for fries or boiling."

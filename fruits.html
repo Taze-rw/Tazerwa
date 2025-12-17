@@ -948,25 +948,33 @@ function displayProducts(products) {
   });
 }
 
+// Add to cart
 function addToCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  productId = Number(productId); // ensure number
 
   const item = cart.find(p => p.id === productId);
 
   if (item) {
-    item.qty += 1;
+    item.quantity += 1;
   } else {
-    cart.push({ id: productId, qty: 1 });
+    cart.push({ id: productId, quantity: 1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
 }
+
 
 // Update cart count badge
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
   const badge = document.getElementById('cartCount');
+  if (!badge) return;
+
   badge.textContent = count;
   badge.style.display = count > 0 ? 'flex' : 'none';
 }

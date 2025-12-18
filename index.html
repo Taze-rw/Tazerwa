@@ -1036,6 +1036,7 @@
       <li><a href="drinks.html"><i class="fas fa-wine-glass"></i>Drinks</a></li>
       <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>Login</a></li>
       <li><a href="signup.html"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+      <li><a href="cart.html"><i class="fas fa-shopping-cart"></i>Cart</a></li>
     </ul>
   </div>
 
@@ -1107,10 +1108,10 @@
 
   <!-- Navigation Bar (Desktop) -->
   <nav>
-    <button class="cart-btn">
-  <i class="fas fa-shopping-cart"></i>
-  <span id="cartCount" class="cart-count">0</span>
-</button>
+    <a href="cart.html" class="cart-btn">
+  🛒 View Cart
+  <span id="cartCount" class="cart-count"></span>
+</a>
 
     <a href="how-it-works.html">How It Works</a>
     <a href="contact-us.html">Contact Us</a>
@@ -1268,26 +1269,15 @@
   </footer>
 
   <script>
-/* =======================
+/* =========================
    GLOBAL STATE
-======================= */
+========================= */
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* =======================
-   DOM ELEMENTS
-======================= */
-const searchInput = document.getElementById("siteSearch");
-const searchBtn = document.getElementById("searchBtn");
-const searchResults = document.getElementById("searchResults");
-const resultsGrid = document.getElementById("resultsGrid");
-const resultsCount = document.getElementById("resultsCount");
-const pageContent = document.getElementById("pageContent");
-const cartCount = document.getElementById("cartCount");
-
-/* =======================
-   FETCH PRODUCTS
-======================= */
+/* =========================
+   LOAD PRODUCTS.JSON
+========================= */
 async function loadProducts() {
   try {
     const res = await fetch("/products.json");
@@ -1297,63 +1287,26 @@ async function loadProducts() {
   }
 }
 
-/* =======================
-   SEARCH
-======================= */
-function performSearch() {
-  const query = searchInput.value.trim().toLowerCase();
-  if (!query) return;
-
-  const matches = products.filter(p =>
-    p.name.toLowerCase().includes(query)
-  );
-
-  resultsGrid.innerHTML = "";
-
-  if (matches.length === 0) {
-    resultsGrid.innerHTML = `
-      <div class="no-results">
-        <h3>No products found</h3>
-      </div>
-    `;
-    resultsCount.textContent = `No results for "${query}"`;
-  } else {
-    matches.forEach(product => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-
-      card.innerHTML = `
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}">
-          <span class="product-badge">New</span>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">${product.name}</h3>
-          <p class="product-price">${product.price.toLocaleString()} RWF</p>
-          <div class="product-actions">
-            <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
-              Add to Cart
-            </button>
-            <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')">
-              <i class="fas fa-heart"></i>
-            </button>
-          </div>
-        </div>
-      `;
-
-      resultsGrid.appendChild(card);
-    });
-
-    resultsCount.textContent = `Showing ${matches.length} result(s)`;
-  }
-
-  pageContent.style.display = "none";
-  searchResults.style.display = "block";
+/* =========================
+   CART LOGIC
+========================= */
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
 }
 
-/* =======================
-   CART LOGIC (FIXED)
-======================= */
+function updateCartCount() {
+  const cartCount = document.getElementById("cartCount");
+  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (totalQty > 0) {
+    cartCount.textContent = totalQty;
+    cartCount.style.display = "inline-flex";
+  } else {
+    cartCount.style.display = "none";
+  }
+}
+
 function addToCart(productId) {
   const product = products.find(p => p.id == productId);
   if (!product) return;
@@ -1373,81 +1326,100 @@ function addToCart(productId) {
   }
 
   saveCart();
-  updateCartCount();
-  showNotification("Added to cart");
+  showNotification(`${product.name} added to cart`);
 }
 
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
+/* =========================
+   SEARCH
+========================= */
+const searchInput = document.getElementById("siteSearch");
+const searchBtn = document.getElementById("searchBtn");
+const searchResults = document.getElementById("searchResults");
+const resultsGrid = document.getElementById("resultsGrid");
 
-function updateCartCount() {
-  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+function performSearch() {
+  const query = searchInput.value.trim().toLowerCase();
 
-  if (total > 0) {
-    cartCount.style.display = "flex";
-    cartCount.textContent = total;
+  if (!query) return;
+
+  const matches = products.filter(p =>
+    p.name.toLowerCase().includes(query)
+  );
+
+  resultsGrid.innerHTML = "";
+
+  if (matches.length === 0) {
+    resultsGrid.innerHTML = `
+      <p style="padding:20px;text-align:center;">No products found</p>
+    `;
   } else {
-    cartCount.style.display = "none";
+    matches.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-price">${product.price.toLocaleString()} RWF</p>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
+              Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      `;
+      resultsGrid.appendChild(card);
+    });
   }
+
+  /* show ONLY search results */
+  searchResults.style.display = "block";
 }
 
-/* =======================
-   REMOVE FROM CART FIX
-======================= */
-function removeFromCart(productId) {
-  cart = cart.filter(item => item.id != productId);
-  saveCart();
-  updateCartCount();
-}
+/* Hide search results initially */
+searchResults.style.display = "none";
 
-/* =======================
-   WISHLIST (PLACEHOLDER)
-======================= */
-function toggleWishlist(id) {
-  showNotification("Wishlist feature coming soon");
-}
-
-/* =======================
-   UI HELPERS
-======================= */
-function showNotification(msg) {
-  const n = document.createElement("div");
-  n.textContent = msg;
-  n.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #28a745;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 8px;
-    z-index: 9999;
-  `;
-  document.body.appendChild(n);
-  setTimeout(() => n.remove(), 2500);
-}
-
-/* =======================
-   EVENTS
-======================= */
+/* Search triggers */
 searchBtn.addEventListener("click", performSearch);
-
 searchInput.addEventListener("keyup", e => {
   if (e.key === "Enter") performSearch();
 });
 
-/* Hide results until search */
-searchResults.style.display = "none";
+/* =========================
+   WISHLIST (UI ONLY)
+========================= */
+function toggleWishlist(btn) {
+  btn.classList.toggle("favorited");
+}
 
-/* =======================
+/* =========================
+   NOTIFICATIONS
+========================= */
+function showNotification(message) {
+  const note = document.createElement("div");
+  note.className = "toast";
+  note.textContent = message;
+  document.body.appendChild(note);
+
+  setTimeout(() => note.remove(), 3000);
+}
+
+/* =========================
    INIT
-======================= */
+========================= */
 document.addEventListener("DOMContentLoaded", async () => {
   await loadProducts();
   updateCartCount();
 });
 </script>
+
 
 </body>
 </html>

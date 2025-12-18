@@ -1341,7 +1341,7 @@
   "id": 162,
   "name": "White Sugar (1kg)",
   "price": 2800,
-  "image": "img/white-sugar-1kg.jpg",
+  "image": "img/white-sugar-1kg.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -1349,7 +1349,7 @@
   "id": 163,
   "name": "White Sugar (5kg)",
   "price": 13000,
-  "image": "img/white-sugar-5kg.jpg",
+  "image": "img/white-sugar-5kg.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -1357,7 +1357,7 @@
   "id": 164,
   "name": "Brown Sugar (1kg)",
   "price": 2200,
-  "image": "img/brown-sugar-1kg.jpg",
+  "image": "img/brown-sugar-1kg.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -1365,7 +1365,7 @@
   "id": 165,
   "name": "Brown Sugar (5kg)",
   "price": 11000,
-  "image": "img/brown-sugar-5kg.jpg",
+  "image": "img/brown-sugar-5kg.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -1379,9 +1379,9 @@
 },
 {
   "id": 167,
-  "name": "Neza Salt (600g)",
+  "name": "Nezo Salt (600g)",
   "price": 6500,
-  "image": "img/neza-salt-600g.jpg",
+  "image": "img/neza-salt-600g.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -1389,7 +1389,7 @@
   "id": 168,
   "name": "Joza Kitchen Salt (1kg)",
   "price": 4000,
-  "image": "img/joza-salt-1kg.jpg",
+  "image": "img/joza-salt-1kg.jpeg",
   "category": "Food",
   "subcategory": "Sugar & Salt"
 },
@@ -2421,7 +2421,7 @@
       "id": 292,
       "name": "Soya Sauce Dark",
       "price": 3000,
-      "image": "img/soya-sauce-dark.jpg",
+      "image": "img/soya-sauce-dark.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2429,7 +2429,7 @@
       "id": 293,
       "name": "Soya Sauce White",
       "price": 3000,
-      "image": "img/soya-sauce-white.jpg",
+      "image": "img/soya-sauce-white.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2437,7 +2437,7 @@
       "id": 294,
       "name": "Vanilla Sugar (10 pcs)",
       "price": 2000,
-      "image": "img/vanilla-sugar.jpg",
+      "image": "img/vanilla-sugar.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2445,7 +2445,7 @@
       "id": 295,
       "name": "Pakmaya Yeast 500g",
       "price": 2000,
-      "image": "img/pakmaya.jpg",
+      "image": "img/pakmaya.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2453,7 +2453,7 @@
       "id": 296,
       "name": "Paprika 500g",
       "price": 2500,
-      "image": "img/paprika.jpg",
+      "image": "img/paprika.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2461,7 +2461,7 @@
       "id": 297,
       "name": "Vinegar 700ml",
       "price": 1500,
-      "image": "img/vinegar.jpg",
+      "image": "img/vinegar.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },

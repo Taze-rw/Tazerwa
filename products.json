@@ -1469,7 +1469,7 @@
       "id": 170,
       "name": "Peanut Butter (500g)",
       "price": 8000,
-      "image": "img/peanut-butter.jpg",
+      "image": "img/peanut-butter.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1477,7 +1477,7 @@
       "id": 171,
       "name": "Chia Seeds",
       "price": 8000,
-      "image": "img/chia-seeds.jpg",
+      "image": "img/chia-seeds.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1485,7 +1485,7 @@
       "id": 172,
       "name": "Cashew Nuts (300g)",
       "price": 9000,
-      "image": "img/cashew-nuts.jpg",
+      "image": "img/cashew-nuts.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1629,7 +1629,7 @@
       "id": 190,
       "name": "Snickers Chocolate",
       "price": 1800,
-      "image": "img/snickers.jpg",
+      "image": "img/snickers.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -1645,7 +1645,7 @@
       "id": 192,
       "name": "Everyday Dark Chocolate",
       "price": 9000,
-      "image": "img/everyday-dark-chocolate.jpg",
+      "image": "img/everyday-dark-chocolate.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -1653,7 +1653,7 @@
       "id": 193,
       "name": "Ferrero Rocher Chocolate",
       "price": 12000,
-      "image": "img/ferrero-rocher.jpg",
+      "image": "img/ferrero-rocher.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -1669,7 +1669,7 @@
       "id": 195,
       "name": "Everyday Biscuits (500g)",
       "price": 6000,
-      "image": "img/everyday-biscuits.jpg",
+      "image": "img/everyday-biscuits.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -1677,7 +1677,7 @@
       "id": 196,
       "name": "Oreo Biscuits",
       "price": 1500,
-      "image": "img/oreo.jpg",
+      "image": "img/oreo.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },

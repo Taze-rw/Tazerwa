@@ -2037,7 +2037,7 @@
       "id": 244,
       "name": "American Hachée (1kg)",
       "price": 6500,
-      "image": "img/american-hachee.jpg",
+      "image": "img/american-hachee.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2053,7 +2053,7 @@
       "id": 246,
       "name": "Beef Imvange (1kg)",
       "price": 6500,
-      "image": "img/beef-imvange.jpg",
+      "image": "img/beef-mix.jpg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2061,15 +2061,15 @@
       "id": 247,
       "name": "Beef Iloti (1kg)",
       "price": 8500,
-      "image": "img/beef-iloti.jpg",
+      "image": "img/beef.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
     {
       "id": 248,
-      "name": "Beef Liva (1kg)",
+      "name": "Beef Liver (1kg)",
       "price": 6500,
-      "image": "img/beef-liva.jpg",
+      "image": "img/liver.jpg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2077,7 +2077,7 @@
       "id": 249,
       "name": "Beef T-Bone Steak",
       "price": 10000,
-      "image": "img/beef-tbone.jpg",
+      "image": "img/beef-bones.jpg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2085,7 +2085,7 @@
       "id": 250,
       "name": "Captain Fish Fillet (1kg)",
       "price": 13500,
-      "image": "img/fish-captain.jpg",
+      "image": "img/fish-fillet.jpg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2093,7 +2093,7 @@
       "id": 251,
       "name": "Tilapia Fish Fillet (1kg)",
       "price": 12500,
-      "image": "img/fish-tilapia.jpg",
+      "image": "img/fish-tilapia.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2109,7 +2109,7 @@
       "id": 253,
       "name": "Insambaza Fish (1kg)",
       "price": 8000,
-      "image": "img/fish-insambaza.jpg",
+      "image": "img/fish-insambaza.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2125,7 +2125,7 @@
       "id": 255,
       "name": "Chicken Wings (1kg)",
       "price": 6000,
-      "image": "img/chicken-wings.jpg",
+      "image": "img/chicken-wings-fresh.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2141,7 +2141,7 @@
       "id": 257,
       "name": "Whole Chicken (1.5kg)",
       "price": 7000,
-      "image": "img/chicken-whole.jpg",
+      "image": "img/chicken-whole.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2149,7 +2149,7 @@
       "id": 258,
       "name": "Whole Chicken Rwanda (1.5kg)",
       "price": 8500,
-      "image": "img/chicken-rwanda.jpg",
+      "image": "img/chicken-rwanda.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },

@@ -2469,7 +2469,7 @@
       "id": 297,
       "name": "Spaghetti 450g",
       "price": 1000,
-      "image": "img/spaghetti-450g.jpg",
+      "image": "img/spaghetti-450g.jpeg",
       "category": "Food",
       "subcategory": "Pasta"
     },
@@ -2493,7 +2493,7 @@
       "id": 300,
       "name": "Divella Linguine Pasta 500g",
       "price": 1700,
-      "image": "img/divella-linguine.jpg",
+      "image": "img/divella-linguine.jpeg",
       "category": "Food",
       "subcategory": "Pasta"
     },
@@ -2533,7 +2533,7 @@
       "id": 305,
       "name": "Boni Bio Spaghetti Au Blé Complet 500g",
       "price": 3500,
-      "image": "img/boni-bio-spaghetti.jpg",
+      "image": "img/boni-bio-spaghetti.jpeg",
       "category": "Food",
       "subcategory": "Pasta"
     },
@@ -2637,7 +2637,7 @@
       "id": 318,
       "name": "Lal Qilla Tribal Basmati Rice (11kg)",
       "price": 50000,
-      "image": "img/rice-lalqilla-tribal.jpg",
+      "image": "img/rice-lalqilla-tribal.jpeg",
       "category": "Food",
       "subcategory": "Grains"
     },
@@ -2645,7 +2645,7 @@
       "id": 319,
       "name": "Lal Qilla Supreme Sella Basmati Rice (5kg)",
       "price": 29500,
-      "image": "img/rice-lalqilla-sella.jpg",
+      "image": "img/rice-lalqilla-sella.jpeg",
       "category": "Food",
       "subcategory": "Grains"
     },

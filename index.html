@@ -1101,7 +1101,7 @@
       </button>
     </div>
   </div>
-  <div id="searchResults" class="search-results">
+  <div id="searchResults" style="display:none;">
   <div id="resultsGrid" class="products-grid"></div>
 </div>
 
@@ -1110,7 +1110,7 @@
   <nav>
     <a href="cart.html" class="cart-btn">
   🛒 View Cart
-  <span id="cartCount" class="cart-count"></span>
+  <span id="cartCount" class="cart-count">0</span>
 </a>
 
     <a href="how-it-works.html">How It Works</a>
@@ -1269,44 +1269,26 @@
   </footer>
 
   <script>
-/* =========================
-   GLOBAL STATE
-========================= */
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* =========================
-   LOAD PRODUCTS.JSON
-========================= */
+/* =======================
+   FETCH PRODUCTS
+======================= */
 async function loadProducts() {
   try {
-    const res = await fetch("/products.json");
-    products = await res.json();
-  } catch (err) {
-    console.error("Failed to load products.json", err);
+    const res = await fetch("products.json");
+    const data = await res.json();
+    products = data.products || [];
+  } catch (e) {
+    console.error("Failed to load products.json", e);
   }
 }
+loadProducts();
 
-/* =========================
+/* =======================
    CART LOGIC
-========================= */
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount() {
-  const cartCount = document.getElementById("cartCount");
-  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-  if (totalQty > 0) {
-    cartCount.textContent = totalQty;
-    cartCount.style.display = "inline-flex";
-  } else {
-    cartCount.style.display = "none";
-  }
-}
-
+======================= */
 function addToCart(productId) {
   const product = products.find(p => p.id == productId);
   if (!product) return;
@@ -1325,13 +1307,21 @@ function addToCart(productId) {
     });
   }
 
-  saveCart();
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
   showNotification(`${product.name} added to cart`);
 }
 
-/* =========================
+function updateCartCount() {
+  const countEl = document.getElementById("cartCount");
+  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+  countEl.textContent = totalQty;
+  countEl.style.display = totalQty > 0 ? "inline-flex" : "none";
+}
+
+/* =======================
    SEARCH
-========================= */
+======================= */
 const searchInput = document.getElementById("siteSearch");
 const searchBtn = document.getElementById("searchBtn");
 const searchResults = document.getElementById("searchResults");
@@ -1339,19 +1329,18 @@ const resultsGrid = document.getElementById("resultsGrid");
 
 function performSearch() {
   const query = searchInput.value.trim().toLowerCase();
-
   if (!query) return;
 
   const matches = products.filter(p =>
-    p.name.toLowerCase().includes(query)
+    p.name.toLowerCase().includes(query) ||
+    p.category.toLowerCase().includes(query) ||
+    (p.subcategory && p.subcategory.toLowerCase().includes(query))
   );
 
   resultsGrid.innerHTML = "";
 
   if (matches.length === 0) {
-    resultsGrid.innerHTML = `
-      <p style="padding:20px;text-align:center;">No products found</p>
-    `;
+    resultsGrid.innerHTML = `<p style="padding:15px;">No products found</p>`;
   } else {
     matches.forEach(product => {
       const card = document.createElement("div");
@@ -1369,7 +1358,7 @@ function performSearch() {
             <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
               Add to Cart
             </button>
-            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+            <button class="wishlist-btn">
               <i class="fas fa-heart"></i>
             </button>
           </div>
@@ -1379,43 +1368,39 @@ function performSearch() {
     });
   }
 
-  /* show ONLY search results */
   searchResults.style.display = "block";
 }
 
-/* Hide search results initially */
-searchResults.style.display = "none";
-
-/* Search triggers */
+/* Trigger search ONLY on click or enter */
 searchBtn.addEventListener("click", performSearch);
-searchInput.addEventListener("keyup", e => {
+searchInput.addEventListener("keydown", e => {
   if (e.key === "Enter") performSearch();
 });
 
-/* =========================
-   WISHLIST (UI ONLY)
-========================= */
-function toggleWishlist(btn) {
-  btn.classList.toggle("favorited");
+/* =======================
+   NOTIFICATION
+======================= */
+function showNotification(msg) {
+  const n = document.createElement("div");
+  n.textContent = msg;
+  n.style.cssText = `
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#28a745;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:8px;
+    z-index:9999;
+  `;
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 2500);
 }
 
-/* =========================
-   NOTIFICATIONS
-========================= */
-function showNotification(message) {
-  const note = document.createElement("div");
-  note.className = "toast";
-  note.textContent = message;
-  document.body.appendChild(note);
-
-  setTimeout(() => note.remove(), 3000);
-}
-
-/* =========================
+/* =======================
    INIT
-========================= */
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadProducts();
+======================= */
+document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 });
 </script>

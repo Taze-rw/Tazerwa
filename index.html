@@ -442,6 +442,19 @@
       position: relative;
     }
 
+    .cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: none;
+}
+
     .cart-dot {
       width: 10px;
       height: 10px;
@@ -1087,12 +1100,18 @@
       </button>
     </div>
   </div>
+  <div id="searchResults" class="search-results">
+  <div id="resultsGrid" class="products-grid"></div>
+</div>
+
 
   <!-- Navigation Bar (Desktop) -->
   <nav>
-    <a href="cart.html" class="cart-link">
-  🛒 View Cart (<span id="cartCount">0</span>)
-    </a>
+    <button class="cart-btn">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="cartCount" class="cart-count">0</span>
+</button>
+
     <a href="how-it-works.html">How It Works</a>
     <a href="contact-us.html">Contact Us</a>
     <a href="about-us.html">About Us</a>
@@ -1249,90 +1268,44 @@
   </footer>
 
   <script>
-/* ===============================
+/* =======================
    GLOBAL STATE
-================================ */
+======================= */
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ===============================
-   FETCH PRODUCTS FROM JSON
-================================ */
+/* =======================
+   DOM ELEMENTS
+======================= */
+const searchInput = document.getElementById("siteSearch");
+const searchBtn = document.getElementById("searchBtn");
+const searchResults = document.getElementById("searchResults");
+const resultsGrid = document.getElementById("resultsGrid");
+const resultsCount = document.getElementById("resultsCount");
+const pageContent = document.getElementById("pageContent");
+const cartCount = document.getElementById("cartCount");
+
+/* =======================
+   FETCH PRODUCTS
+======================= */
 async function loadProducts() {
   try {
-    const res = await fetch("products.json");
-    const data = await res.json();
-    products = data.products || [];
-    console.log("Products loaded:", products.length);
+    const res = await fetch("/products.json");
+    products = await res.json();
   } catch (err) {
     console.error("Failed to load products.json", err);
   }
 }
 
-/* ===============================
-   CART FUNCTIONS
-================================ */
-function addToCart(productId) {
-  const product = products.find(p => p.id === productId);
-  if (!product) return;
-
-  cart.push(product);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  showNotification(`${product.name} added to cart`);
-}
-
-function updateCartCount() {
-  const cartCount = document.getElementById("cartCount");
-  if (cartCount) {
-    cartCount.textContent = cart.length;
-  }
-}
-
-/* ===============================
-   NOTIFICATION
-================================ */
-function showNotification(message) {
-  const notification = document.createElement("div");
-  notification.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #28a745;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    z-index: 1000;
-    font-weight: 500;
-  `;
-  notification.textContent = message;
-  document.body.appendChild(notification);
-  setTimeout(() => notification.remove(), 3000);
-}
-
-/* ===============================
-   SEARCH LOGIC (REAL PRODUCTS)
-================================ */
-const searchInput = document.getElementById("siteSearch");
-const searchBtn = document.getElementById("searchBtn");
-const pageContent = document.getElementById("pageContent");
-const searchResults = document.getElementById("searchResults");
-const resultsGrid = document.getElementById("resultsGrid");
-const resultsCount = document.getElementById("resultsCount");
-
+/* =======================
+   SEARCH
+======================= */
 function performSearch() {
   const query = searchInput.value.trim().toLowerCase();
-
-  if (!query) {
-    searchResults.style.display = "none";
-    pageContent.style.display = "block";
-    return;
-  }
+  if (!query) return;
 
   const matches = products.filter(p =>
-    p.name.toLowerCase().includes(query) ||
-    p.category.toLowerCase().includes(query) ||
-    (p.subcategory && p.subcategory.toLowerCase().includes(query))
+    p.name.toLowerCase().includes(query)
   );
 
   resultsGrid.innerHTML = "";
@@ -1341,14 +1314,36 @@ function performSearch() {
     resultsGrid.innerHTML = `
       <div class="no-results">
         <h3>No products found</h3>
-        <p>Try another search.</p>
       </div>
     `;
     resultsCount.textContent = `No results for "${query}"`;
   } else {
     matches.forEach(product => {
-      resultsGrid.appendChild(createProductCard(product));
+      const card = document.createElement("div");
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${product.name}</h3>
+          <p class="product-price">${product.price.toLocaleString()} RWF</p>
+          <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('${product.id}')">
+              Add to Cart
+            </button>
+            <button class="wishlist-btn" onclick="toggleWishlist('${product.id}')">
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      resultsGrid.appendChild(card);
     });
+
     resultsCount.textContent = `Showing ${matches.length} result(s)`;
   }
 
@@ -1356,68 +1351,103 @@ function performSearch() {
   searchResults.style.display = "block";
 }
 
-/* ===============================
-   PRODUCT CARD
-================================ */
-function createProductCard(product) {
-  const card = document.createElement("div");
-  card.className = "product-card";
-  card.innerHTML = `
-    <div class="product-image">
-      <img src="${product.image}" alt="${product.name}" onerror="this.src='img/placeholder.jpg'">
-    </div>
-    <div class="product-info">
-      <h3>${product.name}</h3>
-      <p class="price">${product.price.toLocaleString()} RWF</p>
-      <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
-        Add to Cart
-      </button>
-    </div>
-  `;
-  return card;
+/* =======================
+   CART LOGIC (FIXED)
+======================= */
+function addToCart(productId) {
+  const product = products.find(p => p.id == productId);
+  if (!product) return;
+
+  const existing = cart.find(item => item.id == productId);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1
+    });
+  }
+
+  saveCart();
+  updateCartCount();
+  showNotification("Added to cart");
 }
 
-/* ===============================
-   EVENT LISTENERS
-================================ */
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateCartCount() {
+  const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  if (total > 0) {
+    cartCount.style.display = "flex";
+    cartCount.textContent = total;
+  } else {
+    cartCount.style.display = "none";
+  }
+}
+
+/* =======================
+   REMOVE FROM CART FIX
+======================= */
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id != productId);
+  saveCart();
+  updateCartCount();
+}
+
+/* =======================
+   WISHLIST (PLACEHOLDER)
+======================= */
+function toggleWishlist(id) {
+  showNotification("Wishlist feature coming soon");
+}
+
+/* =======================
+   UI HELPERS
+======================= */
+function showNotification(msg) {
+  const n = document.createElement("div");
+  n.textContent = msg;
+  n.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    z-index: 9999;
+  `;
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 2500);
+}
+
+/* =======================
+   EVENTS
+======================= */
 searchBtn.addEventListener("click", performSearch);
 
 searchInput.addEventListener("keyup", e => {
   if (e.key === "Enter") performSearch();
 });
 
-searchInput.addEventListener("input", e => {
-  if (!e.target.value.trim()) {
-    searchResults.style.display = "none";
-    pageContent.style.display = "block";
-  }
-});
+/* Hide results until search */
+searchResults.style.display = "none";
 
-/* ===============================
-   MOBILE SIDEBAR
-================================ */
-function openSidebar() {
-  document.getElementById("mobileSidebar").classList.add("open");
-  document.getElementById("mobileOverlay").classList.add("open");
-}
-
-function closeSidebar() {
-  document.getElementById("mobileSidebar").classList.remove("open");
-  document.getElementById("mobileOverlay").classList.remove("open");
-}
-
-document.getElementById("mobileOverlay")?.addEventListener("click", closeSidebar);
-
-/* ===============================
+/* =======================
    INIT
-================================ */
+======================= */
 document.addEventListener("DOMContentLoaded", async () => {
   await loadProducts();
   updateCartCount();
-  console.log("Tazerwa homepage ready");
 });
 </script>
-
 
 </body>
 </html>

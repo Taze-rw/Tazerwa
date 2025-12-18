@@ -2173,7 +2173,7 @@
       "id": 262,
       "name": "Azam Home Baking Powder (2kg)",
       "price": 3000,
-      "image": "img/azam-baking-2kg.jpg",
+      "image": "img/azam-baking-2kg.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2181,7 +2181,7 @@
       "id": 263,
       "name": "Azam Home Baking Powder (20kg)",
       "price": 28000,
-      "image": "img/azam-baking-20kg.jpg",
+      "image": "img/azam-baking-20kg.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2189,7 +2189,7 @@
       "id": 264,
       "name": "Akanoze Millet Flour (1kg)",
       "price": 2900,
-      "image": "img/akanoze-millet.jpg",
+      "image": "img/akanoze-millet.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2197,7 +2197,7 @@
       "id": 265,
       "name": "Corn Flour (400g)",
       "price": 2200,
-      "image": "img/corn-flour.jpg",
+      "image": "img/corn-flour.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2205,7 +2205,7 @@
       "id": 266,
       "name": "Cassava Flour / Ifu y’Ubugali (1kg)",
       "price": 1300,
-      "image": "img/cassava-flour.jpg",
+      "image": "img/cassava-flour.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2213,7 +2213,7 @@
       "id": 267,
       "name": "Soya Flour (1kg)",
       "price": 1900,
-      "image": "img/soya-flour.jpg",
+      "image": "img/soya-flour.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2221,7 +2221,7 @@
       "id": 268,
       "name": "Kawunga Songa (5kg)",
       "price": 6500,
-      "image": "img/kawunga-songa-5kg.jpg",
+      "image": "img/kawunga-songa-5kg.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2229,7 +2229,7 @@
       "id": 269,
       "name": "Kawunga Gashumba (1kg)",
       "price": 1500,
-      "image": "img/kawunga-gashumba-1kg.jpg",
+      "image": "img/kawunga-gashumba-1kg.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },
@@ -2237,7 +2237,7 @@
       "id": 261,
       "name": "Kawunga Gashumba (25kg)",
       "price": 32000,
-      "image": "img/kawunga-gashumba-25kg.jpg",
+      "image": "img/kawunga-gashumba-25kg.jpeg",
       "category": "Food",
       "subcategory": "Flour"
     },

@@ -2245,7 +2245,7 @@
       "id": 270,
       "name": "Cube Maggie (Pack)",
       "price": 2400,
-      "image": "img/cube-maggie.jpg",
+      "image": "img/cube-maggie.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2253,7 +2253,7 @@
       "id": 271,
       "name": "Sorwatom",
       "price": 500,
-      "image": "img/sorwatom.jpg",
+      "image": "img/sorwatom.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2277,7 +2277,7 @@
       "id": 274,
       "name": "Salt",
       "price": 400,
-      "image": "img/salt.jpg",
+      "image": "img/salt.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2285,7 +2285,7 @@
       "id": 275,
       "name": "Apple Vinegar",
       "price": 15000,
-      "image": "img/apple-vinegar.jpg",
+      "image": "img/apple-vinegar.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2293,7 +2293,7 @@
       "id": 276,
       "name": "Mozzarella Cheese",
       "price": 12000,
-      "image": "img/mozzarella-cheese.jpg",
+      "image": "img/mozzarella-cheese.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2301,7 +2301,7 @@
       "id": 277,
       "name": "Cheese",
       "price": 7000,
-      "image": "img/cheese.jpg",
+      "image": "img/cheese.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2309,7 +2309,7 @@
       "id": 278,
       "name": "Beef Masala",
       "price": 2500,
-      "image": "img/beef-masala.jpg",
+      "image": "img/beef-masala.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2317,7 +2317,7 @@
       "id": 279,
       "name": "Chicken Masala",
       "price": 2500,
-      "image": "img/chicken-masala.jpg",
+      "image": "img/chicken-masala.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2325,7 +2325,7 @@
       "id": 280,
       "name": "Fish Masala",
       "price": 2500,
-      "image": "img/fish-masala.jpg",
+      "image": "img/fish-masala.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2333,7 +2333,7 @@
       "id": 281,
       "name": "Pilau Masala",
       "price": 2000,
-      "image": "img/pilau-masala.jpg",
+      "image": "img/pilau-masala.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2341,7 +2341,7 @@
       "id": 282,
       "name": "Royco",
       "price": 2000,
-      "image": "img/royco.jpg",
+      "image": "img/royco.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2349,7 +2349,7 @@
       "id": 283,
       "name": "Turmeric",
       "price": 2500,
-      "image": "img/turmeric.jpg",
+      "image": "img/turmeric.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2357,7 +2357,7 @@
       "id": 284,
       "name": "Cinnamon",
       "price": 2000,
-      "image": "img/cinnamon.jpg",
+      "image": "img/cinnamon.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2373,7 +2373,7 @@
       "id": 286,
       "name": "White Pepper",
       "price": 2700,
-      "image": "img/white-pepper.jpg",
+      "image": "img/white-pepper.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2381,7 +2381,7 @@
       "id": 287,
       "name": "Garlic Powder",
       "price": 2500,
-      "image": "img/garlic-powder.jpg",
+      "image": "img/garlic-powder.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },
@@ -2413,7 +2413,7 @@
       "id": 291,
       "name": "Baking Powder",
       "price": 500,
-      "image": "img/baking-powder.jpg",
+      "image": "img/baking-powder.jpeg",
       "category": "Food",
       "subcategory": "Spices"
     },

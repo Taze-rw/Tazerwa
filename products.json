@@ -2688,6 +2688,13 @@
       "image": "img/rice-thailand-25kg.jpg",
       "category": "Food",
       "subcategory": "Grains"
-    }
+    },
+    "id": 325,
+      "name": "lemon",
+      "price": 500,
+      "image": "img/rice-thailand-25kg.jpg",
+      "category": "Food",
+      "subcategory": "Fruits"
+    },
   ]
 }

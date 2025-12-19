@@ -267,7 +267,7 @@
   {
     "id": 34,
     "name": "Banana (1pc)",
-    "price": 0,
+    "price": 200,
     "image": "img/bananas.png",
     "category": "Food",
     "subcategory": "Fruits"

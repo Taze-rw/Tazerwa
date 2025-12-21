@@ -1056,25 +1056,30 @@ function savePackageProduct(packageData) {
 }
 
 // Add to cart
-function addToCart(productId) {
+function addToCart(product) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const existing = cart.find(item => item.id === productId);
+  const existing = cart.find(item => item.id === product.id);
 
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({
-      id: productId,
+      id: product.id,
       quantity: 1
     });
+
+    // store package products separately (important!)
+    let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+    packageProducts[product.id] = product;
+    localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-
   updateCartCount();
-  showAddToCartNotification();
+  showNotification(`${product.name} added to cart!`);
 }
+
 
 // Added to cart notification
 

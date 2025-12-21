@@ -392,6 +392,10 @@
   <footer>&copy; 2024 Taze.rw. All rights reserved.</footer>
 
   <script>
+
+const packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+const product = products.find(p => p.id === cartItem.id) || packageProducts[cartItem.id];
+
   const PRODUCTS_URL = "products.json"; // adjust path if needed
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];

@@ -190,7 +190,7 @@
       "price": 2500,
       "image": "img/white-dry-maize.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 25,
@@ -198,7 +198,7 @@
       "price": 4000,
       "image": "img/chili-tomatoes.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 26,
@@ -267,7 +267,7 @@
   {
     "id": 34,
     "name": "Banana (1pc)",
-    "price": 0,
+    "price": 200,
     "image": "img/bananas.png",
     "category": "Food",
     "subcategory": "Fruits"
@@ -576,7 +576,7 @@
       "price": 2200,
       "image": "img/everyday-macaroni.jpg",
       "category": "Food",
-      "subcategory": "Canned Foods",
+      "subcategory": "Pasta",
       "description": "Classic macaroni coupe for tasty pasta dishes."
     },
     {
@@ -1021,7 +1021,7 @@
     "id": 122,
     "name": "Fanta Box 500ml (12pcs)",
     "price": 11500,
-    "image": "img/fanta-box-12pc-500ml.jpg",
+    "image": "img/fanta-box-12pc-500ml.jpeg",
     "category": "Drinks",
     "subcategory": "Carbonated Drinks"
   },
@@ -1085,7 +1085,7 @@
     "id": 130,
     "name": "Inyange Milk Carton 1L (12pcs)",
     "price": 18500,
-    "image": "img/inyange-milk-carton-12pc-1l.jpg",
+    "image": "img/inyange-milk-carton-12pc-1l.jpeg",
     "category": "Drinks",
     "subcategory": "Dairy-based Drinks"
   },
@@ -1125,7 +1125,7 @@
     "id": 135,
     "name": "Ikivuguto Nyanza Milk 1L",
     "price": 1200,
-    "image": "img/ikivuguto-nyanza-1l.jpg",
+    "image": "img/ikivuguto-nyanza-1l.jpeg",
     "category": "Drinks",
     "subcategory": "Dairy-based Drinks"
   },
@@ -1181,7 +1181,7 @@
     "id": 142,
     "name": "Mukamira Whole Milk 250ml (24pcs)",
     "price": 10500,
-    "image": "img/mukamira-milk-250ml-24pc.jpg",
+    "image": "img/mukamira-milk-250ml-24pc.jpeg",
     "category": "Drinks",
     "subcategory": "Dairy-based Drinks"
   },
@@ -1251,9 +1251,9 @@
   },
   {
     "id": 151,
-    "name": "Fast Fruit Drink Vitamin C 1L",
+    "name": "Frosti Fruit Drink Vitamin C 1L",
     "price": 2800,
-    "image": "img/fast-fruit-vitamin-c-1l.jpg",
+    "image": "img/frosti-fruit-vitamin-c-1l.jpeg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1293,7 +1293,7 @@
     "id": 156,
     "name": "Mirinda Fruit Soft Drink 2L",
     "price": 3800,
-    "image": "img/mirinda-fruit-2l.jpg",
+    "image": "img/mirinda-fruit-2l.jpeg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1309,7 +1309,7 @@
     "id": 158,
     "name": "Inyange Mango/Orange Juice",
     "price": 1000,
-    "image": "img/inyange-mango-orange.jpg",
+    "image": "img/inyange-mango-orange.jpeg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1325,7 +1325,7 @@
     "id": 160,
     "name": "Inyange Juice Carton 1L (12pcs)",
     "price": 27500,
-    "image": "img/inyange-juice-carton-12pc-1l.jpg",
+    "image": "img/inyange-juice-carton-12pc-1l.jpeg",
     "category": "Drinks",
     "subcategory": "Non-Alcoholic Drinks"
   },
@@ -1637,7 +1637,7 @@
       "id": 191,
       "name": "Everyday White Chocolate",
       "price": 9000,
-      "image": "img/everyday-white-chocolate.jpg",
+      "image": "img/everyday-white-chocolate.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -2597,7 +2597,7 @@
       "id": 313,
       "name": "Thailand Rice (1kg)",
       "price": 1100,
-      "image": "img/rice-thailand-1kg.jpg",
+      "image": "img/rice-thailand-1kg.jpeg",
       "category": "Food",
       "subcategory": "Grains"
     },
@@ -2669,7 +2669,7 @@
       "id": 322,
       "name": "Tanzania Byabuze Rice (25kg)",
       "price": 57000,
-      "image": "img/rice-byabuze.jpg",
+      "image": "img/rice-byabuze.jpeg",
       "category": "Food",
       "subcategory": "Grains"
     },
@@ -2677,7 +2677,7 @@
       "id": 323,
       "name": "Tanzania Rice (1kg)",
       "price": 2500,
-      "image": "img/rice-tanzania-1kg.jpg",
+      "image": "img/rice-tanzania-1kg.jpeg",
       "category": "Food",
       "subcategory": "Grains"
     },
@@ -2685,9 +2685,17 @@
       "id": 324,
       "name": "Thailand Rice (25kg)",
       "price": 58000,
-      "image": "img/rice-thailand-25kg.jpg",
+      "image": "img/rice-thailand-25kg.jpeg",
       "category": "Food",
       "subcategory": "Grains"
+    },
+    {
+    "id": 325,
+      "name": "lemon",
+      "price": 500,
+      "image": "img/rice-thailand-25kg.jpg",
+      "category": "Food",
+      "subcategory": "Fruits"
     }
   ]
 }

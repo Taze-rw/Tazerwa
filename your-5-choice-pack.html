@@ -478,6 +478,10 @@
     font-size: 12.5px;
   }
 }
+
+.product-actions {
+  margin-top: 12px;
+}
     .add-to-cart-btn {
       flex: 1;
       background: linear-gradient(45deg, #6e7969, #20c997);
@@ -836,8 +840,15 @@
             <li><strong>Meat (choose any 2):</strong> Chicken 0.5kg, Beef 0.5kg, Fish 0.5kg, Mixed meat 0.5kg</li>
             <li><strong>Essentials:</strong> Oil 250ml, Garlic (1), Rice 0.5kg</li>
         </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('20K Your Choice Package', 20000)">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
     </div>
 </div>
+
 
 <div class="product-card">
     <img src="img/choice-25k.jpeg" alt="25K Your Choice Package">
@@ -851,8 +862,15 @@
             <li><strong>Meat (choose any 2):</strong> Chicken 0.7kg, Beef 0.6kg, Fish 0.6kg, Mixed meat 0.7kg</li>
             <li><strong>Essentials:</strong> Oil 500ml, Garlic (1), Rice 1kg</li>
         </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('25K Your Choice Package', 25000)">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
     </div>
 </div>
+
 
 <div class="product-card">
     <img src="img/choice-30k.jpeg" alt="30K Your Choice Package">
@@ -861,13 +879,20 @@
         <p class="price">30,000 RWF</p>
         <p class="feeds">Feeds 3–4 people · 3 days</p>
         <ul>
-            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Cabbage 1, Green pepper 0.5kg, Carrots 0.5kg</li>
+            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Cabbage 1</li>
             <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Mangoes (2)</li>
-            <li><strong>Meat (choose any 2):</strong> Chicken 1kg, Beef 0.8kg, Fish 0.8kg, Mixed meat 1kg</li>
-            <li><strong>Essentials:</strong> Oil 500ml, Rice 1kg, Garlic (2)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1kg, Beef 0.8kg, Fish 0.8kg</li>
+            <li><strong>Essentials:</strong> Oil 500ml, Rice 1kg</li>
         </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn" onclick="addToCart('30K Your Choice Package', 30000)">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
     </div>
 </div>
+
 
 <div class="product-card">
     <img src="img/choice-35k.jpeg" alt="35K Your Choice Package">
@@ -875,14 +900,22 @@
         <h3>🧺 35K Your Choice Package</h3>
         <p class="price">35,000 RWF</p>
         <p class="feeds">Feeds 4 people · 3 days</p>
+
         <ul>
-            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Cabbage 1, Carrots 0.5kg, Green beans 0.5kg, Eggplant 0.5kg</li>
+            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Green beans</li>
             <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Apples (2)</li>
-            <li><strong>Meat (choose any 2):</strong> Chicken 1.2kg, Beef 1kg, Fish 1kg, Mixed meat 1.2kg</li>
-            <li><strong>Essentials:</strong> Oil 750ml, Rice 1.5kg, Garlic (2), Cooking mix</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1.2kg, Beef 1kg, Fish 1kg</li>
         </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+                onclick="addToCart({ id:'choice-35k', name:'35K Your Choice Package', price:35000, image:'img/choice-35k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
     </div>
 </div>
+
 
 <div class="product-card">
     <img src="img/choice-40k.jpeg" alt="40K Your Choice Package">
@@ -920,15 +953,22 @@
         <h3>👑 50K Premium Choice Package</h3>
         <p class="price">50,000 RWF</p>
         <p class="feeds">Feeds 6–7 people · 4 days</p>
+
         <ul>
-            <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 2kg, Onions 2kg, Green beans 1kg, Carrots 1kg, Cabbage 1, Broccoli 0.5kg</li>
-            <li><strong>Fruits:</strong> Bananas (6), Apples (4), Oranges (4), Pineapples (2) or Mangoes (3)</li>
-            <li><strong>Meat:</strong> Choose 2 big meats OR mixed (Chicken, Beef, Fish — 2kg)</li>
-            <li><strong>Essentials:</strong> Oil 1L, Rice 3kg, Garlic (3)</li>
-            <li><strong>Snack Pack:</strong> 6 chapati or crepes + 5 meatballs or wings</li>
+            <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 2kg, Onions 2kg</li>
+            <li><strong>Fruits:</strong> Bananas (6), Apples (4), Oranges (4)</li>
+            <li><strong>Meat:</strong> Choose 2 big meats (Chicken / Beef / Fish)</li>
         </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+                onclick="addToCart({ id:'choice-50k', name:'50K Premium Choice Package', price:50000, image:'img/vegetables-sub.jpg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
     </div>
 </div>
+
 
 
     </div>

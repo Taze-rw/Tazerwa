@@ -1313,11 +1313,18 @@ function addToCart(productId) {
 }
 
 function updateCartCount() {
-  const countEl = document.getElementById("cartCount");
-  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-  countEl.textContent = totalQty;
-  countEl.style.display = totalQty > 0 ? "inline-flex" : "none";
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const el = document.getElementById("cartCount");
+  if (!el) return;
+
+  el.textContent = count;
+  el.style.display = count > 0 ? "inline-block" : "none";
 }
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
 
 /* =======================
    SEARCH

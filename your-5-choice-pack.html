@@ -972,15 +972,30 @@
   <!-- Scripts -->
   <script>
 
+    // Save package details so cart page can read them
+function savePackageProduct(packageData) {
+  let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+  packageProducts[packageData.id] = packageData;
+  localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
+}
+
 // Add to cart
-function addToCart(productId) {
+function addToCart(productId, packageData = null) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // If it's a package, save its details
+  if (packageData) {
+    savePackageProduct(packageData);
+  }
+
   const existing = cart.find(item => item.id === productId);
+
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({ id: productId, quantity: 1 });
   }
+
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
 }

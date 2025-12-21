@@ -128,33 +128,33 @@
     }
 
     @media (max-width: 768px) {
-      .top-nav {
-        justify-content: center;
-      }
-
-      .hamburger,
-      .auth-buttons {
-        position: absolute;
-        top: 15px;
-      }
-
-      .hamburger {
-        left: 20px;
-      }
-
-      .auth-buttons {
-        right: 20px;
-      }
-
-      .logo-container {
-        flex: 0;
-        text-align: center;
-      }
-
-      .logo-container img {
-        width: 80px;
-      }
+    .top-nav {
+    justify-content: center; /* center everything */
     }
+
+    .hamburger,
+    .auth-buttons {
+    position: absolute; /* take them out of flow */
+    top: 15px;
+    }
+
+    .hamburger {
+    left: 20px; /* menu button on left */
+    }
+
+    .auth-buttons {
+    right: 20px; /* login/signup on right */
+    }
+
+    .logo-container {
+    flex: 0; /* prevent stretching */
+    text-align: center;
+    }
+
+    .logo-container img {
+    width: 80px; /* slightly smaller for mobile */
+    }
+  }
 
     .auth-buttons {
       display: flex;
@@ -206,6 +206,7 @@
       white-space: nowrap;
     }
 
+    /* Page Title */
     .page-title {
       text-align: center;
       max-width: 800px;
@@ -226,6 +227,7 @@
       font-weight: 300;
     }
 
+    /* Breadcrumb Navigation */
     .breadcrumb {
       background: white;
       padding: 15px 20px;
@@ -255,6 +257,7 @@
       color: #6c757d;
     }
 
+    /* Search Section */
     .search-section {
       background: white;
       padding: 25px 20px;
@@ -302,6 +305,7 @@
       background: #218838;
     }
 
+    /* Quick Actions */
     .quick-actions {
       background: white;
       padding: 20px;
@@ -353,75 +357,142 @@
       color: white;
     }
 
-    .products-container {
-      max-width: 1200px;
-      margin: 30px auto 60px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      padding: 0 20px;
-    }
+/* =========================
+   PRODUCTS GRID (FIXED)
+========================= */
 
-    .product-card {
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: auto;
-    }
+.products-container {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
 
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+/* =========================
+   PRODUCT CARD (AUTO HEIGHT)
+========================= */
 
-    .product-details {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+.product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: auto; /* 🔑 VERY IMPORTANT */
+}
 
-    .product-details h3 {
-      font-size: 17px;
-      color: #2b8a3e;
-      line-height: 1.3;
-    }
+/* IMAGE */
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    .price {
-      font-weight: bold;
-      color: #333;
-      font-size: 15px;
-    }
+/* CONTENT */
+.product-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    .product-details ul {
-      padding-left: 18px;
-      font-size: 14px;
-      color: #333;
-    }
+/* TITLE */
+.product-details h3 {
+  font-size: 17px;
+  color: #2b8a3e;
+  line-height: 1.3;
+}
 
-    .product-details ul li {
-      margin-bottom: 4px;
-    }
+/* PRICE */
+.price {
+  font-weight: bold;
+  color: #333;
+  font-size: 15px;
+}
 
-    .product-actions {
-      margin-top: 12px;
-    }
+/* LIST */
+.product-details ul {
+  padding-left: 18px;
+  font-size: 14px;
+  color: #333;
+}
 
+.product-details ul li {
+  margin-bottom: 4px;
+}
+
+/* =========================
+   MOBILE FIXES (CRITICAL)
+========================= */
+
+@media (max-width: 768px) {
+
+  .products-container {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns */
+    gap: 15px;
+  }
+
+  .product-card {
+    height: auto; /* 🔑 removes cut content */
+  }
+
+  .product-card img {
+    height: 140px;
+  }
+
+  .product-details {
+    padding: 12px;
+  }
+
+  .product-details h3 {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .product-details ul {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   SMALL PHONES (OPTIONAL)
+========================= */
+
+@media (max-width: 480px) {
+
+  .products-container {
+    grid-template-columns: repeat(2, 1fr); /* still 2 */
+  }
+
+  .product-card img {
+    height: 130px;
+  }
+
+  .product-details ul {
+    font-size: 12.5px;
+  }
+}
+
+.product-actions {
+  margin-top: 12px;
+}
     .add-to-cart-btn {
-      width: 100%;
+      flex: 1;
       background: linear-gradient(45deg, #6e7969, #20c997);
       color: white;
       border: none;
-      padding: 10px 12px;
+      padding: 8px 12px;
       border-radius: 20px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     .add-to-cart-btn:hover {
@@ -430,25 +501,52 @@
     }
 
     .cart-notification {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #28a745;
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-      opacity: 0;
-      transform: translateY(20px);
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #28a745;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+.cart-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+    .wishlist-btn {
+      background: white;
+      border: 2px solid #e9ecef;
+      color: #6c757d;
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
       transition: all 0.3s ease;
-      z-index: 9999;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .cart-notification.show {
-      opacity: 1;
-      transform: translateY(0);
+    .wishlist-btn:hover {
+      border-color: #ff6b6b;
+      color: #ff6b6b;
     }
 
+    .wishlist-btn.favorited {
+      background: #ff6b6b;
+      color: white;
+      border-color: #ff6b6b;
+    }
+
+    /* Floating View Cart Button */
     .view-cart-btn {
       position: fixed;
       bottom: 20px;
@@ -500,6 +598,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
+    /* Footer */
     footer {
       background: linear-gradient(135deg, #333, #555);
       color: white;
@@ -542,6 +641,18 @@
       color: #ffc107;
     }
 
+    .social-links a {
+      display: inline-block;
+      color: white;
+      font-size: 20px;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffc107;
+    }
+
     .newsletter-form {
       display: flex;
       margin-top: 10px;
@@ -578,6 +689,7 @@
       border-top: 1px solid #555;
     }
 
+    /* Mobile Overlay */
     .mobile-overlay {
       position: fixed;
       top: 0;
@@ -593,76 +705,56 @@
       display: block;
     }
 
+    /* Mobile Responsive */
     @media (max-width: 768px) {
       .hamburger {
-        display: block;
+      display: block;
       }
 
       .auth-buttons {
-        display: none;
+      display: none;
       }
 
       .page-title h1 {
-        font-size: 2rem;
+      font-size: 2rem;
       }
 
-      .products-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+      .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
       }
 
-      .product-card img {
-        height: 140px;
-      }
-
-      .product-details {
-        padding: 12px;
-      }
-
-      .product-details h3 {
-        font-size: 15px;
-      }
-
-      .price {
-        font-size: 14px;
-      }
-
-      .product-details ul {
-        font-size: 13px;
+      .product-image {
+      height: 140px;
       }
 
       .quick-actions {
-        flex-direction: column;
-        margin: 15px;
-        gap: 10px;
+      flex-direction: column;
+      margin: 15px;
+      gap: 10px;
       }
 
       .quick-btn, .back-btn {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
+      width: 100%;
+      text-align: center;
+      justify-content: center;
       }
 
       .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+      grid-template-columns: 1fr;
+      text-align: center;
       }
     }
 
     @media (max-width: 480px) {
-      .products-container {
-        grid-template-columns: repeat(2, 1fr);
+      .products-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
       }
 
-      .product-card img {
-        height: 130px;
-      }
-
-      .product-details ul {
-        font-size: 12.5px;
-      }
     }
 
+    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -675,8 +767,10 @@
 </head>
 <body>
 
+  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
+  <!-- Mobile Sidebar -->
   <div class="mobile-sidebar" id="mobileSidebar">
     <div class="sidebar-header">
       <h3>Categories</h3>
@@ -691,6 +785,7 @@
     </ul>
   </div>
 
+  <!-- Compact Header -->
   <header class="compact-header">
     <div class="top-nav">
       <button class="hamburger" onclick="openSidebar()">
@@ -714,6 +809,7 @@
     </div>
   </header>
 
+  <!-- Breadcrumb Navigation -->
   <div class="breadcrumb">
     <div class="breadcrumb-container">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -724,6 +820,7 @@
     </div>
   </div>
 
+  <!-- Search Section -->
   <div class="search-section">
     <div class="search-container">
       <input type="text" id="searchInput" class="search-input" placeholder="Search for you 5 choice packages...">
@@ -733,6 +830,7 @@
     </div>
   </div>
 
+  <!-- Quick Actions -->
   <div class="quick-actions">
     <a href="todays-deals.html" class="back-btn">
       <i class="fas fa-arrow-left"></i> Back to Today's deals Categories
@@ -745,146 +843,173 @@
     </button>
   </div>
 
-  <div class="products-container">
+    <!-- PRODUCTS -->
+    <div class="products-container">
 
-    <div class="product-card">
-      <img src="img/choice-20k.jpeg" alt="20K Your Choice Package">
-      <div class="product-details">
-        <h3>🧺 20K Your Choice Package</h3>
-        <p class="price">20,000 RWF</p>
-        <p class="feeds">Feeds 2 people · 2 days</p>
-        <ul>
-          <li><strong>Vegetables:</strong> Tomatoes 1kg, Onions 0.5kg, Carrots 0.5kg, Potatoes 1kg</li>
-          <li><strong>Fruits:</strong> Bananas (2), Oranges (2)</li>
-          <li><strong>Meat:</strong> Chicken / Beef / Fish (0.5kg)</li>
-          <li><strong>Essentials:</strong> Oil 250ml, Rice 0.5kg</li>
-        </ul>
-        <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-50k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
-      </div>
+        <!-- YOUR CHOICE PACKAGES SECTION -->
+
+<div class="product-card">
+  <img src="img/choice-20k.jpeg" alt="20K Your Choice Package">
+  <div class="product-details">
+    <h3>🧺 20K Your Choice Package</h3>
+    <p class="price">20,000 RWF</p>
+    <p class="feeds">Feeds 2 people · 2 days</p>
+
+    <ul>
+      <li><strong>Vegetables:</strong> Tomatoes 1kg, Onions 0.5kg, Carrots 0.5kg, Potatoes 1kg</li>
+      <li><strong>Fruits:</strong> Bananas (2), Oranges (2)</li>
+      <li><strong>Meat:</strong> Chicken / Beef / Fish (0.5kg)</li>
+      <li><strong>Essentials:</strong> Oil 250ml, Rice 0.5kg</li>
+    </ul>
+
+    <div class="product-actions">
+      <button class="add-to-cart-btn"
+        onclick="addToCart({ id:'choice-20k', name:'20K Your Choice Package', price:20000, image:'img/choice-20k.jpeg' })">
+        <i class="fas fa-cart-plus"></i> Add to Cart
+      </button>
     </div>
+  </div>
+</div>
 
-    <div class="product-card">
-      <img src="img/choice-25k.jpeg" alt="25K Your Choice Package">
-      <div class="product-details">
+
+<div class="product-card">
+    <img src="img/choice-25k.jpeg" alt="25K Your Choice Package">
+    <div class="product-details">
         <h3>🧺 25K Your Choice Package</h3>
         <p class="price">25,000 RWF</p>
         <p class="feeds">Feeds 2–3 people · 2–3 days</p>
         <ul>
-          <li><strong>Vegetables:</strong> Tomatoes 1kg, Onions 1kg, Potatoes 1kg, Carrots 0.5kg, Green beans 0.5kg</li>
-          <li><strong>Fruits:</strong> Bananas (3), Apples (2)</li>
-          <li><strong>Meat (choose any 2):</strong> Chicken 0.7kg, Beef 0.6kg, Fish 0.6kg, Mixed meat 0.7kg</li>
-          <li><strong>Essentials:</strong> Oil 500ml, Garlic (1), Rice 1kg</li>
+            <li><strong>Vegetables:</strong> Tomatoes 1kg, Onions 1kg, Potatoes 1kg, Carrots 0.5kg, Green beans 0.5kg</li>
+            <li><strong>Fruits:</strong> Bananas (3), Apples (2)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 0.7kg, Beef 0.6kg, Fish 0.6kg, Mixed meat 0.7kg</li>
+            <li><strong>Essentials:</strong> Oil 500ml, Garlic (1), Rice 1kg</li>
         </ul>
-        <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-25k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <div class="product-card">
-      <img src="img/choice-30k.jpeg" alt="30K Your Choice Package">
-      <div class="product-details">
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-25k', name:'25K Your Choice Package', price:25000, image:'img/choice-25k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="product-card">
+    <img src="img/choice-30k.jpeg" alt="30K Your Choice Package">
+    <div class="product-details">
         <h3>🧺 30K Your Choice Package</h3>
         <p class="price">30,000 RWF</p>
         <p class="feeds">Feeds 3–4 people · 3 days</p>
         <ul>
-          <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Cabbage 1</li>
-          <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Mangoes (2)</li>
-          <li><strong>Meat (choose any 2):</strong> Chicken 1kg, Beef 0.8kg, Fish 0.8kg</li>
-          <li><strong>Essentials:</strong> Oil 500ml, Rice 1kg</li>
+            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Cabbage 1</li>
+            <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Mangoes (2)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1kg, Beef 0.8kg, Fish 0.8kg</li>
+            <li><strong>Essentials:</strong> Oil 500ml, Rice 1kg</li>
         </ul>
-        <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-30k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <div class="product-card">
-      <img src="img/choice-35k.jpeg" alt="35K Your Choice Package">
-      <div class="product-details">
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-30k', name:'30K Your Choice Package', price:30000, image:'img/choice-30k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="product-card">
+    <img src="img/choice-35k.jpeg" alt="35K Your Choice Package">
+    <div class="product-details">
         <h3>🧺 35K Your Choice Package</h3>
         <p class="price">35,000 RWF</p>
         <p class="feeds">Feeds 4 people · 3 days</p>
-        <ul>
-          <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Green beans</li>
-          <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Apples (2)</li>
-          <li><strong>Meat (choose any 2):</strong> Chicken 1.2kg, Beef 1kg, Fish 1kg</li>
-        </ul>
-        <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-35k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <div class="product-card">
-      <img src="img/choice-40k.jpeg" alt="40K Your Choice Package">
-      <div class="product-details">
+        <ul>
+            <li><strong>Vegetables:</strong> Potatoes 1.5kg, Tomatoes 1kg, Onions 1kg, Green beans</li>
+            <li><strong>Fruits:</strong> Bananas (4), Oranges (3), Apples (2)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1.2kg, Beef 1kg, Fish 1kg</li>
+        </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-35k', name:'35K Your Choice Package', price:35000, image:'img/choice-35k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="product-card">
+    <img src="img/choice-40k.jpeg" alt="40K Your Choice Package">
+    <div class="product-details">
         <h3>🧺 40K Your Choice Package</h3>
         <p class="price">40,000 RWF</p>
         <p class="feeds">Feeds 4–5 people · 3 days</p>
         <ul>
-          <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 1.5kg, Onions 1kg, Cabbage 1, Carrots 0.5kg, Green pepper 0.5kg, Green beans 0.5kg</li>
-          <li><strong>Fruits:</strong> Bananas (5), Oranges (3), Mangoes (2), Apples (2)</li>
-          <li><strong>Meat (choose any 2):</strong> Chicken 1.5kg, Beef 1.2kg, Fish 1.2kg, Mixed meat 1.5kg</li>
-          <li><strong>Essentials:</strong> Oil 1L, Rice 2kg, Garlic (2), Snacks (4 chapati or 4 crepes)</li>
+            <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 1.5kg, Onions 1kg, Cabbage 1, Carrots 0.5kg, Green pepper 0.5kg, Green beans 0.5kg</li>
+            <li><strong>Fruits:</strong> Bananas (5), Oranges (3), Mangoes (2), Apples (2)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1.5kg, Beef 1.2kg, Fish 1.2kg, Mixed meat 1.5kg</li>
+            <li><strong>Essentials:</strong> Oil 1L, Rice 2kg, Garlic (2), Snacks (4 chapati or 4 crepes)</li>
         </ul>
         <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-40k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-40k', name:'40K Your Choice Package', price:40000, image:'img/choice-40k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
         </div>
-      </div>
     </div>
+</div>
 
-    <div class="product-card">
-      <img src="img/choice-50k.jpeg" alt="45K Your Choice Package">
-      <div class="product-details">
+<div class="product-card">
+    <img src="img/choice-50k.jpeg" alt="45K Your Choice Package">
+    <div class="product-details">
         <h3>🧺 45K Your Choice Package</h3>
         <p class="price">45,000 RWF</p>
         <p class="feeds">Feeds 5 people · 3-4 days</p>
         <ul>
-          <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 1.5kg, Onions 1.5kg, Cabbage 1, Carrots 1kg, Green pepper 0.5kg, Green beans 0.5kg, Spinach 0.5kg</li>
-          <li><strong>Fruits:</strong> Bananas (6), Oranges (3), Mangoes (2), Apples (3)</li>
-          <li><strong>Meat (choose any 2):</strong> Chicken 1.8kg, Beef 1.5kg, Fish 1.5kg, Mixed meat 1.8kg</li>
-          <li><strong>Essentials:</strong> Oil 1L, Rice 2kg, Garlic (3), Snacks (6 chapati or 6 crepes), Bonus (Wings 0r Sausages)</li>
+            <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 1.5kg, Onions 1.5kg, Cabbage 1, Carrots 1kg, Green pepper 0.5kg, Green beans 0.5kg, Spinach 0.5kg</li>
+            <li><strong>Fruits:</strong> Bananas (6), Oranges (3), Mangoes (2), Apples (3)</li>
+            <li><strong>Meat (choose any 2):</strong> Chicken 1.8kg, Beef 1.5kg, Fish 1.5kg, Mixed meat 1.8kg</li>
+            <li><strong>Essentials:</strong> Oil 1L, Rice 2kg, Garlic (3), Snacks (6 chapati or 6 crepes), Bonus (Wings 0r Sausages)</li>
         </ul>
         <div class="product-actions">
-          <button class="add-to-cart-btn" onclick="addPackageToCart('choice-45k')">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-45k', name:'45K Your Choice Package', price:45000, image:'img/choice-45k.jpeg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
         </div>
-      </div>
-    </div>
-
-    <div class="product-card premium">
-      <img src="img/vegetables-sub.jpg" alt="50K Premium Choice Package">
-      <div class="product-details">
-        <h3>👑 50K Premium Choice Package</h3>
-        <p class="price">50,000 RWF</p>
-        <p class="feeds">Feeds 6–7 people · 4 days</p>
-        <ul>
-          <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 2kg, Onions 2kg</li>
-          <li><strong>Fruits:</strong> Bananas (6), Apples (4), Oranges (4)</li>
-          <li><strong>Meat:</strong> Choose 2 big meats (Chicken / Beef / Fish)</li>
-        </ul>
-      <div class="product-actions">
-        <button class="add-to-cart-btn" onclick="addPackageToCart('choice-20k')">
-          <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-      </div>
     </div>
 </div>
 
+<div class="product-card premium">
+    <img src="img/vegetables-sub.jpg" alt="50K Premium Choice Package">
+    <div class="product-details">
+        <h3>👑 50K Premium Choice Package</h3>
+        <p class="price">50,000 RWF</p>
+        <p class="feeds">Feeds 6–7 people · 4 days</p>
+
+        <ul>
+            <li><strong>Vegetables:</strong> Potatoes 2kg, Tomatoes 2kg, Onions 2kg</li>
+            <li><strong>Fruits:</strong> Bananas (6), Apples (4), Oranges (4)</li>
+            <li><strong>Meat:</strong> Choose 2 big meats (Chicken / Beef / Fish)</li>
+        </ul>
+
+        <div class="product-actions">
+            <button class="add-to-cart-btn"
+ onclick="addToCart({ id:'choice-50k', name:'50K Premium Choice Package', price:50000, image:'img/vegetables-sub.jpg' })">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+    </div>
+
+    <!-- Floating View Cart Button -->
   <div class="view-cart-btn" onclick="window.location.href='cart.html'">
     <div style="position:relative;">
       <img src="img/cart.jpg" alt="Cart">
@@ -893,20 +1018,21 @@
     <span>View Cart</span>
   </div>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <div class="footer-section">
+        <div class="footer-section">
         <h3>About Taze.rw</h3>
         <p>Your one-stop shop for fresh food and fast delivery in Kigali.</p>
       </div>
-      <div class="footer-section">
+        <div class="footer-section">
         <h3>Quick Links</h3>
         <a href="index.html">Home</a>
         <a href="food.html">Food</a>
         <a href="drinks.html">Drinks</a>
         <a href="login.html">Login</a>
       </div>
-      <div class="footer-section">
+        <div class="footer-section">
         <h3>Newsletter</h3>
         <form class="newsletter-form">
           <input type="email" placeholder="Enter your email">
@@ -918,168 +1044,117 @@
       <p>© 2025 Taze.rw. All rights reserved.</p>
     </div>
   </footer>
-      
 
-<script>
-    // Package data - defined here so cart.html can access it
-    const PACKAGES = {
-      'choice-20k': {
-        id: 'choice-20k',
-        name: '20K Your Choice Package',
-        price: 20000,
-        image: 'img/choice-20k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-25k': {
-        id: 'choice-25k',
-        name: '25K Your Choice Package',
-        price: 25000,
-        image: 'img/choice-25k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-30k': {
-        id: 'choice-30k',
-        name: '30K Your Choice Package',
-        price: 30000,
-        image: 'img/choice-30k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-35k': {
-        id: 'choice-35k',
-        name: '35K Your Choice Package',
-        price: 35000,
-        image: 'img/choice-35k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-40k': {
-        id: 'choice-40k',
-        name: '40K Your Choice Package',
-        price: 40000,
-        image: 'img/choice-40k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-45k': {
-        id: 'choice-45k',
-        name: '45K Your Choice Package',
-        price: 45000,
-        image: 'img/choice-50k.jpeg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      },
-      'choice-50k': {
-        id: 'choice-50k',
-        name: '50K Premium Choice Package',
-        price: 50000,
-        image: 'img/vegetables-sub.jpg',
-        category: 'Packages',
-        subcategory: 'Choice Packs'
-      }
-    };
+  <!-- Scripts -->
+  <script>
 
-    // Add package to cart
-    function addPackageToCart(packageId) {
-      const packageData = PACKAGES[packageId];
-      if (!packageData) {
-        console.error('Package not found:', packageId);
-        return;
-      }
+    // Save package details so cart page can read them
+function savePackageProduct(packageData) {
+  let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+  packageProducts[packageData.id] = packageData;
+  localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
+}
 
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      
-      // Check if package already in cart
-      const existing = cart.find(item => item.id === packageId);
-      
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({
-          id: packageId,
-          quantity: 1
-        });
-      }
+// Add to cart
+function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      // Save cart
-      localStorage.setItem("cart", JSON.stringify(cart));
+  const existing = cart.find(item => item.id === product.id);
 
-      // Save package data separately so cart.html can read it
-      let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
-      packageProducts[packageId] = packageData;
-      localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
-
-      // Update cart count
-      updateCartCount();
-      
-      // Show notification
-      showNotification(`${packageData.name} added to cart!`);
-    }
-
-    // Show notification
-    function showNotification(message) {
-      const notif = document.createElement("div");
-      notif.className = "cart-notification";
-      notif.textContent = message;
-      
-      document.body.appendChild(notif);
-      
-      setTimeout(() => {
-        notif.classList.add("show");
-      }, 10);
-      
-      setTimeout(() => {
-        notif.classList.remove("show");
-        setTimeout(() => notif.remove(), 300);
-      }, 2000);
-    }
-
-    // Update cart count badge
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      
-      const el = document.getElementById("cartCount");
-      if (!el) return;
-      
-      el.textContent = count;
-      el.style.display = count > 0 ? "flex" : "none";
-    }
-
-    // Placeholder functions
-    function handleFavorites() {
-      alert("Favorites feature coming soon!");
-    }
-
-    function handleReorder() {
-      alert("Reorder feature coming soon!");
-    }
-
-    function openSidebar() {
-      document.getElementById('mobileSidebar').classList.add('open');
-      document.getElementById('mobileOverlay').classList.add('open');
-    }
-
-    function closeSidebar() {
-      document.getElementById('mobileSidebar').classList.remove('open');
-      document.getElementById('mobileOverlay').classList.remove('open');
-    }
-
-    function filterProducts() {
-      // Search functionality - placeholder
-      alert("Search feature coming soon!");
-    }
-
-    // Initialize
-    document.addEventListener("DOMContentLoaded", updateCartCount);
-
-    document.getElementById('searchInput').addEventListener('keydown', function (event) {
-      if (event.key === "Enter") {
-        filterProducts();
-      }
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({
+      id: product.id,
+      quantity: 1
     });
-  </script>      
+
+    // store package products separately (important!)
+    let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+    packageProducts[product.id] = product;
+    localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  showNotification(`${product.name} added to cart!`);
+}
+
+
+// Added to cart notification
+
+function showAddToCartNotification() {
+  const notif = document.createElement("div");
+  notif.className = "cart-notification";
+  notif.textContent = "✅ Added to cart";
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.classList.add("show");
+  }, 10);
+
+  setTimeout(() => {
+    notif.classList.remove("show");
+    notif.remove();
+  }, 2000);
+}
+
+
+// Update cart count badge
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const el = document.getElementById("cartCount");
+  if (!el) return;
+
+  el.textContent = count;
+  el.style.display = count > 0 ? "inline-block" : "none";
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+
+// Wishlist (placeholder)
+function toggleWishlist(productId) {
+  alert("Wishlist feature coming soon!");
+}
+
+// Favorites (placeholder)
+function handleFavorites() {
+  alert("Favorites feature coming soon!");
+}
+
+// Reorder (placeholder)
+function handleReorder() {
+  alert("Reorder feature coming soon!");
+}
+
+// Sidebar functions
+function openSidebar() {
+  document.getElementById('mobileSidebar').classList.add('open');
+  document.getElementById('mobileOverlay').classList.add('open');
+}
+function closeSidebar() {
+  document.getElementById('mobileSidebar').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('open');
+}
+
+// ✅ Trigger search on Enter key
+document.getElementById('searchInput').addEventListener('keydown', function (event) {
+  if (event.key === "Enter") {
+    filterProducts();
+  }
+});
+
+// ✅ Also reset to all fruits when search bar is cleared
+document.getElementById('searchInput').addEventListener('input', function () {
+  if (this.value.trim() === "") {
+    filterProducts(); // reload all fruits
+  }
+});
+
+  </script>
   </body>
 </html>

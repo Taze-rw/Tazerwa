@@ -500,6 +500,26 @@
       box-shadow: 0 4px 12px rgba(110, 121, 105, 0.3);
     }
 
+    .cart-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #28a745;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+.cart-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
     .wishlist-btn {
       background: white;
       border: 2px solid #e9ecef;
@@ -1032,34 +1052,60 @@ function savePackageProduct(packageData) {
 }
 
 // Add to cart
-function addToCart(productId, packageData = null) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  // If it's a package, save its details
-  if (packageData) {
-    savePackageProduct(packageData);
-  }
+function addToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const existing = cart.find(item => item.id === productId);
 
   if (existing) {
     existing.quantity += 1;
   } else {
-    cart.push({ id: productId, quantity: 1 });
+    cart.push({
+      id: productId,
+      quantity: 1
+    });
   }
 
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
+
   updateCartCount();
+  showAddToCartNotification();
 }
+
+// Added to cart notification
+
+function showAddToCartNotification() {
+  const notif = document.createElement("div");
+  notif.className = "cart-notification";
+  notif.textContent = "✅ Added to cart";
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.classList.add("show");
+  }, 10);
+
+  setTimeout(() => {
+    notif.classList.remove("show");
+    notif.remove();
+  }, 2000);
+}
+
 
 // Update cart count badge
 function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const badge = document.getElementById('cartCount');
-  badge.textContent = count;
-  badge.style.display = count > 0 ? 'flex' : 'none';
+
+  const el = document.getElementById("cartCount");
+  if (!el) return;
+
+  el.textContent = count;
+  el.style.display = count > 0 ? "inline-block" : "none";
 }
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
 
 // Wishlist (placeholder)
 function toggleWishlist(productId) {

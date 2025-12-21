@@ -393,146 +393,163 @@
 
   <script>
 
-  const PRODUCTS_URL = "products.json"; // adjust path if needed
+  const PRODUCTS_URL = "products.json";
 
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let productsMap = {};
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let productsMap = {};
 
-  function formatPrice(price) {
-    return `RWF ${price.toLocaleString()}`;
+function formatPrice(price) {
+  return `RWF ${price.toLocaleString()}`;
+}
+
+/* ===============================
+   LOAD PRODUCTS FROM JSON + PACKAGES
+=============================== */
+async function loadProducts() {
+  try {
+    // Load products from JSON
+    const res = await fetch(PRODUCTS_URL);
+    const data = await res.json();
+    data.products.forEach(p => {
+      productsMap[p.id] = p;
+    });
+
+    // Load package products from localStorage
+    const packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+    Object.keys(packageProducts).forEach(key => {
+      productsMap[key] = packageProducts[key];
+    });
+
+    console.log("Products loaded:", Object.keys(productsMap).length);
+  } catch (err) {
+    console.error("Failed to load products.json", err);
+    alert("Failed to load products. Please refresh.");
+  }
+}
+
+/* ===============================
+   LOAD CART ITEMS
+=============================== */
+function loadCartItems() {
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartContent = document.getElementById("cart-content");
+  const emptyCart = document.getElementById("empty-cart");
+
+  if (cart.length === 0) {
+    cartContent.style.display = "none";
+    emptyCart.style.display = "block";
+    return;
   }
 
-  /* ===============================
-     LOAD PRODUCTS FROM JSON
-  =============================== */
-  async function loadProducts() {
-    try {
-      const res = await fetch(PRODUCTS_URL);
-      const data = await res.json();
-      data.products.forEach(p => {
-        productsMap[p.id] = p;
-      });
-    } catch (err) {
-      console.error("Failed to load products.json", err);
-      alert("Failed to load products. Please refresh.");
-    }
-  }
+  cartContent.style.display = "block";
+  emptyCart.style.display = "none";
+  cartItemsContainer.innerHTML = "";
 
-  /* ===============================
-     LOAD CART ITEMS
-  =============================== */
-  function loadCartItems() {
-    const cartItemsContainer = document.getElementById("cart-items");
-    const cartContent = document.getElementById("cart-content");
-    const emptyCart = document.getElementById("empty-cart");
+  let subtotal = 0;
 
-    if (cart.length === 0) {
-      cartContent.style.display = "none";
-      emptyCart.style.display = "block";
+  cart.forEach((cartItem, index) => {
+    const product = productsMap[cartItem.id];
+    
+    if (!product) {
+      console.warn("Product not found:", cartItem.id);
       return;
     }
 
-    cartContent.style.display = "block";
-    emptyCart.style.display = "none";
-    cartItemsContainer.innerHTML = "";
+    const quantity = Number(cartItem.quantity || 1);
+    const itemTotal = product.price * quantity;
+    subtotal += itemTotal;
 
-    let subtotal = 0;
+    // Display category/subcategory or just "Package" for packages
+    const categoryText = product.category === 'Packages' 
+      ? 'Package' 
+      : `${product.category} / ${product.subcategory}`;
 
-    cart.forEach((cartItem, index) => {
-      const product = productsMap[cartItem.id];
-      if (!product) return;
+    cartItemsContainer.innerHTML += `
+      <tr>
+        <td>
+          <strong>${product.name}</strong><br>
+          <small style="color:#666">${categoryText}</small>
+        </td>
+        <td>${formatPrice(product.price)}</td>
+        <td>
+          <div class="quantity-controls">
+            <button onclick="updateQuantity(${index}, -1)" ${cartItem.quantity <= 1 ? "disabled" : ""}>-</button>
+            <span style="margin:0 10px;font-weight:bold">${cartItem.quantity}</span>
+            <button onclick="updateQuantity(${index}, 1)">+</button>
+          </div>
+        </td>
+        <td><strong>${formatPrice(itemTotal)}</strong></td>
+        <td>
+          <span class="remove-btn" onclick="removeItem(${index})">
+            <i class="fas fa-trash"></i> Remove
+          </span>
+        </td>
+      </tr>
+    `;
+  });
 
-      const quantity = Number(cartItem.quantity || 1);
-      const itemTotal = product.price * quantity;
-      subtotal += itemTotal;
+  document.getElementById("subtotal").innerText = formatPrice(subtotal);
+  updateTotal();
+}
 
-      cartItemsContainer.innerHTML += `
-        <tr>
-          <td>
-            <strong>${product.name}</strong><br>
-            <small style="color:#666">${product.category} / ${product.subcategory}</small>
-          </td>
-          <td>${formatPrice(product.price)}</td>
-          <td>
-            <div class="quantity-controls">
-              <button onclick="updateQuantity(${index}, -1)" ${cartItem.quantity <= 1 ? "disabled" : ""}>-</button>
-              <span style="margin:0 10px;font-weight:bold">${cartItem.quantity}</span>
-              <button onclick="updateQuantity(${index}, 1)">+</button>
-            </div>
-          </td>
-          <td><strong>${formatPrice(itemTotal)}</strong></td>
-          <td>
-            <span class="remove-btn" onclick="removeItem(${index})">
-              <i class="fas fa-trash"></i> Remove
-            </span>
-          </td>
-        </tr>
-      `;
-    });
-
-    document.getElementById("subtotal").innerText = formatPrice(subtotal);
-    updateTotal();
-  }
-
-  /* ===============================
-     CART ACTIONS
-  =============================== */
-  function updateQuantity(index, change) {
+/* ===============================
+   CART ACTIONS
+=============================== */
+function updateQuantity(index, change) {
   cart[index].quantity = Math.max(1, Number(cart[index].quantity) + change);
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCartItems();
 }
 
-
-  function removeItem(index) {
-    if (confirm("Remove this item from cart?")) {
-      cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      loadCartItems();
-    }
+function removeItem(index) {
+  if (confirm("Remove this item from cart?")) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCartItems();
   }
+}
 
-  function updateTotal() {
-    const subtotal = cart.reduce((sum, item) => {
-      const product = productsMap[item.id];
-      return product ? sum + product.price * item.quantity : sum;
-    }, 0);
+function updateTotal() {
+  const subtotal = cart.reduce((sum, item) => {
+    const product = productsMap[item.id];
+    return product ? sum + product.price * item.quantity : sum;
+  }, 0);
 
-    const deliveryFee = parseInt(document.getElementById("delivery-option").value) || 0;
-    const grandTotal = subtotal + deliveryFee;
+  const deliveryFee = parseInt(document.getElementById("delivery-option").value) || 0;
+  const grandTotal = subtotal + deliveryFee;
 
-    document.getElementById("grand-total").innerText = formatPrice(grandTotal);
-  }
+  document.getElementById("grand-total").innerText = formatPrice(grandTotal);
+}
 
-  /* ===============================
-     FORM VALIDATION
-  =============================== */
-  function validateForm() {
-    const requiredFields = [
-      "customer-name",
-      "customer-phone",
-      "customer-location"
-    ];
+/* ===============================
+   FORM VALIDATION
+=============================== */
+function validateForm() {
+  const requiredFields = [
+    "customer-name",
+    "customer-phone",
+    "customer-location"
+  ];
 
-    for (let id of requiredFields) {
-      const el = document.getElementById(id);
-      if (!el.value.trim()) {
-        alert("Please fill all required fields.");
-        el.focus();
-        return false;
-      }
-    }
-
-    if (cart.length === 0) {
-      alert("Your cart is empty.");
+  for (let id of requiredFields) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      alert("Please fill all required fields.");
+      el.focus();
       return false;
     }
-
-    return true;
   }
 
-  /* ===============================
-   SEND ORDER EMAIL (FIXED)
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return false;
+  }
+
+  return true;
+}
+
+/* ===============================
+   SEND ORDER EMAIL
 =============================== */
 async function sendOrderEmail(orderData) {
   try {
@@ -576,7 +593,7 @@ async function sendOrderEmail(orderData) {
 }
 
 /* ===============================
-   PROCEED TO PAYMENT (FIXED)
+   PROCEED TO PAYMENT
 =============================== */
 async function proceedToPayment() {
   if (!validateForm()) return;
@@ -678,13 +695,13 @@ async function proceedToPayment() {
   }
 }
 
-  /* ===============================
-     INIT
-  =============================== */
-  document.addEventListener("DOMContentLoaded", async () => {
-    await loadProducts();
-    loadCartItems();
-  });
+/* ===============================
+   INIT
+=============================== */
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadProducts();
+  loadCartItems();
+});
 </script>
 
 

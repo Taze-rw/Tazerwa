@@ -1805,15 +1805,15 @@
     "id": 215,
     "name": "Gold Blend Tea Bag",
     "price": 3000,
-    "image": "img/gold-blend-tea-bag.jpg",
+    "image": "img/gold-blend-tea-bag.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
   {
     "id": 216,
-    "name": "Ginger Powder Tangwiz Tea 125g",
+    "name": "Ginger Powder Tea 100g",
     "price": 2300,
-    "image": "img/ginger-powder-tangwiz-tea-125g.jpg",
+    "image": "img/ginger-powder-tea-100g.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1821,23 +1821,23 @@
     "id": 217,
     "name": "Slimming Herbs",
     "price": 10700,
-    "image": "img/slimming-herbs.jpg",
+    "image": "img/slimming-herbs.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
   {
     "id": 218,
-    "name": "Rwand Green Tea Bag",
+    "name": "Rwanda Green Tea Bag",
     "price": 2500,
-    "image": "img/rwand-green-tea-bag.jpg",
+    "image": "img/rwand-green-tea-bag.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
   {
     "id": 219,
-    "name": "Strang Black Tea Bag",
+    "name": "Strong Black Tea Bag",
     "price": 2000,
-    "image": "img/strang-black-tea-bag.jpg",
+    "image": "img/strong-black-tea-bag.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1845,15 +1845,15 @@
     "id": 220,
     "name": "Tea Masala 50g",
     "price": 2500,
-    "image": "img/tea-masala-50g.jpg",
+    "image": "img/tea-masala-50g.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
   {
     "id": 221,
-    "name": "Rwand Light Black Tea 250g",
+    "name": "Rwanda Light Black Tea 250g",
     "price": 1800,
-    "image": "img/rwand-light-black-tea-250g.jpg",
+    "image": "img/rwand-light-black-tea-250g.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1861,7 +1861,7 @@
     "id": 222,
     "name": "Sorwate Thé Vert 125gm",
     "price": 3000,
-    "image": "img/sorwate-the-vert-125gm.jpg",
+    "image": "img/sorwate-the-vert-125gm.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1869,7 +1869,7 @@
     "id": 223,
     "name": "Lemon and Ginger Tea Bags 50pc",
     "price": 3000,
-    "image": "img/lemon-ginger-tea-bags-50pc.jpg",
+    "image": "img/lemon-ginger-tea-bags-50pc.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1877,15 +1877,15 @@
     "id": 224,
     "name": "Vanilla Tea Bags 50pc",
     "price": 3000,
-    "image": "img/vanilla-tea-bags-50pc.jpg",
+    "image": "img/vanilla-tea-bags-50pc.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
   {
     "id": 225,
-    "name": "Kericha Gold Pure Caramel",
+    "name": "Kericha Gold Pure Camomile",
     "price": 6000,
-    "image": "img/kericha-gold-pure-caramel.jpg",
+    "image": "img/kericha-gold-pure-caramel.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1893,7 +1893,7 @@
     "id": 226,
     "name": "Kericha Gold Spice Tea",
     "price": 6200,
-    "image": "img/kericha-gold-spice-tea.jpg",
+    "image": "img/kericha-gold-spice-tea.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1901,7 +1901,7 @@
     "id": 227,
     "name": "Hibiscus Tea Coffee Flavored 150g",
     "price": 3300,
-    "image": "img/hibiscus-tea-coffee-flavored-150g.jpg",
+    "image": "img/hibiscus-tea-coffee-flavored-150g.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },
@@ -1909,7 +1909,7 @@
     "id": 228,
     "name": "Kericha Gold Pure Cardamom Tea",
     "price": 6000,
-    "image": "img/kericha-gold-pure-cardamom-tea.jpg",
+    "image": "img/kericha-gold-pure-cardamom-tea.jpeg",
     "category": "Drinks",
     "subcategory": "Tea"
   },

@@ -2099,9 +2099,9 @@
     },
     {
       "id": 252,
-      "name": "Ingagara Fish (1kg)",
+      "name": "Indagara Fish (1kg)",
       "price": 4000,
-      "image": "img/fish-ingagara.jpg",
+      "image": "img/fish-indagara.jpeg",
       "category": "Food",
       "subcategory": "Meat"
     },
@@ -2157,7 +2157,7 @@
       "id": 259,
       "name": "Eggs Rwanda (30 pcs)",
       "price": 6600,
-      "image": "img/eggs-rwanda.jpg",
+      "image": "img/eggs-amanyarwanda.jpg",
       "category": "Food",
       "subcategory": "Meat"
     },

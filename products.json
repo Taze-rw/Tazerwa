@@ -1421,7 +1421,7 @@
       "id": 164,
       "name": "Taze Breakfast",
       "price": 7000,
-      "image": "img/taze-breakfast.jpg",
+      "image": "img/taze-breakfast.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1453,7 +1453,7 @@
       "id": 168,
       "name": "Spanish Omelette",
       "price": 4000,
-      "image": "img/spanish-omelette.jpg",
+      "image": "img/spanish-omelette.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1573,7 +1573,7 @@
       "id": 183,
       "name": "Crepes (3 pcs)",
       "price": 2000,
-      "image": "img/crepes-3pcs.jpg",
+      "image": "img/crepes-3pcs.jpeg",
       "category": "Food",
       "subcategory": "Breakfast & Dairy"
     },
@@ -1661,7 +1661,7 @@
       "id": 194,
       "name": "Everyday Sweet Fruit Flavor Chocolate",
       "price": 12000,
-      "image": "img/everyday-fruit-chocolate.jpg",
+      "image": "img/everyday-fruit-chocolate.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },
@@ -1685,7 +1685,7 @@
       "id": 197,
       "name": "Milk Chocolate Biscuits",
       "price": 5500,
-      "image": "img/milk-chocolate-biscuits.jpg",
+      "image": "img/milk-chocolate-biscuits.jpeg",
       "category": "Food",
       "subcategory": "Chocolate & Biscuits"
     },

@@ -1701,7 +1701,7 @@
     "id": 202,
     "name": "Gorilla Coffee 500gm",
     "price": 13400,
-    "image": "img/gorilla-coffee-500gm.jpg",
+    "image": "img/gorilla-coffee-500gm.jpeg",
     "category": "Drinks",
     "subcategory": "Coffee"
   },
@@ -1709,7 +1709,7 @@
     "id": 203,
     "name": "Gorilla Coffee 1kg",
     "price": 24000,
-    "image": "img/gorilla-coffee-1kg.jpg",
+    "image": "img/gorilla-coffee-1kg.jpeg",
     "category": "Drinks",
     "subcategory": "Coffee"
   },

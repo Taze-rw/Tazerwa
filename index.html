@@ -1269,6 +1269,19 @@
   </footer>
 
   <script>
+
+(function captureReferral() {
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
+
+  if (ref) {
+    localStorage.setItem("referralCode", ref);
+    localStorage.setItem("referralTimestamp", Date.now());
+
+    console.log("Referral captured:", ref);
+  }
+})();
+
 let products = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 

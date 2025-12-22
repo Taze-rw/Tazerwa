@@ -598,6 +598,7 @@ async function sendOrderEmail(orderData) {
 async function proceedToPayment() {
   if (!validateForm()) return;
 
+  const referralCode = localStorage.getItem("referralCode") || null;
   const name = document.getElementById("customer-name").value.trim();
   const phone = document.getElementById("customer-phone").value.trim();
   const email = document.getElementById("customer-email").value.trim();
@@ -655,7 +656,8 @@ async function proceedToPayment() {
       email,
       location,
       notes,
-      deliveryMethod
+      deliveryMethod,
+      referralCode
     });
 
     // Show success message

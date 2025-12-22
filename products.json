@@ -1693,7 +1693,7 @@
     "id": 201,
     "name": "Gorilla Coffee 250gm",
     "price": 7900,
-    "image": "img/gorilla-coffee-250gm.jpg",
+    "image": "img/gorilla-coffee-250gm.jpeg",
     "category": "Drinks",
     "subcategory": "Coffee"
   },
@@ -1741,7 +1741,7 @@
     "id": 207,
     "name": "Coffee Filter Every Day",
     "price": 2800,
-    "image": "img/coffee-filter-everyday.jpg",
+    "image": "img/coffee-filter-everyday.jpeg",
     "category": "Drinks",
     "subcategory": "Coffee"
   },
@@ -1749,13 +1749,13 @@
     "id": 208,
     "name": "Nescafe 100gm",
     "price": 9500,
-    "image": "img/nescafe-100gm.jpg",
+    "image": "img/nescafe-100gm.jpeg",
     "category": "Drinks",
     "subcategory": "Coffee"
   },
   {
     "id": 209,
-    "name": "Nescafe 190gm",
+    "name": "Nescafe Gold 190gm",
     "price": 58500,
     "image": "img/nescafe-190gm.jpg",
     "category": "Drinks",

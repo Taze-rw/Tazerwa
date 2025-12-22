@@ -2399,7 +2399,7 @@
       "price": 4000,
       "image": "img/ketchup.jpeg",
       "category": "Food",
-      "subcategory": "Spices"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 290,
@@ -2407,7 +2407,7 @@
       "price": 8500,
       "image": "img/mustard-everyday.jpeg",
       "category": "Food",
-      "subcategory": "Spices"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 291,

@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fruits Packages - Taze.rw | Fresh & Fast Delivery</title>
   
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -128,33 +126,33 @@
     }
 
     @media (max-width: 768px) {
-    .top-nav {
-    justify-content: center; /* center everything */
-    }
+      .top-nav {
+        justify-content: center;
+      }
 
-    .hamburger,
-    .auth-buttons {
-    position: absolute; /* take them out of flow */
-    top: 15px;
-    }
+      .hamburger,
+      .auth-buttons {
+        position: absolute;
+        top: 15px;
+      }
 
-    .hamburger {
-    left: 20px; /* menu button on left */
-    }
+      .hamburger {
+        left: 20px;
+      }
 
-    .auth-buttons {
-    right: 20px; /* login/signup on right */
-    }
+      .auth-buttons {
+        right: 20px;
+      }
 
-    .logo-container {
-    flex: 0; /* prevent stretching */
-    text-align: center;
-    }
+      .logo-container {
+        flex: 0;
+        text-align: center;
+      }
 
-    .logo-container img {
-    width: 80px; /* slightly smaller for mobile */
+      .logo-container img {
+        width: 80px;
+      }
     }
-  }
 
     .auth-buttons {
       display: flex;
@@ -358,138 +356,83 @@
     }
 
     /* =========================
-   PRODUCTS GRID (FIXED)
-========================= */
+       PRODUCTS GRID
+    ========================= */
 
-.products-container {
-  max-width: 1200px;
-  margin: 30px auto 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
-}
+    .products-container {
+      max-width: 1200px;
+      margin: 30px auto 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+    }
 
-/* =========================
-   PRODUCT CARD (AUTO HEIGHT)
-========================= */
+    /* =========================
+       PRODUCT CARD
+    ========================= */
 
-.product-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: auto; /* 🔑 VERY IMPORTANT */
-}
+    .product-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
 
-/* IMAGE */
-.product-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
 
-/* CONTENT */
-.product-details {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+    .product-details {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-/* TITLE */
-.product-details h3 {
-  font-size: 17px;
-  color: #2b8a3e;
-  line-height: 1.3;
-}
+    .product-details h3 {
+      font-size: 17px;
+      color: #2b8a3e;
+      line-height: 1.3;
+    }
 
-/* PRICE */
-.price {
-  font-weight: bold;
-  color: #333;
-  font-size: 15px;
-}
+    .price {
+      font-weight: bold;
+      color: #333;
+      font-size: 15px;
+    }
 
-/* LIST */
-.product-details ul {
-  padding-left: 18px;
-  font-size: 14px;
-  color: #333;
-}
+    .product-details ul {
+      padding-left: 18px;
+      font-size: 14px;
+      color: #333;
+    }
 
-.product-details ul li {
-  margin-bottom: 4px;
-}
+    .product-details ul li {
+      margin-bottom: 4px;
+    }
 
-/* =========================
-   MOBILE FIXES (CRITICAL)
-========================= */
-
-@media (max-width: 768px) {
-
-  .products-container {
-    grid-template-columns: repeat(2, 1fr); /* ✅ 2 columns */
-    gap: 15px;
-  }
-
-  .product-card {
-    height: auto; /* 🔑 removes cut content */
-  }
-
-  .product-card img {
-    height: 140px;
-  }
-
-  .product-details {
-    padding: 12px;
-  }
-
-  .product-details h3 {
-    font-size: 15px;
-  }
-
-  .price {
-    font-size: 14px;
-  }
-
-  .product-details ul {
-    font-size: 13px;
-  }
-}
-
-/* =========================
-   SMALL PHONES (OPTIONAL)
-========================= */
-
-@media (max-width: 480px) {
-
-  .products-container {
-    grid-template-columns: repeat(2, 1fr); /* still 2 */
-  }
-
-  .product-card img {
-    height: 130px;
-  }
-
-  .product-details ul {
-    font-size: 12.5px;
-  }
-}
+    /* Added Product Actions style to match Source */
+    .product-actions {
+      margin-top: 12px;
+    }
 
     .add-to-cart-btn {
-      flex: 1;
+      width: 100%;
       background: linear-gradient(45deg, #6e7969, #20c997);
       color: white;
       border: none;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-radius: 20px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .add-to-cart-btn:hover {
@@ -497,30 +440,25 @@
       box-shadow: 0 4px 12px rgba(110, 121, 105, 0.3);
     }
 
-    .wishlist-btn {
-      background: white;
-      border: 2px solid #e9ecef;
-      color: #6c757d;
-      padding: 8px 12px;
-      border-radius: 20px;
-      cursor: pointer;
+    /* Added Notification Styles */
+    .cart-notification {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: #28a745;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(20px);
       transition: all 0.3s ease;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      z-index: 9999;
     }
 
-    .wishlist-btn:hover {
-      border-color: #ff6b6b;
-      color: #ff6b6b;
-    }
-
-    .wishlist-btn.favorited {
-      background: #ff6b6b;
-      color: white;
-      border-color: #ff6b6b;
+    .cart-notification.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Floating View Cart Button */
@@ -618,18 +556,6 @@
       color: #ffc107;
     }
 
-    .social-links a {
-      display: inline-block;
-      color: white;
-      font-size: 20px;
-      margin-right: 15px;
-      transition: color 0.3s ease;
-    }
-
-    .social-links a:hover {
-      color: #ffc107;
-    }
-
     .newsletter-form {
       display: flex;
       margin-top: 10px;
@@ -685,50 +611,74 @@
     /* Mobile Responsive */
     @media (max-width: 768px) {
       .hamburger {
-      display: block;
+        display: block;
       }
 
       .auth-buttons {
-      display: none;
+        display: none;
       }
 
       .page-title h1 {
-      font-size: 2rem;
+        font-size: 2rem;
       }
 
-      .products-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
       }
 
-      .product-image {
-      height: 140px;
+      .product-card {
+        height: auto;
+      }
+
+      .product-card img {
+        height: 140px;
+      }
+      
+      .product-details {
+        padding: 12px;
+      }
+
+      .product-details h3 {
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 14px;
+      }
+
+      .product-details ul {
+        font-size: 13px;
       }
 
       .quick-actions {
-      flex-direction: column;
-      margin: 15px;
-      gap: 10px;
+        flex-direction: column;
+        margin: 15px;
+        gap: 10px;
       }
 
       .quick-btn, .back-btn {
-      width: 100%;
-      text-align: center;
-      justify-content: center;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
 
       .footer-content {
-      grid-template-columns: 1fr;
-      text-align: center;
+        grid-template-columns: 1fr;
+        text-align: center;
       }
     }
 
     @media (max-width: 480px) {
-      .products-grid {
-      grid-template-columns: 1fr;
-      gap: 15px;
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
       }
-
+      .product-card img {
+        height: 130px;
+      }
+      .product-details ul {
+        font-size: 12.5px;
+      }
     }
 
     /* Animations */
@@ -744,10 +694,8 @@
 </head>
 <body>
 
-  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <!-- Mobile Sidebar -->
   <div class="mobile-sidebar" id="mobileSidebar">
     <div class="sidebar-header">
       <h3>Categories</h3>
@@ -762,7 +710,6 @@
     </ul>
   </div>
 
-  <!-- Compact Header -->
   <header class="compact-header">
     <div class="top-nav">
       <button class="hamburger" onclick="openSidebar()">
@@ -786,7 +733,6 @@
     </div>
   </header>
 
-  <!-- Breadcrumb Navigation -->
   <div class="breadcrumb">
     <div class="breadcrumb-container">
       <a href="index.html"><i class="fas fa-home"></i> Home</a>
@@ -797,7 +743,6 @@
     </div>
   </div>
 
-  <!-- Search Section -->
   <div class="search-section">
     <div class="search-container">
       <input type="text" id="searchInput" class="search-input" placeholder="Search for fruits packages...">
@@ -807,7 +752,6 @@
     </div>
   </div>
 
-  <!-- Quick Actions -->
   <div class="quick-actions">
     <a href="todays-deals.html" class="back-btn">
       <i class="fas fa-arrow-left"></i> Back to Today's deals Categories
@@ -820,10 +764,8 @@
     </button>
   </div>
 
-    <!-- PRODUCTS -->
     <div class="products-container">
 
-        <!-- 5K -->
         <div class="product-card">
             <img src="img/fruit-5k.jpeg" alt="5K Fruit Package">
             <div class="product-details">
@@ -836,10 +778,14 @@
                     <li>1 Pineapple</li>
                     <li>3 Ginger</li>
                 </ul>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn" onclick="addPackageToCart('fruit-5k')">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
             </div>
         </div>
 
-        <!-- 10K -->
         <div class="product-card">
             <img src="img/fruit-10k.jpeg" alt="10K Fruit Package">
             <div class="product-details">
@@ -854,10 +800,14 @@
                     <li>2 Mangoes</li>
                     <li>5 Ginger</li>
                 </ul>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn" onclick="addPackageToCart('fruit-10k')">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
             </div>
         </div>
 
-        <!-- 15K -->
         <div class="product-card">
             <img src="img/fruit-15k.jpeg" alt="15K Fruit Package">
             <div class="product-details">
@@ -874,10 +824,14 @@
                     <li>6 Ginger</li>
                     <li>1 Small Watermelon</li>
                 </ul>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn" onclick="addPackageToCart('fruit-15k')">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
             </div>
         </div>
 
-        <!-- 20K -->
         <div class="product-card">
             <img src="img/fruit-20k.jpeg" alt="20K Fruit Package">
             <div class="product-details">
@@ -896,13 +850,17 @@
                     <li>1 Papaya</li>
                     <li>1 Large Avocado</li>
                 </ul>
+                <div class="product-actions">
+                  <button class="add-to-cart-btn" onclick="addPackageToCart('fruit-20k')">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+                  </button>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <!-- Floating View Cart Button -->
-  <div class="view-cart-btn" onclick="window.location.href='cart.html'">
+    <div class="view-cart-btn" onclick="window.location.href='cart.html'">
     <div style="position:relative;">
       <img src="img/cart.jpg" alt="Cart">
       <div class="cart-count-badge" id="cartCount">0</div>
@@ -910,7 +868,6 @@
     <span>View Cart</span>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
         <div class="footer-section">
@@ -937,70 +894,141 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
+    // Define Package Data for Fruits Packages
+    const PACKAGES = {
+      'fruit-5k': {
+        id: 'fruit-5k',
+        name: '5K Fruit Package',
+        price: 5000,
+        image: 'img/fruit-5k.jpeg',
+        category: 'Packages',
+        subcategory: 'Fruits Packages'
+      },
+      'fruit-10k': {
+        id: 'fruit-10k',
+        name: '10K Fruit Package',
+        price: 10000,
+        image: 'img/fruit-10k.jpeg',
+        category: 'Packages',
+        subcategory: 'Fruits Packages'
+      },
+      'fruit-15k': {
+        id: 'fruit-15k',
+        name: '15K Fruit Package',
+        price: 15000,
+        image: 'img/fruit-15k.jpeg',
+        category: 'Packages',
+        subcategory: 'Fruits Packages'
+      },
+      'fruit-20k': {
+        id: 'fruit-20k',
+        name: '20K Fruit Package',
+        price: 20000,
+        image: 'img/fruit-20k.jpeg',
+        category: 'Packages',
+        subcategory: 'Fruits Packages'
+      }
+    };
 
-// Add to cart
-function addToCart(productId) {
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const existing = cart.find(item => item.id === productId);
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ id: productId, quantity: 1 });
-  }
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
-}
+    // Add package to cart logic (consistent with other package pages)
+    function addPackageToCart(packageId) {
+      const packageData = PACKAGES[packageId];
+      if (!packageData) {
+        console.error('Package not found:', packageId);
+        return;
+      }
 
-// Update cart count badge
-function updateCartCount() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const badge = document.getElementById('cartCount');
-  badge.textContent = count;
-  badge.style.display = count > 0 ? 'flex' : 'none';
-}
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      
+      // Check if package already in cart
+      const existing = cart.find(item => item.id === packageId);
+      
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({
+          id: packageId,
+          quantity: 1
+        });
+      }
 
-// Wishlist (placeholder)
-function toggleWishlist(productId) {
-  alert("Wishlist feature coming soon!");
-}
+      // Save cart
+      localStorage.setItem("cart", JSON.stringify(cart));
 
-// Favorites (placeholder)
-function handleFavorites() {
-  alert("Favorites feature coming soon!");
-}
+      // Save package data separately so cart.html can read it
+      let packageProducts = JSON.parse(localStorage.getItem("packageProducts")) || {};
+      packageProducts[packageId] = packageData;
+      localStorage.setItem("packageProducts", JSON.stringify(packageProducts));
 
-// Reorder (placeholder)
-function handleReorder() {
-  alert("Reorder feature coming soon!");
-}
+      // Update cart count
+      updateCartCount();
+      
+      // Show notification
+      showNotification(`${packageData.name} added to cart!`);
+    }
 
-// Sidebar functions
-function openSidebar() {
-  document.getElementById('mobileSidebar').classList.add('open');
-  document.getElementById('mobileOverlay').classList.add('open');
-}
-function closeSidebar() {
-  document.getElementById('mobileSidebar').classList.remove('open');
-  document.getElementById('mobileOverlay').classList.remove('open');
-}
+    // Show notification
+    function showNotification(message) {
+      const notif = document.createElement("div");
+      notif.className = "cart-notification";
+      notif.textContent = message;
+      
+      document.body.appendChild(notif);
+      
+      setTimeout(() => {
+        notif.classList.add("show");
+      }, 10);
+      
+      setTimeout(() => {
+        notif.classList.remove("show");
+        setTimeout(() => notif.remove(), 300);
+      }, 2000);
+    }
 
-// ✅ Trigger search on Enter key
-document.getElementById('searchInput').addEventListener('keydown', function (event) {
-  if (event.key === "Enter") {
-    filterProducts();
-  }
-});
+    // Update cart count badge
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      const el = document.getElementById("cartCount");
+      if (!el) return;
+      
+      el.textContent = count;
+      el.style.display = count > 0 ? "flex" : "none";
+    }
 
-// ✅ Also reset to all fruits when search bar is cleared
-document.getElementById('searchInput').addEventListener('input', function () {
-  if (this.value.trim() === "") {
-    filterProducts(); // reload all fruits
-  }
-});
+    // Placeholder functions
+    function handleFavorites() {
+      alert("Favorites feature coming soon!");
+    }
 
+    function handleReorder() {
+      alert("Reorder feature coming soon!");
+    }
+
+    function openSidebar() {
+      document.getElementById('mobileSidebar').classList.add('open');
+      document.getElementById('mobileOverlay').classList.add('open');
+    }
+
+    function closeSidebar() {
+      document.getElementById('mobileSidebar').classList.remove('open');
+      document.getElementById('mobileOverlay').classList.remove('open');
+    }
+
+    function filterProducts() {
+      alert("Search feature coming soon!");
+    }
+
+    // Initialize
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+
+    document.getElementById('searchInput').addEventListener('keydown', function (event) {
+      if (event.key === "Enter") {
+        filterProducts();
+      }
+    });
   </script>
-  </body>
+</body>
 </html>

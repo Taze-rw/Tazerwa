@@ -1467,11 +1467,11 @@
     },
     {
       "id": 170,
-      "name": "Peanut Butter (500g)",
+      "name": "American Peanut Butter (500g)",
       "price": 8000,
       "image": "img/peanut-butter.jpeg",
       "category": "Food",
-      "subcategory": "Breakfast & Dairy"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 171,
@@ -1479,7 +1479,7 @@
       "price": 8000,
       "image": "img/chia-seeds.jpeg",
       "category": "Food",
-      "subcategory": "Breakfast & Dairy"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 172,
@@ -1487,7 +1487,7 @@
       "price": 9000,
       "image": "img/cashew-nuts.jpeg",
       "category": "Food",
-      "subcategory": "Breakfast & Dairy"
+      "subcategory": "Canned Foods"
     },
     {
       "id": 173,

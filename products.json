@@ -315,7 +315,7 @@
   {
     "id": 40,
     "name": "Blueberry (500gm)",
-    "price": 0,
+    "price": 6500,
     "image": "img/blueberry.jpg",
     "category": "Food",
     "subcategory": "Fruits"
@@ -323,7 +323,7 @@
   {
     "id": 41,
     "name": "Blackberry (500gm)",
-    "price": 0,
+    "price": 6900,
     "image": "img/blackberry.jpg",
     "category": "Food",
     "subcategory": "Fruits"

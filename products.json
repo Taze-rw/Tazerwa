@@ -62,7 +62,7 @@
       "price": 1500,
       "image": "img/red-dry-beans.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 9,
@@ -70,7 +70,7 @@
       "price": 1700,
       "image": "img/green-beans.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 10,
@@ -126,7 +126,7 @@
       "price": 1500,
       "image": "img/mutiki-dry-beans.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 17,
@@ -134,7 +134,7 @@
       "price": 1800,
       "image": "img/white-dry-beans.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 18,
@@ -174,7 +174,7 @@
       "price": 2000,
       "image": "img/yellow-dry-beans.png",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 23,
@@ -182,7 +182,7 @@
       "price": 2500,
       "image": "img/soya-beans.jpg",
       "category": "Food",
-      "subcategory": "Vegetables"
+      "subcategory": "Grains"
     },
     {
       "id": 24,

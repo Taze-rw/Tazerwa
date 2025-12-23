@@ -11,7 +11,7 @@
     {
       "id": 2,
       "name": "Tomatoes (1kg)",
-      "price": 1500,
+      "price": 1000,
       "image": "img/tomatoes.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "name": "Red Onions (1kg)",
-      "price": 1000,
+      "price": 1300,
       "image": "img/onions.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
@@ -67,7 +67,7 @@
     {
       "id": 9,
       "name": "Fresh Beans - Ibitonore (1kg)",
-      "price": 1700,
+      "price": 1200,
       "image": "img/green-beans.jpg",
       "category": "Food",
       "subcategory": "Vegetables"
@@ -259,7 +259,7 @@
   {
     "id":33,
     "name": "Mangoes (1kg)",
-    "price": 5000,
+    "price": 2500,
     "image": "img/mangoes.png",
     "category": "Food",
     "subcategory": "Fruits"
@@ -275,7 +275,7 @@
   {
     "id": 35,
     "name": "Pineapple (1pc)",
-    "price": 1000,
+    "price": 1500,
     "image": "img/pineapples.png",
     "category": "Food",
     "subcategory": "Fruits"
@@ -442,8 +442,8 @@
   },
   {
     "id": 56,
-    "name": "Garmichel Sweet Banana (10pcs)",
-    "price": 1500,
+    "name": "Gromichel Sweet Banana (10pcs)",
+    "price": 1800,
     "image": "img/bananas.png",
     "category": "Food",
     "subcategory": "Fruits"
@@ -475,7 +475,7 @@
   {
     "id": 60,
     "name": "Granadila Yellow (1kg)",
-    "price": 1500,
+    "price": 1800,
     "image": "img/granadila-yellow.jpg",
     "category": "Food",
     "subcategory": "Fruits"

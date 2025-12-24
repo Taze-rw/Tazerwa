@@ -20,7 +20,8 @@ export const handler = async (event) => {
   }
 
   try {
-    const { orderId, cartItems, totalAmount, customerInfo, deliveryInfo } = JSON.parse(event.body);
+    // 1. Extract referralCode from the body
+    const { orderId, referralCode, cartItems, totalAmount, customerInfo, deliveryInfo } = JSON.parse(event.body);
 
     if (!orderId || !cartItems || !totalAmount) {
       return {
@@ -33,6 +34,12 @@ export const handler = async (event) => {
     // Build email content
     let emailMessage = `🛒 NEW TAZERWA ORDER\n\n`;
     emailMessage += `Order ID: ${orderId}\n`;
+    
+    // 2. Add Referral Code to Email
+    if (referralCode) {
+      emailMessage += `🎟️ REFERRAL: ${referralCode}\n`; 
+    }
+    
     emailMessage += `Date: ${new Date().toLocaleString()}\n\n`;
     emailMessage += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
     emailMessage += `ORDER ITEMS:\n`;

@@ -284,12 +284,10 @@
       }
     }
   </style>
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <a href="javascript:history.back()" class="back-btn">← Back</a>
     <div class="header-content">
@@ -298,7 +296,6 @@
     </div>
   </header>
 
-  <!-- Cart Container -->
   <div class="cart-container">
     <div id="cart-content">
       <table id="cart-table">
@@ -324,6 +321,9 @@
             <option value="8000">Car Delivery (Rifan) - RWF 8,000</option>
           </select>
         </p>
+        
+        <p id="referral-display" style="font-size: 14px; color: #28a745; display: none;"></p>
+
         <p style="border-top: 1px solid #ddd; padding-top: 10px; margin-top: 15px;">
           <strong style="color: #6e7969;">Grand Total:</strong> 
           <span id="grand-total" style="color: #6e7969; font-size: 1.3em; font-weight: bold;">RWF 0</span>
@@ -377,7 +377,6 @@
       </div>
     </div>
 
-    <!-- Empty Cart Message -->
     <div class="empty-cart" id="empty-cart" style="display: none;">
       <i class="fas fa-shopping-cart"></i>
       <h3>Your cart is empty</h3>
@@ -388,7 +387,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>&copy; 2024 Taze.rw. All rights reserved.</footer>
 
   <script>
@@ -490,6 +488,22 @@ function loadCartItems() {
 
   document.getElementById("subtotal").innerText = formatPrice(subtotal);
   updateTotal();
+  
+  // Show referral if exists
+  checkReferral();
+}
+
+/* ===============================
+   CHECK REFERRAL UI
+=============================== */
+function checkReferral() {
+  const referralCode = localStorage.getItem("referralCode");
+  const displayEl = document.getElementById("referral-display");
+  
+  if (referralCode && displayEl) {
+    displayEl.innerHTML = `<i class="fas fa-tag"></i> Referral Applied: <strong>${referralCode}</strong>`;
+    displayEl.style.display = "block";
+  }
 }
 
 /* ===============================
@@ -560,6 +574,7 @@ async function sendOrderEmail(orderData) {
       },
       body: JSON.stringify({
         orderId: orderData.orderId,
+        referralCode: orderData.referralCode, // Added Referral Code
         cartItems: orderData.cartItems,
         totalAmount: {
           subtotal: orderData.subtotal,
@@ -608,6 +623,9 @@ async function proceedToPayment() {
   const deliveryFee = parseInt(deliveryOption.value);
   const deliveryMethod = deliveryOption.options[deliveryOption.selectedIndex].text;
 
+  // Retrieve Referral Code
+  const referralCode = localStorage.getItem("referralCode") || null;
+
   // Check if delivery method is selected
   if (deliveryFee === 0) {
     alert("Please select a delivery method.");
@@ -646,6 +664,7 @@ async function proceedToPayment() {
     // Send order email
     await sendOrderEmail({
       orderId,
+      referralCode, // Pass to function
       cartItems,
       subtotal,
       deliveryFee,
@@ -666,6 +685,7 @@ async function proceedToPayment() {
     // Save order to localStorage
     localStorage.setItem("currentOrder", JSON.stringify({
       orderId,
+      referralCode,
       name,
       phone,
       email,
@@ -681,6 +701,9 @@ async function proceedToPayment() {
     // Clear cart and redirect to payment
     localStorage.setItem("cart", JSON.stringify([]));
     
+    // Optional: Clear referral code after purchase if you want one-time use
+    // localStorage.removeItem("referralCode");
+
     setTimeout(() => {
       window.location.href = "payment.html";
     }, 2000);

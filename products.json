@@ -2696,6 +2696,71 @@
       "image": "img/rice-thailand-25kg.jpg",
       "category": "Food",
       "subcategory": "Fruits"
-    }
+    },
+    {
+  "id": 333,
+  "name": "Zucchini (Courgette)",
+  "price": 1200,
+  "image": "img/zucchini.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 326,
+  "name": "Thyme",
+  "price": 400,
+  "image": "img/thyme.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 327,
+  "name": "Red Cabbage",
+  "price": 1100,
+  "image": "img/red-cabbage.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 328,
+  "name": "Parsley",
+  "price": 400,
+  "image": "img/parsley.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 329,
+  "name": "Mint",
+  "price": 300,
+  "image": "img/mint.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 330,
+  "name": "Celery",
+  "price": 400,
+  "image": "img/celery.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 331,
+  "name": "Dodo (Amaranth Leaves)",
+  "price": 500,
+  "image": "img/dodo.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+},
+{
+  "id": 332,
+  "name": "Isombe (Cassava Leaves) 1kg",
+  "price": 1000,
+  "image": "img/isombe.jpg",
+  "category": "Food",
+  "subcategory": "Vegetables"
+}
+
   ]
 }
